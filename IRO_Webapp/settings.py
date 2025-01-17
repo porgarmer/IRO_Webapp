@@ -38,8 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'home',
-    'donate'
-]
+    'shelters',
+    'donate_page',
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
