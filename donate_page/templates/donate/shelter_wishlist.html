@@ -6,6 +6,7 @@
     <title>Donation Page</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -20,22 +21,25 @@
             text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
             padding: 100px 20px;
             text-align: center;
+            background: linear-gradient(rgba(43, 37, 37, 0.6), rgba(18, 15, 15, 0.6)),
+                url('https://media.4-paws.org/6/8/9/3/689354d6694789b45569cd647a6009e240b4afe7/VIER%20PFOTEN_2016-09-18_081-1927x1333-1920x1328.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
         }
 
         .header h1 {
-            font-size: 6rem;
+            font-size: 4rem;
             font-weight: bold;
             margin-bottom: 15px;
-            color: white; 
+            color: white;
         }
 
         .header p {
             font-size: 2.5rem;
             margin-bottom: 30px;
-            margin-left: 350px;
-            line-height: 1.6em;
-            color: white; 
-            text-align: left;
+            text-align: center;
+            color: white;
         }
 
         .header button {
@@ -45,7 +49,7 @@
             padding: 15px 30px;
             font-size: 1.1em;
             font-weight: bold;
-            border-radius: 3; 
+            border-radius: 5px;
             cursor: pointer;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
             transition: all 0.3s ease;
@@ -57,49 +61,51 @@
         }
 
         .wishlist-section {
-            margin-top: 50px;
-        }
-
-        .wishlist-section h2 {
-            font-size: 3rem;
-            font-weight: bold;
-            margin-bottom: 30px;
+            padding: 50px 20px;
+            background-color: #F2F2F2;
             text-align: center;
         }
 
-        .wishlist-section p {
-            font-size: 1.3rem;
+        .wishlist-section h2 {
+            font-size: 2.5rem;
+            font-weight: bold;
             margin-bottom: 20px;
+            color: black;
         }
 
         .wishlist-section .card {
-            border: none;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin-bottom: 30px;
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .wishlist-section .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
         }
 
         .wishlist-section .card img {
-            max-width: 100%;
-            height: auto;
+            max-height: 100px;
+            margin: 0 auto;
+            display: block;
         }
 
-        .wishlist-section .card-body h5 {
-            font-weight: bold;
-            font-size: 1.5rem;
+        .wishlist-section .card p {
+            font-size: 1.2rem;
+            margin: 10px 0;
+            color: rgb(68, 66, 65);
         }
 
-        .wishlist-section .card-body p {
-            font-size: 1.1rem;
-        }
-
+        /* Responsive Design */
         @media (max-width: 768px) {
             .header h1 {
-                font-size: 4rem;
+                font-size: 3rem;
             }
 
             .header p {
-                font-size: 1.5rem;
-                margin-left: 20px;
+                font-size: 1.2rem;
             }
 
             .header button {
@@ -108,21 +114,22 @@
             }
 
             .wishlist-section h2 {
-                font-size: 2.5rem;
+                font-size: 2rem;
             }
 
-            .wishlist-section .card-body h5 {
-                font-size: 1.3rem;
+            .wishlist-section .card img {
+                max-height: 80px;
             }
 
-            .wishlist-section .card-body p {
+            .wishlist-section .card p {
                 font-size: 1rem;
             }
         }
     </style>
 </head>
 <body>
-    <div class="header d-flex flex-column justify-content-center align-items-center" 
+    <!-- Header Section -->
+<div class="header d-flex flex-column justify-content-center align-items-center" 
         style="background: linear-gradient(rgba(43, 37, 37, 0.6), rgba(18, 15, 15, 0.6)), url('https://media.4-paws.org/6/8/9/3/689354d6694789b45569cd647a6009e240b4afe7/VIER%20PFOTEN_2016-09-18_081-1927x1333-1920x1328.jpg'); 
         background-size: cover; background-position: center; background-repeat: no-repeat; 
         padding: 80px 20px; text-align: center;">
@@ -134,61 +141,165 @@
     </div>
 
     <div class="container my-5">
-        <h2 class="text-center mb-4" style="font-weight: bold; font-size: 4rem;">HOW YOUR DONATIONS HELP</h2>
-        <p class="text-justify" style="font-size: 1.3rem;">Donated items play a critical role in reducing operational costs and directly supporting the well-being of animals in our care. Every item you give allows us to allocate resources where 
-        they are needed most—providing medical care, shelter, and love to animals waiting for their forever homes.</p>
-        <p class="text-justify" style="font-size: 1.3rem;">For example:</p>
-        <div class="row mt-4">
-            <div class="col-md-6 mb-4">
-                <div class="card">
-                    <img src="https://www.bil-jac.com/media/ju4pznct/5i1a8987_pnm-bag-r3-1024-x-512.jpg?format=webp&quality=70" class="card-img-top" alt="Food and Treats">
-                    <div class="card-body">
-                        <h5 class="card-title"><strong>Food and Treats</strong></h5>
-                        <p class="card-text">Donated food ensures every animal has a full belly and the nutrition they need to thrive.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 mb-4">
-                <div class="card">
-                    <img src="https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2016/12/07131021/Golden-Retriever-puppy-chewing-on-a-ball-laying-in-a-dog-bed-indoors.jpg" class="card-img-top" alt="Toys and Comfort Items">
-                    <div class="card-body">
-                        <h5 class="card-title"><strong>Toys and Comfort Items</strong></h5>
-                        <p class="card-text">Toys and blankets provide enrichment, reduce stress, and make the shelter feel like home.</p>
-                    </div>
+    <h2 class="text-center mb-4" style="font-weight: bold; font-size: 4rem;">HOW YOUR DONATIONS HELP</h2>
+    <p class="text-justify" style="font-size: 1.3rem;">
+        Donated items play a critical role in reducing operational costs and directly supporting the well-being of animals in our care. Every item you give allows us to allocate resources where 
+        they are needed most—providing medical care, shelter, and love to animals waiting for their forever homes.
+    </p>
+    <p class="text-justify" style="font-size: 1.3rem;">For example:</p>
+    <div class="row mt-4">
+        <!-- Food and Treats Card -->
+        <div class="col-md-6 mb-4">
+            <div class="card shadow-sm">
+                <img src="https://www.bil-jac.com/media/ju4pznct/5i1a8987_pnm-bag-r3-1024-x-512.jpg?format=webp&quality=70" 
+                     class="card-img-top" alt="Food and Treats">
+                <div class="card-body text-center">
+                    <h5 class="card-title"><strong>Food and Treats</strong></h5>
+                    <p class="card-text">
+                        Donated food ensures every animal has a full belly and the nutrition they need to thrive.
+                    </p>
                 </div>
             </div>
         </div>
 
-        <div class="wishlist-section">
-            <h2 class="text-center">IRO WISHLIST</h2>
-            <div class="row mt-4">
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Food and Treats</h5>
-                            <p class="card-text">Dry Dog and Cat Food, high-quality brands preferred. Healthy Treats too!</p>
-                        </div>
+        <!-- Toys and Comfort Items Card -->
+        <div class="col-md-6 mb-4">
+            <div class="card shadow-sm">
+                <img src="https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2016/12/07131021/Golden-Retriever-puppy-chewing-on-a-ball-laying-in-a-dog-bed-indoors.jpg" 
+                     class="card-img-top" alt="Toys and Comfort Items">
+                <div class="card-body text-center">
+                    <h5 class="card-title"><strong>Toys and Comfort Items</strong></h5>
+                    <p class="card-text">
+                        Toys and blankets provide enrichment, reduce stress, and make the shelter feel like home.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Wishlist Section -->
+    <div class="wishlist-section py-5">
+        <h2 class="text-center mb-5" style="font-weight: bold; font-size: 2.5rem;">IRO WISHLIST</h2>
+        <div class="container">
+            <!-- First Row: 3 Columns -->
+            <div class="row g-4">
+                <!-- Food and Treats -->
+                <div class="col-md-4">
+                    <div class="card p-4 text-center shadow-sm">
+                        <img src="https://w7.pngwing.com/pngs/488/475/png-transparent-the-adventures-of-taxi-dog-cat-food-dog-food-dog-food-food-animals-pet.png" alt="Food and Treats" class="mb-3">
+                        <h5 class="card-title"><strong>Food and Treats</strong></h5>
+                        <ul class="list-unstyled mt-3">
+                            <li>Dry Dog and Cat Food (high-quality brands preferred)</li>
+                            <li>Wet Dog and Cat Food</li>
+                            <li>Healthy Treats (no rawhide, please)</li>
+                        </ul>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Toys and Enrichment</h5>
-                            <p class="card-text">Chew Toys for dogs, interactive toys for cats, Kongs, and Puzzle Feeders.</p>
-                        </div>
+                <!-- Toys and Enrichment -->
+                <div class="col-md-4">
+                    <div class="card p-4 text-center shadow-sm">
+                        <img src="https://png.pngtree.com/element_our/20190602/ourmid/pngtree-creative-dog-toy-illustration-image_1401546.jpg" alt="Toys and Enrichment" class="mb-3">
+                        <h5 class="card-title"><strong>Toys and Enrichment</strong></h5>
+                        <ul class="list-unstyled mt-3">
+                            <li>Chew Toys for dogs</li>
+                            <li>Interactive Toys for cats</li>
+                            <li>Kongs and Puzzle Feeders</li>
+                        </ul>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Bedding and Comfort</h5>
-                            <p class="card-text">Blankets, quilts, and pet beds for comfort and warmth.</p>
-                        </div>
+                <!-- Bedding and Comfort -->
+                <div class="col-md-4">
+                    <div class="card p-4 text-center shadow-sm">
+                        <img src="https://us.123rf.com/450wm/stockgiu/stockgiu1904/stockgiu190404315/120235090-pet-bed-with-paws-print.jpg?ver=6" alt="Bedding and Comfort" class="mb-3">
+                        <h5 class="card-title"><strong>Bedding and Comfort</strong></h5>
+                        <ul class="list-unstyled mt-3">
+                            <li>Body text for whatever you'd like to say</li>
+                            <li>Add main takeaway points, quotes, or anecdotes</li>
+                            <li>Or even a very short story</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- Second Row: 2 Columns -->
+            <div class="row g-4 mt-4">
+                <!-- Cleaning Supplies -->
+                <div class="col-md-6">
+                    <div class="card p-4 text-center shadow-sm">
+                        <img src="https://static.vecteezy.com/system/resources/previews/001/268/021/non_2x/house-cleaning-supplies-vector.jpg" alt="Cleaning Supplies" class="mb-3">
+                        <h5 class="card-title"><strong>Cleaning Supplies</strong></h5>
+                        <ul class="list-unstyled mt-3">
+                            <li>Paper Towels and Trash Bags</li>
+                            <li>Disinfectant Wipes and Sprays</li>
+                            <li>Laundry Detergent (pet-safe)</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Medical and Grooming Supplies -->
+                <div class="col-md-6">
+                    <div class="card p-4 text-center shadow-sm">
+                        <img src="https://img.freepik.com/premium-vector/set-spray-dogs-concept-beauty-equipment-pets-cleaning-soap-domestic-animals-template-layout-mock-up-cartoon-flat-vector-collection-isolated-white-background_1002658-926.jpg" alt="Medical Supplies" class="mb-3">
+                        <h5 class="card-title"><strong>Medical and Grooming Supplies</strong></h5>
+                        <ul class="list-unstyled mt-3">
+                            <li>Flea and Tick Preventatives</li>
+                            <li>Shampoos and Brushes</li>
+                            <li>Puppy Pads</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+    
+    <!-- Drop Off Locations Section -->
+    <div class="py-5 mt-5" style="background-color: #ffffff; width: 100vw; margin-left: calc(-50vw + 50%);">
+        <h2 class="text-center mb-5" style="font-weight: bold; font-size: 2.5rem;">DROP OFF LOCATIONS</h2>
+        <div class="container">
+            <div class="row g-4">
+                <!-- Location 1 -->
+                <div class="col-md-4">
+                    <div class="card p-4 text-center shadow-sm">
+                        <img src="https://img.icons8.com/ios/452/map-marker.png" alt="Location 1" class="mb-3" style="height: 100px; width: auto;">
+                        <h5 class="card-title"><strong>Downtown Shelter</strong></h5>
+                        <ul class="list-unstyled mt-3">
+                            <li>123 Main Street</li>
+                            <li>City, State, ZIP</li>
+                            <li>Open: 9 AM - 5 PM</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Location 2 -->
+                <div class="col-md-4">
+                    <div class="card p-4 text-center shadow-sm">
+                        <img src="https://img.icons8.com/ios/452/map-marker.png" alt="Location 2" class="mb-3" style="height: 100px; width: auto;">
+                        <h5 class="card-title"><strong>East Side Center</strong></h5>
+                        <ul class="list-unstyled mt-3">
+                            <li>456 Park Avenue</li>
+                            <li>City, State, ZIP</li>
+                            <li>Open: 10 AM - 6 PM</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Location 3 -->
+                <div class="col-md-4">
+                    <div class="card p-4 text-center shadow-sm">
+                        <img src="https://img.icons8.com/ios/452/map-marker.png" alt="Location 3" class="mb-3" style="height: 100px; width: auto;">
+                        <h5 class="card-title"><strong>West Hills Drop-Off</strong></h5>
+                        <ul class="list-unstyled mt-3">
+                            <li>789 Elm Street</li>
+                            <li>City, State, ZIP</li>
+                            <li>Open: 8 AM - 4 PM</li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+
+    <!-- Footer -->
+    <footer class="text-center py-4">
+        <p>&copy; 2025 Donation Page. All rights reserved.</p>
+    </footer>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
