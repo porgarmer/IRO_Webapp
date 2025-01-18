@@ -19,7 +19,7 @@
 </head>
 <body>
     
-    <nav class="navbar fixed-top navbar-expand-lg">
+    <nav class="navbar sticky-top navbar-expand-lg">
         <div class="container ">
           <a class="navbar-brand" href="#">
             <img src="{% static 'home/images/IRO logo.png' %}" alt="" width=80px>
@@ -80,9 +80,11 @@
         </div>
       </nav>
 
+    <div class="main">
     {% block content %}
     
     {% endblock content %}
+    </div>
 
     <footer class="bd-footer py-4 py-md-5 ">
         <div class="container py-4 py-md-5 px-4 px-md-3 ">
