@@ -22,6 +22,4 @@ urlpatterns = [
     path('', include('home.urls')),
     path('shelters/', include('shelters_page.urls')),
     path('donate/', include('donate_page.urls')),
-    path('shelters_page/',include('shelters_page.urls')),
-    # path('', include('home.urls')),
 ]
