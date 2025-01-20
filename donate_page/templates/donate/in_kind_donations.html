@@ -1,12 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Donation Page</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+{% extends "global/base.html" %}
+{% load static %}
+
+{% block title %}Donate Page{% endblock title %}
+
+{% block styles %}
+
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -20,7 +18,7 @@
             color: white;
             text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
             padding: 100px 20px;
-            text-align: center;
+            text-align: left;
             background: linear-gradient(rgba(43, 37, 37, 0.6), rgba(18, 15, 15, 0.6)),
                 url('https://media.4-paws.org/6/8/9/3/689354d6694789b45569cd647a6009e240b4afe7/VIER%20PFOTEN_2016-09-18_081-1927x1333-1920x1328.jpg');
             background-size: cover;
@@ -38,8 +36,9 @@
         .header p {
             font-size: 2.5rem;
             margin-bottom: 30px;
-            text-align: center;
+            line-height: 1.6em;
             color: white;
+            text-align: left;
         }
 
         .header button {
@@ -61,7 +60,6 @@
         }
 
         .wishlist-section {
-            padding: 50px 20px;
             background-color: #F2F2F2;
             text-align: center;
         }
@@ -126,22 +124,26 @@
             }
         }
     </style>
-</head>
-<body>
+{% endblock styles %}
+
+{% block content %}
     <!-- Header Section -->
-<div class="header d-flex flex-column justify-content-center align-items-center" 
+    <div class="header d-flex justify-content-center" 
         style="background: linear-gradient(rgba(43, 37, 37, 0.6), rgba(18, 15, 15, 0.6)), url('https://media.4-paws.org/6/8/9/3/689354d6694789b45569cd647a6009e240b4afe7/VIER%20PFOTEN_2016-09-18_081-1927x1333-1920x1328.jpg'); 
         background-size: cover; background-position: center; background-repeat: no-repeat; 
-        padding: 80px 20px; text-align: center;">
-        <h1>SUPPORT OUR SHELTERS WITH <span style="color: #F95B00;">IN-KIND DONATIONS</span></h1>
-        <p>Your generosity helps us provide essential care for animals in need. </p>
-        <a href="{% url 'shelter_wishlist'%}" style="text-decoration: none;">
-            <button class="btn btn-light" style="margin-top: 20px;">View Wishlist</button>
-        </a>
-    </div>
+        padding: 80px 20px;">
 
+        <div class="container">
+            <h1>SUPPORT YOUR SHELTERS WITH<span style="color: #F95B00;"> IN-KIND DONATIONS</span></h1>
+            <p>Your generosity helps us provide essential care for animals in need.</p>
+            <a href="{% url 'in_kind_donations'%}" class="btn btn-primary p-3">
+                Donate In-Kind
+            </a>
+        </div>
+    </div>
+    
     <div class="container my-5">
-    <h2 class="text-center mb-4" style="font-weight: bold; font-size: 4rem;">HOW YOUR DONATIONS HELP</h2>
+    <h2 class="text-center mb-4" style="font-weight: bold; font-size: 3rem;">HOW YOUR DONATIONS HELP</h2>
     <p class="text-justify" style="font-size: 1.3rem;">
         Donated items play a critical role in reducing operational costs and directly supporting the well-being of animals in our care. Every item you give allows us to allocate resources where 
         they are needed most—providing medical care, shelter, and love to animals waiting for their forever homes.
@@ -152,7 +154,7 @@
         <div class="col-md-6 mb-4">
             <div class="card shadow-sm">
                 <img src="https://www.bil-jac.com/media/ju4pznct/5i1a8987_pnm-bag-r3-1024-x-512.jpg?format=webp&quality=70" 
-                     class="card-img-top" alt="Food and Treats">
+                    class="card-img-top" alt="Food and Treats">
                 <div class="card-body text-center">
                     <h5 class="card-title"><strong>Food and Treats</strong></h5>
                     <p class="card-text">
@@ -175,13 +177,16 @@
                 </div>
             </div>
         </div>
+        <p class="text-justify" style="font-size: 1.3rem;">
+            Your contributions make an immediate and meaningful impact, helping us care for animals and continue our life-saving mission.
+        </p>
     </div>
 </div>
 
 
 <!-- Wishlist Section -->
-    <div class="wishlist-section py-5">
-        <h2 class="text-center mb-5" style="font-weight: bold; font-size: 2.5rem;">IRO WISHLIST</h2>
+    <div class="wishlist-section">
+        <h2 class="text-center mb-5 p-5" style="font-weight: bold; font-size: 2.5rem;">IRO WISHLIST</h2>
         <div class="container">
             <!-- First Row: 3 Columns -->
             <div class="row g-4">
@@ -291,18 +296,23 @@
                         </ul>
                     </div>
                 </div>
+                <div>
+                <a href="{% url 'in_kind_donations'%}" class="btn btn-primary p-3">
+                    Set an Appointment
+                </a>
+                </div>
             </div>
         </div>
     </div>
 
 
     <!-- Footer -->
-    <footer class="text-center py-4">
-        <p>&copy; 2025 Donation Page. All rights reserved.</p>
-    </footer>
+<footer class="text-center py-4" style="background-color: white; width: 100vw; margin-left: calc(-50vw + 50%);">
+    <p>&copy; 2025 Island Rescue Organization. All rights reserved.</p>
+</footer>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
-</body>
-</html>
+
+
+
+{% endblock content %}
+
