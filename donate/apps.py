@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class StaticConfig(AppConfig):
+class DonateConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'Static'
+    name = 'donate'

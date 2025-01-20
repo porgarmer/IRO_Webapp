@@ -1,0 +1,250 @@
+{% extends "global/base.html" %}
+{% load static %}
+
+
+{% block title %}
+Home
+{% endblock title %}   
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'home/css/home.css' %}">
+{% endblock styles %}
+
+
+{% block content %}
+
+
+{% comment %} hero section {% endcomment %}
+<div id="carouselExampleCaptions" class="carousel slide">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="{% static 'home/images/hero-section-bg.jpg' %}" class="d-block w-100" alt="...">
+        <div class="carousel-caption ">
+          <h5>RESCUE <span style="color: #F95B00;">•</span> EDUCATE <span style="color: #F95B00;">•</span> ADVOCATE</h5>
+          <p>Creating a Better Future for Animals</p>
+          <a href="" class="btn btn-primary px-3">Help IRO</a>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'home/images/hero-section-bg.jpg' %}" class="d-block w-100" alt="...">
+        <div class="carousel-caption">
+          <h5>Second slide label</h5>
+          <p>Some representative placeholder content for the second slide.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'home/images/hero-section-bg.jpg' %}" class="d-block w-100" alt="...">
+        <div class="carousel-caption">
+          <h5>Third slide label</h5>
+          <p>Some representative placeholder content for the third slide.</p>
+        </div>
+      </div>
+    </div>  
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  
+{% comment %} about section {% endcomment %}
+<div class="container d-flex justify-content-center my-5">
+        <div class="card about-us">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src="https://scontent.fceb1-1.fna.fbcdn.net/v/t1.6435-9/89716226_2479965872268819_2828685862240256000_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=3a1ebe&_nc_eui2=AeHvFYPP1YjuI4IkUoc8K5CmjEM3qrfGHT6MQzeqt8YdPrsssch7PHfKuS4gsFyEi94G9HFA9ssWqE5tbAcvVg4_&_nc_ohc=05DEykVcdhUQ7kNvgHhiQNl&_nc_zt=23&_nc_ht=scontent.fceb1-1.fna&_nc_gid=A-h07Te-hsynSURDWlZmdDB&oh=00_AYAiWwP809ni90oXwII09HJbOA9lNzqSLZlRZd8Vqm9BEA&oe=67B23629" class="img-fluid rounded-start" alt="...">
+                </div>
+                    <div class="col-md-8">
+                        <div class="card-body m-lg-5">
+                          <div class="d-flex justify-content-center">
+                            <h1 class="card-title">ABOUT US</h1>
+                          </div>
+                          <p class="card-text"><span style="color: #F95B00; font-weight: bold;">Island Rescue Organization </span>is a non-profit organization that aims to
+                              relieve the plight of animals
+                              in the region through <span style="font-weight: bold;">RESCUE,</span>
+                              <span style="font-weight: bold;">EDUCATION,</span>
+                              and
+                              <span style="font-weight: bold;">ADVOCACY.</span>
+                          </p>
+                          <a href="" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+
+{% comment %} vision, mission, goal seciton {% endcomment %}
+<div class="vision-mission-goal">
+  <div class="container">
+      <div class="text-center mb-4">
+          <h1 class="fw-bold">OUR VISION, MISSION, AND GOAL</h1>
+      </div>
+      <div class="row text-center">
+          <div class="col-md-4 mb-3">
+              <div class="content-box">
+                  <h2>VISION</h2>
+                  <p>To have a community where animals are treated humanely; we envision a society where people advocate for the animals' rights and treat them with kindness and respect.</p>
+              </div>
+          </div>
+          <div class="col-md-4 mb-3">
+              <div class="content-box">
+                  <h2>MISSION</h2>
+                  <p>Promote responsible pet ownership and humane treatment of all animals through cooperation, outreach, and education. Pursue the development and enforcement of humane and effective animal welfare laws, and provide a healthy, loving, truly no-kill sanctuary for these animals.</p>
+              </div>
+          </div>
+          <div class="col-md-4 mb-3">
+              <div class="content-box">
+                  <h2>GOAL</h2>
+                  <p>i. Rehome rehabilitated rescued animals and make room for fosters.</p>
+                  <p>ii. Engage the public and give opportunities for involvement through volunteerism. Mobilize volunteers to pursue the organization's mission.</p>
+                  <p>iii. Rally the community towards advocating for animals' rights (private, public, corporate sectors, the academe, civic groups, and individuals).</p>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+{% comment %} stats section {% endcomment %}
+<div class="stats-section">
+  <div class="container">
+      <div class="row">
+          <div class="col-md-3 stat-box">
+              <i class="fas fa-briefcase-medical"></i>
+              <h3>300</h3>
+              <p>Rescues</p>
+          </div>
+          <div class="col-md-3 col-sm-6 stat-box">
+              <i class="fas fa-paw"></i>
+              <h3>250</h3>
+              <p>Sheltered</p>
+          </div>
+          <div class="col-md-3 col-sm-6 stat-box">
+              <i class="fas fa-home"></i>
+              <h3>4</h3>
+              <p>Rescue Centers</p>
+          </div>
+          <div class="col-md-3 col-sm-6 stat-box">
+              <i class="fas fa-hand-holding-heart"></i>
+              <h3>100</h3>
+              <p>Volunteers</p>
+          </div>
+      </div>
+  </div>
+</div>
+  
+{% comment %} shelters section {% endcomment %}
+<div class="shelters-section">
+  <div class="container">
+      <h1 class="fw-bold mb-4">OUR SHELTERS</h1>
+      <p class="mb-5">
+          Our shelters provide a safe and loving environment for rescued animals, offering them a second chance at life. 
+          Here, they receive the care, compassion, and support they need while they wait for their forever homes.
+      </p>
+      <div class="row">
+          <div class="col-md-3 col-sm-6 mb-4">
+              <div class="shelter-card">
+                  <img src="{% static 'home/images/camp-iro-logo.jpg' %}" alt="Camp IRO Logo" class="shelter-logo">
+                  <h5>Camp IRO</h5>
+                  <p>Cebu City</p>
+                  <small>Visitors allowed: Yes (per appointment basis; no walk-ins)</small>
+              </div>
+          </div>
+          <div class="col-md-3 col-sm-6 mb-4">
+              <div class="shelter-card">
+                  <img src="{% static 'home/images/iro-cattery-logo.jpg' %}" alt="IRO 'O' Cattery Logo" class="shelter-logo">
+                  <h5>IRO 'O' Cattery</h5>
+                  <p>Mandaue</p>
+                  <small>Visitors allowed: Yes (per appointment basis; no walk-ins)</small>
+              </div>
+          </div>
+          <div class="col-md-3 col-sm-6 mb-4">
+              <div class="shelter-card">
+                  <img src="{% static 'home/images/iro-tuesday-logo.jpg' %} " alt="IRO Tuesday Foster Home Logo" class="shelter-logo">
+                  <h5>IRO Tuesday Foster Home</h5>
+                  <p>Consolacion</p>
+                  <small>Visitors allowed: No</small>
+              </div>
+          </div>
+          <div class="col-md-3 col-sm-6 mb-4">
+              <div class="shelter-card">
+                  <img src="{% static 'home/images/iro-lolo-ali-logo.jpg' %} " alt="IRO Lolo Ali Center Logo" class="shelter-logo">
+                  <h5>IRO Lolo Ali Center</h5>
+                  <p>Barili</p>
+                  <small>Visitors allowed: Seasonal (still at an appointment basis)</small>
+              </div>
+          </div>
+      </div>
+      <a href="#shelters" class="btn btn-primary mt-4">Explore Our Shelters</a>
+  </div>
+</div>
+
+{% comment %} ways you can help section {% endcomment %}
+<div class="section-gray">
+  <div class="container text-center mb-5 ways-you-can-help-section">
+    <h1 class="fw-bold mb-4">WAYS YOU CAN HELP</h1>
+    <p class="mb-4">
+      Join us in making a difference! Whether through volunteering, donating, fostering, or adopting,
+      your involvement helps save lives and create brighter futures for animals in need.
+    </p>
+    <div class="row g-4">
+      <div class="col-md-3">
+        <div class="card ways-you-can-help p-3">
+          <div class="card-body volunteer-card-bg mb-3">
+            <h5 class="card-title">Volunteer</h5>
+            <p class="card-text">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam orci eros, auctor sed erat in, consequat sollicitudin tellus.           </p>
+          </div> 
+          <button class="btn btn-primary">Volunteer</button>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card ways-you-can-help p-3">
+          <div class="card-body donate-card-bg mb-3">
+            <h5 class="card-title">Donate</h5>
+            <p class="card-text">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam orci eros, auctor sed erat in, consequat sollicitudin tellus.           </p>
+            </p>
+          </div>
+          <button class="btn btn-primary">Donate</button>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card ways-you-can-help p-3">
+          <div class="card-body sponsor-card-bg mb-3">
+            <h5 class="card-title">Sponsor</h5>
+            <p class="card-text">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam orci eros, auctor sed erat in, consequat sollicitudin tellus.           </p>
+            </p>
+          </div>
+          <button class="btn btn-primary">Sponsor</button>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card ways-you-can-help p-3">
+          <div class="card-body adopt-card-bg mb-3">
+            <h5 class="card-title">Adopt</h5>
+            <p class="card-text">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam orci eros, auctor sed erat in, consequat sollicitudin tellus.           </p>
+            </p>
+          </div>
+          <button class="btn btn-primary">Adopt</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}
+
+
+
+{% block scripts %}
+
+{% endblock scripts %}
