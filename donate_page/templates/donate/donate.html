@@ -13,46 +13,32 @@
                 color: #333;
             }
 
-        .header {
+            .header {
                 color: white;
                 text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
                 padding: 100px 20px;
                 text-align: left;
+                background: linear-gradient(rgba(43, 37, 37, 0.6), rgba(18, 15, 15, 0.6)),
+                    url('https://media.4-paws.org/6/8/9/3/689354d6694789b45569cd647a6009e240b4afe7/VIER%20PFOTEN_2016-09-18_081-1927x1333-1920x1328.jpg');
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
             }
-
-        .header h1 {
-                font-size: 5rem;
+    
+            .header h1 {
+                font-size: 4rem;
                 font-weight: bold;
                 margin-bottom: 15px;
-                color: white; 
+                color: white;
             }
-
-        .header p {
+    
+            .header p {
                 font-size: 2.5rem;
                 margin-bottom: 30px;
-                
                 line-height: 1.6em;
-                color: white; 
+                color: white;
                 text-align: left;
             }
-
-        .header button {
-            background-color: #F95B00;
-                border: none;
-                color: black;
-                padding: 15px 30px;
-                font-size: 1.1em;
-                font-weight: bold;
-                border-radius: 3; 
-                cursor: pointer;
-                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-                transition: all 0.3s ease;
-        }
-
-        .header button:hover {
-                background-color: #ffe5cc;
-                color: #F95B00;
-        }
             
         .content h2 {
                 font-size: 2.2em;
@@ -198,21 +184,18 @@
 {% endblock styles %}
 
 {% block content %}
-
-    <div class="header d-flex justify-content-center" 
+<div class="header d-flex justify-content-center" 
         style="background: linear-gradient(rgba(43, 37, 37, 0.6), rgba(18, 15, 15, 0.6)), url('https://media.4-paws.org/6/8/9/3/689354d6694789b45569cd647a6009e240b4afe7/VIER%20PFOTEN_2016-09-18_081-1927x1333-1920x1328.jpg'); 
         background-size: cover; background-position: center; background-repeat: no-repeat; 
         padding: 80px 20px;">
 
-        <div class="">
-            <h1>YOUR SUPPORT <span style="color: #F95B00;">CHANGES LIVES</span></h1>
-            <p>Your support provides shelter, food, and medical care for animals in crisis.</p>
+        <div class="container">
+            <h1>SUPPORT YOUR SHELTERS WITH<span style="color: #F95B00;"> IN-KIND DONATIONS</span></h1>
+            <p>Your generosity helps us provide essential care for animals in need.</p>
             <a href="{% url 'in_kind_donations'%}" class="btn btn-primary p-3">
                 Donate In-Kind
             </a>
         </div>
-       
-
     </div>
 
 
@@ -293,8 +276,8 @@
         </div>
     </div>
     <div class="d-flex justify-content-center mt-4">
-        <a href="{% url 'in_kind_donations'%}" style="text-decoration: none;">
-            <button class="btn btn-warning btn-lg" style="padding: 15px 30px; font-size: 1.2rem; background-color: #F95B00; color: white"><strong>See IRO Wishlist</strong></button>
+        <a href="{% url 'in_kind_donations'%}" class="btn btn-primary p-3">
+            See IRO Wishlist
         </a>
     </div>
 </div>
@@ -376,12 +359,6 @@
     </div>
 </div>
 
-
-
-        <!-- Footer -->
-        <footer class="text-center py-4">
-            <p>&copy; 2025 Island Rescue Organization. All rights reserved.</p>
-        </footer>
 {% endblock content %}
 
 {% block scripts %}

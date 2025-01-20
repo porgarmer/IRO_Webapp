@@ -1,0 +1,269 @@
+{% extends "global/base.html" %}
+{% load static %}
+
+{% block title %}Donate Page{% endblock title %}
+
+{% block styles %}
+<style>
+        body {
+                font-family: 'Arial', sans-serif;
+                margin: 0;
+                padding: 0;
+                background-color: #fff;
+                color: #333;
+            }
+
+            .header {
+                color: white;
+                text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+                padding: 100px 20px;
+                text-align: left;
+                background: linear-gradient(rgba(43, 37, 37, 0.6), rgba(18, 15, 15, 0.6)),
+            }
+    
+            .header h1 {
+                font-size: 4rem;
+                font-weight: bold;
+                margin-bottom: 15px;
+                color: white;
+            }
+    
+            .header p {
+                font-size: 2.5rem;
+                margin-bottom: 30px;
+                line-height: 1.6em;
+                color: white;
+                text-align: left;
+            }
+            
+        .content h2 {
+                font-size: 2.2em;
+                color: black; 
+                margin-bottom: 20px;
+        }
+
+        .content p {
+                font-size: 1.1em;
+                color: #555;
+                margin-bottom: 40px;
+                line-height: 1.8em;
+        }
+
+            .card {
+                border: 2px solid #ccc; 
+                border-radius: 15px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+
+            .card:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            }
+
+            .card img {
+                max-width: 100px;
+                margin: 0 auto;
+            }
+
+            .card p {
+                font-size: 1.3rem;
+                margin: 10px 0;
+            }
+
+            .section {
+                padding: 50px 20px;
+                background-color: #F2F2F2;
+                text-align: center;
+            }
+
+            .section h2 {
+                font-size: 2.2em;
+                color: black; 
+                margin-bottom: 20px;
+            }
+
+            .donation-card, .partner-card {
+                background-color: white;
+                border: 1px solid #ccc; 
+                border-radius: 15px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+
+            .donation-card:hover, .partner-card:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            }
+
+                    #cards-container-donate {
+            overflow-x: hidden;
+            white-space: nowrap;
+        }
+
+        
+
+            /* Media Queries for Responsive Design */
+            @media (max-width: 768px) {
+                .header h1 {
+                    font-size: 4rem; /* Smaller font size for smaller screens */
+                }
+
+                .header p {
+                    font-size: 1.5rem;
+                    margin-left: 20px; /* Adjust left margin */
+                }
+
+                .header button {
+                    padding: 10px 20px; /* Smaller button */
+                    font-size: 1em; /* Smaller font size */
+                }
+
+                .content h2 {
+                    font-size: 1.8em;
+                }
+
+                .content p {
+                    font-size: 1em;
+                }
+
+                .card p {
+                    font-size: 1.1rem;
+                }
+
+                .section h2 {
+                    font-size: 1.8em;
+                }
+
+                .donation-card, .partner-card {
+                    margin-bottom: 20px; /* Add margin for spacing */
+                }
+
+                .donation-card img, .partner-card img {
+                    max-width: 80px; /* Smaller images for smaller screens */
+                }
+            }
+                .card p, .partner-card p, .donation-card p {
+                    white-space: normal;   /* Allow text to wrap */
+                    overflow: hidden;      /* Hide any text that overflows */
+                    text-overflow: ellipsis; /* Optionally, use ellipsis if the text overflows */
+                }
+
+
+            @media (max-width: 576px) {
+                .header h1 {
+                    font-size: 3rem; /* Even smaller for extra small screens */
+                }
+
+                .header p {
+                    font-size: 1.2rem;
+                    margin-left: 10px; /* Adjust left margin further */
+                }
+
+                .content h2 {
+                    font-size: 1.5em;
+                }
+
+                .card p {
+                    font-size: 1rem;
+                }
+
+                .section h2 {
+                    font-size: 1.5em;
+                }
+
+                .donation-card img, .partner-card img {
+                    max-width: 60px; /* Even smaller images for extra small screens */
+                }
+            }
+        </style>
+{% endblock styles %}
+
+{% block content %}
+<div class="header d-flex justify-content-center" 
+        style="background-color: #231F20; 
+        background-size: cover; 
+        background-position: center; 
+        background-repeat: no-repeat; 
+        padding: 80px 20px;">
+
+        <div class="container">
+            <h1><span style="color: #F95B00;">ADOPTION</span> PROCESS</h1>
+            <p>Give a Forever Home to a Rescue in Need</p>
+            <a href="{% url 'in_kind_donations'%}" class="btn btn-primary p-3">
+                Adoption Form
+            </a>
+        </div>
+    </div>
+
+
+        <!-- Donation Channels -->
+        <div class="container my-5">
+            <h2 class="text-center mb-4" style="font-weight: bold; font-size: 3rem;">ADOPTION PROCESS</h2>
+
+        <!-- First Row with 3 Cards -->
+        <div class="row g-4 justify-content-center">
+        <div class="col-md-4">
+            <div class="card text-center p-4">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIZHAiKB9TC4vJREaPEGfE40rTKaWY_MaTNg&s" alt="BPI" class="mb-3" style="max-height: 100px;">
+                <p><strong>ADOPTION FORM</strong></p>
+                <p style="color:rgb(68, 66, 65);">FILL OUT ADOPTION FORM</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-center p-4">
+                <img src="https://logos-download.com/wp-content/uploads/2020/06/GCash_Logo.png" alt="Metrobank" class="mb-3" style="max-height: 100px;">
+                <p><strong>JOIN THE FB GROUP</strong></p>
+                <p style="color:rgb(68, 66, 65);" >Account Name: Annalyn Aizpuru</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-center p-4">
+                <img src="https://logodix.com/logo/2069477.jpg" alt="BDO" class="mb-3" style="max-height: 100px;">
+                <p><strong>INITIAL INTERVIEW</strong></p>
+                <p style="color:rgb(68, 66, 65);" >AFTER ASSESSING THE ADOPTION FORM, YOU WILL HAVE AN INITIAL INTERVIEW.</p>
+            </div> 
+        </div>
+    </div>
+
+        
+        <!-- Second Row with 2 Cards -->
+        <div class="row g-4 justify-content-center mt-4">
+            <div class="col-md-4">
+                <div class="card text-center p-4">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStgKmfmFpCgNoQvoZCmz6Mu0Xzyt5JSzlzXw&s" alt="China Bank" class="mb-3">
+                    <p><strong>FINAL INTERVIEW</strong></p>
+                    <p style="color:rgb(68, 66, 65);">AFTER A CAREFUL ASSESSMENT OF THE INITIAL INTERVIEW, YOU WILL MOVE TO THE FINAL INTERVIEW.</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card text-center p-4">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStgKmfmFpCgNoQvoZCmz6Mu0Xzyt5JSzlzXw&s" alt="China Bank" class="mb-3">
+                    <p><strong>CONTRACT SIGNING</strong></p>
+                    <ul class="list-unstyled mt-3">
+                        <li>SIGN CONTRACT</li>
+                        <li>PRESENT A VALID ID</li>
+                        <li>JOIN THE IRO FURPARENTS FB GOUP</li>
+                        <li>PAY THE ADOPTION FEE: PHP 500</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-center p-4">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Paypal_2014_logo.png" alt="China Bank" class="mb-3">
+                    <p><strong>TURN OVER</strong></p>
+                    <p style="color:rgb(68, 66, 65);">FINALLY, THE TURNOVER OF THE PET. CONGRATULATIONS! YOU ARE NOW AN IRO FURPARENT!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container d-flex justify-content-center align-items-center">
+        <a href="{% url 'in_kind_donations' %}" class="btn btn-primary p-3">
+            Set an Appointment
+        </a>
+    </div>
+    
+
+{% endblock content %}
+

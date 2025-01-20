@@ -8,7 +8,3 @@ def donate(request):
 def in_kind_donations(request):
     
     return render(request, 'donate/in_kind_donations.html')
-
-def adoption(request):
-    
-    return render(request, 'adoption/adoption.html') 

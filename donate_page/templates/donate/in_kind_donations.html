@@ -41,24 +41,6 @@
             text-align: left;
         }
 
-        .header button {
-            background-color: #F95B00;
-            border: none;
-            color: black;
-            padding: 15px 30px;
-            font-size: 1.1em;
-            font-weight: bold;
-            border-radius: 5px;
-            cursor: pointer;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s ease;
-        }
-
-        .header button:hover {
-            background-color: #ffe5cc;
-            color: #F95B00;
-        }
-
         .wishlist-section {
             background-color: #F2F2F2;
             text-align: center;
@@ -137,7 +119,7 @@
             <h1>SUPPORT YOUR SHELTERS WITH<span style="color: #F95B00;"> IN-KIND DONATIONS</span></h1>
             <p>Your generosity helps us provide essential care for animals in need.</p>
             <a href="{% url 'in_kind_donations'%}" class="btn btn-primary p-3">
-                Donate In-Kind
+                View Wishlist
             </a>
         </div>
     </div>
@@ -168,7 +150,7 @@
         <div class="col-md-6 mb-4">
             <div class="card shadow-sm">
                 <img src="https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2016/12/07131021/Golden-Retriever-puppy-chewing-on-a-ball-laying-in-a-dog-bed-indoors.jpg" 
-                     class="card-img-top" alt="Toys and Comfort Items">
+                    class="card-img-top" alt="Toys and Comfort Items">
                 <div class="card-body text-center">
                     <h5 class="card-title"><strong>Toys and Comfort Items</strong></h5>
                     <p class="card-text">
@@ -304,15 +286,6 @@
             </div>
         </div>
     </div>
-
-
-    <!-- Footer -->
-<footer class="text-center py-4" style="background-color: white; width: 100vw; margin-left: calc(-50vw + 50%);">
-    <p>&copy; 2025 Island Rescue Organization. All rights reserved.</p>
-</footer>
-
-
-
 
 {% endblock content %}
 
