@@ -114,7 +114,7 @@
                 box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
             }
 
-                    #cards-container {
+                    #cards-container-donate {
             overflow-x: hidden;
             white-space: nowrap;
         }
@@ -304,12 +304,12 @@
     <h2 class="text-center mb-4" style="font-weight: bold; font-size: 2.5rem;">Partners</h2>
     <div class="position-relative">
         <!-- Left Arrow -->
-        <button id="scroll-left" class="btn btn-dark position-absolute" style="top: 50%; transform: translateY(-50%); left: -40px; z-index: 10;">
+        <button id="scroll-left-donate" class="btn btn-dark position-absolute" style="top: 50%; transform: translateY(-50%); left: -40px; z-index: 10;">
             &#8249;
         </button>
 
         <!-- Cards Container -->
-        <div id="cards-container" class="d-flex overflow-hidden gap-3" style="scroll-behavior: smooth; white-space: nowrap;">
+        <div id="cards-container-donate" class="d-flex overflow-hidden gap-3" style="scroll-behavior: smooth; white-space: nowrap;">
             <!-- Partner Card 1 -->
             <div class="partner-card text-center p-4" style="min-width: 300px; display: inline-block;">
                 <img src="https://scontent.fmnl13-2.fna.fbcdn.net/v/t39.30808-6/244751999_2921970741401661_4190217931880783503_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=3a1ebe&_nc_eui2=AeGzNj8QAt0huta7SU57mWCyGcYqDPk3jbgZxioM-TeNuPXujjvcn-GbELwo7sN_2W8ICdghx88s_2t2XIg_2d9W&_nc_ohc=CmmLPNM-cUEQ7kNvgGWi2E5&_nc_zt=23&_nc_ht=scontent.fmnl13-2.fna&_nc_gid=Ae8v_GzxsS3NJsZ8jFdlcsa&oh=00_AYBLF0-5p63RspPlJ5Uhk1GIFFbzGNKXpRD89IPBfzBtBw&oe=6790EE08" 
@@ -370,7 +370,7 @@
         </div>
 
         <!-- Right Arrow -->
-        <button id="scroll-right" class="btn btn-dark position-absolute" style="top: 50%; transform: translateY(-50%); right: -40px; z-index: 10;">
+        <button id="scroll-right-donate" class="btn btn-dark position-absolute" style="top: 50%; transform: translateY(-50%); right: -40px; z-index: 10;">
             &#8250;
         </button>
     </div>
@@ -384,19 +384,21 @@
         </footer>
 {% endblock content %}
 
+{% block scripts %}
 
 <script>
-document.getElementById('scroll-left').addEventListener('click', function() {
-    document.getElementById('cards-container').scrollBy({
+document.getElementById('scroll-left-donate').addEventListener('click', function() {
+    document.getElementById('cards-container-donate').scrollBy({
         left: -300,
         behavior: 'smooth'
     });
 });
 
-document.getElementById('scroll-right').addEventListener('click', function() {
-    document.getElementById('cards-container').scrollBy({
+document.getElementById('scroll-right-donate').addEventListener('click', function() {
+    document.getElementById('cards-container-donate').scrollBy({
         left: 300,
         behavior: 'smooth'
     });
 });
 </script>
+{% endblock scripts %}
