@@ -1,0 +1,140 @@
+.hero-section {
+    background-image: url("{% static 'pics/iro_shelterpage.jpg' %}");
+    background-size: cover;
+    background-position: center;
+    padding: 40px;
+    text-align: left;
+    color: black;
+    border: 2px solid red; /* Temporary for debugging */
+}
+
+
+.hero-section h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.hero-section h2 {
+    font-size: 3em;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.hero-section p {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: left;
+    gap: 20px;
+    font-weight: bold;
+}
+
+.hero-buttons .explore-btn,
+.hero-buttons .volunteer-btn {
+    padding: 10px 20px;
+    font-size: 1em;
+    border: none;
+    cursor: pointer;
+    border-radius: 12px;
+    text-align: left;
+}
+
+.hero-buttons .explore-btn {
+    background-color: #F95B00;
+    color: white;
+}
+
+.hero-buttons .volunteer-btn {
+    background-color: #231F20;
+    color: white;
+}
+
+.shelters-overview {
+    padding-left: 30px;
+}
+
+.shelters-overview h2 {
+    font-weight: bold;
+}
+
+/* General container styles */
+.container {
+    max-width: 1200px;
+    margin: 0 auto; /* Center horizontally */
+    padding: 40px 20px;
+}
+
+/* Row alignment */
+.row {
+    display: flex;
+    justify-content: space-between; /* Distribute space between text and image */
+    align-items: flex-start; /* Align items to the top */
+    flex-wrap: wrap; /* Make rows wrap for responsive design */
+    margin-bottom: 40px; /* Add spacing between sections */
+}
+
+/* Column styles */
+.col-sm-4 {
+    flex: 1; /* Make columns take equal space */
+    padding: 10px;
+    text-align: left;
+}
+.col-sm-4 .img-thumbnail {
+    width: 100%; /* Ensure the image takes the full width of the column */
+    height: 200px; /* Set a fixed height for all images */
+    object-fit: cover; /* Ensures the image fills the container without stretching */
+    border-radius: 8px; /* Optional: Add slight rounding for a polished look */
+}
+
+.col-sm-4 .img_logo {
+    width: 85%;
+    object-fit: cover; 
+    border-radius: 8px;
+    justify-content: center;
+}
+
+/* Text column */
+.col-sm-4 h3 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.col-sm-4 p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+button {
+    background-color: #FF5722; 
+    color: white !important; 
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 12px;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+    font-weight: bold !important;
+}
+
+button:hover {
+    background-color: #E64A19; 
+}
+
+/* Responsive design for smaller screens */
+@media screen and (max-width: 768px) {
+    .row {
+        flex-direction: column; 
+        text-align: center;
+    }
+
+    .col-sm-4 {
+        margin-bottom: 20px;
+    }
+}
