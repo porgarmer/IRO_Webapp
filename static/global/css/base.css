@@ -1,4 +1,12 @@
 /*style reset*/
+html {
+  scroll-behavior: smooth;
+}
+
+.scroll-offset {
+  scroll-margin-top: 100px; /* Adjust this value to match the height of your sticky header */
+}
+
 /* 1. Use a more-intuitive box-sizing model */
 *, *::before, *::after {
   box-sizing: border-box;
@@ -50,6 +58,23 @@ h1, h2, h3, h4, h5, h6 {
 
 .nav-link:hover{
     color: #F95B00;
+}
+
+.nav-item.dropdown:hover .dropdown-menu {
+  display: block;
+  margin-top: 0; /* Adjusts the dropdown positioning */
+}
+
+/* Optional: Smooth transition */
+.dropdown-menu {
+  transition: opacity 0.2s ease-in-out;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.nav-item.dropdown:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
 }
 
 .w-100{
