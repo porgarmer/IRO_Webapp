@@ -9,7 +9,7 @@
 }
 
 .carousel-caption{
-    bottom: 350px;
+    bottom: 280px;
     z-index: 2;
 }
 
@@ -25,7 +25,7 @@
     width: 60%;
     margin: auto;
     margin-bottom: 1em;
-    font-size: 18px;
+    font-size: 1.5em;
     line-height: 1.9;
 }
 
@@ -73,5 +73,154 @@
         font-size: 12px;
     }
   }
+
+
+/* about us section styles */
+.about-us{
+    border: none;
+
+}
+.about-us h1{
+    font-weight: bold;
+}
+
+.about-us .card-text{
+    font-size: 1.5em;
+}
+
+/* VMGO seciton styes */
+
+.vision-mission-goal {
+    background:  linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(https://scontent.fceb1-1.fna.fbcdn.net/v/t39.30808-6/240532814_2898307227101346_8954988252562091862_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeHfISWyD7V2rJ4KvXv-7KzhLkHqcy1wRBYuQepzLXBEFpBDIVAITtUXex7bmXz_9fxlKmBGTHyZvevxhh5AOJP_&_nc_ohc=OqJcZWXtnmgQ7kNvgGOlTny&_nc_zt=23&_nc_ht=scontent.fceb1-1.fna&_nc_gid=A6kVotPRsQ2VTImdYWc8DdC&oh=00_AYBNuSc_-wdhyUgTpN7SG3dHK96TlPK5cylGRCx2q8YOMw&oe=6791314F);
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
+    padding: 50px 0;
+}
+
+.content-box {
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.content-box h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.content-box p {
+    margin: 0;
+}
+
+/* statistics section styles */
+.stats-section {
+    background-color: #ff6600; /* Orange background */
+    color: white;
+    padding: 40px 0;
+    text-align: center;
+}
+.stat-box {
+    margin: 20px 0;
+}
+.stat-box i {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+.stat-box h3 {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: bold;
+}
+.stat-box p {
+    margin: 0;
+    font-size: 1rem;
+    text-transform: uppercase;
+}
+
+/* shelter section styles */
+.shelters-section {
+    padding: 50px 0;
+    text-align: center;
+}
+.shelter-card {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+.shelter-card:hover {
+    transform: scale(1.05);
+}
+.shelter-logo {
+    max-width: 200px;
+    margin: 0 auto 15px;
+}
+
+
+/* ways you can help section styles */
+.section-gray {
+    background-color: #F2F2F2; /* Bootstrap's light gray color */
+    padding: 50px 0;
+  }
+
+.ways-you-can-help {
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    text-align: center;
+    overflow: hidden;
+    color: white;
+}
+
+.ways-you-can-help:hover {
+    transform: translateY(-10px);
+}
+
+.ways-you-can-help img {
+    height: 200px;
+    object-fit: cover;
+    /* top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; */
+}
+
+.volunteer-card-bg{
+    background:  linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(https://scontent.fceb1-5.fna.fbcdn.net/v/t39.30808-6/457660859_514814701096657_820739798703459297_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeHr4QlsP91rD9OCAE6q1El-mRbtir0PaJiZFu2KvQ9omESCP4BqsktKA21fVzI5Uz6ghcReYY-fnVhe0p5gJcw1&_nc_ohc=9XDZTkPWPc0Q7kNvgHU7zCd&_nc_zt=23&_nc_ht=scontent.fceb1-5.fna&_nc_gid=Aav17vfgZcmLOr9hdWJrxPT&oh=00_AYBeFEtFq05pHhEl3tAs0dmS17_Wp0zYzol-r6AOk8nx0A&oe=67918581);
+    height: 15em;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.donate-card-bg{
+    background:  linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(https://scontent.fceb1-3.fna.fbcdn.net/v/t39.30808-6/244751999_2921970741401661_4190217931880783503_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=3a1ebe&_nc_eui2=AeG0Fmu054tJNV5WwOGTQ9RoGcYqDPk3jbgZxioM-TeNuHtibkfPqFn39eqKDKfZxzh7a5db14XwnVDAMJ4FHHDu&_nc_ohc=M3sewvzgEeIQ7kNvgGrtwNr&_nc_zt=23&_nc_ht=scontent.fceb1-3.fna&_nc_gid=AkG7mvv92005cSM1o7dkn9W&oh=00_AYBcmY7qEFV-jEUeGYzXjFRi13eWb86o8CZ6kP4N4WULrA&oe=679196C8);
+    height: 15em;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+.sponsor-card-bg{
+    background:  linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(https://scontent.fceb1-3.fna.fbcdn.net/v/t39.30808-6/255014849_2947812708817464_4584846727321627360_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=3a1ebe&_nc_eui2=AeHW39t2NOTR-FGJxfJyItbYjpqZgnSkeSSOmpmCdKR5JCkJauWklVVVtU0h4A0Ohsva5t4RRFU6JvVjXsCGPVVW&_nc_ohc=uKeJGc7abIkQ7kNvgH1nN0Q&_nc_zt=23&_nc_ht=scontent.fceb1-3.fna&_nc_gid=AK_hRpWFBG9TAsaNUOxBTb-&oh=00_AYAuReXWgHryCN4aK55O9IXFkKnTbRzjv9CWX4RcU_8Uqg&oe=67919493);
+    height: 15em;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.adopt-card-bg{
+    background:  linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(https://scontent.fceb1-3.fna.fbcdn.net/v/t1.6435-9/52609049_2197685787163497_4639087695027503104_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=3a1ebe&_nc_eui2=AeGOLqvYQQ6LEttVbRltESGemw1ZtVqfvDSbDVm1Wp-8NJnne52Xu3lfO1PxoQ6qhU_bzvqPoMkO3fqoK9wHoWLi&_nc_ohc=A94L9NoQMzMQ7kNvgHnpTaX&_nc_zt=23&_nc_ht=scontent.fceb1-3.fna&_nc_gid=AyDvY-VacbrYy2mb5jb6Jl6&oh=00_AYAM5HIYQWwZxEhWK0Uf_0pzEk_c5T7s9hO3xgujz2UimA&oe=67B32D0F);
+    height: 15em;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
 
 

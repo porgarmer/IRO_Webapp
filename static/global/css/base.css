@@ -71,13 +71,36 @@ h5{
 }
 
 
-
-
-/* === responsive css === */
+/* === responsive css for navbar === */
 
 @media only screen and (max-width: 767px) {
   .navbar-nav{
     text-align: center;
   }
+}
 
+
+
+/* donations styles */
+.partner-card img{
+  max-width: 200px;
+  margin: auto;
+}
+
+.donation-card, .partner-card {
+  background-color: white;
+  border: 1px solid #ccc; 
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.donation-card:hover, .partner-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+#cards-container {
+overflow-x: hidden;
+white-space: nowrap;
 }

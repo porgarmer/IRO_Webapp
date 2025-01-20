@@ -1,0 +1,185 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shelters</title>
+    <link rel="stylesheet" href="{% static 'css/shelters_page.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <h1>OUR SHELTERS: SAFE HAVENS FOR ANIMALS IN NEED</h1>
+        <p>Providing care, comfort, love, and second chances to rescued animals.</p>
+        <div class="hero-buttons">
+            <button class="explore-btn">Explore Our Shelters</button>
+            <button class="volunteer-btn">Sign Up To Volunteer</button>
+        </div>
+    </div>
+
+    <br>
+
+    <!-- Shelters Overview -->
+    <div class="shelters-overview">
+        <h2>EXPLORE OUR LIFESAVING SHELTERS</h2>
+        <h3>            
+            At our shelters, every rescued animal receives the care, love, and second chance they deserve.
+        </h3>
+        <p>
+            From providing nutritious meals and warm beds to ensuring they receive medical attention and emotional support, 
+            our dedicated team works tirelessly to create a safe haven for animals in need. Each shelter is more than just a facility—it's a place where hope begins, 
+            and where animals can heal, grow, and find their forever families. By supporting our shelters, you're helping us provide a brighter future for countless animals who rely on our care.
+        </p>
+    </div>
+
+    <!-- Shelter List -->
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <h3>Camp IRO</h3>
+                <p>Location: Cebu City</p>
+                <br>
+                <p>Visitors allowed: Yes (per appointment basis; no walk-ins)</p>
+                <br>
+                <p>Camp IRO is the main rescue center that serves as the primary home for the majority of IRO's rescued dogs, </p>
+                <p>while also providing shelter to a few cats. It is the hub where adoptable dogs are prepared for and returned from each Adoption Fair.</p> 
+                <p>Additionally, the center welcomes volunteer days and accommodates student short studies, </p>
+                <p>hands-on opportunities to engage with the animals and support their care.</p>
+                <button class="camp_irobtn">Schedule An Appointment</button>
+            </div>
+            <div class="col-sm-4">
+                <img src="{% static 'css/pics/camp_iro.png' %}" class="img_logo" alt="camp_iro">
+            </div>            
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <img src="{% static 'css/pics/iro1.png' %}" class="img-thumbnail" alt="camp_iro">
+            </div>
+            <div class="col-sm-4">
+                <img src="{% static 'css/pics/iro2.png' %}" class="img-thumbnail" alt="camp_iro">
+            </div>
+            <div class="col-sm-4">
+                <img src="{% static 'css/pics/iro3.png' %}" class="img-thumbnail" alt="camp_iro">
+            </div>
+            <div class="col-sm-4">
+                <img src="{% static 'css/pics/iro4.png' %}" class="img-thumbnail" alt="camp_iro">
+            </div>
+        </div>
+    </div>
+
+    <br><br>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <img src="{% static 'css/pics/iro_o_cattery.png' %}" class="img_logo" alt="iro_cattery">
+            </div> 
+            <div class="col-sm-4">
+                <h3>IRO 'O' Cattery</h3>
+                <p>Location: Mandaue</p>
+                <p>Visitors allowed: Yes (per appointment basis; no walk-ins)</p>
+                <br>
+                <p>IRO O Cattery is the main cattery, which also serves as IRO's headquarters, is home to the majority of the organization's</p>
+                <p>rescued cats, including special-needs felines affectionately known as "Cats with Disabilities." It is the central hub where</p> 
+                <p>adoptable cats are prepared for and returned from each Adoption Fair.</p>
+                <button class="cattery_btn">Schedule An Appointment</button>
+            </div>           
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <img src="{% static 'css/pics/cat1.png' %}" class="img-thumbnail" alt="iro_cattery">
+            </div>
+            <div class="col-sm-4">
+                <img src="{% static 'css/pics/cat2.png' %}" class="img-thumbnail" alt="iro_cattery">
+            </div>
+            <div class="col-sm-4">
+                <img src="{% static 'css/pics/cat3.png' %}" class="img-thumbnail" alt="iro_cattery">
+            </div>
+            <div class="col-sm-4">
+                <img src="{% static 'css/pics/cat4.png' %}" class="img-thumbnail" alt="iro_cattery">
+            </div>
+        </div>
+    </div>
+
+    <br><br>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <h3>IRO Tuesday Foster Home</h3>
+                <p>Location: Consolacion</p>
+                <br>
+                <p>Visitors allowed: No</p>
+                <br>
+                <p>IRO Tuesday Foster Home provides a safe haven for animals awaiting adoption or the completion of travel documents.</p>
+                <p>It also serves as a rehabilitation space for dogs transitioning from the clinic to the main shelter or their adoptive homes.</p> 
+                <p> Additionally, it temporarily houses dogs undergoing treatment or those with regular veterinary appointments.</p>
+            </div>
+            <div class="col-sm-4">
+                <img src="{% static 'css/pics/iro_foster.png' %}" class="img_logo" alt="iro_foster">
+            </div>            
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <img src="{% static 'css/pics/foster1.png' %}" class="img-thumbnail" alt="iro_foster">
+            </div>
+            <div class="col-sm-4">
+                <img src="{% static 'css/pics/foster2.png' %}" class="img-thumbnail" alt="iro_foster">
+            </div>
+            <div class="col-sm-4">
+                <img src="{% static 'css/pics/foster3.png' %}" class="img-thumbnail" alt="iro_foster">
+            </div>
+            <div class="col-sm-4">
+                <img src="{% static 'css/pics/foster4.png' %}" class="img-thumbnail" alt="iro_foster">
+            </div>
+        </div>
+    </div>
+
+    <br><br>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <img src="{% static 'css/pics/lolo_ali_center.png' %}" class="img_logo" alt="lac">
+            </div> 
+            <div class="col-sm-4">
+                <h3>IRO Lolo Ali Center (LAC)</h3>
+                <p>Location: Barili</p>
+                <p>Visitors allowed: Seasonal (still at an appointment basis)</p>
+                <br>
+                <p>IRO Tuesday Foster Home serves as a retirement home for dogs, including some undergoing training.</p>
+                <p>It also provides shelter for a few farm animals and rescued wildlife.</p> 
+                <p>Additionally, it is a haven for special-needs dogs and puppies, offering them the care and support they need.</p>
+                <button class="lac_btn">Schedule An Appointment</button>
+            </div>           
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <img src="{% static 'css/pics/lolo1.png' %}" class="img-thumbnail" alt="lac">
+            </div>
+            <div class="col-sm-4">
+                <img src="{% static 'css/pics/lolo2.png' %}" class="img-thumbnail" alt="lac">
+            </div>
+            <div class="col-sm-4">
+                <img src="{% static 'css/pics/lolo3.png' %}" class="img-thumbnail" alt="lac">
+            </div>
+            <div class="col-sm-4">
+                <img src="{% static 'css/pics/lolo4.png' %}" class="img-thumbnail" alt="lac">
+            </div>
+        </div>
+    </div>
+</body>
+</html>
