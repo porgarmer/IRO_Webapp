@@ -1,28 +1,24 @@
-.hero-section {
-    background-image: url("{% static 'pics/iro_shelterpage.jpg' %}");
-    background-size: cover;
-    background-position: center;
-    padding: 40px;
+.header {
+    color: white;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+    padding: 100px 20px;
     text-align: left;
-    color: black;
-    border: 2px solid red; /* Temporary for debugging */
+    background: linear-gradient(rgba(43, 37, 37, 0.6), rgba(18, 15, 15, 0.6)), url(../css/pics/iro_shelterpage.jpg); 
 }
 
-
-.hero-section h1 {
-    font-size: 3em;
-    margin-bottom: 10px;
+.header h1 {
+    font-size: 5rem;
     font-weight: bold;
+    margin-bottom: 15px;
+    color: white; 
 }
 
-.hero-section h2 {
-    font-size: 3em;
-    margin-bottom: 10px;
-    text-align: center;
-}
-
-.hero-section p {
-    margin-bottom: 20px;
+.header p {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    
+    line-height: 1.6em;
+    color: white; 
     text-align: left;
 }
 
@@ -31,21 +27,20 @@
     justify-content: left;
     gap: 20px;
     font-weight: bold;
+    text-align: center;
+    margin-left: 30px;
+
+
 }
 
-.hero-buttons .explore-btn,
 .hero-buttons .volunteer-btn {
     padding: 10px 20px;
     font-size: 1em;
     border: none;
     cursor: pointer;
     border-radius: 12px;
-    text-align: left;
-}
-
-.hero-buttons .explore-btn {
-    background-color: #F95B00;
-    color: white;
+    text-align: center;
+    
 }
 
 .hero-buttons .volunteer-btn {
@@ -54,19 +49,16 @@
 }
 
 .shelters-overview {
-    padding-left: 30px;
+    padding: 50px 20px;
+    margin: 0 auto; /* Center horizontally */
 }
 
 .shelters-overview h2 {
     font-weight: bold;
+    text-align: center;
+    font-size: 2.2em;
 }
 
-/* General container styles */
-.container {
-    max-width: 1200px;
-    margin: 0 auto; /* Center horizontally */
-    padding: 40px 20px;
-}
 
 /* Row alignment */
 .row {
@@ -138,3 +130,49 @@ button:hover {
         margin-bottom: 20px;
     }
 }
+
+            /* Media Queries for Responsive Design */
+            @media (max-width: 768px) {
+                .header h1 {
+                    font-size: 4rem; /* Smaller font size for smaller screens */
+                }
+
+                .header p {
+                    font-size: 1.5rem;
+                    margin-left: 20px; /* Adjust left margin */
+                }
+
+                .header button {
+                    padding: 10px 20px; /* Smaller button */
+                    font-size: 1em; /* Smaller font size */
+                }
+
+                .content h2 {
+                    font-size: 1.8em;
+                }
+
+                .content p {
+                    font-size: 1em;
+                }
+
+                .card p {
+                    font-size: 1.1rem;
+                }
+
+                .section h2 {
+                    font-size: 1.8em;
+                }
+
+                .donation-card, .partner-card {
+                    margin-bottom: 20px; /* Add margin for spacing */
+                }
+
+                .donation-card img, .partner-card img {
+                    max-width: 80px; /* Smaller images for smaller screens */
+                }
+            }
+                .card p, .partner-card p, .donation-card p {
+                    white-space: normal;   /* Allow text to wrap */
+                    overflow: hidden;      /* Hide any text that overflows */
+                    text-overflow: ellipsis; /* Optionally, use ellipsis if the text overflows */
+                }
