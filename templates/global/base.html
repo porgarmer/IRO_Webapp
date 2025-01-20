@@ -18,8 +18,10 @@
     {% endblock styles %}
 </head>
 <body>
+
     {% comment %} navbar {% endcomment %}
-    <nav class="navbar fixed-top navbar-expand-lg">
+    <nav class="navbar sticky-top navbar-expand-lg">
+
         <div class="container ">
           <a class="navbar-brand" href="#">
             <img src="{% static 'home/images/IRO logo.png' %}" alt="" width=80px>
@@ -80,10 +82,15 @@
         </div>
       </nav>
 
+
     {% comment %} main content {% endcomment %}
+
+    <div class="main">
+
     {% block content %}
     
     {% endblock content %}
+    </div>
 
 {% comment %} donations section {% endcomment %}
     <div class="container my-5 text-center">
