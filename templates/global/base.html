@@ -18,7 +18,7 @@
     {% endblock styles %}
 </head>
 <body>
-    
+    {% comment %} navbar {% endcomment %}
     <nav class="navbar fixed-top navbar-expand-lg">
         <div class="container ">
           <a class="navbar-brand" href="#">
@@ -80,10 +80,75 @@
         </div>
       </nav>
 
+    {% comment %} main content {% endcomment %}
     {% block content %}
     
     {% endblock content %}
 
+{% comment %} donations section {% endcomment %}
+    <div class="container my-5 text-center">
+      <h1 class="mb-3 fw-bold">DONATIONS</h1>
+      <p class="mb-4">
+        Join us in making a difference! Whether through volunteering, donating, fostering, or adopting,
+        your involvement helps save lives and create brighter futures for animals in need.
+      </p>
+      <div class="position-relative">
+          <!-- Left Arrow -->
+          <button id="scroll-left" class="btn btn-dark position-absolute" style="top: 50%; transform: translateY(-50%); left: -40px; z-index: 10;">
+              &#8249;
+          </button>
+  
+          <!-- Cards Container -->
+          <div id="cards-container" class="d-flex overflow-hidden gap-3" style="scroll-behavior: smooth; white-space: nowrap;">
+              <!-- Partner Card 1 -->
+              <div class="partner-card text-center p-4" style="min-width: 300px; display: inline-block;">
+                  <img src="https://images.seeklogo.com/logo-png/38/1/gcash-logo-png_seeklogo-383190.png?v=1957907106254922584" 
+                      alt="Anonymous Donor" class="img-fluid mb-3">
+                  <p style="font-size: 1.4rem;" ><strong>CHINA BANK</strong></p>
+                  <p style="font-size: 1.2rem;" >Island Rescue Organization-Subangdaku Branch Checking Account #: 2890396715</p>
+              </div>
+  
+              <div class="partner-card text-center p-4" style="min-width: 300px; display: inline-block;">
+                  <img src="https://play-lh.googleusercontent.com/rX0QH8-NjXsrOdQQM7qbXhFFkdhCyAAzMB-hitkGOaLTMiP6oCR2RGZ3MCE3biSMmtk=w240-h480-rw" 
+                      alt="Anonymous Donor" class="img-fluid mb-3" width=100%>
+                  <p style="font-size: 1.4rem;" ><strong>GCASH</strong></p>
+                  <p style="font-size: 1.2rem;">Annalyn Aizpuru 09053416042</p>
+              </div>
+  
+              <div class="partner-card text-center p-4" style="min-width: 300px; display: inline-block;">
+                  <img src="https://ceedphilippines.com/wp-content/uploads/2020/04/bpi-new-logo.jpg" 
+                      alt="Anonymous Donor" class="img-fluid mb-3">
+                  <p style="font-size: 1.4rem;" ><strong>BPI</strong></p>
+                  <p style="font-size: 1.2rem;" >Carla Joy Estrada-Salvacion Account Number <br> 1199 1624 93</p>
+              </div>
+  
+              <div class="partner-card text-center p-4" style="min-width: 300px; display: inline-block;">
+                  <img src="https://play-lh.googleusercontent.com/fdQjxsIO8BTLaw796rQPZtLEnGEV8OJZJBJvl8dFfZLZcGf613W93z7y9dFAdDhvfqw" 
+                      alt="Anonymous Donor" class="img-fluid mb-3">
+                  <p style="font-size: 1.4rem;" ><strong>PAYMAYA</strong></p>
+                  <p style="font-size: 1.2rem;">Annalyn Aizpuru 09053416042</p>
+              </div>
+  
+              <div class="partner-card text-center p-4" style="min-width: 300px; display: inline-block;">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Paypal_2014_logo.png" 
+                      alt="Anonymous Donor" class="img-fluid mb-3">
+                  <p style="font-size: 1.4rem;" ><strong>PAYPAL</strong></p>
+                  <p style="font-size: 1.2rem;" >helpiro@gmail.com</p>
+              </div>
+  
+              <!-- Add more cards as needed -->
+          </div>
+  
+          <!-- Right Arrow -->
+          <button id="scroll-right" class="btn btn-dark position-absolute" style="top: 50%; transform: translateY(-50%); right: -40px; z-index: 10;">
+              &#8250;
+          </button>
+      </div>
+  </div>
+
+  
+
+  {% comment %} footer {% endcomment %}
     <footer class="bd-footer py-4 py-md-5 ">
         <div class="container py-4 py-md-5 px-4 px-md-3 ">
             <div class="row mb-5">
@@ -135,7 +200,22 @@
         </div>
     </footer>
     
-    
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script>
+      document.getElementById('scroll-left').addEventListener('click', function() {
+          document.getElementById('cards-container').scrollBy({
+              left: -300,
+              behavior: 'smooth'
+          });
+      });
+      
+      document.getElementById('scroll-right').addEventListener('click', function() {
+          document.getElementById('cards-container').scrollBy({
+              left: 300,
+              behavior: 'smooth'
+          });
+      });
+      </script>
     <script src="{% static 'global/js/bootstrap.bundle.min.js' %}"></script>
     {% block scripts %}
     
