@@ -5,6 +5,10 @@ def donate(request):
     
     return render(request, 'donate/donate.html') 
 
-def shelter_wishlist(request):
+def in_kind_donations(request):
     
-    return render(request, 'donate/shelter_wishlist.html') 
+    return render(request, 'donate/in_kind_donations.html')
+
+def adoption(request):
+    
+    return render(request, 'adoption/adoption.html') 
