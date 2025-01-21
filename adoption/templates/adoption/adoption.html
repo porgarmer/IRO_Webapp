@@ -57,19 +57,18 @@
     }
 
     .cards {
-    display: flex;
-    flex-wrap: wrap;
-    grid-template-columns: repeat(3, 1fr); /* Three columns */
-    gap: 20px;
-    padding: 20px;
-}
-
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* Three columns */
+        gap: 20px; /* Spacing between cards */
+        padding: 20px;
+    }
+    
     .card {
         background-color: white;
         border-radius: 8px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        text-align: center;
         overflow: hidden;
+        text-align: center;
     }
 
     .card img {
@@ -77,29 +76,325 @@
         height: 200px;
         object-fit: cover;
     }
-
+    
     .card h3 {
         margin: 10px 0;
         font-size: 20px;
     }
-
+    
     .card p {
         font-size: 14px;
         color: #555;
         margin: 0 10px 10px;
     }
 
-    @media (max-width: 900px) {
-    .cards {
-        grid-template-columns: repeat(2, 1fr); /* Two columns for smaller screens */
+    /* Modal container styles */
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+        justify-content: center;
+        align-items: center;
     }
-}
 
-    @media (max-width: 600px) {
-    .cards {
-        grid-template-columns: 1fr; /* One column for very small screens */
+    /* Modal content styles */
+    .modal-content {
+        position: relative;
+        background-color: white;
+        border-radius: 10px;
+        max-width: 50em;
+        text-align: center;
     }
-}
+
+    .modal-content h2 {
+        margin: 0 0 10px;
+    }
+
+    .modal-content p {
+        margin: 10px 0 20px;
+        color: #555;
+    }
+
+    .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: none;
+        border: none;
+        font-size: 24px;
+        font-weight: bold;
+        color: #F95B00;
+        cursor: pointer;
+    }
+    
+    .close-btn:hover {
+        color: #f44336;
+    }
+
+    /* Button styles */
+    .open-modal-btn {
+        background-color: #F95B00;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .open-modal-btn:hover {
+        background-color: #F95B00;
+    }
+    /* Modal Details: Picture and Text Layout */
+    .modal-details {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 20px;
+    }
+
+    .modal-image img {
+        width: 200px;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+
+    .modal-text {
+        flex-grow: 1;
+        padding-left: 20px;
+    }
+
+    .modal-text p {
+        font-size: 1.2rem;
+        color: #555;
+    }
+
+    .modal-text a {
+        background-color: #F95B00;
+        color: white;
+        padding: 10px 15px;
+        text-decoration: none;
+        border-radius: 5px;
+    }
+
+    /* Additional images below the modal details */
+    .additional-images {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+    }
+
+    .additional-images img {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+
+    @media (max-width: 768px) {
+        .modal-content {
+            max-width: 90%;
+            padding: 10px;
+        }
+    
+        .additional-images {
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+    }
+    
+    @media (max-width: 900px) {
+        /* Adjust card layout to two columns */
+        .cards {
+            grid-template-columns: repeat(2, 1fr); /* Two columns */
+            gap: 15px; /* Reduce gap between cards */
+            padding: 15px; /* Reduce padding */
+        }
+    
+        /* Reduce modal details section spacing */
+        .modal-details {
+            flex-direction: column; /* Stack image and text vertically */
+            text-align: center; /* Center align content */
+        }
+    
+        .modal-image img {
+            width: 150px; /* Adjust image size */
+            height: 150px; /* Keep proportions smaller */
+            margin-bottom: 15px; /* Add spacing */
+        }
+    
+        .modal-text {
+            padding-left: 0; /* Remove left padding */
+        }
+    
+        .modal-text p {
+            font-size: 1rem; /* Reduce font size */
+        }
+    
+        /* Adjust header font size for better readability */
+        .header h1 {
+            font-size: 3rem; /* Reduce heading size */
+        }
+    
+        .header p {
+            font-size: 1.5rem; /* Reduce paragraph size */
+        }
+    
+        /* Filters: Adjust input size */
+        .filters select,
+        .filters input {
+            width: 150px; /* Reduce input width */
+            padding: 8px; /* Adjust padding */
+            font-size: 14px; /* Smaller font size */
+        }
+    }
+    
+    @media (max-width: 600px) {
+        /* Cards: Switch to single-column layout */
+        .cards {
+            grid-template-columns: 1fr; /* Single column */
+            gap: 10px; /* Smaller gap */
+            padding: 10px; /* Reduce padding */
+        }
+    
+        /* Modal details: Adjust for narrow screens */
+        .modal-details {
+            flex-direction: column; /* Stack vertically */
+            text-align: center; /* Center align content */
+        }
+    
+        .modal-image img {
+            width: 120px; /* Further reduce image size */
+            height: 120px; /* Maintain smaller proportions */
+            margin-bottom: 10px; /* Smaller margin */
+        }
+    
+        .modal-text {
+            padding-left: 0; /* Remove left padding */
+        }
+    
+        .modal-text p {
+            font-size: 0.9rem; /* Smaller font size */
+        }
+    
+        /* Header: Scale down font sizes */
+        .header h1 {
+            font-size: 2.5rem; /* Smaller heading size */
+        }
+    
+        .header p {
+            font-size: 1.2rem; /* Smaller paragraph size */
+        }
+    
+        /* Filters: Stack inputs and reduce size */
+        .filters {
+            display: flex;
+            flex-direction: column; /* Stack elements */
+            align-items: center; /* Center align */
+        }
+    
+        .filters select,
+        .filters input {
+            width: 100%; /* Full width for inputs */
+            max-width: 300px; /* Add a max width */
+            padding: 6px; /* Smaller padding */
+            font-size: 12px; /* Smaller font */
+            margin-bottom: 10px; /* Space between inputs */
+        }
+    
+        /* Buttons: Adjust for smaller screens */
+        button {
+            font-size: 0.9rem; /* Smaller font size */
+            padding: 8px 12px; /* Adjust padding */
+        }
+    
+        /* General padding adjustments */
+        body {
+            padding: 5px; /* Reduce body padding */
+        }
+    
+        .content {
+            padding: 10px; /* Reduce content padding */
+        }
+    }
+    
+    @media (max-width: 320px) {
+        /* Adjust card layout to single-column */
+        .cards {
+            grid-template-columns: 1fr; /* Single column */
+            gap: 5px; /* Reduce gap */
+            padding: 5px; /* Minimal padding */
+        }
+
+        /* Modal content adjustments */
+        .modal-content {
+            max-width: 90%; /* Fit within screen width */
+            padding: 10px; /* Adjust padding */
+        }
+
+        .modal-image img {
+            width: 100px; /* Smaller image */
+            height: 100px; /* Maintain aspect ratio */
+            margin-bottom: 10px;
+        }
+
+        .modal-text {
+            padding-left: 0; /* Remove extra padding */
+            font-size: 0.8rem; /* Smaller text */
+        }
+
+        .modal-text p {
+            font-size: 0.7rem; /* Adjust font size */
+        }
+
+        /* Header adjustments for small screens */
+        .header h1 {
+            font-size: 1.8rem; /* Smaller header */
+        }
+
+        .header p {
+            font-size: 1rem; /* Smaller paragraph */
+        }
+
+        /* Filters */
+        .filters {
+            flex-direction: column; /* Stack filters */
+            align-items: center;
+        }
+
+        .filters select,
+        .filters input {
+            width: 100%; /* Full width */
+            font-size: 12px; /* Smaller font */
+            padding: 5px; /* Adjust padding */
+        }
+
+        /* Adjust buttons */
+        .open-modal-btn {
+            font-size: 0.8rem;
+            padding: 5px 10px;
+        }
+
+        .close-btn {
+            font-size: 20px; /* Smaller close button */
+        }
+
+        /* Additional images */
+        .additional-images img {
+            width: 50px; /* Reduce size */
+            height: 50px;
+        }
+
+        /* General body adjustments */
+        body {
+            padding: 5px;
+        }
+    }
 </style>
 {% endblock styles %}
 
@@ -142,146 +437,127 @@
     <input type="text" placeholder="Search">
 </div>
 
+<!-- Modal -->
+
+<div class="modal" id="aboutMeModal">
+    <div class="modal-content" style="background-color: #231F20; padding: 50px;">
+        <button class="close-btn" onclick="closeModal()">×</button>
+        
+        <!-- First container (white background with image and text) -->
+        <div class="container" style="background-color: white; padding: 20px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-radius: 7px; ">
+            <div class="modal-image" style="flex: 1; margin-right: 20px;">
+                <img src="https://scontent.fmnl13-2.fna.fbcdn.net/v/t39.30808-6/244751999_2921970741401661_4190217931880783503_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=3a1ebe&_nc_eui2=AeGzNj8QAt0huta7SU57mWCyGcYqDPk3jbgZxioM-TeNuPXujjvcn-GbELwo7sN_2W8ICdghx88s_2t2XIg_2d9W&_nc_ohc=CmmLPNM-cUEQ7kNvgGWi2E5&_nc_zt=23&_nc_ht=scontent.fmnl13-2.fna&_nc_gid=Ae8v_GzxsS3NJsZ8jFdlcsa&oh=00_AYBLF0-5p63RspPlJ5Uhk1GIFFbzGNKXpRD89IPBfzBtBw&oe=6790EE08" alt="Rescue Animal" style="max-width: 100%; height: auto;">
+            </div>
+            <div class="modal-text" style="flex: 2;">
+                <h2>About Me</h2>
+                <p>This is the detailed information about the rescue animal.</p>
+                <a href="{% url 'adoption_process' %}" class="btn btn-primary p-3">Adopt Me</a>
+            </div>
+        </div>
+        <!-- Second container (additional images with individual white backgrounds) -->
+        <div class="additional-images" style="display: flex; gap: 20px; padding: 20px;">
+            <div style="background-color: white; padding: 10px; border-radius: 7px; width: 220px; height: auto;">
+                <img src="https://scontent.fmnl13-2.fna.fbcdn.net/v/t39.30808-6/244751999_2921970741401661_4190217931880783503_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=3a1ebe&_nc_eui2=AeGzNj8QAt0huta7SU57mWCyGcYqDPk3jbgZxioM-TeNuPXujjvcn-GbELwo7sN_2W8ICdghx88s_2t2XIg_2d9W&_nc_ohc=CmmLPNM-cUEQ7kNvgGWi2E5&_nc_zt=23&_nc_ht=scontent.fmnl13-2.fna&_nc_gid=Ae8v_GzxsS3NJsZ8jFdlcsa&oh=00_AYBLF0-5p63RspPlJ5Uhk1GIFFbzGNKXpRD89IPBfzBtBw&oe=6790EE08" alt="Additional Image 1" style="width: 100%; height: auto;">
+            </div>
+            <div style="background-color: white; padding: 10px; border-radius: 7px; width: 220px; height: auto;">
+                <img src="https://scontent.fmnl13-2.fna.fbcdn.net/v/t39.30808-6/244751999_2921970741401661_4190217931880783503_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=3a1ebe&_nc_eui2=AeGzNj8QAt0huta7SU57mWCyGcYqDPk3jbgZxioM-TeNuPXujjvcn-GbELwo7sN_2W8ICdghx88s_2t2XIg_2d9W&_nc_ohc=CmmLPNM-cUEQ7kNvgGWi2E5&_nc_zt=23&_nc_ht=scontent.fmnl13-2.fna&_nc_gid=Ae8v_GzxsS3NJsZ8jFdlcsa&oh=00_AYBLF0-5p63RspPlJ5Uhk1GIFFbzGNKXpRD89IPBfzBtBw&oe=6790EE08" alt="Additional Image 2" style="width: 100%; height: auto;">
+            </div>
+            <div style="background-color: white; padding: 10px; border-radius: 7px; width: 220px; height: auto;">
+                <img src="https://scontent.fmnl13-2.fna.fbcdn.net/v/t39.30808-6/244751999_2921970741401661_4190217931880783503_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=3a1ebe&_nc_eui2=AeGzNj8QAt0huta7SU57mWCyGcYqDPk3jbgZxioM-TeNuPXujjvcn-GbELwo7sN_2W8ICdghx88s_2t2XIg_2d9W&_nc_ohc=CmmLPNM-cUEQ7kNvgGWi2E5&_nc_zt=23&_nc_ht=scontent.fmnl13-2.fna&_nc_gid=Ae8v_GzxsS3NJsZ8jFdlcsa&oh=00_AYBLF0-5p63RspPlJ5Uhk1GIFFbzGNKXpRD89IPBfzBtBw&oe=6790EE08" alt="Additional Image 3" style="width: 100%; height: auto;">
+            </div>
+            <div style="background-color: white; padding: 10px; border-radius: 7px; width: 220px; height: auto;">
+                <img src="https://scontent.fmnl13-2.fna.fbcdn.net/v/t39.30808-6/244751999_2921970741401661_4190217931880783503_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=3a1ebe&_nc_eui2=AeGzNj8QAt0huta7SU57mWCyGcYqDPk3jbgZxioM-TeNuPXujjvcn-GbELwo7sN_2W8ICdghx88s_2t2XIg_2d9W&_nc_ohc=CmmLPNM-cUEQ7kNvgGWi2E5&_nc_zt=23&_nc_ht=scontent.fmnl13-2.fna&_nc_gid=Ae8v_GzxsS3NJsZ8jFdlcsa&oh=00_AYBLF0-5p63RspPlJ5Uhk1GIFFbzGNKXpRD89IPBfzBtBw&oe=6790EE08" alt="Additional Image 4" style="width: 100%; height: auto;">
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
 <div class="container">
     <div class="cards">
         <div class="card p-4">
             <img src="https://scontent.fmnl13-2.fna.fbcdn.net/v/t39.30808-6/244751999_2921970741401661_4190217931880783503_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=3a1ebe&_nc_eui2=AeGzNj8QAt0huta7SU57mWCyGcYqDPk3jbgZxioM-TeNuPXujjvcn-GbELwo7sN_2W8ICdghx88s_2t2XIg_2d9W&_nc_ohc=CmmLPNM-cUEQ7kNvgGWi2E5&_nc_zt=23&_nc_ht=scontent.fmnl13-2.fna&_nc_gid=Ae8v_GzxsS3NJsZ8jFdlcsa&oh=00_AYBLF0-5p63RspPlJ5Uhk1GIFFbzGNKXpRD89IPBfzBtBw&oe=6790EE08"  alt="Rescue Animal">
             <h3>Rescue Name</h3>
             <p>Short description about the rescue animal goes here. Make it engaging and inviting.</p>
-            <button class="btn btn-primary">About Me</button>
+            <button class="open-modal-btn" onclick="openModal()">About Me</button>
         </div>
 
         <div class="card p-4">
             <img src="https://scontent.fmnl13-2.fna.fbcdn.net/v/t39.30808-6/244751999_2921970741401661_4190217931880783503_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=3a1ebe&_nc_eui2=AeGzNj8QAt0huta7SU57mWCyGcYqDPk3jbgZxioM-TeNuPXujjvcn-GbELwo7sN_2W8ICdghx88s_2t2XIg_2d9W&_nc_ohc=CmmLPNM-cUEQ7kNvgGWi2E5&_nc_zt=23&_nc_ht=scontent.fmnl13-2.fna&_nc_gid=Ae8v_GzxsS3NJsZ8jFdlcsa&oh=00_AYBLF0-5p63RspPlJ5Uhk1GIFFbzGNKXpRD89IPBfzBtBw&oe=6790EE08"  alt="Rescue Animal">
             <h3>Rescue Name</h3>
             <p>Short description about the rescue animal goes here. Make it engaging and inviting.</p>
-            <button class="btn btn-primary">About Me</button>
+            <button class="open-modal-btn" onclick="openModal()">About Me</button>
         </div>
 
         <div class="card p-4">
             <img src="https://scontent.fmnl13-2.fna.fbcdn.net/v/t39.30808-6/244751999_2921970741401661_4190217931880783503_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=3a1ebe&_nc_eui2=AeGzNj8QAt0huta7SU57mWCyGcYqDPk3jbgZxioM-TeNuPXujjvcn-GbELwo7sN_2W8ICdghx88s_2t2XIg_2d9W&_nc_ohc=CmmLPNM-cUEQ7kNvgGWi2E5&_nc_zt=23&_nc_ht=scontent.fmnl13-2.fna&_nc_gid=Ae8v_GzxsS3NJsZ8jFdlcsa&oh=00_AYBLF0-5p63RspPlJ5Uhk1GIFFbzGNKXpRD89IPBfzBtBw&oe=6790EE08"  alt="Rescue Animal">
             <h3>Rescue Name</h3>
             <p>Short description about the rescue animal goes here. Make it engaging and inviting.</p>
-            <button class="btn btn-primary">About Me</button>
-        </div>
-
-        <div class="card p-4">
-            <img src="https://scontent.fmnl13-2.fna.fbcdn.net/v/t39.30808-6/244751999_2921970741401661_4190217931880783503_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=3a1ebe&_nc_eui2=AeGzNj8QAt0huta7SU57mWCyGcYqDPk3jbgZxioM-TeNuPXujjvcn-GbELwo7sN_2W8ICdghx88s_2t2XIg_2d9W&_nc_ohc=CmmLPNM-cUEQ7kNvgGWi2E5&_nc_zt=23&_nc_ht=scontent.fmnl13-2.fna&_nc_gid=Ae8v_GzxsS3NJsZ8jFdlcsa&oh=00_AYBLF0-5p63RspPlJ5Uhk1GIFFbzGNKXpRD89IPBfzBtBw&oe=6790EE08"  alt="Rescue Animal">
-            <h3>Rescue Name</h3>
-            <p>Short description about the rescue animal goes here. Make it engaging and inviting.</p>
-            <button class="btn btn-primary">About Me</button>
-        </div>
-
-        <div class="card p-4">
-            <img src="https://scontent.fmnl13-2.fna.fbcdn.net/v/t39.30808-6/244751999_2921970741401661_4190217931880783503_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=3a1ebe&_nc_eui2=AeGzNj8QAt0huta7SU57mWCyGcYqDPk3jbgZxioM-TeNuPXujjvcn-GbELwo7sN_2W8ICdghx88s_2t2XIg_2d9W&_nc_ohc=CmmLPNM-cUEQ7kNvgGWi2E5&_nc_zt=23&_nc_ht=scontent.fmnl13-2.fna&_nc_gid=Ae8v_GzxsS3NJsZ8jFdlcsa&oh=00_AYBLF0-5p63RspPlJ5Uhk1GIFFbzGNKXpRD89IPBfzBtBw&oe=6790EE08"  alt="Rescue Animal">
-            <h3>Rescue Name</h3>
-            <p>Short description about the rescue animal goes here. Make it engaging and inviting.</p>
-            <button class="btn btn-primary">About Me</button>
+            <button class="open-modal-btn" onclick="openModal()">About Me</button>
         </div>
         
         <div class="card p-4">
             <img src="https://scontent.fmnl13-2.fna.fbcdn.net/v/t39.30808-6/244751999_2921970741401661_4190217931880783503_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=3a1ebe&_nc_eui2=AeGzNj8QAt0huta7SU57mWCyGcYqDPk3jbgZxioM-TeNuPXujjvcn-GbELwo7sN_2W8ICdghx88s_2t2XIg_2d9W&_nc_ohc=CmmLPNM-cUEQ7kNvgGWi2E5&_nc_zt=23&_nc_ht=scontent.fmnl13-2.fna&_nc_gid=Ae8v_GzxsS3NJsZ8jFdlcsa&oh=00_AYBLF0-5p63RspPlJ5Uhk1GIFFbzGNKXpRD89IPBfzBtBw&oe=6790EE08"  alt="Rescue Animal">
             <h3>Rescue Name</h3>
             <p>Short description about the rescue animal goes here. Make it engaging and inviting.</p>
-            <button class="btn btn-primary">About Me</button>
+            <button class="open-modal-btn" onclick="openModal()">About Me</button>
         </div>
 
         <div class="card p-4">
             <img src="https://scontent.fmnl13-2.fna.fbcdn.net/v/t39.30808-6/244751999_2921970741401661_4190217931880783503_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=3a1ebe&_nc_eui2=AeGzNj8QAt0huta7SU57mWCyGcYqDPk3jbgZxioM-TeNuPXujjvcn-GbELwo7sN_2W8ICdghx88s_2t2XIg_2d9W&_nc_ohc=CmmLPNM-cUEQ7kNvgGWi2E5&_nc_zt=23&_nc_ht=scontent.fmnl13-2.fna&_nc_gid=Ae8v_GzxsS3NJsZ8jFdlcsa&oh=00_AYBLF0-5p63RspPlJ5Uhk1GIFFbzGNKXpRD89IPBfzBtBw&oe=6790EE08"  alt="Rescue Animal">
             <h3>Rescue Name</h3>
             <p>Short description about the rescue animal goes here. Make it engaging and inviting.</p>
-            <button class="btn btn-primary">About Me</button>
+            <button class="open-modal-btn" onclick="openModal()">About Me</button>
         </div>
 
         <div class="card p-4">
             <img src="https://scontent.fmnl13-2.fna.fbcdn.net/v/t39.30808-6/244751999_2921970741401661_4190217931880783503_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=3a1ebe&_nc_eui2=AeGzNj8QAt0huta7SU57mWCyGcYqDPk3jbgZxioM-TeNuPXujjvcn-GbELwo7sN_2W8ICdghx88s_2t2XIg_2d9W&_nc_ohc=CmmLPNM-cUEQ7kNvgGWi2E5&_nc_zt=23&_nc_ht=scontent.fmnl13-2.fna&_nc_gid=Ae8v_GzxsS3NJsZ8jFdlcsa&oh=00_AYBLF0-5p63RspPlJ5Uhk1GIFFbzGNKXpRD89IPBfzBtBw&oe=6790EE08"  alt="Rescue Animal">
             <h3>Rescue Name</h3>
             <p>Short description about the rescue animal goes here. Make it engaging and inviting.</p>
-            <button class="btn btn-primary">About Me</button>
+            <button class="open-modal-btn" onclick="openModal()">About Me</button>
         </div>
 
         <div class="card p-4">
             <img src="https://scontent.fmnl13-2.fna.fbcdn.net/v/t39.30808-6/244751999_2921970741401661_4190217931880783503_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=3a1ebe&_nc_eui2=AeGzNj8QAt0huta7SU57mWCyGcYqDPk3jbgZxioM-TeNuPXujjvcn-GbELwo7sN_2W8ICdghx88s_2t2XIg_2d9W&_nc_ohc=CmmLPNM-cUEQ7kNvgGWi2E5&_nc_zt=23&_nc_ht=scontent.fmnl13-2.fna&_nc_gid=Ae8v_GzxsS3NJsZ8jFdlcsa&oh=00_AYBLF0-5p63RspPlJ5Uhk1GIFFbzGNKXpRD89IPBfzBtBw&oe=6790EE08"  alt="Rescue Animal">
             <h3>Rescue Name</h3>
             <p>Short description about the rescue animal goes here. Make it engaging and inviting.</p>
-            <button class="btn btn-primary">About Me</button>
+            <button class="open-modal-btn" onclick="openModal()">About Me</button>
+        </div>
+        
+        <div class="card p-4">
+            <img src="https://scontent.fmnl13-2.fna.fbcdn.net/v/t39.30808-6/244751999_2921970741401661_4190217931880783503_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=3a1ebe&_nc_eui2=AeGzNj8QAt0huta7SU57mWCyGcYqDPk3jbgZxioM-TeNuPXujjvcn-GbELwo7sN_2W8ICdghx88s_2t2XIg_2d9W&_nc_ohc=CmmLPNM-cUEQ7kNvgGWi2E5&_nc_zt=23&_nc_ht=scontent.fmnl13-2.fna&_nc_gid=Ae8v_GzxsS3NJsZ8jFdlcsa&oh=00_AYBLF0-5p63RspPlJ5Uhk1GIFFbzGNKXpRD89IPBfzBtBw&oe=6790EE08"  alt="Rescue Animal">
+            <h3>Rescue Name</h3>
+            <p>Short description about the rescue animal goes here. Make it engaging and inviting.</p>
+            <button class="open-modal-btn" onclick="openModal()">About Me</button>
         </div>
 
         <div class="card p-4">
             <img src="https://scontent.fmnl13-2.fna.fbcdn.net/v/t39.30808-6/244751999_2921970741401661_4190217931880783503_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=3a1ebe&_nc_eui2=AeGzNj8QAt0huta7SU57mWCyGcYqDPk3jbgZxioM-TeNuPXujjvcn-GbELwo7sN_2W8ICdghx88s_2t2XIg_2d9W&_nc_ohc=CmmLPNM-cUEQ7kNvgGWi2E5&_nc_zt=23&_nc_ht=scontent.fmnl13-2.fna&_nc_gid=Ae8v_GzxsS3NJsZ8jFdlcsa&oh=00_AYBLF0-5p63RspPlJ5Uhk1GIFFbzGNKXpRD89IPBfzBtBw&oe=6790EE08"  alt="Rescue Animal">
             <h3>Rescue Name</h3>
             <p>Short description about the rescue animal goes here. Make it engaging and inviting.</p>
-            <button class="btn btn-primary">About Me</button>
+            <button class="open-modal-btn" onclick="openModal()">About Me</button>
         </div>
 
         <div class="card p-4">
             <img src="https://scontent.fmnl13-2.fna.fbcdn.net/v/t39.30808-6/244751999_2921970741401661_4190217931880783503_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=3a1ebe&_nc_eui2=AeGzNj8QAt0huta7SU57mWCyGcYqDPk3jbgZxioM-TeNuPXujjvcn-GbELwo7sN_2W8ICdghx88s_2t2XIg_2d9W&_nc_ohc=CmmLPNM-cUEQ7kNvgGWi2E5&_nc_zt=23&_nc_ht=scontent.fmnl13-2.fna&_nc_gid=Ae8v_GzxsS3NJsZ8jFdlcsa&oh=00_AYBLF0-5p63RspPlJ5Uhk1GIFFbzGNKXpRD89IPBfzBtBw&oe=6790EE08"  alt="Rescue Animal">
             <h3>Rescue Name</h3>
             <p>Short description about the rescue animal goes here. Make it engaging and inviting.</p>
-            <button class="btn btn-primary">About Me</button>
+            <button class="open-modal-btn" onclick="openModal()">About Me</button>
         </div>
 
         <div class="card p-4">
             <img src="https://scontent.fmnl13-2.fna.fbcdn.net/v/t39.30808-6/244751999_2921970741401661_4190217931880783503_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=3a1ebe&_nc_eui2=AeGzNj8QAt0huta7SU57mWCyGcYqDPk3jbgZxioM-TeNuPXujjvcn-GbELwo7sN_2W8ICdghx88s_2t2XIg_2d9W&_nc_ohc=CmmLPNM-cUEQ7kNvgGWi2E5&_nc_zt=23&_nc_ht=scontent.fmnl13-2.fna&_nc_gid=Ae8v_GzxsS3NJsZ8jFdlcsa&oh=00_AYBLF0-5p63RspPlJ5Uhk1GIFFbzGNKXpRD89IPBfzBtBw&oe=6790EE08"  alt="Rescue Animal">
             <h3>Rescue Name</h3>
             <p>Short description about the rescue animal goes here. Make it engaging and inviting.</p>
-            <button class="btn btn-primary">About Me</button>
+            <button class="open-modal-btn" onclick="openModal()">About Me</button>
         </div>
-
+        
         <div class="card p-4">
             <img src="https://scontent.fmnl13-2.fna.fbcdn.net/v/t39.30808-6/244751999_2921970741401661_4190217931880783503_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=3a1ebe&_nc_eui2=AeGzNj8QAt0huta7SU57mWCyGcYqDPk3jbgZxioM-TeNuPXujjvcn-GbELwo7sN_2W8ICdghx88s_2t2XIg_2d9W&_nc_ohc=CmmLPNM-cUEQ7kNvgGWi2E5&_nc_zt=23&_nc_ht=scontent.fmnl13-2.fna&_nc_gid=Ae8v_GzxsS3NJsZ8jFdlcsa&oh=00_AYBLF0-5p63RspPlJ5Uhk1GIFFbzGNKXpRD89IPBfzBtBw&oe=6790EE08"  alt="Rescue Animal">
             <h3>Rescue Name</h3>
             <p>Short description about the rescue animal goes here. Make it engaging and inviting.</p>
-            <button class="btn btn-primary">About Me</button>
-        </div>
-
-        <div class="card p-4">
-            <img src="https://scontent.fmnl13-2.fna.fbcdn.net/v/t39.30808-6/244751999_2921970741401661_4190217931880783503_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=3a1ebe&_nc_eui2=AeGzNj8QAt0huta7SU57mWCyGcYqDPk3jbgZxioM-TeNuPXujjvcn-GbELwo7sN_2W8ICdghx88s_2t2XIg_2d9W&_nc_ohc=CmmLPNM-cUEQ7kNvgGWi2E5&_nc_zt=23&_nc_ht=scontent.fmnl13-2.fna&_nc_gid=Ae8v_GzxsS3NJsZ8jFdlcsa&oh=00_AYBLF0-5p63RspPlJ5Uhk1GIFFbzGNKXpRD89IPBfzBtBw&oe=6790EE08"  alt="Rescue Animal">
-            <h3>Rescue Name</h3>
-            <p>Short description about the rescue animal goes here. Make it engaging and inviting.</p>
-            <button class="btn btn-primary">About Me</button>
-        </div>
-
-        <div class="card p-4">
-            <img src="https://scontent.fmnl13-2.fna.fbcdn.net/v/t39.30808-6/244751999_2921970741401661_4190217931880783503_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=3a1ebe&_nc_eui2=AeGzNj8QAt0huta7SU57mWCyGcYqDPk3jbgZxioM-TeNuPXujjvcn-GbELwo7sN_2W8ICdghx88s_2t2XIg_2d9W&_nc_ohc=CmmLPNM-cUEQ7kNvgGWi2E5&_nc_zt=23&_nc_ht=scontent.fmnl13-2.fna&_nc_gid=Ae8v_GzxsS3NJsZ8jFdlcsa&oh=00_AYBLF0-5p63RspPlJ5Uhk1GIFFbzGNKXpRD89IPBfzBtBw&oe=6790EE08"  alt="Rescue Animal">
-            <h3>Rescue Name</h3>
-            <p>Short description about the rescue animal goes here. Make it engaging and inviting.</p>
-            <button class="btn btn-primary">About Me</button>
-        </div>
-
-        <div class="card p-4">
-            <img src="https://scontent.fmnl13-2.fna.fbcdn.net/v/t39.30808-6/244751999_2921970741401661_4190217931880783503_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=3a1ebe&_nc_eui2=AeGzNj8QAt0huta7SU57mWCyGcYqDPk3jbgZxioM-TeNuPXujjvcn-GbELwo7sN_2W8ICdghx88s_2t2XIg_2d9W&_nc_ohc=CmmLPNM-cUEQ7kNvgGWi2E5&_nc_zt=23&_nc_ht=scontent.fmnl13-2.fna&_nc_gid=Ae8v_GzxsS3NJsZ8jFdlcsa&oh=00_AYBLF0-5p63RspPlJ5Uhk1GIFFbzGNKXpRD89IPBfzBtBw&oe=6790EE08"  alt="Rescue Animal">
-            <h3>Rescue Name</h3>
-            <p>Short description about the rescue animal goes here. Make it engaging and inviting.</p>
-            <button class="btn btn-primary">About Me</button>
-        </div>
-
-        <div class="card p-4">
-            <img src="https://scontent.fmnl13-2.fna.fbcdn.net/v/t39.30808-6/244751999_2921970741401661_4190217931880783503_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=3a1ebe&_nc_eui2=AeGzNj8QAt0huta7SU57mWCyGcYqDPk3jbgZxioM-TeNuPXujjvcn-GbELwo7sN_2W8ICdghx88s_2t2XIg_2d9W&_nc_ohc=CmmLPNM-cUEQ7kNvgGWi2E5&_nc_zt=23&_nc_ht=scontent.fmnl13-2.fna&_nc_gid=Ae8v_GzxsS3NJsZ8jFdlcsa&oh=00_AYBLF0-5p63RspPlJ5Uhk1GIFFbzGNKXpRD89IPBfzBtBw&oe=6790EE08"  alt="Rescue Animal">
-            <h3>Rescue Name</h3>
-            <p>Short description about the rescue animal goes here. Make it engaging and inviting.</p>
-            <button class="btn btn-primary">About Me</button>
-        </div>
-
-        <div class="card p-4">
-            <img src="https://scontent.fmnl13-2.fna.fbcdn.net/v/t39.30808-6/244751999_2921970741401661_4190217931880783503_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=3a1ebe&_nc_eui2=AeGzNj8QAt0huta7SU57mWCyGcYqDPk3jbgZxioM-TeNuPXujjvcn-GbELwo7sN_2W8ICdghx88s_2t2XIg_2d9W&_nc_ohc=CmmLPNM-cUEQ7kNvgGWi2E5&_nc_zt=23&_nc_ht=scontent.fmnl13-2.fna&_nc_gid=Ae8v_GzxsS3NJsZ8jFdlcsa&oh=00_AYBLF0-5p63RspPlJ5Uhk1GIFFbzGNKXpRD89IPBfzBtBw&oe=6790EE08"  alt="Rescue Animal">
-            <h3>Rescue Name</h3>
-            <p>Short description about the rescue animal goes here. Make it engaging and inviting.</p>
-            <button class="btn btn-primary">About Me</button>
-        </div>
-
-        <div class="card p-4">
-            <img src="https://scontent.fmnl13-2.fna.fbcdn.net/v/t39.30808-6/244751999_2921970741401661_4190217931880783503_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=3a1ebe&_nc_eui2=AeGzNj8QAt0huta7SU57mWCyGcYqDPk3jbgZxioM-TeNuPXujjvcn-GbELwo7sN_2W8ICdghx88s_2t2XIg_2d9W&_nc_ohc=CmmLPNM-cUEQ7kNvgGWi2E5&_nc_zt=23&_nc_ht=scontent.fmnl13-2.fna&_nc_gid=Ae8v_GzxsS3NJsZ8jFdlcsa&oh=00_AYBLF0-5p63RspPlJ5Uhk1GIFFbzGNKXpRD89IPBfzBtBw&oe=6790EE08"  alt="Rescue Animal">
-            <h3>Rescue Name</h3>
-            <p>Short description about the rescue animal goes here. Make it engaging and inviting.</p>
-            <button class="btn btn-primary">About Me</button>
-        </div>
-
-        <div class="card p-4">
-            <img src="https://scontent.fmnl13-2.fna.fbcdn.net/v/t39.30808-6/244751999_2921970741401661_4190217931880783503_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=3a1ebe&_nc_eui2=AeGzNj8QAt0huta7SU57mWCyGcYqDPk3jbgZxioM-TeNuPXujjvcn-GbELwo7sN_2W8ICdghx88s_2t2XIg_2d9W&_nc_ohc=CmmLPNM-cUEQ7kNvgGWi2E5&_nc_zt=23&_nc_ht=scontent.fmnl13-2.fna&_nc_gid=Ae8v_GzxsS3NJsZ8jFdlcsa&oh=00_AYBLF0-5p63RspPlJ5Uhk1GIFFbzGNKXpRD89IPBfzBtBw&oe=6790EE08"  alt="Rescue Animal">
-            <h3>Rescue Name</h3>
-            <p>Short description about the rescue animal goes here. Make it engaging and inviting.</p>
-            <button class="btn btn-primary">About Me</button>
+            <button class="open-modal-btn" onclick="openModal()">About Me</button>
         </div>
         <!-- Add more cards as needed -->
     </div>
@@ -292,5 +568,25 @@
 
 
 {% block scripts %}
+<script>
+// Open modal
+    function openModal() {
+        const modal = document.getElementById('aboutMeModal');
+        modal.style.display = 'flex';
+    }
 
+    // Close modal
+    function closeModal() {
+        const modal = document.getElementById('aboutMeModal');
+        modal.style.display = 'none';
+    }
+
+    // Close modal when clicking outside the modal content
+    window.onclick = function (event) {
+        const modal = document.getElementById('aboutMeModal');
+        if (event.target === modal) {
+            modal.style.display = 'none';
+        }
+    };
+</script>
 {% endblock scripts %}
