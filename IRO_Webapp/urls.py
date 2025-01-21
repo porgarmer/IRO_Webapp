@@ -22,6 +22,11 @@ urlpatterns = [
     path('', include('home.urls')),
     path('shelters/', include('shelters_page.urls')),
     path('donate/', include('donate_page.urls')),
+<<<<<<< HEAD
+    path('faqs/', include('faqs_page.urls')),
+
+=======
     path('adoption/', include('adoption.urls')),
     path('adoption_process/', include('adoption_process.urls')),
+>>>>>>> 6aa913508e9d923b4ab8fc8257c0b1705a5b1297
 ]
