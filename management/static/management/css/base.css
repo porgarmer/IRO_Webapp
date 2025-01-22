@@ -1,0 +1,224 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+*,
+::after,
+::before {
+    box-sizing: border-box;
+}
+
+.right-popup {
+    position: fixed;
+    top: 20px;
+    right: -300px;
+    width: 250px;
+    background-color: #141414;
+    color: #FFFFFF;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: right 0.3s ease;
+    z-index: 9999;
+}
+
+.right-popup.show {
+    right: 20px;
+}
+
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+
+}
+
+h3 {
+    font-size: 1.2375rem;
+    color: #FFF;
+}
+
+a {
+    cursor: pointer;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+}
+
+li {
+    list-style: none;
+}
+
+.wrapper {
+    display: grid;
+}
+
+
+.sidebar-container{
+    top: 0;
+    position: sticky;
+    align-self: flex-start;
+    z-index: 1000;
+
+}
+
+.main{
+    min-height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    transition: all 0.35s ease-in-out;
+    background-color: #F8F5F5;
+    padding-left: 90px; /* Added padding for main content to align properly */
+}
+
+#sidebar {
+    max-width: 80px;
+    min-width: 80px;
+    transition: all 0.25s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    background-color: #231F20;
+    z-index: 1000; /* Higher than header and footer */
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    overflow-y: auto; /* Enable vertical scrolling */
+    overflow-x: hidden;
+    scrollbar-width: thin; /* Firefox scrollbar width */
+    scrollbar-color: #F95B00 #231F20; /* Firefox scrollbar colors */
+    max-height: 100vh; /* Ensures the sidebar does not exceed the viewport height */
+
+}
+
+
+/* For Webkit-based browsers (Chrome, Edge, etc.) */
+#sidebar::-webkit-scrollbar {
+    width: 8px; /* Width of the scrollbar */
+}
+
+#sidebar::-webkit-scrollbar-thumb {
+    background-color: #F95B00; /* Color of the scrollbar thumb */
+    border-radius: 4px; /* Rounded corners for the thumb */
+}
+
+#sidebar::-webkit-scrollbar-thumb:hover {
+    background-color: #d94b00; /* Darker shade on hover */
+}
+
+#sidebar::-webkit-scrollbar-track {
+    background-color: #231F20; /* Background of the scrollbar track */
+}
+
+#sidebar.expand {
+    width: 18rem;
+    min-width: 18rem;
+}
+
+#toggle-btn {
+    background-color: transparent;
+    cursor: pointer;
+    border: 0;
+    padding: 1rem 1.5rem;
+}
+
+#toggle-btn i {
+    font-size: 1.5rem;
+    color: white;
+}
+
+.sidebar-logo {
+    padding: 1.15rem 1.5rem;
+}
+
+.sidebar-logo a {
+    color: white;
+    font-size: 1.15rem;
+    font-weight: 600;
+}
+
+#sidebar:not(.expand) .sidebar-logo,
+#sidebar:not(.expand) a.sidebar-link span,
+#sidebar:not(.expand) .sidebar-header {
+    display: none;
+}
+
+.sidebar-nav {
+    padding: 2rem 0;
+    flex: 1 1 auto;
+}
+
+.sidebar-header {
+    color: #e9ecef;
+    font-size: .75rem;
+    padding: 1.5rem 1.5rem .375rem;
+}
+
+
+a.sidebar-link {
+    padding: .625rem 1.62rem;
+    color: #ffffff;
+    display: block;
+    font-size: .9rem;
+    white-space: nowrap;
+    border-left: 3px solid transparent;
+}
+
+.sidebar-link i {
+    font-size: 1.4rem;
+    margin-right: .75rem;
+}
+
+.sidebar-link:hover {
+    background-color: #423d3e;
+    border-left: 3px solid #F95B00;
+}
+
+.sidebar-item {
+    position: relative;
+}
+
+#sidebar:not(.expand) .sidebar-item .sidebar-dropdown {
+    position: fixed; /* Makes the dropdown pop up relative to the viewport */
+    top: aut; /* Position it dynamically based on the hovered link */
+    left: 80px;
+    background-color: #231F20;
+    padding: 0;
+    min-width: 15rem;
+    display: none;
+    z-index: 1000; /* Ensures the dropdown appears above other elements */
+
+}
+
+#sidebar:not(.expand) .sidebar-item:hover .has-dropdown+ .sidebar-dropdown {
+    display: block;
+    opacity: 1;
+    transform: translateY(calc(100% + 5px)); /* Adjusts the dropdown position dynamically */
+}
+
+/* Fix the dropdown position relative to the hovered link */
+#sidebar:not(.expand) .sidebar-item:hover .sidebar-dropdown {
+    top: auto;
+    left: 80px; /* Ensure it aligns with the sidebar */
+}
+
+#sidebar:not(.expand) .sidebar-dropdown {
+    pointer-events: auto; /* Allows interaction with dropdowns */
+}
+
+#sidebar.expand .sidebar-link[data-bs-toggle="collapse"]::after {
+    border: solid;
+    border-width: 0 .075rem .075rem 0;
+    content: "";
+    display: inline-block;
+    padding: 2px;
+    position: absolute;
+    right: 1.5rem;
+    top: 1.4rem;
+    transform: rotate(-135deg);
+    transition: all .2s ease-out;
+}
+
+#sidebar.expand .sidebar-link[data-bs-toggle="collapse"].collapsed::after {
+    transform: rotate(45deg);
+    transition: all .2s ease-out;
+}
+

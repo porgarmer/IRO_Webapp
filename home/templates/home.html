@@ -17,13 +17,16 @@ Home
 {% comment %} hero section {% endcomment %}
 
 
-  <div class="px-4 py-5 text-center d-grid hero-section">
+  <div class="px-4 py-5 text-center d-grid hero-section" style="background: linear-gradient(rgba(43, 37, 37, 0.6), rgba(18, 15, 15, 0.6)), url({{homepage.hero_section_bg_photo.url}});
+">
     <div class="hero-content">
-      <h1 class="display-5 fw-bold">RESCUE <span style="color: #F95B00;">•</span> EDUCATE <span style="color: #F95B00;">•</span> ADVOCATE</h1>
+      <h1 class="display-5">{{homepage.hero_section_title|safe}}</h1>
+      {% comment %} <h1 class="display-5 fw-bold">RESCUE <span style="color: #F95B00;">•</span> EDUCATE <span style="color: #F95B00;">•</span> ADVOCATE</h1> {% endcomment %}
       <div class="col-lg-6 mx-auto">
-        <p class="lead mb-4">Creating a Better Future for Animals</p>
+        <p class="lead mb-4">{{homepage.hero_section_subtitle|safe}}</p>
         <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
           <a href="#help-iro" type="button" class="btn btn-primary btn-lg px-4 gap-3">Help IRO</a>
+          {% comment %} <a href="#help-iro" type="button" class="btn btn-primary">{{homepage.hero_section_cta_btn_text}}</a> {% endcomment %}
         </div>
       </div>
     </div>
