@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'faqs_page',
     'adoption',
     'adoption_process',
+    'volunteer',
 ]
 
 MIDDLEWARE = [
