@@ -25,4 +25,5 @@ urlpatterns = [
     path('adoption/', include('adoption.urls')),
     path('adoption_process/', include('adoption_process.urls')),
     path('volunteer/', include('volunteer.urls')),
+    path('content_page/', include('content_page.urls')),
 ]

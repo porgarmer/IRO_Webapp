@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'adoption',
     'adoption_process',
     'volunteer',
+    'content_page',
+
     
 ]
 
