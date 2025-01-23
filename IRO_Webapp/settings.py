@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'adoption',
     'adoption_process',
     'management.apps.ManagementConfig',
-    'ckeditor'
+    'ckeditor',
     'educ_reso',
     'news_artic',
     'volunteer',
