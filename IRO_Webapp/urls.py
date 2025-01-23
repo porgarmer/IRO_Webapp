@@ -28,4 +28,5 @@ urlpatterns = [
     path('educ_reso/', include('educ_reso.urls')),
     path('news_artic/', include('news_artic.urls')),
     path('volunteer/', include('volunteer.urls')),
+    path('content_page/', include('content_page.urls')),
 ]
