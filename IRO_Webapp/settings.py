@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'adoption_process',
     'educ_reso',
     'news_artic',
+    'volunteer',
+
 ]
 
 MIDDLEWARE = [
