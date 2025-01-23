@@ -40,12 +40,13 @@ INSTALLED_APPS = [
     'home',
     'donate_page',
     'shelters_page',
+    'faqs_page',
     'adoption',
     'adoption_process',
+    'educ_reso',
+    'news_artic',
     'volunteer',
     'content_page',
-
-    
 ]
 
 MIDDLEWARE = [
