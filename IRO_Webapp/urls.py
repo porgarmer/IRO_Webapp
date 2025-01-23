@@ -26,5 +26,6 @@ urlpatterns = [
     path('adoption/', include('adoption.urls')),
     path('adoption_process/', include('adoption_process.urls')),
     path('educ_reso/', include('educ_reso.urls')),
+    path('news_artic/', include('news_artic.urls')),
 
 ]
