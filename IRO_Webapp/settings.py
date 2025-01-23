@@ -43,7 +43,10 @@ INSTALLED_APPS = [
     'faqs_page',
     'adoption',
     'adoption_process',
+    'educ_reso',
+    'news_artic',
     'volunteer',
+
 ]
 
 MIDDLEWARE = [

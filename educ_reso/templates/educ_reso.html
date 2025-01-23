@@ -1,0 +1,128 @@
+{% extends "global/base.html" %}
+{% load static %}
+
+{% block title %}Educational Resources{% endblock title %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/educreso.css' %}">
+{% endblock styles %}
+
+{% block content %}
+<div class="header d-flex justify-content-center" 
+style="background-size: cover; background-position: center; background-repeat: no-repeat; 
+padding: 80px 20px;">
+
+<div class="container">
+    <h1>BROWSE THROUGH OUR EDUCATIONAL RESOURCES</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+</div>
+
+
+</div>
+
+
+<div class="container">
+    <section class="featured-post">
+        <br>
+        <h1>Featured Post</h1>
+        <br>
+        <div class="featured-card">
+            <img src="{% static 'pics/iro_supp.jpg' %}" alt="Featured">
+            <div class="content">
+                <span class="category">Featured</span>
+                <h2>The Importance of Spaying and Neutering: Why It Matters</h2>
+                <p>Learn why spaying and neutering has the potential to reduce overpopulation and ensure healthier animal lives.</p>
+                <button class="read-more">Read More</button>
+            </div>
+        </div>
+    </section>
+
+    <aside class="sidebar">
+        <div class="input-wrapper">
+            <i class="icon-search"></i>
+            <input type="text" placeholder="Search" class="search-bar">
+        </div>
+        <div class="input-wrapper">
+            <i class="icon-filter"></i>
+            <select class="filter">
+                <option value="">All</option>
+                <option value="date">Date</option>
+            </select>
+        </div>
+        <br>
+        <div class="input-wrapper">
+            <span class="category-label">Browse by category</span>
+            <select class="category-filter">
+                <option value="category1">Category 1</option>
+                <option value="category2">Category 2</option>
+            </select>
+        </div>
+    </aside>
+    
+</div>
+<section class="post-list">
+    <div class="post-card">
+        <img src="{% static 'pics/educ_reso1.jpg' %}" alt="Post">
+        <div class="content">
+            <span class="category">Category</span>
+            <h3>Lorem ipsum dolor sit</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+            <button class="read-more">Read More</button>
+        </div>
+    </div>
+    <div class="post-card">
+        <img src="{% static 'pics/educ_reso2.jpg' %}" alt="Post">
+        <div class="content">
+            <span class="category">Category</span>
+            <h3>Lorem ipsum dolor sit</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+            <button class="read-more">Read More</button>
+        </div>
+    </div>
+    <div class="post-card">
+        <img src="{% static 'pics/educ_reso3.jpg' %}" alt="Post">
+        <div class="content">
+            <span class="category">Category</span>
+            <h3>Lorem ipsum dolor sit</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+            <button class="read-more">Read More</button>
+        </div>
+    </div>
+    <div class="post-card">
+        <img src="{% static 'pics/educ_reso4.jpg' %}" alt="Post">
+        <div class="content">
+            <span class="category">Category</span>
+            <h3>Lorem ipsum dolor sit</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+            <button class="read-more">Read More</button>
+        </div>
+    </div>
+    <div class="post-card">
+        <img src="{% static 'pics/educ_reso5.jpg' %}" alt="Post">
+        <div class="content">
+            <span class="category">Category</span>
+            <h3>Lorem ipsum dolor sit</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+            <button class="read-more">Read More</button>
+        </div>
+    </div>
+    <div class="post-card">
+        <img src="{% static 'pics/educ_reso6.jpg' %}" alt="Post">
+        <div class="content">
+            <span class="category">Category</span>
+            <h3>Lorem ipsum dolor sit</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+            <button class="read-more">Read More</button>
+        </div>
+    </div>
+</section>
+</div>
+
+
+  {% endblock content %}
+
+
+  {% block scripts %}
+  
+  
+  {% endblock scripts %}
