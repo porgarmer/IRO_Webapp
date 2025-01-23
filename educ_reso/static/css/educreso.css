@@ -1,0 +1,270 @@
+/* styles.css */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #fff;
+    color: #333;
+}
+.header {
+    color: white;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+    padding: 100px 20px;
+    text-align: center;
+    background: linear-gradient(rgba(43, 37, 37, 0.6), rgba(18, 15, 15, 0.6)), url(../pics/iro_coverphoto.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.header h1 {
+    font-size: 5rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: white; 
+}
+
+.header p {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    line-height: 1.6em;
+    color: white; 
+    text-align: center;
+}
+
+.container {
+    margin: 0 auto;
+    max-width: 1200px;
+    overflow: hidden; /* Ensure container clears floated children */
+}
+/* Clearfix to contain floats */
+.container::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.featured-post {
+    margin-top: 20px; /* Add spacing from the top */
+    width: 72%; /* Adjust width slightly for better alignment */
+    float: left; /* Align to the left */
+    margin-right: 3%; /* Add spacing between featured post and sidebar */
+}
+
+.featured-post h1 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.featured-card {
+    display: flex;
+    background: #fff;
+    overflow: hidden;
+    margin: 0 auto;
+    width: 100%; /* Ensure it spans full width of the section */
+
+}
+
+.featured-card img {
+    width: 40%;
+    object-fit: cover;
+}
+
+.featured-card .content {
+    padding: 20px;
+    flex: 1;
+}
+
+.featured-card .category {
+    font-size: 0.7rem;
+    font-weight: bold;
+    color: #fff; /* Text color */
+    margin-bottom: 10px;
+    background-color: #7c7978; /* Background color */
+    padding: 5px 10px; /* Add padding for better appearance */
+    border-radius:  20px; /* Rounded corners */
+    display: inline-block; /* Ensure the background wraps tightly around the text */
+}
+
+.featured-card h2 {
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+}
+
+.featured-card p {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.featured-card .read-more {
+    padding: 10px 20px;
+    background: #ff4500;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.sidebar {
+    width: 25%; /* Take 25% of the container width */
+    float: right; /* Align to the right */
+    margin-top: 120px; /* Add spacing from the top */
+}
+
+.sidebar h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.input-wrapper {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.input-wrapper i,
+.input-wrapper .category-label {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    color: #666;
+    font-size: 1.2rem;
+}
+
+.input-wrapper .category-label {
+    top: -10px;
+    left: 0;
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.search-bar,
+.filter,
+.category-filter {
+    width: 100%;
+    padding: 10px 10px 10px 40px; /* Add padding to accommodate icons */
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    font-size: 1rem;
+}
+
+.input-wrapper .category-filter {
+    padding-left: 10px; /* No icon padding for this dropdown */
+}
+
+.search-bar:focus,
+.filter:focus,
+.category-filter:focus {
+    outline: none;
+    border-color: #ff4500; /* Highlight color on focus */
+    box-shadow: 0 0 5px rgba(255, 69, 0, 0.5);
+}
+
+/* Optional styling for icons */
+.icon-search:before {
+    content: "\f002"; /* FontAwesome search icon (or use any preferred icon font) */
+    font-family: "Font Awesome 5 Free"; /* Ensure you include the font */
+    font-weight: 900;
+}
+
+.icon-filter:before {
+    content: "\f0b0"; /* FontAwesome filter icon */
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+}
+
+.post-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    clear: both; /* Ensure content below floats is correctly aligned */
+    margin-top: 20px; /* Add spacing from the top */
+}
+
+.post-card {
+    width: calc(28.28% - 100px);
+    background: #fff;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s;
+    margin-top: 20px; /* Add spacing from the top */
+    margin-left: 250px;
+    border-radius: 8px;
+}
+
+.post-card:hover {
+    transform: translateY(-5px); /* Add hover effect */
+}
+
+.post-card img {
+    width: 277px; /* Set the width explicitly */
+    height: 160px; /* Set the height explicitly */
+    object-fit: cover; /* Ensures the image scales and crops to fit within these dimensions */
+    margin: 0 auto; /* Center the image horizontally inside the card */
+    display: block; /* Centering consistency */
+    margin-top: 20px; /* Optional: Adjust spacing above the image */
+}
+
+
+.post-card .content {
+    width: 275.5px; /* Set the explicit width */
+    height: 251px; /* Set the explicit height */
+    padding: 15px; /* Add inner spacing */
+    overflow: hidden; /* Prevent content from overflowing */
+    margin: 0 auto; /* Center the text content within the card */
+    margin-top: 10px;
+}
+
+
+.post-card .category {
+    font-size: 0.7rem;
+    font-weight: bold;
+    color: #fff; /* Text color */
+    margin-bottom: 10px;
+    background-color: #7c7978; /* Background color */
+    padding: 5px 10px; /* Add padding for better appearance */
+    border-radius:  20px; /* Rounded corners */
+    display: inline-block; /* Ensure the background wraps tightly around the text */
+}
+
+
+.post-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    font-weight: bold; /* Correct property for bold text */
+}
+
+.post-card p {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.post-card .read-more {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #ff4500;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    .featured-post,
+    .sidebar {
+        float: none;
+        width: 100%; /* Full width on smaller screens */
+        margin: 0;
+    }
+
+    .post-card {
+        width: 100%; /* Single card per row on smaller screens */
+    }
+}

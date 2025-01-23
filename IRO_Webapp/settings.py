@@ -45,6 +45,10 @@ INSTALLED_APPS = [
     'adoption_process',
     'management.apps.ManagementConfig',
     'ckeditor'
+    'educ_reso',
+    'news_artic',
+    'volunteer',
+    'content_page',
 ]
 
 MIDDLEWARE = [
