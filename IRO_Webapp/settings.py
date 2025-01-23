@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'faqs_page',
     'adoption',
     'adoption_process',
+    'management.apps.ManagementConfig',
+    'ckeditor'
     'educ_reso',
     'news_artic',
     'volunteer',
@@ -85,8 +87,12 @@ WSGI_APPLICATION = 'IRO_Webapp.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'irodb',
+        'USER': 'postgres',
+        'PASSWORD': '12345',
+        'HOST': 'localhost',
+        'PORT': 5432
     }
 }
 
@@ -140,3 +146,14 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STATICFILES_DIRS = [BASE_DIR / 'static']
 
+from django.urls import reverse_lazy
+LOGIN_URL = reverse_lazy('management-login')
+
+# SESSION_COOKIE_AGE = 1209600  # Two weeks (in seconds)
+# SESSION_SAVE_EVERY_REQUEST = True 
+
+import os
+
+# Media settings
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
