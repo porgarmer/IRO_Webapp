@@ -2,7 +2,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path("", views.adoption, name="donate"), 
+    path("", views.adoption, name="adoption"), 
     
     
 ] 

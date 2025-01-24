@@ -30,17 +30,17 @@ body {
     text-align: center;
 }
 
-.container {
+.custom-container {
     margin: 0 auto;
-    max-width: 1200px;
     overflow: hidden; /* Ensure container clears floated children */
 }
 /* Clearfix to contain floats */
-.container::after {
+.custom-container::after {
     content: "";
     display: table;
     clear: both;
 }
+
 
 .featured-post {
     margin-top: 20px; /* Add spacing from the top */
