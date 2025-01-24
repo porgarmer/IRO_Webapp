@@ -17,8 +17,9 @@ Home
 {% comment %} hero section {% endcomment %}
 
 
-  <div class="px-4 py-5 text-center d-grid hero-section" style="background: linear-gradient(rgba(43, 37, 37, 0.6), rgba(18, 15, 15, 0.6)), url({{homepage.hero_section_bg_photo.url}});
-">
+  {% comment %} <div class="px-4 py-5 text-center d-grid hero-section" style="background: linear-gradient(rgba(43, 37, 37, 0.6), rgba(18, 15, 15, 0.6)), url({{homepage.hero_section_bg_photo.url}});
+    background-size: cover;background-repeat: no-repeat; "> {% endcomment %}
+    <div class="px-4 py-5 text-center d-grid hero-section">
     <div class="hero-content">
       <h1 class="display-5">{{homepage.hero_section_title|safe}}</h1>
       {% comment %} <h1 class="display-5 fw-bold">RESCUE <span style="color: #F95B00;">•</span> EDUCATE <span style="color: #F95B00;">•</span> ADVOCATE</h1> {% endcomment %}

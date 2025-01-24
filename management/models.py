@@ -1,5 +1,7 @@
 from django.db import models
 from ckeditor.fields import RichTextField  
+
+
 # Create your models here.
 class HomePage(models.Model):
     #hero section fields
@@ -14,3 +16,5 @@ class HomePage(models.Model):
     about_us_section_content = RichTextField(blank=True, null=True)
 
     
+class NewsArticle(models.Model):
+    pass

@@ -21,7 +21,7 @@ padding: 80px 20px;">
 </div>
 
 
-<div class="container">
+<div class="container my-5">
     <section class="featured-post">
         <br>
         <h1>Featured Post</h1>
@@ -60,7 +60,9 @@ padding: 80px 20px;">
     </aside>
     
 </div>
-<section class="post-list">
+
+
+{% comment %} <section class="post-list">
     <div class="post-card">
         <img src="{% static 'pics/educ_reso1.jpg' %}" alt="Post">
         <div class="content">
@@ -115,9 +117,81 @@ padding: 80px 20px;">
             <button class="read-more">Read More</button>
         </div>
     </div>
-</section>
-</div>
+</section> {% endcomment %}
 
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 mb-4">
+          <div class="card blog-card">
+            <img src="{% static 'pics/educ_reso1.jpg' %}" alt="Post">
+            <div class="card-body">
+              <span class="category">Category</span>
+              <h5 class="card-title">Lorem ipsum dolor sit</h5>
+              <p class="card-text">A short summary of the blog post goes here to entice readers.</p>
+              <button class="btn btn-primary">Read More</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card blog-card">
+            <img src="{% static 'pics/educ_reso2.jpg' %}" alt="Post">
+            <div class="card-body">
+                <span class="category">Category</span>
+              <h5 class="card-title">Lorem ipsum dolor sit</h5>
+              <p class="card-text">A short summary of the blog post goes here to entice readers.</p>
+              <button class="btn btn-primary">Read More</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card blog-card">
+            <img src="{% static 'pics/educ_reso3.jpg' %}" alt="Post">
+            <div class="card-body">
+                <span class="category">Category</span>
+              <h5 class="card-title">Lorem ipsum dolor sit</h5>
+              <p class="card-text">A short summary of the blog post goes here to entice readers.</p>
+              <button class="btn btn-primary">Read More</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card blog-card">
+              <img src="{% static 'pics/educ_reso3.jpg' %}" alt="Post">
+              <div class="card-body">
+                  <span class="category">Category</span>
+                <h5 class="card-title">Lorem ipsum dolor sit</h5>
+                <p class="card-text">A short summary of the blog post goes here to entice readers.</p>
+                <button class="btn btn-primary">Read More</button>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-4">
+            <div class="card blog-card">
+              <img src="{% static 'pics/educ_reso3.jpg' %}" alt="Post">
+              <div class="card-body">
+                  <span class="category">Category</span>
+                <h5 class="card-title">Lorem ipsum dolor sit</h5>
+                <p class="card-text">A short summary of the blog post goes here to entice readers.</p>
+                <button class="btn btn-primary">Read More</button>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-4">
+            <div class="card blog-card">
+              <img src="{% static 'pics/educ_reso3.jpg' %}" alt="Post">
+              <div class="card-body">
+                  <span class="category">Category</span>
+                <h5 class="card-title">Lorem ipsum dolor sit</h5>
+                <p class="card-text">A short summary of the blog post goes here to entice readers.</p>
+                <button class="btn btn-primary">Read More</button>
+              </div>
+            </div>
+          </div>
+        <!-- Repeat for more blog cards -->
+      </div>
+    </div>
+  
+</div>
 
   {% endblock content %}
 

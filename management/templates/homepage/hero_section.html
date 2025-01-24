@@ -9,12 +9,12 @@
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{form.media}}
-    <div class="mb-5">
+    {% comment %} <div class="mb-5">
         {{ form.hero_section_bg_photo }}
         <div id="preview-container" class="d-flex justify-content-center mb-3">
             <img id="image-preview" src="" alt="Image Preview" style="display: none; max-width: 300px;">
         </div>
-    </div>
+    </div> {% endcomment %}
 
     <div class="mb-5">
         <h5>Hero Section Title</h5>
