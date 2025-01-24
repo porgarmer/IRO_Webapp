@@ -44,7 +44,7 @@
                 <ul class="dropdown-menu">
                   <li><a class="dropdown-item" href="{% url 'donate' %}">Donate</a></li>
                   <li><a class="dropdown-item" href="{% url 'in_kind_donations' %}">In-Kind Donation</a></li>
-                  <li><a class="dropdown-item" href="#">Volunteer</a></li>
+                  <li><a class="dropdown-item" href="{% url 'volunteer' %}">Volunteer</a></li>
                   <li><a class="dropdown-item" href="#">Sponsor</a></li>
                 </ul>
               </li>
@@ -53,12 +53,13 @@
                   Adpot
                 </a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Adoptable Animals</a></li>
+                  <li><a class="dropdown-item" href="{% url 'adoption' %}">Adoptable Animals</a></li>
+                  <li><a class="dropdown-item" href="{% url 'adoption_process' %}">Adoption Process</a></li>
                   <li><a class="dropdown-item" href="#">Adoption Form</a></li>
                 </ul>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Shelters</a>
+                <a class="nav-link" href="{% url 'shelters_page' %}">Shelters</a>
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -69,13 +70,13 @@
                 </ul>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Resources</a>
+                <a class="nav-link" href="{% url 'education_resources' %}">Resources</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">News&Articles</a>
+                <a class="nav-link" href="{% url 'news&articles' %}">News&Articles</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">FAQs</a>
+                <a class="nav-link" href="{% url 'faqs' %}">FAQs</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">Contact Us</a>

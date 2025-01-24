@@ -24,14 +24,14 @@ urlpatterns = [
     path('', include('home.urls')),
     path('shelters/', include('shelters_page.urls')),
     path('donate/', include('donate_page.urls')),
-    path('faqs/', include('faqs_page.urls')),
+    path('iro-faqs/', include('faqs_page.urls')),
     path('adoption/', include('adoption.urls')),
-    path('adoption_process/', include('adoption_process.urls')),
+    path('adoption-process/', include('adoption_process.urls')),
     path('management/', include('management.urls')),
-    path('educ_reso/', include('educ_reso.urls')),
-    path('news_artic/', include('news_artic.urls')),
+    path('educational-resources/', include('educ_reso.urls')),
+    path('news&articles/', include('news_artic.urls')),
     path('volunteer/', include('volunteer.urls')),
-    path('content_page/', include('content_page.urls')),
+    path('content-page/', include('content_page.urls')),
 ]
 
 if settings.DEBUG:

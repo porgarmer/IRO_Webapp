@@ -75,7 +75,13 @@
   }
 
 /* hero section styles */
+/* .hero-section{
+    height: 85vh;
+    color: white;
+  } */
+
 .hero-section{
+    background: linear-gradient(rgba(43, 37, 37, 0.6), rgba(18, 15, 15, 0.6)), url(../images/hero-section-bg.jpg);
     background-size: cover;
     background-repeat: no-repeat; 
     height: 85vh;
