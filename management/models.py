@@ -42,9 +42,33 @@ class NewsArticle(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.slug:
-            self.slug = slugify(self.title)
+            self.slug = slugify(self.title) 
         super().save(*args, **kwargs)
 
     def __str__(self):
         return self.title
     
+class RescueCategory(models.Model):
+    # Define choices for the categories
+    CAT = 'Cat'
+    DOG = 'Dog'
+    CATEGORY_CHOICES = [
+        (CAT, 'Cat'),
+        (DOG, 'Dog'),
+    ]
+    
+    name = models.CharField(max_length=100, choices=CATEGORY_CHOICES)
+
+    def __str__(self):
+        return self.name
+
+
+class AdoptableRescue(models.Model):
+    name = models.CharField(max_length=255)
+    category = models.ForeignKey(RescueCategory, on_delete=models.CASCADE, null=True, blank=True)
+    description = models.TextField()
+    picture = models.ImageField(upload_to='adoptable_rescues/', null=True, blank=True)
+
+
+    def __str__(self):
+        return self.name
