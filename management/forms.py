@@ -30,9 +30,10 @@ class NewsArticleForm(forms.ModelForm):
 
 
 class AdoptableRescueForm(forms.ModelForm):
-    category = forms.ModelChoiceField(queryset=RescueCategory.objects.all(), empty_label="Select Category")
     class Meta:
         model = AdoptableRescue
-        fields = ['name', 'category', 'description', 'picture']
+        fields = ['name', 'category', 'description', 'picture', 'additional_picture_1', 'additional_picture_2', 'additional_picture_3', 'additional_picture_4']
+
     
 AdoptableRescueFormSet = modelformset_factory(AdoptableRescue, form=AdoptableRescueForm, extra=1)
+ 

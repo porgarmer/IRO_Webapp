@@ -44,9 +44,6 @@ def homepage_hero_section(request):
         form = HomePageForm(instance=homepage)
     return render(request, 'homepage/hero_section.html', {'form': form})
 
-
-
-
 @login_required
 def news_articles(request):
     # Filter and search functionality

@@ -68,7 +68,11 @@ class AdoptableRescue(models.Model):
     category = models.ForeignKey(RescueCategory, on_delete=models.CASCADE, null=True, blank=True)
     description = models.TextField()
     picture = models.ImageField(upload_to='adoptable_rescues/', null=True, blank=True)
+    additional_picture_1 = models.ImageField(upload_to='adoptable_rescues/additional/', null=True, blank=True)
+    additional_picture_2 = models.ImageField(upload_to='adoptable_rescues/additional/', null=True, blank=True)
+    additional_picture_3 = models.ImageField(upload_to='adoptable_rescues/additional/', null=True, blank=True)
+    additional_picture_4 = models.ImageField(upload_to='adoptable_rescues/additional/', null=True, blank=True)
 
 
     def __str__(self):
-        return self.name
+        return self.name 
