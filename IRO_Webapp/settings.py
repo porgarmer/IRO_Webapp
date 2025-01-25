@@ -147,7 +147,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATICFILES_DIRS = [BASE_DIR / 'static']
 
 from django.urls import reverse_lazy
-LOGIN_URL = reverse_lazy('management-login')
+LOGIN_URL = reverse_lazy('management:login')
 
 # SESSION_COOKIE_AGE = 1209600  # Two weeks (in seconds)
 # SESSION_SAVE_EVERY_REQUEST = True 

@@ -20,14 +20,14 @@ def admin_login(request):
         
         if user:
             login(request, user)
-            return redirect('dashboard')
+            return redirect(reverse('management:dashboard'))
         else:
             messages.error(request, "Wrong username or password.")
     return render(request, 'accounts/login.html')
 
 def admin_logout(request):
     logout(request)
-    return redirect(reverse('management-login'))
+    return redirect(reverse('management:login'))
 
 @login_required()
 def dashboard(request):
