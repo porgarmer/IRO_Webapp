@@ -2,14 +2,10 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from .forms import (
-    HomePageForm,
-    NewsArticleForm,
-    NewsArticle
-    )
+from .forms import *
 from .models import *
 from django.contrib import messages
-
+from django.http import JsonResponse
 
 # Create your views here.
 def admin_login(request):
@@ -122,3 +118,73 @@ def view_news_article(request, slug):
 
 def table(request):
     return render(request, 'table/table.html')
+
+@login_required
+def add_rescue(request):
+    if request.method == 'POST':
+        form = AdoptableRescueForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Rescue added successfully.')
+            return redirect('management:adoptable_rescues')
+        else:
+            messages.error(request, 'Please correct the errors below.')
+    else:
+        form = AdoptableRescueForm()
+
+    return render(request, 'adoptable_rescues/add_rescue.html', {'form': form})
+
+# Existing view for adoptable rescues
+def adoptable_rescues(request):
+    search_query = request.GET.get('search', '')
+    category_filter = request.GET.get('category', '')
+
+    rescues = AdoptableRescue.objects.all()
+    if search_query:
+        rescues = rescues.filter(name__icontains=search_query)
+    if category_filter:
+        rescues = rescues.filter(category__id=category_filter)
+
+    categories = RescueCategory.objects.all()
+
+    return render(request, 'adoptable_rescues/adoptable_rescues.html', {
+        'rescues': rescues,
+        'categories': categories,
+        'search_query': search_query,
+        'category_filter': category_filter,
+    })
+
+@login_required
+def edit_rescue(request, rescue_id):
+    # Get the rescue object
+    rescue = get_object_or_404(AdoptableRescue, id=rescue_id)
+
+    # Get all categories to populate the dropdown
+    categories = RescueCategory.objects.all()
+
+    if request.method == 'POST':
+        form = AdoptableRescueForm(request.POST, request.FILES, instance=rescue)
+        if form.is_valid():
+            form.save()
+            return redirect('management:view_rescue', pk=rescue.id)  # Change rescue_id to pk
+    else:
+        form = AdoptableRescueForm(instance=rescue)
+
+    return render(request, 'adoptable_rescues/edit_rescue.html', {
+        'form': form,
+        'rescue': rescue,
+        'categories': categories,
+    })
+
+
+@login_required
+def delete_rescue(request, pk):
+    rescue = get_object_or_404(AdoptableRescue, pk=pk)
+    rescue.delete()
+    messages.success(request, 'Rescue deleted successfully.')
+    return redirect('management:adoptable_rescues')
+
+@login_required
+def view_rescue(request, pk):
+    rescue = get_object_or_404(AdoptableRescue, pk=pk)
+    return render(request, 'adoptable_rescues/view_rescue.html', {'rescue': rescue})

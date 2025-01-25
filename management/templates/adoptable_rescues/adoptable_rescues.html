@@ -1,0 +1,67 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="{% static 'management/css/rescue.css' %}">
+{% endblock stylesheet %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="mb-5 text-center display-4">Adoptable Rescues</h1>
+
+    <!-- Search and Filter Form -->
+    <form method="GET" action="{% url 'management:adoptable_rescues' %}">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div class="d-flex">
+                <input type="text" name="search" class="form-control me-2" placeholder="Search by title" value="{{ search_query }}">
+                <select name="category" class="form-select me-2">
+                    <option value="">All Categories</option>
+                    {% for category in categories %}
+                        <option value="{{ category.id }}" {% if category.id == category_filter %}selected{% endif %}>{{ category.name }}</option>
+                    {% endfor %}
+                </select>
+                <button type="submit" class="btn btn-primary btn-lg">Search</button>
+            </div>
+            <a href="{% url 'management:add_rescue' %}" class="btn btn-success btn-lg">Add New Rescue</a>
+        </div>
+    </form>
+
+    <!-- Rescue Table -->
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Description</th>
+                    <th>Picture</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for rescue in rescues %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ rescue.name }}</td>
+                    <td>{{ rescue.category }}</td>
+                    <td>{{ rescue.description }}</td>
+                    <td>
+                        {% if rescue.picture %}
+                            <img src="{{ rescue.picture.url }}" alt="{{ rescue.name }}" style="width: 10vw; object-fit: cover;">
+                        {% else %}
+                            No Image
+                        {% endif %}
+                    </td>
+                    <td class="d-flex justify-content-start">
+                        <a href="{% url 'management:view_rescue' rescue.id %}" class="btn btn-outline-success btn-sm me-2">View</a>
+                        <a href="{% url 'management:edit_rescue' rescue.id %}" class="btn btn-outline-warning btn-sm me-2">Edit</a>
+                        <a href="{% url 'management:delete_rescue' rescue.id %}" class="btn btn-outline-danger btn-sm" onclick="return confirm('Are you sure you want to delete this rescue?')">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock content %}

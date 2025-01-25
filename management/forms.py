@@ -1,6 +1,7 @@
 from management.models import *
 from django import forms
 from ckeditor.widgets import CKEditorWidget
+from django.forms import modelformset_factory
 
 class HomePageForm(forms.ModelForm):
     class Meta:
@@ -25,4 +26,13 @@ class NewsArticleForm(forms.ModelForm):
         fields = ['title', 'content', 'category', 'photo']
         widgets = {
             'content': CKEditorWidget(),  # Use CKEditor for content field
-        }
+        } 
+
+
+class AdoptableRescueForm(forms.ModelForm):
+    category = forms.ModelChoiceField(queryset=RescueCategory.objects.all(), empty_label="Select Category")
+    class Meta:
+        model = AdoptableRescue
+        fields = ['name', 'category', 'description', 'picture']
+    
+AdoptableRescueFormSet = modelformset_factory(AdoptableRescue, form=AdoptableRescueForm, extra=1)

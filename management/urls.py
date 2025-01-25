@@ -12,7 +12,11 @@ urlpatterns = [
     path('news-article/edit/<slug:slug>/', views.edit_news_and_articles, name='edit_news_article'),
     path('news-article/delete/<slug:slug>/', views.delete_news_article, name='delete_news_article'),
     path('news_article/<slug:slug>/', views.view_news_article, name='view_news_article'),
-
+    path('adoptable-rescues/', views.adoptable_rescues, name='adoptable_rescues'),
+    path('add_rescue/', views.add_rescue, name='add_rescue'),
+    path('adoptable-rescue/<int:rescue_id>/edit/', views.edit_rescue, name='edit_rescue'),
+    path('adoptable-rescue/<int:pk>/delete/', views.delete_rescue, name='delete_rescue'),
+    path('adoptable-rescue/<int:pk>/', views.view_rescue, name='view_rescue'),
     path('table/', views.table, name='table'),
 
 ] 
