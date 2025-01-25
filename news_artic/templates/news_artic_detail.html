@@ -1,0 +1,262 @@
+{% extends "global/base.html" %}
+{% load static %}
+
+{% block title %}Content Page{% endblock title %}
+
+{% block styles %}
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            margin-top: auto;
+        }
+        .content-wrapper {
+            display: flex;
+            max-width: 1200px;
+            margin: 20px auto;
+            gap: 20px;
+            padding: 0 10px;
+        }
+        .main-content {
+            flex: 3;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 55em;
+        }
+        .main-content h1 {
+            font-size: 2.6rem;
+            margin-bottom: 10px;
+        }
+        .main-content img {
+            width: 80%;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        .main-content p {
+            line-height: 1.6;
+            color: #555;
+            margin-bottom: 20px;
+        }
+        .main-content h2 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        .sidebar {
+            flex: 1;
+        }
+        .sidebar .card {
+            display: flex;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            margin-bottom: 20px;
+            align-items: center;
+        }
+        .sidebar .card img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+        .sidebar .card .card-content {
+            flex: 1;
+        }
+        .sidebar .card .card-content h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #333;
+            font-weight: bold;
+        }
+        .sidebar .card .card-content p {
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 12px;
+        }
+        .sidebar .card .card-content .author-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .sidebar .card .card-content .author-info img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        .sidebar .card .card-content button {
+            background: #f57c00;
+            color: white;
+            border: none;
+            padding: 8px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .sidebar .card .card-content button:hover {
+            background: #e56700;
+        }
+
+        /* Media Queries */
+        @media (max-width: 1200px) {
+            .content-wrapper {
+                flex-direction: column;
+                padding: 0 20px;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .main-content img {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .sidebar .card {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .sidebar .card img {
+                width: 100%;
+                margin: 0 0 10px 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                padding: 15px;
+            }
+            .main-content h1 {
+                font-size: 24px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .content-wrapper {
+                gap: 10px;
+            }
+            .main-content h1 {
+                font-size: 22px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .sidebar .card {
+                padding: 10px;
+            }
+            .sidebar .card .card-content h3 {
+                font-size: 16px;
+            }
+            .main-content h1 {
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width: 320px) {
+            .main-content {
+                padding: 10px;
+            }
+            .main-content h1 {
+                font-size: 18px;
+            }
+            .sidebar .card .card-content p {
+                font-size: 10px;
+            }
+            .sidebar .card .card-content button {
+                padding: 6px 8px;
+                font-size: 10px;
+            }
+        }
+    </style>
+{% endblock styles %}
+
+{% block content %}
+
+<div class="content-wrapper">
+    <div class="main-content p-5" >
+        <h1><strong>{{news_artic.title}}</strong></h1>
+        {% if news_artic.photo %}
+        <img src="{{news_artic.photo.url}}" alt="news_artic.title">
+        {% else %}
+
+        {% endif %}
+        <p>Published on: {{news_artic.created_at|date:"M d, Y"}}</p>
+        <p>{{news_artic.content|safe}}</p>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="card">
+            <img src="https://scontent.fmnl17-1.fna.fbcdn.net/v/t1.6435-9/89716226_2479965872268819_2828685862240256000_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=3a1ebe&_nc_eui2=AeHRmIayTaZFXtWwgrP5D3MQjEM3qrfGHT6MQzeqt8YdPjU69VBLLD0JVCir7H8XoFgoiPVrytAsPt3FyrQhii1q&_nc_ohc=Q14Fz-R-MKcQ7kNvgEludJp&_nc_zt=23&_nc_ht=scontent.fmnl17-1.fna&_nc_gid=A0SjF7v4Z7jFYOeOTMCPT1r&oh=00_AYBIYMwalQ8bXR_vonbZ6o0DO_Xu0GLkFUd9eNhktRy4Zw&oe=67B89569" alt="Article">
+            <div class="card-content">
+                <h3>Lorem ipsum dolor sit amet</h3>
+                <p>Body text for whatever you'd like to say. Add main takeaway points, quotes, anecdotes, or even a very short story.</p>
+                <div class="author-info">
+                    <img src="https://scontent.fmnl17-1.fna.fbcdn.net/v/t1.6435-9/89716226_2479965872268819_2828685862240256000_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=3a1ebe&_nc_eui2=AeHRmIayTaZFXtWwgrP5D3MQjEM3qrfGHT6MQzeqt8YdPjU69VBLLD0JVCir7H8XoFgoiPVrytAsPt3FyrQhii1q&_nc_ohc=Q14Fz-R-MKcQ7kNvgEludJp&_nc_zt=23&_nc_ht=scontent.fmnl17-1.fna&_nc_gid=A0SjF7v4Z7jFYOeOTMCPT1r&oh=00_AYBIYMwalQ8bXR_vonbZ6o0DO_Xu0GLkFUd9eNhktRy4Zw&oe=67B89569" alt="Author">
+                    <span>Author name · 5 Minute read</span>
+                </div>
+                <button>Read More</button>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://scontent.fmnl17-1.fna.fbcdn.net/v/t1.6435-9/89716226_2479965872268819_2828685862240256000_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=3a1ebe&_nc_eui2=AeHRmIayTaZFXtWwgrP5D3MQjEM3qrfGHT6MQzeqt8YdPjU69VBLLD0JVCir7H8XoFgoiPVrytAsPt3FyrQhii1q&_nc_ohc=Q14Fz-R-MKcQ7kNvgEludJp&_nc_zt=23&_nc_ht=scontent.fmnl17-1.fna&_nc_gid=A0SjF7v4Z7jFYOeOTMCPT1r&oh=00_AYBIYMwalQ8bXR_vonbZ6o0DO_Xu0GLkFUd9eNhktRy4Zw&oe=67B89569" alt="Article">
+            <div class="card-content">
+                <h3>Lorem ipsum dolor sit amet</h3>
+                <p>Body text for whatever you'd like to say. Add main takeaway points, quotes, anecdotes, or even a very short story.</p>
+                <div class="author-info">
+                    <img src="https://scontent.fmnl17-1.fna.fbcdn.net/v/t1.6435-9/89716226_2479965872268819_2828685862240256000_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=3a1ebe&_nc_eui2=AeHRmIayTaZFXtWwgrP5D3MQjEM3qrfGHT6MQzeqt8YdPjU69VBLLD0JVCir7H8XoFgoiPVrytAsPt3FyrQhii1q&_nc_ohc=Q14Fz-R-MKcQ7kNvgEludJp&_nc_zt=23&_nc_ht=scontent.fmnl17-1.fna&_nc_gid=A0SjF7v4Z7jFYOeOTMCPT1r&oh=00_AYBIYMwalQ8bXR_vonbZ6o0DO_Xu0GLkFUd9eNhktRy4Zw&oe=67B89569" alt="Author">
+                    <span>Author name · 5 Minute read</span>
+                </div>
+                <button>Read More</button>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://scontent.fmnl17-1.fna.fbcdn.net/v/t1.6435-9/89716226_2479965872268819_2828685862240256000_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=3a1ebe&_nc_eui2=AeHRmIayTaZFXtWwgrP5D3MQjEM3qrfGHT6MQzeqt8YdPjU69VBLLD0JVCir7H8XoFgoiPVrytAsPt3FyrQhii1q&_nc_ohc=Q14Fz-R-MKcQ7kNvgEludJp&_nc_zt=23&_nc_ht=scontent.fmnl17-1.fna&_nc_gid=A0SjF7v4Z7jFYOeOTMCPT1r&oh=00_AYBIYMwalQ8bXR_vonbZ6o0DO_Xu0GLkFUd9eNhktRy4Zw&oe=67B89569" alt="Article">
+            <div class="card-content">
+                <h3>Lorem ipsum dolor sit amet</h3>
+                <p>Body text for whatever you'd like to say. Add main takeaway points, quotes, anecdotes, or even a very short story.</p>
+                <div class="author-info">
+                    <img src="https://scontent.fmnl17-1.fna.fbcdn.net/v/t1.6435-9/89716226_2479965872268819_2828685862240256000_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=3a1ebe&_nc_eui2=AeHRmIayTaZFXtWwgrP5D3MQjEM3qrfGHT6MQzeqt8YdPjU69VBLLD0JVCir7H8XoFgoiPVrytAsPt3FyrQhii1q&_nc_ohc=Q14Fz-R-MKcQ7kNvgEludJp&_nc_zt=23&_nc_ht=scontent.fmnl17-1.fna&_nc_gid=A0SjF7v4Z7jFYOeOTMCPT1r&oh=00_AYBIYMwalQ8bXR_vonbZ6o0DO_Xu0GLkFUd9eNhktRy4Zw&oe=67B89569" alt="Author">
+                    <span>Author name · 5 Minute read</span>
+                </div>
+                <button>Read More</button>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://scontent.fmnl17-1.fna.fbcdn.net/v/t1.6435-9/89716226_2479965872268819_2828685862240256000_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=3a1ebe&_nc_eui2=AeHRmIayTaZFXtWwgrP5D3MQjEM3qrfGHT6MQzeqt8YdPjU69VBLLD0JVCir7H8XoFgoiPVrytAsPt3FyrQhii1q&_nc_ohc=Q14Fz-R-MKcQ7kNvgEludJp&_nc_zt=23&_nc_ht=scontent.fmnl17-1.fna&_nc_gid=A0SjF7v4Z7jFYOeOTMCPT1r&oh=00_AYBIYMwalQ8bXR_vonbZ6o0DO_Xu0GLkFUd9eNhktRy4Zw&oe=67B89569" alt="Article">
+            <div class="card-content">
+                <h3>Lorem ipsum dolor sit amet</h3>
+                <p>Body text for whatever you'd like to say. Add main takeaway points, quotes, anecdotes, or even a very short story.</p>
+                <div class="author-info">
+                    <img src="https://scontent.fmnl17-1.fna.fbcdn.net/v/t1.6435-9/89716226_2479965872268819_2828685862240256000_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=3a1ebe&_nc_eui2=AeHRmIayTaZFXtWwgrP5D3MQjEM3qrfGHT6MQzeqt8YdPjU69VBLLD0JVCir7H8XoFgoiPVrytAsPt3FyrQhii1q&_nc_ohc=Q14Fz-R-MKcQ7kNvgEludJp&_nc_zt=23&_nc_ht=scontent.fmnl17-1.fna&_nc_gid=A0SjF7v4Z7jFYOeOTMCPT1r&oh=00_AYBIYMwalQ8bXR_vonbZ6o0DO_Xu0GLkFUd9eNhktRy4Zw&oe=67B89569" alt="Author">
+                    <span>Author name · 5 Minute read</span>
+                </div>
+                <button>Read More</button>
+            </div>
+        </div>
+        
+        <!-- Duplicate cards as needed -->
+    </div>
+
+{% endblock content %}

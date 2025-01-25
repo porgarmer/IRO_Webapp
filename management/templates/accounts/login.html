@@ -36,7 +36,7 @@
 
   <!-- Login Form -->
   <div class="login-card">
-    <form action="{% url 'management-login' %}" method="POST">
+    <form action="{% url 'management:login' %}" method="POST">
         {% csrf_token %}
       <h5 class="text-center mb-4">Sign In</h5>
       <div class="mb-3">
@@ -47,6 +47,15 @@
         <label for="password" class="form-label">Password</label>
         <input name="password" type="password" class="form-control" id="password" placeholder="Enter your password">
       </div>
+      {% if messages %}
+        {% for message in messages %}
+        <div class="alert {{ message.tags }}" role="alert">
+          {{ message | safe }}
+        </div>
+        {% endfor %}
+        {% else %}
+      {% endif %}
+
       <button type="submit" class="btn btn-primary w-100">Sign In</button>
       <div class="text-center mt-3">
         <a href="#" class="text-muted">Forgot password?</a>

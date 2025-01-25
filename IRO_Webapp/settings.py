@@ -157,3 +157,25 @@ import os
 # Media settings
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+from django.contrib import messages
+
+MESSAGE_TAGS = {
+    messages.DEBUG: 'alert-info',
+    messages.INFO: 'alert-info',
+    messages.SUCCESS: 'alert-success',
+    messages.WARNING: 'alert-warning',
+    messages.ERROR: 'alert-danger',
+}
+
+# CKEDITOR_CONFIGS = {
+#     'default': {
+#         'toolbar': 'full',
+#         'height': 300,
+#         'width': 'auto',
+#         'extraPlugins': ','.join([
+#             'codesnippet',  # Enable the code snippet plugin
+#             'image2',       # Enable the enhanced image plugin
+#         ]),
+#     },
+# }
