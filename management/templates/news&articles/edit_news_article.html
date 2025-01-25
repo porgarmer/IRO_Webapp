@@ -1,0 +1,46 @@
+{% extends "base/base.html" %}
+
+{% block content %}
+    <div class="container">
+        <h1>Edit News Article</h1>
+        
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" class="form-control" id="title" name="title" value="{{ newsarticle.title }}" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="category" class="form-label">Category</label>
+                <select class="form-control" id="category" name="category" required>
+                    <option value="">Select Category</option>
+                    {% for category in categories %}
+                        <option value="{{ category.id }}" {% if category.id == newsarticle.category.id %}selected{% endif %}>{{ category.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="content" class="form-label">Content</label>
+                <textarea class="form-control" id="content" name="content" rows="5" required>{{ newsarticle.content }}</textarea>
+            </div>
+
+            <div class="mb-3">
+                <label for="photo" class="form-label">Cover Photo</label>
+                <input type="file" class="form-control" id="photo" name="photo">
+                {% if newsarticle.photo %}
+                    <div class="mt-2">
+                        <img src="{{ newsarticle.photo.url }}" alt="{{ newsarticle.title }}" style="width: 100px; object-fit: cover;">
+                        <p>Current Photo</p>
+                    </div>
+                {% endif %}
+            </div>
+
+            <div class="d-flex justify-content-between">
+                <button type="submit" class="btn btn-primary">Save Changes</button>
+                <a href="{% url 'management:news_articles' %}" class="btn btn-secondary">Cancel</a>
+            </div>
+        </form>
+    </div>
+{% endblock %}
