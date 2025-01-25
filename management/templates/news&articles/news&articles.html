@@ -1,0 +1,191 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="{% static 'management/css/news&articles.css' %}">
+{% endblock stylesheet %}
+
+{% block content %}
+<div id="right-popup" class="right-popup">
+    <div class="popup-content">
+        <span id="popup-message"></span>
+    </div>
+</div>
+
+{% if messages %}
+    <div style="display:none;"> <!-- Hide messages but include them for the script -->
+        {% for message in messages %}
+            <p></p>
+        {% endfor %}
+    </div>
+{% endif %}
+
+<div class="container">
+    <h1 class="mb-5">News&Articles List</h1>
+    <div class="d-flex justify-content-end">
+        <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#addBlogModal">Add Post</button>
+    </div>
+
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Title</th>
+                <th>Category</th>
+                <th>Cover Photo</th>
+                <th>Created At</th>
+                <th>Actions</th>    
+            </tr>
+        </thead>
+        <tbody>
+            {% for newsarticle in newsarticles %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ newsarticle.title }}</td>
+                    <td>
+                        {% if newsarticle.category %}
+                        {{ newsarticle.category.name }}
+                        {% else %}
+                        Uncategorized
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if newsarticle.photo %}
+                            <img src="{{ newsarticle.photo.url }}" alt="{{ newsarticle.title }}" style="width: 10vw; object-fit: cover;">
+                        {% else %}
+                            No Cover
+                        {% endif %}
+                    </td>
+                    <td>{{ newsarticle.created_at }}</td>
+                    <td>
+                        <!-- Action Buttons -->
+                        <a href="{% url 'news&articles:news_artic_detail' newsarticle.slug %}" class="btn btn-sm btn-success" target="_blank">View</a>
+                        <button 
+                            class="btn btn-sm btn-warning" 
+                            data-bs-toggle="modal" 
+                            data-bs-target="#editBlogModal-{{ newsarticle.id }}">
+                            Edit
+                        </button>
+                    </td>
+                </tr>
+
+                <!-- Edit Blog Modal -->
+                <div class="modal fade" id="editBlogModal-{{ newsarticle.id }}" tabindex="-1" aria-labelledby="editBlogModalLabel-{{ newsarticle.id }}" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <form id="editBlogForm-{{ newsarticle.id }}" enctype="multipart/form-data">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="editBlogModalLabel-{{ newsarticle.id }}">Edit Blog</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <input type="hidden" name="newsarticle_id" value="{{ newsarticle.id }}">
+                                    <div class="form-group">
+                                        <label for="title-{{ newsarticle.id }}">Title</label>
+                                        <input type="text" class="form-control" name="title" id="title-{{ newsarticle.id }}" value="{{ newsarticle.title }}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="content-{{ newsarticle.id }}">Content</label>
+                                        <textarea class="form-control ckeditor" name="content" id="content-{{ newsarticle.id }}">{{ newsarticle.content }}</textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="category-{{ newsarticle.id }}">Category</label>
+                                        <select class="form-control" name="category" id="category-{{ newsarticle.id }}">
+                                            <option value="">Uncategorized</option>
+                                            {% for category in categories %}
+                                                <option value="{{ category.id }}" {% if newsarticle.category and newsarticle.category.id == category.id %}selected{% endif %}>{{ category.name }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="cover_photo-{{ newsarticle.id }}">Cover Photo</label>
+                                        <input type="file" class="form-control" name="cover_photo" id="cover_photo-{{ newsarticle.id }}">
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% comment %} <!-- Add Blog Modal -->
+<div class="modal fade" id="addBlogModal" tabindex="-1" aria-labelledby="addBlogModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form id="addBlogForm" enctype="multipart/form-data" method="POST">
+                {% csrf_token %}
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addBlogModalLabel">Add Blog</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    {{form.media}}
+                    {{ form.as_p }}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save Blog</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div> {% endcomment %}
+
+    <!-- Add Blog Modal -->
+    <div class="modal fade" id="addBlogModal" tabindex="-1" aria-labelledby="addBlogModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form id="addBlogForm">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addBlogModalLabel">Add Blog</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        {{form.media}}
+                        {{ form.as_p }}
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save Blog</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
+
+{% block scripts %}
+<script src="{% static 'management/js/news-article.js' %}"></script>
+<script src="{% static 'global/js/jquery-3.7.1.min.js' %}"></script>
+<script>
+    $(document).ready(function () {
+        $('#addBlogForm').on('submit', function (e) {
+            e.preventDefault();
+            const formData = $(this).serialize();
+            $.ajax({
+                type: 'POST',
+                url: "{% url 'management:news_articles' %}",
+                data: formData,
+                headers: { 'X-CSRFToken': '{{ csrf_token }}' },
+                success: function (response) {
+                    alert(response.message);
+                    location.reload();  // Reload the page to update the blog list
+                },
+                error: function (response) {
+                    alert('Error: ' + response.responseJSON.error);
+                }
+            });
+        });
+    });
+    
+</script>
+{% endblock scripts %}

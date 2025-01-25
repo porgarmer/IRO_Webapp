@@ -9,8 +9,7 @@
     <link rel="stylesheet" href="{% static 'management/css/base.css' %}">
     <link href="https://cdn.lineicons.com/5.0/lineicons.css" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'global/css/custom-btn.css' %}">
-
-
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
     {% block stylesheet %}
     {% endblock stylesheet %}
 </head>
@@ -44,13 +43,13 @@
                 <li class="sidebar-item">
                     <a href="#" class="sidebar-link has-dropdown collapsed" data-bs-toggle="collapse" data-bs-target="#account-profile"
                         aria-expanded="false" aria-controls="account-profile">
-                        <i class="lni lni-user-4"></i>
-                        <span>Account Profile</span>
+                        <i class="fi fi-rr-user"></i>
+                        <span>Account</span>
                     </a>
                     <ul id="account-profile" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
 
                         <li class="sidebar-item">
-                            <a href="" class="sidebar-link">Sign Out</a>
+                            <a href="{% url 'management:logout' %}" class="sidebar-link">Sign Out</a>
                         </li>
                         <li class="sidebar-item">
                             <a href="" class="sidebar-link">Edit Account</a>
@@ -59,7 +58,7 @@
                 </li>
                 <li class="sidebar-item">
                     <a href="" class="sidebar-link">
-                        <i class="lni lni-dashboard-square-1"></i>
+                        <i class="fi fi-rr-dashboard-monitor"></i>
                         <span>Dashboard</span>
                     </a>
                 </li>
@@ -67,14 +66,14 @@
                     Pages
                 </li>
                 <li class="sidebar-item">
-                    <a href="#" class="sidebar-link has-dropdown collapsed" data-bs-toggle="collapse" data-bs-target="#items"
-                        aria-expanded="false" aria-controls="items">
-                        <i class="lni lni-home-2"></i>
+                    <a href="#" class="sidebar-link has-dropdown collapsed" data-bs-toggle="collapse" data-bs-target="#homepage"
+                        aria-expanded="false" aria-controls="homepage">
+                        <i class="fi fi-rr-house-chimney"></i>
                         <span>Home Page</span>
                     </a>
-                    <ul id="items" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                    <ul id="homepage" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                         <li class="sidebar-item">
-                            <a href="{% url 'homepage_hero_section' %}" class="sidebar-link">Hero Section</a>
+                            <a href="{% url 'management:homepage_hero_section' %}" class="sidebar-link">Hero Section</a>
                         </li>
                         <li class="sidebar-item">
                             <a href="" class="sidebar-link">About Us Section</a>
@@ -94,87 +93,129 @@
                     </ul>
                 </li>
                 <li class="sidebar-item">
-                    <a href="#" class="sidebar-link has-dropdown collapsed" data-bs-toggle="collapse" data-bs-target="#inventory-management"
-                        aria-expanded="false" aria-controls="inventory-management">
-                        <i class="lni lni-cart-1"></i>
-                        <span>Inventory Management</span>
+                    <a href="#" class="sidebar-link has-dropdown collapsed" data-bs-toggle="collapse" data-bs-target="#donation-page"
+                        aria-expanded="false" aria-controls="donation-page">
+                        <i class="fi fi-rr-hands-heart"></i>
+                        <span>Donation Page</span>
                     </a>
-                    <ul id="inventory-management" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                    <ul id="donation-page" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                         <li class="sidebar-item">
-                              <a href="" class="sidebar-link">Purchase Order</a>
+                              <a href="" class="sidebar-link">Hero Section</a>
                         </li>
 
                         <li class="sidebar-item">
-                            <a href="" class="sidebar-link">Item Requests</a>
+                            <a href="" class="sidebar-link">Donation Channels</a>
                         </li>
 
                         <li class="sidebar-item">
-                            <a href="" class="sidebar-link">Suppliers</a>
+                            <a href="" class="sidebar-link">In-Kind Donation Drop Offs</a>
                         </li>
-                        
-
+                        <li class="sidebar-item">
+                            <a href="" class="sidebar-link">Partners</a>
+                        </li>
                     </ul>
                 </li>
 
                 <li class="sidebar-item">
-                    <a href="" class="sidebar-link">
-                        <i class="lni lni-user-multiple-4"></i>
-                        <span>Employees</span>
+                    <a href="#" class="sidebar-link has-dropdown collapsed" data-bs-toggle="collapse" data-bs-target="#in-kind-donation-page"
+                        aria-expanded="false" aria-controls="in-kind-donation-page">
+                        <i class="fi fi-rr-box-heart"></i>
+                        <span>In-Kind Donation Page</span>
+                    </a>
+                    <ul id="in-kind-donation-page" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <li class="sidebar-item">
+                              <a href="" class="sidebar-link">Hero Section</a>
+                        </li>
+
+                        <li class="sidebar-item">
+                            <a href="" class="sidebar-link">How Donations Help</a>
+                        </li>
+
+                        <li class="sidebar-item">
+                            <a href="" class="sidebar-link">Wishlist</a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="" class="sidebar-link">Drop Off Locations</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link">
+                        <i class="fi fi-rr-house-chimney-heart"></i>
+                        <span>Shelters</span>
                     </a>
                 </li>
 
                 <li class="sidebar-item">
                     <a href="#" class="sidebar-link">
-                        <i class="lni lni-gear-1"></i>
-                        <span>Settings</span>
+                        <i class="fi fi-rr-paw"></i>                        
+                        <span>Adoptable Rescues</span>
                     </a>
                 </li>
 
                 <li class="sidebar-item">
                     <a href="#" class="sidebar-link">
-                        <i class="lni lni-gear-1"></i>
-                        <span>Settings</span>
+                        <i class="fi fi-rr-paw-heart"></i>
+                        <span>Adoption Process</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link has-dropdown collapsed" data-bs-toggle="collapse" data-bs-target="#volunteers-page"
+                        aria-expanded="false" aria-controls="volunteers-page">
+                        <i class="fi fi-rr-user-volunteer"></i>
+                        <span>Volunteer Page</span>
+                    </a>
+                    <ul id="volunteers-page" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <li class="sidebar-item">
+                              <a href="" class="sidebar-link">Why Volunteer With Us</a>
+                        </li>
+
+                        <li class="sidebar-item">
+                            <a href="" class="sidebar-link">The Three Ts of Volunteering</a>
+                        </li>
+
+                        <li class="sidebar-item">
+                            <a href="" class="sidebar-link">Volunteer Activities</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link">
+                        <i class="fi fi-rr-calendar-day"></i>
+                        <span>Events</span>
                     </a>
                 </li>
 
                 <li class="sidebar-item">
                     <a href="#" class="sidebar-link">
-                        <i class="lni lni-gear-1"></i>
-                        <span>Settings</span>
+                        <i class="fi fi-rr-books"></i>
+                        <span>Education Resources</span>
                     </a>
                 </li>
-
+                
                 <li class="sidebar-item">
-                    <a href="#" class="sidebar-link">
-                        <i class="lni lni-gear-1"></i>
-                        <span>Settings</span>
+                    <a href="#" class="sidebar-link has-dropdown collapsed" data-bs-toggle="collapse" data-bs-target="#news&articles"
+                        aria-expanded="false" aria-controls="news&articles">
+                        <i class="fi fi-rr-blog-text"></i>
+                        <span>News&Articles</span>
                     </a>
-                </li>
+                    <ul id="news&articles" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <li class="sidebar-item">
+                              <a href="{% url 'management:news_articles' %}" class="sidebar-link">News&Articles List</a>
+                        </li>
 
-                <li class="sidebar-item">
-                    <a href="#" class="sidebar-link">
-                        <i class="lni lni-gear-1"></i>
-                        <span>Settings</span>
-                    </a>
-                </li>
-
-                <li class="sidebar-item">
-                    <a href="#" class="sidebar-link">
-                        <i class="lni lni-gear-1"></i>
-                        <span>Settings</span>
-                    </a>
-                </li>
-
-                <li class="sidebar-item">
-                    <a href="#" class="sidebar-link">
-                        <i class="lni lni-gear-1"></i>
-                        <span>Settings</span>
-                    </a>
+                        <li class="sidebar-item">
+                            <a href="" class="sidebar-link">Categories</a>
+                        </li>
+                    </ul>
                 </li>
                 
             </ul>
         </aside>
-        <div class="container">
+        <div class="container mt-5">
             <div class="text-center">
                 {% block content %}
                 <!-- Page-specific content goes here -->
