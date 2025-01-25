@@ -5,8 +5,9 @@ from django.contrib.auth.decorators import login_required
 from .forms import (
     HomePageForm,
     NewsArticleForm,
-    NewsArticle)
-from .models import HomePage
+    NewsArticle
+    )
+from .models import *
 from django.contrib import messages
 
 
@@ -49,30 +50,75 @@ def homepage_hero_section(request):
 
 
 
-@login_required()
-def news_and_articles(request):
+
+@login_required
+def news_articles(request):
+    # Filter and search functionality
+    search_query = request.GET.get('search', '')
+    category_filter = request.GET.get('category', '')
     
-    #Add news or article
+    # Filtering the articles
+    newsarticles = NewsArticle.objects.all().order_by('-created_at')
+    
+    if search_query:
+        newsarticles = newsarticles.filter(title__icontains=search_query)
+    
+    if category_filter:
+        newsarticles = newsarticles.filter(category__id=category_filter)
+    
+    # Add news or article
     if request.method == 'POST':
         form = NewsArticleForm(request.POST, request.FILES)  # Include request.FILES for file uploads
         if form.is_valid():
             form.save()
             messages.success(request, 'Post added successfully.')
-        
-    newsarticles = NewsArticle.objects.all().order_by('-created_at')
+            return redirect('management:news_articles')
+    
+    categories = NewsArticleCategory.objects.all()
     form = NewsArticleForm()  # Include request.FILES for file uploads
     return render(request, 'news&articles/news&articles.html', {
         'form': form,
-        'newsarticles': newsarticles
+        'newsarticles': newsarticles,
+        'categories': categories,
+        'search_query': search_query,
+        'category_filter': category_filter,
     })
 
+@login_required
+def edit_news_and_articles(request, slug):
+    # Get the news article to edit based on the slug
+    newsarticle = get_object_or_404(NewsArticle, slug=slug)
     
-@login_required()
-def edit_news_and_articles(request, id):
     if request.method == 'POST':
-        news_article = get_object_or_404(NewsArticle, id=id)
-        form = NewsArticleForm(request.POST, request.FILES, instance=news_article)
+        form = NewsArticleForm(request.POST, request.FILES, instance=newsarticle)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Post edited successfully.')
-    return redirect(reverse('management:news&articles'))
+            messages.success(request, 'Post updated successfully.')
+            return redirect('management:news_articles')
+    else:
+        form = NewsArticleForm(instance=newsarticle)
+    
+    return render(request, 'news&articles/edit_news_article.html', {
+        'form': form,
+        'newsarticle': newsarticle
+    })
+
+@login_required
+def delete_news_article(request, slug):
+    # Delete the article
+    newsarticle = get_object_or_404(NewsArticle, slug=slug)
+    newsarticle.delete()
+    messages.success(request, 'Post deleted successfully.')
+    return redirect('management:news_articles')
+
+@login_required
+def view_news_article(request, slug):
+    # Get the specific news article to view based on the slug
+    newsarticle = get_object_or_404(NewsArticle, slug=slug)
+    
+    return render(request, 'news&articles/view_news_article.html', {
+        'newsarticle': newsarticle
+    })
+
+def table(request):
+    return render(request, 'table/table.html')
