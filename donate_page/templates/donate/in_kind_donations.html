@@ -238,54 +238,40 @@
             </div>
     
     <!-- Drop Off Locations Section -->
-    <div class="py-5 mt-5" style="background-color: #ffffff; width: 100vw; margin-left: calc(-50vw + 50%);">
-        <h2 class="text-center mb-5" style="font-weight: bold; font-size: 2.5rem;">DROP OFF LOCATIONS</h2>
-        <div class="container">
-            <div class="row g-4">
-                <!-- Location 1 -->
-                <div class="col-md-4">
-                    <div class="card p-4 text-center shadow-sm">
-                        <img src="https://img.icons8.com/ios/452/map-marker.png" alt="Location 1" class="mb-3" style="height: 100px; width: auto;">
-                        <h5 class="card-title"><strong>Downtown Shelter</strong></h5>
-                        <ul class="list-unstyled mt-3">
-                            <li>123 Main Street</li>
-                            <li>City, State, ZIP</li>
-                            <li>Open: 9 AM - 5 PM</li>
-                        </ul>
-                    </div>
+    <!-- Drop Off Locations Section -->
+<div class="py-5 mt-5" style="background-color: #ffffff; width: 100vw; margin-left: calc(-50vw + 50%);">
+    <h2 class="text-center mb-5" style="font-weight: bold; font-size: 2.5rem;">DROP OFF LOCATIONS</h2>
+    <div class="container">
+        <div class="row g-4 justify-content-center">
+            <!-- First Location -->
+            <div class="col-lg-4 col-md-6">
+                <div class="donation-card text-center p-4 shadow-sm">
+                    <img src="https://www.robinsonsretailholdings.com.ph/wp-content/uploads/2023/06/1-2023-May-Turnover-Feed-A-FURend-1.jpg" 
+                        alt="Adoption Booth" class="img-fluid mb-3">
+                    <p style="font-size: 1.4rem; font-weight: bold;">IRO Adoption Booth at Parkmall, Mandaue</p>
+                    <p style="font-size: 1.2rem;">Every 2nd and 4th Saturday, 10 a.m. - 5 p.m.</p>
                 </div>
-                <!-- Location 2 -->
-                <div class="col-md-4">
-                    <div class="card p-4 text-center shadow-sm">
-                        <img src="https://img.icons8.com/ios/452/map-marker.png" alt="Location 2" class="mb-3" style="height: 100px; width: auto;">
-                        <h5 class="card-title"><strong>East Side Center</strong></h5>
-                        <ul class="list-unstyled mt-3">
-                            <li>456 Park Avenue</li>
-                            <li>City, State, ZIP</li>
-                            <li>Open: 10 AM - 6 PM</li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- Location 3 -->
-                <div class="col-md-4">
-                    <div class="card p-4 text-center shadow-sm">
-                        <img src="https://img.icons8.com/ios/452/map-marker.png" alt="Location 3" class="mb-3" style="height: 100px; width: auto;">
-                        <h5 class="card-title"><strong>West Hills Drop-Off</strong></h5>
-                        <ul class="list-unstyled mt-3">
-                            <li>789 Elm Street</li>
-                            <li>City, State, ZIP</li>
-                            <li>Open: 8 AM - 4 PM</li>
-                        </ul>
-                    </div>
-                </div>
-                <div>
-                <a href="{% url 'in_kind_donations'%}" class="btn btn-primary p-3">
-                    Set an Appointment
-                </a>
+            </div>
+
+            <!-- Second Location -->
+            <div class="col-lg-4 col-md-6">
+                <div class="donation-card text-center p-4 shadow-sm">
+                    <img src="https://www.robinsonsretailholdings.com.ph/wp-content/uploads/2023/06/1-2023-May-Turnover-Feed-A-FURend-1.jpg" 
+                        alt="IRO Cattery" class="img-fluid mb-3">
+                    <p style="font-size: 1.4rem; font-weight: bold;">IRO Cattery</p>
+                    <p style="font-size: 1.2rem;">P. Basubas, Mandaue City</p>
                 </div>
             </div>
         </div>
+        
+        <!-- CTA Section -->
+        <div class="text-center mt-4">
+            <a href="{% url 'in_kind_donations' %}" class="btn btn-primary p-3">
+                Set an Appointment
+            </a>
+        </div>
     </div>
+</div>
 
 {% endblock content %}
 
