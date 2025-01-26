@@ -17,5 +17,4 @@ urlpatterns = [
     path('adoptable-rescue/<int:rescue_id>/edit/', views.edit_rescue, name='edit_rescue'),
     path('adoptable-rescue/<int:pk>/delete/', views.delete_rescue, name='delete_rescue'),
     path('adoptable-rescue/<int:pk>/', views.view_rescue, name='view_rescue'),
-    path('table/', views.table, name='table'),
 ] 
