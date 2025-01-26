@@ -1,10 +1,8 @@
-from management.models import (
-    HomePage,
-    NewsArticleCategory,
-    NewsArticle)
+from management.models import *
 from django import forms
 from django_ckeditor_5.widgets import CKEditor5Widget
 from django_ckeditor_5.fields import CKEditor5Field
+from django.forms import modelformset_factory
 
 class HomePageForm(forms.ModelForm):
     class Meta:
@@ -28,3 +26,13 @@ class NewsArticleForm(forms.ModelForm):
                     'photo': forms.ClearableFileInput(attrs={'class': 'form-control shadow-sm'}),
                 }
         
+
+
+class AdoptableRescueForm(forms.ModelForm):
+    class Meta:
+        model = AdoptableRescue
+        fields = ['name', 'category', 'description', 'picture', 'additional_picture_1', 'additional_picture_2', 'additional_picture_3', 'additional_picture_4']
+
+    
+AdoptableRescueFormSet = modelformset_factory(AdoptableRescue, form=AdoptableRescueForm, extra=1)
+

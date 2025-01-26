@@ -52,13 +52,39 @@ class NewsArticle(models.Model):
                 os.remove(old_file.path)    
         super().save(*args, **kwargs)
         
-        
-    
-
     def __str__(self):
         return self.title
     
+
 @receiver(post_delete, sender=NewsArticle)
 def delete_cover_photo(sender, instance, **kwargs):
     if instance.photo and os.path.isfile(instance.photo.path):
-        os.remove(instance.photo.path)
+
+class RescueCategory(models.Model):
+    # Define choices for the categories
+    CAT = 'Cat'
+    DOG = 'Dog'
+    CATEGORY_CHOICES = [
+        (CAT, 'Cat'),
+        (DOG, 'Dog'),
+    ]
+    
+    name = models.CharField(max_length=100, choices=CATEGORY_CHOICES)
+
+    def __str__(self):
+        return self.name
+
+
+class AdoptableRescue(models.Model):
+    name = models.CharField(max_length=255)
+    category = models.ForeignKey(RescueCategory, on_delete=models.CASCADE, null=True, blank=True)
+    description = models.TextField()
+    picture = models.ImageField(upload_to='adoptable_rescues/', null=True, blank=True)
+    additional_picture_1 = models.ImageField(upload_to='adoptable_rescues/additional/', null=True, blank=True)
+    additional_picture_2 = models.ImageField(upload_to='adoptable_rescues/additional/', null=True, blank=True)
+    additional_picture_3 = models.ImageField(upload_to='adoptable_rescues/additional/', null=True, blank=True)
+    additional_picture_4 = models.ImageField(upload_to='adoptable_rescues/additional/', null=True, blank=True)
+
+
+    def __str__(self):
+        return self.name 
