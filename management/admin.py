@@ -7,5 +7,5 @@ admin.site.register(NewsArticle)
 admin.site.register(NewsArticleCategory)
 admin.site.register(RescueCategory)
 admin.site.register(AdoptableRescue)
-
+admin.site.register(GoogleForm)
     

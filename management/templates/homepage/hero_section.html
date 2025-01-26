@@ -1,35 +1,41 @@
 {% extends "base/base.html" %}
 {% load static %}
 
-
 {% block content %}
 <h1 class="mb-5 mt-5">Home Page -- Hero Section</h1>
 
-<h5>Hero Section Background Image</h5>
+{% comment %} <h5>Hero Section Background Image</h5> {% endcomment %}
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    {{form.media}}
-    {% comment %} <div class="mb-5">
+    {{ form.media }}
+
+    <div class="mb-5">
+        <h5>Hero Section Background Image</h5>
         {{ form.hero_section_bg_photo }}
         <div id="preview-container" class="d-flex justify-content-center mb-3">
-            <img id="image-preview" src="" alt="Image Preview" style="display: none; max-width: 300px;">
+            {% if form.instance and form.instance.hero_section_bg_photo %}
+                <img id="image-preview" src="{{ form.instance.hero_section_bg_photo.url }}" alt="Background Image Preview" style="max-width: 300px;">
+            {% else %}
+                <img id="image-preview" src="" alt="Image Preview" style="display: none; max-width: 300px;">
+            {% endif %}
         </div>
-    </div> {% endcomment %}
+    </div>
 
     <div class="mb-5">
         <h5>Hero Section Title</h5>
-        {{form.hero_section_title}}
+        {{ form.hero_section_title }}
     </div>
 
     <div class="mb-5">
         <h5>Hero Section Subtitle</h5>
-        {{form.hero_section_subtitle}}
+        {{ form.hero_section_subtitle }}
     </div>
 
     <div class="mb-5">
         <h5>Hero Section CTA Button Text</h5>
-        {{form.hero_section_cta_btn_text}}
+        {{ form.hero_section_cta_btn_text }}
     </div>
+
     <button type="submit" class="btn btn-primary">Save</button>
 </form>
 {% endblock content %}
@@ -48,7 +54,7 @@
           preview.style.display = "block"; // Show the preview
         };
         reader.readAsDataURL(file); // Convert the file to a data URL
-      } else {
+      } else { 
         preview.src = "";
         preview.style.display = "none"; // Hide the preview if no file is selected
       }
@@ -56,5 +62,5 @@
   
     // Attach the preview function to the file input
     document.querySelector('input[type="file"]').addEventListener('change', previewFile);
-  </script>
+</script>
 {% endblock scripts %}

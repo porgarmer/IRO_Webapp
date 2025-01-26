@@ -6,6 +6,7 @@ from .forms import *
 from .models import *
 from django.contrib import messages
 from django.http import JsonResponse
+from django.conf import settings
 
 # Create your views here.
 def admin_login(request):
@@ -32,14 +33,14 @@ def dashboard(request):
 
 
 """home page functions"""
-@login_required()
+@login_required
 def homepage_hero_section(request):
-    homepage = HomePage.objects.all().first()
+    homepage = HomePage.objects.first()
     if request.method == 'POST':
         form = HomePageForm(request.POST, request.FILES, instance=homepage)
         if form.is_valid():
             form.save()
-            return render(request, 'homepage/hero_section.html', {'form': form})    
+            return redirect('management:homepage_hero_section')  # Redirect to avoid resubmission
     else:
         form = HomePageForm(instance=homepage)
     return render(request, 'homepage/hero_section.html', {'form': form})
@@ -51,49 +52,48 @@ def news_articles(request):
     category_filter = request.GET.get('category', '')
     
     # Filtering the articles
+
+  
+@login_required()
+def news_and_articles(request):
+
     newsarticles = NewsArticle.objects.all().order_by('-created_at')
-    
-    if search_query:
-        newsarticles = newsarticles.filter(title__icontains=search_query)
-    
-    if category_filter:
-        newsarticles = newsarticles.filter(category__id=category_filter)
-    
-    # Add news or article
-    if request.method == 'POST':
-        form = NewsArticleForm(request.POST, request.FILES)  # Include request.FILES for file uploads
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Post added successfully.')
-            return redirect('management:news_articles')
-    
-    categories = NewsArticleCategory.objects.all()
     form = NewsArticleForm()  # Include request.FILES for file uploads
     return render(request, 'news&articles/news&articles.html', {
         'form': form,
         'newsarticles': newsarticles,
-        'categories': categories,
-        'search_query': search_query,
-        'category_filter': category_filter,
     })
 
-@login_required
-def edit_news_and_articles(request, slug):
-    # Get the news article to edit based on the slug
-    newsarticle = get_object_or_404(NewsArticle, slug=slug)
-    
+@login_required()
+def add_news_and_articles(request):
     if request.method == 'POST':
-        form = NewsArticleForm(request.POST, request.FILES, instance=newsarticle)
+        form = NewsArticleForm(request.POST, request.FILES)  # Include request.FILES for file uploads
+        if form.is_valid():
+            news_article = form.save()
+            messages.success(request, 'Post added successfully!')
+            return redirect(reverse('management:news_articles'))
+
+    form = NewsArticleForm()
+
+    return render(request, 'news&articles/add_news&articles.html', {
+        'form': form,
+    })    
+
+@login_required()
+def edit_news_and_articles(request, id):
+    if request.method == 'POST':
+        news_article = get_object_or_404(NewsArticle, id=id)
+        form = NewsArticleForm(request.POST, request.FILES, instance=news_article)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Post updated successfully.')
-            return redirect('management:news_articles')
-    else:
-        form = NewsArticleForm(instance=newsarticle)
-    
-    return render(request, 'news&articles/edit_news_article.html', {
+            messages.success(request, 'Post edited successfully.')
+            return redirect(reverse('management:news_articles'))
+
+    news_article = NewsArticle.objects.get(id=id)
+    form = NewsArticleForm(instance=news_article)
+
+    return render(request, 'news&articles/edit_news&articles.html', {
         'form': form,
-        'newsarticle': newsarticle
     })
 
 @login_required
@@ -113,8 +113,20 @@ def view_news_article(request, slug):
         'newsarticle': newsarticle
     })
 
-def table(request):
-    return render(request, 'table/table.html')
+@login_required()
+def delete_news_and_articles(request):
+    if request.method == "POST":
+        selected_ids = request.POST.getlist('selected_ids')
+        for i in selected_ids:
+            selected_ids= i.split(',')
+            
+        NewsArticle.objects.filter(id__in=selected_ids).delete()
+        
+        if  len(selected_ids) > 1:
+            messages.success(request, 'Posts deleted successfully')
+        else:
+            messages.success(request, 'Post deleted successfully')
+        return redirect(reverse('management:news_articles'))
 
 @login_required
 def add_rescue(request):
@@ -185,3 +197,36 @@ def delete_rescue(request, pk):
 def view_rescue(request, pk):
     rescue = get_object_or_404(AdoptableRescue, pk=pk)
     return render(request, 'adoptable_rescues/view_rescue.html', {'rescue': rescue})
+
+
+def google_form_list(request):
+    forms = GoogleForm.objects.all()
+    return render(request, 'adoption_form/list.html', {'forms': forms})
+
+def google_form_create(request):
+    if request.method == 'POST':
+        form = GoogleFormForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('management:google_form_list')
+    else:
+        form = GoogleFormForm()
+    return render(request, 'adoption_form/view.html', {'form': form})
+
+def google_form_update(request, pk):
+    gform = get_object_or_404(GoogleForm, pk=pk)
+    if request.method == 'POST':
+        form = GoogleFormForm(request.POST, instance=gform)
+        if form.is_valid():
+            form.save()
+            return redirect('management:google_form_list')
+    else:
+        form = GoogleFormForm(instance=gform)
+    return render(request, 'adoption_form/view.html', {'form': form})
+
+def google_form_delete(request, pk):
+    gform = get_object_or_404(GoogleForm, pk=pk)
+    if request.method == 'POST':
+        gform.delete()
+        return redirect('management:google_form_list')
+    return render(request, 'adoption_form/delete.html', {'gform': gform})
