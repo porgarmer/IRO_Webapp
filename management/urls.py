@@ -8,10 +8,10 @@ urlpatterns = [
     path('logout/', views.admin_logout, name='logout'),
     path('dashboard/', views.dashboard, name='dashboard'),
     path('homepage/hero-section', views.homepage_hero_section, name='homepage_hero_section'),
-    path('news-articles/', views.news_articles, name='news_articles'),
-    path('news-article/edit/<slug:slug>/', views.edit_news_and_articles, name='edit_news_article'),
-    path('news-article/delete/<slug:slug>/', views.delete_news_article, name='delete_news_article'),
-    path('news_article/<slug:slug>/', views.view_news_article, name='view_news_article'),
+    path('news-articles', views.news_and_articles, name='news_articles'),
+    path('add-news&articles', views.add_news_and_articles, name='add_news&articles'),
+    path('edit-news&articles/<int:id>/', views.edit_news_and_articles, name='edit_news&articles'),
+    path('delete-news&articles', views.delete_news_and_articles, name='delete_news&articles'),
     path('adoptable-rescues/', views.adoptable_rescues, name='adoptable_rescues'),
     path('add_rescue/', views.add_rescue, name='add_rescue'),
     path('adoptable-rescue/<int:rescue_id>/edit/', views.edit_rescue, name='edit_rescue'),
@@ -21,4 +21,5 @@ urlpatterns = [
     path('google-forms/new/', views.google_form_create, name='google_form_create'),
     path('google-forms/<int:pk>/edit/', views.google_form_update, name='google_form_update'),
     path('google-forms/<int:pk>/delete/', views.google_form_delete, name='google_form_delete'),
+
 ] 
