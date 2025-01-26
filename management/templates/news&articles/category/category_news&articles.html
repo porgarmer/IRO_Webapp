@@ -2,7 +2,6 @@
 {% load static %}
 
 {% block stylesheet %}
-<link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
 <style>
     .table {
         border-collapse: separate;
@@ -47,49 +46,35 @@
 </style>
 {% endblock stylesheet %}
 
-{% block content %}
 
+{% block content %}
 <div class="container">
-    <h1 class="mb-5 text-center display-4" style="font-weight: bold; color: #343a40;">News&Articles</h1>
+    <h1 class="mb-5 text-center display-4" style="font-weight: bold; color: #343a40;">News&Articles Category</h1>
      
         <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
 
             <div class="d-flex">
-                {% comment %} <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addBlogModal">Add Post</button> {% endcomment %}
-                <a class="btn btn-primary me-2" href="{% url 'management:add_news&articles' %}">Add Post</a>
+                <a class="btn btn-primary me-2" href="{% url 'management:add_category_news_and_articles' %}">Add Cateogry</a>
                 <button class="btn btn-danger rounded-3" id="bulkDeleteButton" disabled>Delete Selected</button>
             </div>
             
             <!-- Search and Filter -->
             <div class="d-flex ms-auto gap-2">  
-                <label for="date-sort">Order by date: </label>
+                <label for="name-sort">Order by name: </label>
                 <select 
-                        name="date-sort" 
-                        id="date-sort"
+                        name="name-sort" 
+                        id="name-sort"
                         class="form-select shadow-sm w-auto"  
                         style="border-radius: 12px;">
-                        <option value="" disabled selected>-----</option>
-                        <option value="ascending" {% if datesorted == "ascending" %}selected{% endif %}>
+                        <option value="" disabled selected>------</option>
+                        <option value="ascending" {% if namesorted == "ascending" %}selected{% endif %}>
                             Ascending   
                         </option>
-                        <option value="descending" {% if datesorted  == "descending" %}selected{% endif %}>
+                        <option value="descending" {% if namesorted  == "descending" %}selected{% endif %}>
                             Descending
                         </option>
                 </select>
-                <label for="date-sort">Category: </label>
 
-                 <select 
-                        name="category-news_article" 
-                        id="category-news_article" 
-                        class="form-select shadow-sm w-auto"  
-                        style="border-radius: 12px;">
-                        <option value="">All Categories</option>
-                        {% for category in categories %}
-                            <option value="{{ category.name }}" {% if category.name == category_filter %}selected{% endif %}>
-                                {{ category.name }}
-                            </option>
-                        {% endfor %}
-                </select>
                 <form method="GET" action="" class="d-flex align-items-center gap-2">              
                     <input 
                         type="text" 
@@ -117,56 +102,27 @@
                 <tr>
                     <th><input type="checkbox" id="selectAll"></th>
                     <th>#</th>
-                    <th>Title</th>
-                    <th>Category</th>
-                    <th>Cover Photo</th>
-                    <th>Created At</th>
-                    <th>Featured</th>
-                    <th>Actions</th>    
+                    <th>Name</th>
+                    <th>Actions</th>
+
                 </tr>
             </thead>
-            {% if newsarticles %}
+            {% if categories %}
             <tbody>
-                {% for newsarticle in newsarticles %}
+                {% for category in categories %}
+                
                     <tr>
-                        <td><input type="checkbox" class="blogCheckbox" value="{{ newsarticle.id }}"></td>
+                        <td><input type="checkbox" class="blogCheckbox" value="{{ category.id }}"></td>
                         <td>{{ forloop.counter }}</td>
-                        <td>{{ newsarticle.title }}</td>
-                        <td>
-                            {% if newsarticle.category %}
-                            {{ newsarticle.category.name }}
-                            {% else %}
-                            Uncategorized
-                            {% endif %}
-                        </td>
-                        <td>
-                            {% if newsarticle.photo %}
-                                <img src="{{ newsarticle.photo.url }}" 
-                                    alt="{{ newsarticle.title }}" 
-                                    style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.2);">
-                            {% else %}
-                                No Cover
-                            {% endif %}
-                        </td>
-                        <td>{{ newsarticle.created_at }}</td>
-                        {% if newsarticle.featured %}
-                        <td>Yes</td>
-                        {% else %}
-                        <td>No</td>
-                        {% endif %}
-                       
+                        <td>{{category.name}}</td>
                         <td>
                             <!-- Action Buttons -->
-                            <a href="{% url 'news&articles:news_artic_detail' newsarticle.slug %}" 
-                                class="btn btn-outline-success btn-sm"
-                                target="_blank">View</a>
 
                             <a 
                                 class="btn btn-outline-warning btn-sm"
-                                href= " {% url 'management:edit_news&articles' id=newsarticle.id %}">
+                                href= "{% url 'management:edit_category_news_and_articles' id=category.id %}">
                                 Edit
                             </a>
-
                         </td>
                     </tr>
                 {% endfor %}
@@ -184,7 +140,7 @@
     <div class="modal fade" id="deleteNewsArticleModal" tabindex="-1" aria-labelledby="deleteNewsArticleLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form id="delete-form" method="POST" action="{% url 'management:delete_news&articles' %}">
+                <form id="delete-form" method="POST" action="{% url 'management:delete_category_news_and_articles' %}">
                     {% csrf_token %}
                     <input type="hidden" name="selected_ids" id="ids"  value="">
                     <div class="modal-header">
@@ -192,7 +148,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <p>Are sure you want to delete: <span id="delete-count"></span> posts?</p>
+                        <p>Are sure you want to delete: <span id="delete-count"></span> categories?</p>
                     </div>
                     <div class="modal-footer">
                         
@@ -203,16 +159,15 @@
             </div>
         </div>
     </div> 
-
 {% endblock content %}
 
 {% block scripts %}
 <script src="{% static 'global/js/jquery-3.7.1.min.js' %}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-<script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/full/ckeditor.js"></script>
 
 {% comment %} ckeditor5 {% endcomment %}
 
 <script src="{% static 'management/js/news-article.js' %}"></script>
+
 
 {% endblock scripts %}

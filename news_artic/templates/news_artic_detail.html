@@ -118,6 +118,17 @@
             background: #e56700;
         }
 
+        .sidebar .category {
+            font-size: 0.7rem;
+            font-weight: bold;
+            color: #fff; /* Text color */
+            margin-bottom: 10px;
+            background-color: #7c7978; /* Background color */
+            padding: 5px 10px; /* Add padding for better appearance */
+            border-radius:  20px; /* Rounded corners */
+            display: inline-block; /* Ensure the background wraps tightly around the text */
+        }
+
         /* Media Queries */
         @media (max-width: 1200px) {
             .content-wrapper {
@@ -207,54 +218,44 @@
 
     <!-- Sidebar -->
     <div class="sidebar">
-        <div class="card">
-            <img src="https://scontent.fmnl17-1.fna.fbcdn.net/v/t1.6435-9/89716226_2479965872268819_2828685862240256000_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=3a1ebe&_nc_eui2=AeHRmIayTaZFXtWwgrP5D3MQjEM3qrfGHT6MQzeqt8YdPjU69VBLLD0JVCir7H8XoFgoiPVrytAsPt3FyrQhii1q&_nc_ohc=Q14Fz-R-MKcQ7kNvgEludJp&_nc_zt=23&_nc_ht=scontent.fmnl17-1.fna&_nc_gid=A0SjF7v4Z7jFYOeOTMCPT1r&oh=00_AYBIYMwalQ8bXR_vonbZ6o0DO_Xu0GLkFUd9eNhktRy4Zw&oe=67B89569" alt="Article">
-            <div class="card-content">
-                <h3>Lorem ipsum dolor sit amet</h3>
-                <p>Body text for whatever you'd like to say. Add main takeaway points, quotes, anecdotes, or even a very short story.</p>
-                <div class="author-info">
-                    <img src="https://scontent.fmnl17-1.fna.fbcdn.net/v/t1.6435-9/89716226_2479965872268819_2828685862240256000_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=3a1ebe&_nc_eui2=AeHRmIayTaZFXtWwgrP5D3MQjEM3qrfGHT6MQzeqt8YdPjU69VBLLD0JVCir7H8XoFgoiPVrytAsPt3FyrQhii1q&_nc_ohc=Q14Fz-R-MKcQ7kNvgEludJp&_nc_zt=23&_nc_ht=scontent.fmnl17-1.fna&_nc_gid=A0SjF7v4Z7jFYOeOTMCPT1r&oh=00_AYBIYMwalQ8bXR_vonbZ6o0DO_Xu0GLkFUd9eNhktRy4Zw&oe=67B89569" alt="Author">
-                    <span>Author name · 5 Minute read</span>
+        {% if latest_posts %}
+            {% for latest_post in latest_posts %}
+                <div class="card">
+                    {% if latest_post.photo %}
+                    <img src="{{latest_post.photo.url}}" alt="Article">
+                    {% else %}
+                    <img src="https://placehold.co/600x400?text=image" alt="Article">
+                    {% endif %}
+                    
+                    
+                    <div class="card-content">
+                        
+                        {% if latest_post.category %}
+                        <span class="category">{{latest_post.category}}</span>
+                        {% else %}
+                        <span class="category">Uncategorized</span>
+                        {% endif %}
+
+                        <h3> {{latest_post.title}} </h3>
+
+
+                        {% if latest_post.summary %}
+                        <p>{{latest_post.summary|safe}}</p>
+                        {% else %}
+                        <p></p>
+                        {% endif %}
+                        
+                        <div class="author-info">
+                            <span>{{latest_post.created_at}}</span>
+                        </div>
+
+                        <a class="btn btn-primary"  href="{% url 'news&articles:news_artic_detail' latest_post.slug %}">Read More</a>
+                    </div>
                 </div>
-                <button>Read More</button>
-            </div>
-        </div>
-        <div class="card">
-            <img src="https://scontent.fmnl17-1.fna.fbcdn.net/v/t1.6435-9/89716226_2479965872268819_2828685862240256000_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=3a1ebe&_nc_eui2=AeHRmIayTaZFXtWwgrP5D3MQjEM3qrfGHT6MQzeqt8YdPjU69VBLLD0JVCir7H8XoFgoiPVrytAsPt3FyrQhii1q&_nc_ohc=Q14Fz-R-MKcQ7kNvgEludJp&_nc_zt=23&_nc_ht=scontent.fmnl17-1.fna&_nc_gid=A0SjF7v4Z7jFYOeOTMCPT1r&oh=00_AYBIYMwalQ8bXR_vonbZ6o0DO_Xu0GLkFUd9eNhktRy4Zw&oe=67B89569" alt="Article">
-            <div class="card-content">
-                <h3>Lorem ipsum dolor sit amet</h3>
-                <p>Body text for whatever you'd like to say. Add main takeaway points, quotes, anecdotes, or even a very short story.</p>
-                <div class="author-info">
-                    <img src="https://scontent.fmnl17-1.fna.fbcdn.net/v/t1.6435-9/89716226_2479965872268819_2828685862240256000_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=3a1ebe&_nc_eui2=AeHRmIayTaZFXtWwgrP5D3MQjEM3qrfGHT6MQzeqt8YdPjU69VBLLD0JVCir7H8XoFgoiPVrytAsPt3FyrQhii1q&_nc_ohc=Q14Fz-R-MKcQ7kNvgEludJp&_nc_zt=23&_nc_ht=scontent.fmnl17-1.fna&_nc_gid=A0SjF7v4Z7jFYOeOTMCPT1r&oh=00_AYBIYMwalQ8bXR_vonbZ6o0DO_Xu0GLkFUd9eNhktRy4Zw&oe=67B89569" alt="Author">
-                    <span>Author name · 5 Minute read</span>
-                </div>
-                <button>Read More</button>
-            </div>
-        </div>
-        <div class="card">
-            <img src="https://scontent.fmnl17-1.fna.fbcdn.net/v/t1.6435-9/89716226_2479965872268819_2828685862240256000_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=3a1ebe&_nc_eui2=AeHRmIayTaZFXtWwgrP5D3MQjEM3qrfGHT6MQzeqt8YdPjU69VBLLD0JVCir7H8XoFgoiPVrytAsPt3FyrQhii1q&_nc_ohc=Q14Fz-R-MKcQ7kNvgEludJp&_nc_zt=23&_nc_ht=scontent.fmnl17-1.fna&_nc_gid=A0SjF7v4Z7jFYOeOTMCPT1r&oh=00_AYBIYMwalQ8bXR_vonbZ6o0DO_Xu0GLkFUd9eNhktRy4Zw&oe=67B89569" alt="Article">
-            <div class="card-content">
-                <h3>Lorem ipsum dolor sit amet</h3>
-                <p>Body text for whatever you'd like to say. Add main takeaway points, quotes, anecdotes, or even a very short story.</p>
-                <div class="author-info">
-                    <img src="https://scontent.fmnl17-1.fna.fbcdn.net/v/t1.6435-9/89716226_2479965872268819_2828685862240256000_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=3a1ebe&_nc_eui2=AeHRmIayTaZFXtWwgrP5D3MQjEM3qrfGHT6MQzeqt8YdPjU69VBLLD0JVCir7H8XoFgoiPVrytAsPt3FyrQhii1q&_nc_ohc=Q14Fz-R-MKcQ7kNvgEludJp&_nc_zt=23&_nc_ht=scontent.fmnl17-1.fna&_nc_gid=A0SjF7v4Z7jFYOeOTMCPT1r&oh=00_AYBIYMwalQ8bXR_vonbZ6o0DO_Xu0GLkFUd9eNhktRy4Zw&oe=67B89569" alt="Author">
-                    <span>Author name · 5 Minute read</span>
-                </div>
-                <button>Read More</button>
-            </div>
-        </div>
-        <div class="card">
-            <img src="https://scontent.fmnl17-1.fna.fbcdn.net/v/t1.6435-9/89716226_2479965872268819_2828685862240256000_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=3a1ebe&_nc_eui2=AeHRmIayTaZFXtWwgrP5D3MQjEM3qrfGHT6MQzeqt8YdPjU69VBLLD0JVCir7H8XoFgoiPVrytAsPt3FyrQhii1q&_nc_ohc=Q14Fz-R-MKcQ7kNvgEludJp&_nc_zt=23&_nc_ht=scontent.fmnl17-1.fna&_nc_gid=A0SjF7v4Z7jFYOeOTMCPT1r&oh=00_AYBIYMwalQ8bXR_vonbZ6o0DO_Xu0GLkFUd9eNhktRy4Zw&oe=67B89569" alt="Article">
-            <div class="card-content">
-                <h3>Lorem ipsum dolor sit amet</h3>
-                <p>Body text for whatever you'd like to say. Add main takeaway points, quotes, anecdotes, or even a very short story.</p>
-                <div class="author-info">
-                    <img src="https://scontent.fmnl17-1.fna.fbcdn.net/v/t1.6435-9/89716226_2479965872268819_2828685862240256000_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=3a1ebe&_nc_eui2=AeHRmIayTaZFXtWwgrP5D3MQjEM3qrfGHT6MQzeqt8YdPjU69VBLLD0JVCir7H8XoFgoiPVrytAsPt3FyrQhii1q&_nc_ohc=Q14Fz-R-MKcQ7kNvgEludJp&_nc_zt=23&_nc_ht=scontent.fmnl17-1.fna&_nc_gid=A0SjF7v4Z7jFYOeOTMCPT1r&oh=00_AYBIYMwalQ8bXR_vonbZ6o0DO_Xu0GLkFUd9eNhktRy4Zw&oe=67B89569" alt="Author">
-                    <span>Author name · 5 Minute read</span>
-                </div>
-                <button>Read More</button>
-            </div>
-        </div>
+            {% endfor %}
+        {% else %}
+        {% endif %}
+       
         
         <!-- Duplicate cards as needed -->
     </div>

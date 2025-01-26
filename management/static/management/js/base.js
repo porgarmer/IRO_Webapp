@@ -7,22 +7,30 @@ hamburger.addEventListener("click", function() {
 const popup = document.getElementById('right-popup');
 const popupMessage = document.getElementById('popup-message');
 
-// Display popup messages if hidden success messages are present
-const hiddenMessages = document.querySelectorAll('div[style="display:none;"] p');
-hiddenMessages.forEach(message => {
-    const trimmedMessage = message.textContent.trim();
-    console.log("Message Found:", trimmedMessage); // Debug: Check if message is retrieved
-    if (trimmedMessage) {
-        popupMessage.textContent = trimmedMessage;
+// Display popup messages dynamically using Django messages
+const hiddenMessages = document.querySelectorAll('#hidden-messages p');
+
+hiddenMessages.forEach(messageElement => {
+    const messageText = messageElement.textContent.trim();
+    const messageTag = messageElement.dataset.tag || 'info'; // Default to 'info' if no tag provided
+
+    if (messageText) {
+        // Set the message text
+        popupMessage.textContent = messageText;
+
+        // Remove existing tag classes (e.g., 'success', 'error') before applying the new one
+        popup.className = 'right-popup'; // Reset classes
+        popup.classList.add(messageTag); // Add the tag class (e.g., 'success')
+
+        // Show the popup
         popup.classList.add('show');
 
+        // Hide the popup after 4 seconds
         setTimeout(() => {
             popup.classList.remove('show');
-        }, 4000); // Hide popup after 3 seconds
+        }, 4000);
     }
 });
-
-
 
 document.querySelectorAll('#sidebar:not(.expand) .sidebar-item').forEach(item => {
     item.addEventListener('mouseenter', function () {

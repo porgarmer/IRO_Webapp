@@ -7,6 +7,9 @@ from .models import *
 from django.contrib import messages
 from django.http import JsonResponse
 from django.conf import settings
+from django.db.utils import IntegrityError
+from django.db.models import Q
+
 
 # Create your views here.
 def admin_login(request):
@@ -32,8 +35,8 @@ def dashboard(request):
     return render(request, 'dashboard/dashboard.html')
 
 
-"""home page functions"""
-@login_required
+# Home page functions
+@login_required()
 def homepage_hero_section(request):
     homepage = HomePage.objects.first()
     if request.method == 'POST':
@@ -45,23 +48,39 @@ def homepage_hero_section(request):
         form = HomePageForm(instance=homepage)
     return render(request, 'homepage/hero_section.html', {'form': form})
 
-@login_required
-def news_articles(request):
-    # Filter and search functionality
-    search_query = request.GET.get('search', '')
-    category_filter = request.GET.get('category', '')
-    
-    # Filtering the articles
 
-  
+# News&Articles page functions
 @login_required()
 def news_and_articles(request):
-
+    
     newsarticles = NewsArticle.objects.all().order_by('-created_at')
-    form = NewsArticleForm()  # Include request.FILES for file uploads
+    categories = NewsArticleCategory.objects.all().order_by('name')
+
+    search_query = request.GET.get('search', '').strip()
+    if search_query:
+        newsarticles = newsarticles.filter(
+            Q(id__icontains=search_query)|
+            Q(title__icontains=search_query) |
+            Q(content__icontains=search_query)
+        )
+        
+    datesorted = request.GET.get('date-sort', '').strip()
+    if datesorted == 'ascending':
+        newsarticles = newsarticles.order_by('created_at')
+    
+    category_filter = request.GET.get('category', '').strip()
+    print(category_filter)
+    if category_filter:
+        category = NewsArticleCategory.objects.get(name=category_filter)
+        newsarticles = NewsArticle.objects.filter(
+            category=category
+        )
     return render(request, 'news&articles/news&articles.html', {
-        'form': form,
         'newsarticles': newsarticles,
+        'search_query': search_query,
+        'categories': categories,
+        'datesorted': datesorted,
+        'category_filter': category_filter,
     })
 
 @login_required()
@@ -128,6 +147,86 @@ def delete_news_and_articles(request):
             messages.success(request, 'Post deleted successfully')
         return redirect(reverse('management:news_articles'))
 
+
+# News&Articles Category page functions
+@login_required
+def category_news_and_articles(request):
+    
+    categories = NewsArticleCategory.objects.all().order_by('name')
+    
+    search_query = request.GET.get('search', '').strip()
+    if search_query:
+        categories =categories.filter(
+            Q(name__icontains=search_query)
+        )
+    
+    namesorted = request.GET.get('name-sort', '').strip()
+    if namesorted == 'descending':
+        categories = categories.order_by('-name')
+        
+    return render (request, 'news&articles/category/category_news&articles.html', {
+        'categories': categories,
+        'search_query': search_query,
+        'namesorted': namesorted
+    })
+
+@login_required
+def add_category_news_and_articles(request):
+    
+    if request.method == "POST":
+        form = NewsArticleCategoryForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Category added successfully.')
+            return redirect(reverse('management:category_news&articles'))
+        else:
+            # If the form is invalid, display the error message from `form.errors`
+            if 'name' in form.errors:
+                messages.error(request, 'Category already exists.')
+    form = NewsArticleCategoryForm()
+    return render (request, 'news&articles/category/add_category_news&articles.html', {
+        'form': form
+    })
+    
+@login_required
+def edit_category_news_and_articles(request, id):
+    
+    if request.method == "POST":
+        news_article_category = get_object_or_404(NewsArticleCategory, id=id)
+        form = NewsArticleCategoryForm(request.POST, instance=news_article_category)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Category edited successfully.')
+            return redirect(reverse('management:category_news&articles'))
+        else:
+            # If the form is invalid, display the error message from `form.errors`
+            if 'name' in form.errors:
+                messages.error(request, 'Category already exists.')
+                
+    news_article_category = NewsArticleCategory.objects.get(id=id)
+    form = NewsArticleCategoryForm(instance=news_article_category)
+    return render (request, 'news&articles/category/edit_category_news&articles.html', {
+        'form': form
+    })
+    
+@login_required()
+def delete_category_news_and_articles(request):
+    if request.method == "POST":
+        selected_ids = request.POST.getlist('selected_ids')
+        print(selected_ids)
+        for i in selected_ids:
+            selected_ids= i.split(',')
+            
+        NewsArticleCategory.objects.filter(id__in=selected_ids).delete()
+        
+        if  len(selected_ids) > 1:
+            messages.success(request, 'Categories deleted successfully')
+        else:
+            messages.success(request, 'Category deleted successfully')
+        return redirect(reverse('management:category_news&articles'))
+
+
+# Adoptable rescues functions
 @login_required
 def add_rescue(request):
     if request.method == 'POST':
@@ -143,6 +242,7 @@ def add_rescue(request):
 
     return render(request, 'adoptable_rescues/add_rescue.html', {'form': form})
 
+@login_required
 # Existing view for adoptable rescues
 def adoptable_rescues(request):
     search_query = request.GET.get('search', '')

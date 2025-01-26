@@ -20,24 +20,20 @@ class HomePage(models.Model):
     about_us_section_content = CKEditor5Field(blank=True, null=True, config_name='extends')
 
 class NewsArticleCategory(models.Model):
-    name = models.CharField(max_length=50)
-    slug = models.SlugField(unique=True, blank=True)
-
-    def save(self, *args, **kwargs):
-        if not self.slug:
-            self.slug = slugify(self.name)
-        super().save(*args, **kwargs)
-
+    name = models.CharField(max_length=50, unique=True)
+    
     def __str__(self):
         return self.name
-    
 class NewsArticle(models.Model):
     photo = models.ImageField(null=True, blank=True, upload_to='news&articles/')
+    featured = models.BooleanField(default=False)  # New field for featured posts
+
     # author =  # to be added
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     category = models.ForeignKey(NewsArticleCategory, null=True, blank=True, related_name='news_article', on_delete=models.SET_NULL)
     title = models.CharField(max_length=255)
+    summary = CKEditor5Field(blank=True, null=True, config_name='extends')
     content = CKEditor5Field(blank=True, null=True, config_name='extends')
     slug = models.SlugField(unique=True, blank=True, max_length=255)
 
@@ -51,6 +47,12 @@ class NewsArticle(models.Model):
                 os.remove(old_file.path)    
         super().save(*args, **kwargs)
         
+        
+    @staticmethod
+    def get_featured_posts(limit=1):
+        """Get the latest featured posts (e.g., limit to 3)."""
+        return NewsArticle.objects.filter(featured=True).order_by('-created_at')[:limit]
+    
     def __str__(self):
         return self.title
     

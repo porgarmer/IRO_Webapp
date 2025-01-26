@@ -11,17 +11,29 @@ class HomePageForm(forms.ModelForm):
                   'hero_section_title',
                   'hero_section_subtitle',
                   'hero_section_cta_btn_text']
-
+        
+class NewsArticleCategoryForm(forms.ModelForm):
+    class Meta:
+        model = NewsArticleCategory
+        fields = ['name']
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control shaow sm', 'placeholder': 'Enter category name'})
+        }
+        
 class NewsArticleForm(forms.ModelForm):
     
     class Meta:
         model = NewsArticle
-        fields = ['title', 'content', 'category', 'photo']
+        fields = ['title', 'content', 'summary', 'featured', 'category', 'photo']
         widgets = {
                     'title': forms.TextInput(attrs={'class': 'form-control shadow-sm', 'placeholder': 'Enter title'}),
                     "content": CKEditor5Widget(
                         attrs={"class": "django_ckeditor_5"}, config_name="extends"
                     ),
+                    "summary": CKEditor5Widget(
+                        attrs={"class": "django_ckeditor_5"}, config_name="extends"
+                    ),
+                    'featured': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
                     'category': forms.Select(attrs={'class': 'form-control shadow-sm'}),
                     'photo': forms.ClearableFileInput(attrs={'class': 'form-control shadow-sm'}),
                 }

@@ -62,7 +62,7 @@ $('.blogCheckbox').on('change', function () {
     toggleBulkDeleteButton();
 });
 
-       // Enable Bulk Delete Button
+       // Enable Bulk Delete Button For News&Articles
 $('.blogCheckbox').on('change', function () {
         toggleBulkDeleteButton();
     });
@@ -78,8 +78,6 @@ $('#bulkDeleteButton').click(function (e) {
         return $(this).val();
     }).get();
 
-    console.log(selectedIds)
-
 
     const deleteModal = new bootstrap.Modal(document.getElementById('deleteNewsArticleModal'));
     $("#delete-count").text(selectedIds.length)
@@ -88,7 +86,32 @@ $('#bulkDeleteButton').click(function (e) {
     deleteForm = $("#delete-form")
     $("#delete-form").on('submit', function (e) { 
         e.preventDefault();
-        $("#newsarticleIds").val(selectedIds);
+        $("#ids").val(selectedIds);
         this.submit()
     })  
+});
+
+
+function updateUrlParam(param, value) {
+    const url = new URL(window.location);
+    url.searchParams.set(param, value); // Set the specified parameter
+    // url.searchParams.set('page', 1); // Reset to the first page
+    window.history.pushState({}, '', url); // Update the browser URL
+    location.reload(); // Reload the page
+}
+
+
+$("#date-sort").change(function (e) { 
+    const selectedOption = this.value;
+    updateUrlParam('date-sort', selectedOption)
+});
+
+$("#category-news_article").change(function (e) { 
+    const selectedOption = this.value;
+    updateUrlParam('category', selectedOption)
+});
+
+$("#name-sort").change(function (e) { 
+    const selectedOption = this.value;
+    updateUrlParam('name-sort', selectedOption)
 });
