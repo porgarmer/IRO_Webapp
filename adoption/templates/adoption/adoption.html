@@ -58,8 +58,8 @@
 
     .cards {
         display: grid;
-        grid-template-columns: repeat(3, 1fr); /* Three columns */
-        gap: 20px; /* Spacing between cards */
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
         padding: 20px;
     }
     
@@ -88,9 +88,8 @@
         margin: 0 10px 10px;
     }
 
-    /* Modal container styles */
     .modal {
-        display: none; /* Hidden by default */
+        display: none; 
         position: fixed;
         top: 0;
         left: 0;
@@ -100,21 +99,20 @@
         z-index: 1000;
         justify-content: center;
         align-items: center;
-        overflow-y: auto; /* Allow scrolling if content is too tall */
+        overflow-y: auto; 
     }
 
-    /* Modal content styles */
     .modal-content {
         position: relative;
         background-color: white;
         border-radius: 10px;
-        max-width: 90%; /* Use 90% of the screen width */
-        width: 500px; /* Default width for larger screens */
+        max-width: 90%;
+        width: 500px; 
         text-align: center;
         padding: 20px;
         box-sizing: border-box;
-        max-height: 80vh; /* Ensure the modal doesn't overflow the screen */
-        overflow-y: auto; /* Allow vertical scrolling */
+        max-height: 80vh; 
+        overflow-y: auto; 
     }
 
     .modal-content h2 {
@@ -142,7 +140,6 @@
         color: #f44336;
     }
 
-    /* Button styles */
     .open-modal-btn {
         background-color: #F95B00;
         color: white;
@@ -155,7 +152,7 @@
     .open-modal-btn:hover {
         background-color: #e64a19;
     }
-    /* Modal Details: Picture and Text Layout */
+
     .modal-details {
         display: flex;
         flex-direction: column;
@@ -164,7 +161,7 @@
     }
 
     .modal-image img {
-        width: 80%; /* 80% of the modal width */
+        width: 80%; 
         height: auto;
         object-fit: cover;
         border-radius: 8px;
@@ -187,7 +184,6 @@
         border-radius: 5px;
     }
 
-    /* Additional images below the modal details */
     .additional-images {
         display: flex;
         gap: 10px;
@@ -203,261 +199,239 @@
     }
 
     @media (max-width: 1024px) {
-        /* For tablets and small laptops */
         .modal-content {
-            width: 80%; /* Use 80% of the screen width */
-            max-width: 700px; /* Limit the width for larger devices */
+            width: 80%; 
+            max-width: 700px; 
         }
     }
     
     @media (max-width: 768px) {
-        /* For smaller laptops and large tablets */
         .modal-content {
-            width: 90%; /* Use 90% of the screen width */
-            max-width: 600px; /* Limit the width */
+            width: 90%; 
+            max-width: 600px; 
             padding: 10px;
         }
     
         .modal-image img {
-            width: 100%; /* Use the full width of the modal */
+            width: 100%; 
             height: auto;
         }
     
         .modal-text p {
-            font-size: 1rem; /* Adjust text size */
+            font-size: 1rem; 
         }
     
         .additional-images img {
-            width: 50px; /* Smaller additional images */
+            width: 50px; 
             height: 50px;
         }
     }
     
     @media (max-width: 900px) {
-        /* Adjust card layout to two columns */
         .cards {
-            grid-template-columns: repeat(2, 1fr); /* Two columns */
-            gap: 15px; /* Reduce gap between cards */
-            padding: 15px; /* Reduce padding */
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            padding: 15px;
         }
-    
-        /* Reduce modal details section spacing */
+
         .modal-details {
-            flex-direction: column; /* Stack image and text vertically */
-            text-align: center; /* Center align content */
+            flex-direction: column; 
+            text-align: center;
         }
     
         .modal-image img {
-            width: 150px; /* Adjust image size */
-            height: 150px; /* Keep proportions smaller */
-            margin-bottom: 15px; /* Add spacing */
+            width: 150px; 
+            height: 150px; 
+            margin-bottom: 15px; 
         }
     
         .modal-text {
-            padding-left: 0; /* Remove left padding */
+            padding-left: 0;
         }
     
         .modal-text p {
-            font-size: 1rem; /* Reduce font size */
+            font-size: 1rem; 
         }
-    
-        /* Adjust header font size for better readability */
+
         .header h1 {
-            font-size: 3rem; /* Reduce heading size */
+            font-size: 3rem; 
         }
     
         .header p {
-            font-size: 1.5rem; /* Reduce paragraph size */
+            font-size: 1.5rem; 
         }
-    
-        /* Filters: Adjust input size */
         .filters select,
         .filters input {
-            width: 150px; /* Reduce input width */
-            padding: 8px; /* Adjust padding */
-            font-size: 14px; /* Smaller font size */
+            width: 150px; 
+            padding: 8px;
+            font-size: 14px;
         }
     }
     
     @media (max-width: 600px) {
-        /* Cards: Switch to single-column layout */
         .cards {
-            grid-template-columns: 1fr; /* Single column */
-            gap: 10px; /* Smaller gap */
-            padding: 10px; /* Reduce padding */
+            grid-template-columns: 1fr;
+            gap: 10px; 
+            padding: 10px; 
         }
     
-        /* Modal details: Adjust for narrow screens */
         .modal-details {
-            flex-direction: column; /* Stack vertically */
-            text-align: center; /* Center align content */
+            flex-direction: column; 
+            text-align: center; 
         }
     
         .modal-image img {
-            width: 120px; /* Further reduce image size */
-            height: 120px; /* Maintain smaller proportions */
-            margin-bottom: 10px; /* Smaller margin */
+            width: 120px; 
+            height: 120px; 
+            margin-bottom: 10px; 
         }
     
         .modal-text {
-            padding-left: 0; /* Remove left padding */
+            padding-left: 0; 
         }
     
         .modal-text p {
-            font-size: 0.9rem; /* Smaller font size */
+            font-size: 0.9rem;
         }
     
-        /* Header: Scale down font sizes */
         .header h1 {
-            font-size: 2.5rem; /* Smaller heading size */
+            font-size: 2.5rem; 
         }
     
         .header p {
-            font-size: 1.2rem; /* Smaller paragraph size */
+            font-size: 1.2rem; 
         }
     
-        /* Filters: Stack inputs and reduce size */
         .filters {
             display: flex;
-            flex-direction: column; /* Stack elements */
-            align-items: center; /* Center align */
+            flex-direction: column; 
+            align-items: center; 
         }
     
         .filters select,
         .filters input {
-            width: 100%; /* Full width for inputs */
-            max-width: 300px; /* Add a max width */
-            padding: 6px; /* Smaller padding */
-            font-size: 12px; /* Smaller font */
-            margin-bottom: 10px; /* Space between inputs */
+            width: 100%; 
+            max-width: 300px; 
+            padding: 6px; 
+            font-size: 12px; 
+            margin-bottom: 10px; 
         }
     
-        /* Buttons: Adjust for smaller screens */
         button {
-            font-size: 0.9rem; /* Smaller font size */
-            padding: 8px 12px; /* Adjust padding */
+            font-size: 0.9rem; 
+            padding: 8px 12px; 
         }
     
-        /* General padding adjustments */
         body {
-            padding: 5px; /* Reduce body padding */
+            padding: 5px; 
         }
     
         .content {
-            padding: 10px; /* Reduce content padding */
+            padding: 10px;
         }
     }
     
     @media (max-width: 320px) {
-        /* Adjust card layout to single-column */
         .cards {
-            grid-template-columns: 1fr; /* Single column */
-            gap: 5px; /* Reduce gap */
-            padding: 5px; /* Minimal padding */
+            grid-template-columns: 1fr; 
+            gap: 5px;
+            padding: 5px; */
         }
 
-        /* Modal content adjustments */
         .modal-content {
-            max-width: 90%; /* Fit within screen width */
-            padding: 10px; /* Adjust padding */
+            max-width: 90%; 
+            padding: 10px; 
         }
 
         .modal-image img {
-            width: 100px; /* Smaller image */
-            height: 100px; /* Maintain aspect ratio */
+            width: 100px; 
+            height: 100px; 
             margin-bottom: 10px;
         }
 
         .modal-text {
-            padding-left: 0; /* Remove extra padding */
-            font-size: 0.8rem; /* Smaller text */
+            padding-left: 0; 
+            font-size: 0.8rem;
         }
 
         .modal-text p {
-            font-size: 0.7rem; /* Adjust font size */
+            font-size: 0.7rem; 
         }
 
-        /* Header adjustments for small screens */
         .header h1 {
-            font-size: 1.8rem; /* Smaller header */
+            font-size: 1.8rem; 
         }
 
         .header p {
-            font-size: 1rem; /* Smaller paragraph */
+            font-size: 1rem; 
         }
 
-        /* Filters */
         .filters {
-            flex-direction: column; /* Stack filters */
+            flex-direction: column; 
             align-items: center;
         }
 
         .filters select,
         .filters input {
-            width: 100%; /* Full width */
-            font-size: 12px; /* Smaller font */
-            padding: 5px; /* Adjust padding */
+            width: 100%; 
+            font-size: 12px; 
+            padding: 5px; 
         }
 
-        /* Adjust buttons */
         .open-modal-btn {
             font-size: 0.8rem;
             padding: 5px 10px;
         }
 
         .close-btn {
-            font-size: 20px; /* Smaller close button */
+            font-size: 20px;
         }
 
-        /* Additional images */
         .additional-images img {
-            width: 50px; /* Reduce size */
+            width: 50px; 
             height: 50px;
         }
 
-        /* General body adjustments */
         body {
             padding: 5px;
         }
     }
 
     @media (max-width: 480px) {
-        /* For mobile phones */
         .modal-content {
-            width: 95%; /* Use 95% of the screen width */
-            max-width: 500px; /* Limit the modal's width */
+            width: 95%; 
+            max-width: 500px; 
             padding: 5px;
         }
     
         .modal-image img {
-            width: 100%; /* Full width for images */
+            width: 100%;
             height: auto;
         }
     
         .modal-text p {
-            font-size: 0.9rem; /* Smaller text */
+            font-size: 0.9rem; 
         }
     
         .additional-images img {
-            width: 40px; /* Even smaller additional images */
+            width: 40px;
             height: 40px;
         }
     }
 
     @media (min-width: 1200px) {
-        /* For screens larger than 1200px */
         .modal-content {
-            width: 60%; /* Increase modal width */
-            max-width: 800px; /* Increase maximum modal width */
-            padding: 40px; /* Add more padding for better spacing */
+            width: 60%;
+            max-width: 800px; 
+            padding: 40px; 
         }
         
         .modal-content h2 {
-            font-size: 2rem; /* Larger heading size */
+            font-size: 2rem; 
         }
         
         .modal-content p {
-            font-size: 1.2rem; /* Increase text size for readability */
+            font-size: 1.2rem; 
         }
     }
     
@@ -509,7 +483,6 @@
     <div class="modal-content" style="background-color: #231F20; padding: 50px;">
         <button class="close-btn" onclick="closeModal()">×</button>
         
-        <!-- First container (white background with image and text) -->
         <div class="container" style="background-color: white; padding: 20px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-radius: 7px; ">
             <div class="modal-image" style="flex: 1; margin-right: 20px;">
                 <img src="https://scontent.fmnl13-2.fna.fbcdn.net/v/t39.30808-6/244751999_2921970741401661_4190217931880783503_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=3a1ebe&_nc_eui2=AeGzNj8QAt0huta7SU57mWCyGcYqDPk3jbgZxioM-TeNuPXujjvcn-GbELwo7sN_2W8ICdghx88s_2t2XIg_2d9W&_nc_ohc=CmmLPNM-cUEQ7kNvgGWi2E5&_nc_zt=23&_nc_ht=scontent.fmnl13-2.fna&_nc_gid=Ae8v_GzxsS3NJsZ8jFdlcsa&oh=00_AYBLF0-5p63RspPlJ5Uhk1GIFFbzGNKXpRD89IPBfzBtBw&oe=6790EE08" alt="Rescue Animal" style="max-width: 100%; height: auto;">
@@ -520,7 +493,6 @@
                 <a href="{% url 'adoption_process' %}" class="btn btn-primary p-3">Adopt Me</a>
             </div>
         </div>
-        <!-- Second container (additional images with individual white backgrounds) -->
         <div class="additional-images" style="display: flex; gap: 20px; padding: 20px;">
             <div style="background-color: white; padding: 10px; border-radius: 7px; width: 220px; height: auto;">
                 <img src="https://scontent.fmnl13-2.fna.fbcdn.net/v/t39.30808-6/244751999_2921970741401661_4190217931880783503_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=3a1ebe&_nc_eui2=AeGzNj8QAt0huta7SU57mWCyGcYqDPk3jbgZxioM-TeNuPXujjvcn-GbELwo7sN_2W8ICdghx88s_2t2XIg_2d9W&_nc_ohc=CmmLPNM-cUEQ7kNvgGWi2E5&_nc_zt=23&_nc_ht=scontent.fmnl13-2.fna&_nc_gid=Ae8v_GzxsS3NJsZ8jFdlcsa&oh=00_AYBLF0-5p63RspPlJ5Uhk1GIFFbzGNKXpRD89IPBfzBtBw&oe=6790EE08" alt="Additional Image 1" style="width: 100%; height: auto;">
@@ -538,8 +510,6 @@
 
     </div>
 </div>
-
-
 <div class="container">
     <div class="cards">
         <div class="card p-4">
@@ -549,77 +519,66 @@
             <p>Short description about the rescue animal goes here. Make it engaging and inviting.</p>
             <button class="open-modal-btn" onclick="openModal()">About Me</button>
         </div>
-
         <div class="card p-4">
             <img src="https://scontent.fmnl13-2.fna.fbcdn.net/v/t39.30808-6/244751999_2921970741401661_4190217931880783503_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=3a1ebe&_nc_eui2=AeGzNj8QAt0huta7SU57mWCyGcYqDPk3jbgZxioM-TeNuPXujjvcn-GbELwo7sN_2W8ICdghx88s_2t2XIg_2d9W&_nc_ohc=CmmLPNM-cUEQ7kNvgGWi2E5&_nc_zt=23&_nc_ht=scontent.fmnl13-2.fna&_nc_gid=Ae8v_GzxsS3NJsZ8jFdlcsa&oh=00_AYBLF0-5p63RspPlJ5Uhk1GIFFbzGNKXpRD89IPBfzBtBw&oe=6790EE08"  alt="Rescue Animal">
             <h3>Rescue Name</h3>
             <p>Short description about the rescue animal goes here. Make it engaging and inviting.</p>
             <button class="open-modal-btn" onclick="openModal()">About Me</button>
         </div>
-
         <div class="card p-4">
             <img src="https://scontent.fmnl13-2.fna.fbcdn.net/v/t39.30808-6/244751999_2921970741401661_4190217931880783503_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=3a1ebe&_nc_eui2=AeGzNj8QAt0huta7SU57mWCyGcYqDPk3jbgZxioM-TeNuPXujjvcn-GbELwo7sN_2W8ICdghx88s_2t2XIg_2d9W&_nc_ohc=CmmLPNM-cUEQ7kNvgGWi2E5&_nc_zt=23&_nc_ht=scontent.fmnl13-2.fna&_nc_gid=Ae8v_GzxsS3NJsZ8jFdlcsa&oh=00_AYBLF0-5p63RspPlJ5Uhk1GIFFbzGNKXpRD89IPBfzBtBw&oe=6790EE08"  alt="Rescue Animal">
             <h3>Rescue Name</h3>
             <p>Short description about the rescue animal goes here. Make it engaging and inviting.</p>
             <button class="open-modal-btn" onclick="openModal()">About Me</button>
         </div>
-        
         <div class="card p-4">
             <img src="https://scontent.fmnl13-2.fna.fbcdn.net/v/t39.30808-6/244751999_2921970741401661_4190217931880783503_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=3a1ebe&_nc_eui2=AeGzNj8QAt0huta7SU57mWCyGcYqDPk3jbgZxioM-TeNuPXujjvcn-GbELwo7sN_2W8ICdghx88s_2t2XIg_2d9W&_nc_ohc=CmmLPNM-cUEQ7kNvgGWi2E5&_nc_zt=23&_nc_ht=scontent.fmnl13-2.fna&_nc_gid=Ae8v_GzxsS3NJsZ8jFdlcsa&oh=00_AYBLF0-5p63RspPlJ5Uhk1GIFFbzGNKXpRD89IPBfzBtBw&oe=6790EE08"  alt="Rescue Animal">
             <h3>Rescue Name</h3>
             <p>Short description about the rescue animal goes here. Make it engaging and inviting.</p>
             <button class="open-modal-btn" onclick="openModal()">About Me</button>
         </div>
-
         <div class="card p-4">
             <img src="https://scontent.fmnl13-2.fna.fbcdn.net/v/t39.30808-6/244751999_2921970741401661_4190217931880783503_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=3a1ebe&_nc_eui2=AeGzNj8QAt0huta7SU57mWCyGcYqDPk3jbgZxioM-TeNuPXujjvcn-GbELwo7sN_2W8ICdghx88s_2t2XIg_2d9W&_nc_ohc=CmmLPNM-cUEQ7kNvgGWi2E5&_nc_zt=23&_nc_ht=scontent.fmnl13-2.fna&_nc_gid=Ae8v_GzxsS3NJsZ8jFdlcsa&oh=00_AYBLF0-5p63RspPlJ5Uhk1GIFFbzGNKXpRD89IPBfzBtBw&oe=6790EE08"  alt="Rescue Animal">
             <h3>Rescue Name</h3>
             <p>Short description about the rescue animal goes here. Make it engaging and inviting.</p>
             <button class="open-modal-btn" onclick="openModal()">About Me</button>
         </div>
-
         <div class="card p-4">
             <img src="https://scontent.fmnl13-2.fna.fbcdn.net/v/t39.30808-6/244751999_2921970741401661_4190217931880783503_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=3a1ebe&_nc_eui2=AeGzNj8QAt0huta7SU57mWCyGcYqDPk3jbgZxioM-TeNuPXujjvcn-GbELwo7sN_2W8ICdghx88s_2t2XIg_2d9W&_nc_ohc=CmmLPNM-cUEQ7kNvgGWi2E5&_nc_zt=23&_nc_ht=scontent.fmnl13-2.fna&_nc_gid=Ae8v_GzxsS3NJsZ8jFdlcsa&oh=00_AYBLF0-5p63RspPlJ5Uhk1GIFFbzGNKXpRD89IPBfzBtBw&oe=6790EE08"  alt="Rescue Animal">
             <h3>Rescue Name</h3>
             <p>Short description about the rescue animal goes here. Make it engaging and inviting.</p>
             <button class="open-modal-btn" onclick="openModal()">About Me</button>
         </div>
-
         <div class="card p-4">
             <img src="https://scontent.fmnl13-2.fna.fbcdn.net/v/t39.30808-6/244751999_2921970741401661_4190217931880783503_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=3a1ebe&_nc_eui2=AeGzNj8QAt0huta7SU57mWCyGcYqDPk3jbgZxioM-TeNuPXujjvcn-GbELwo7sN_2W8ICdghx88s_2t2XIg_2d9W&_nc_ohc=CmmLPNM-cUEQ7kNvgGWi2E5&_nc_zt=23&_nc_ht=scontent.fmnl13-2.fna&_nc_gid=Ae8v_GzxsS3NJsZ8jFdlcsa&oh=00_AYBLF0-5p63RspPlJ5Uhk1GIFFbzGNKXpRD89IPBfzBtBw&oe=6790EE08"  alt="Rescue Animal">
             <h3>Rescue Name</h3>
             <p>Short description about the rescue animal goes here. Make it engaging and inviting.</p>
             <button class="open-modal-btn" onclick="openModal()">About Me</button>
         </div>
-        
         <div class="card p-4">
             <img src="https://scontent.fmnl13-2.fna.fbcdn.net/v/t39.30808-6/244751999_2921970741401661_4190217931880783503_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=3a1ebe&_nc_eui2=AeGzNj8QAt0huta7SU57mWCyGcYqDPk3jbgZxioM-TeNuPXujjvcn-GbELwo7sN_2W8ICdghx88s_2t2XIg_2d9W&_nc_ohc=CmmLPNM-cUEQ7kNvgGWi2E5&_nc_zt=23&_nc_ht=scontent.fmnl13-2.fna&_nc_gid=Ae8v_GzxsS3NJsZ8jFdlcsa&oh=00_AYBLF0-5p63RspPlJ5Uhk1GIFFbzGNKXpRD89IPBfzBtBw&oe=6790EE08"  alt="Rescue Animal">
             <h3>Rescue Name</h3>
             <p>Short description about the rescue animal goes here. Make it engaging and inviting.</p>
             <button class="open-modal-btn" onclick="openModal()">About Me</button>
         </div>
-
         <div class="card p-4">
             <img src="https://scontent.fmnl13-2.fna.fbcdn.net/v/t39.30808-6/244751999_2921970741401661_4190217931880783503_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=3a1ebe&_nc_eui2=AeGzNj8QAt0huta7SU57mWCyGcYqDPk3jbgZxioM-TeNuPXujjvcn-GbELwo7sN_2W8ICdghx88s_2t2XIg_2d9W&_nc_ohc=CmmLPNM-cUEQ7kNvgGWi2E5&_nc_zt=23&_nc_ht=scontent.fmnl13-2.fna&_nc_gid=Ae8v_GzxsS3NJsZ8jFdlcsa&oh=00_AYBLF0-5p63RspPlJ5Uhk1GIFFbzGNKXpRD89IPBfzBtBw&oe=6790EE08"  alt="Rescue Animal">
             <h3>Rescue Name</h3>
             <p>Short description about the rescue animal goes here. Make it engaging and inviting.</p>
             <button class="open-modal-btn" onclick="openModal()">About Me</button>
         </div>
-
         <div class="card p-4">
             <img src="https://scontent.fmnl13-2.fna.fbcdn.net/v/t39.30808-6/244751999_2921970741401661_4190217931880783503_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=3a1ebe&_nc_eui2=AeGzNj8QAt0huta7SU57mWCyGcYqDPk3jbgZxioM-TeNuPXujjvcn-GbELwo7sN_2W8ICdghx88s_2t2XIg_2d9W&_nc_ohc=CmmLPNM-cUEQ7kNvgGWi2E5&_nc_zt=23&_nc_ht=scontent.fmnl13-2.fna&_nc_gid=Ae8v_GzxsS3NJsZ8jFdlcsa&oh=00_AYBLF0-5p63RspPlJ5Uhk1GIFFbzGNKXpRD89IPBfzBtBw&oe=6790EE08"  alt="Rescue Animal">
             <h3>Rescue Name</h3>
             <p>Short description about the rescue animal goes here. Make it engaging and inviting.</p>
             <button class="open-modal-btn" onclick="openModal()">About Me</button>
         </div>
-
         <div class="card p-4">
             <img src="https://scontent.fmnl13-2.fna.fbcdn.net/v/t39.30808-6/244751999_2921970741401661_4190217931880783503_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=3a1ebe&_nc_eui2=AeGzNj8QAt0huta7SU57mWCyGcYqDPk3jbgZxioM-TeNuPXujjvcn-GbELwo7sN_2W8ICdghx88s_2t2XIg_2d9W&_nc_ohc=CmmLPNM-cUEQ7kNvgGWi2E5&_nc_zt=23&_nc_ht=scontent.fmnl13-2.fna&_nc_gid=Ae8v_GzxsS3NJsZ8jFdlcsa&oh=00_AYBLF0-5p63RspPlJ5Uhk1GIFFbzGNKXpRD89IPBfzBtBw&oe=6790EE08"  alt="Rescue Animal">
             <h3>Rescue Name</h3>
             <p>Short description about the rescue animal goes here. Make it engaging and inviting.</p>
             <button class="open-modal-btn" onclick="openModal()">About Me</button>
         </div>
-        
         <div class="card p-4">
             <img src="https://scontent.fmnl13-2.fna.fbcdn.net/v/t39.30808-6/244751999_2921970741401661_4190217931880783503_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=3a1ebe&_nc_eui2=AeGzNj8QAt0huta7SU57mWCyGcYqDPk3jbgZxioM-TeNuPXujjvcn-GbELwo7sN_2W8ICdghx88s_2t2XIg_2d9W&_nc_ohc=CmmLPNM-cUEQ7kNvgGWi2E5&_nc_zt=23&_nc_ht=scontent.fmnl13-2.fna&_nc_gid=Ae8v_GzxsS3NJsZ8jFdlcsa&oh=00_AYBLF0-5p63RspPlJ5Uhk1GIFFbzGNKXpRD89IPBfzBtBw&oe=6790EE08"  alt="Rescue Animal">
             <h3>Rescue Name</h3>
@@ -633,19 +592,14 @@
 
 {% block scripts %}
 <script>
-// Open modal
     function openModal() {
         const modal = document.getElementById('aboutMeModal');
         modal.style.display = 'flex';
     }
-
-    // Close modal
     function closeModal() {
         const modal = document.getElementById('aboutMeModal');
         modal.style.display = 'none';
     }
-
-    // Close modal when clicking outside the modal content
     window.onclick = function (event) {
         const modal = document.getElementById('aboutMeModal');
         if (event.target === modal) {

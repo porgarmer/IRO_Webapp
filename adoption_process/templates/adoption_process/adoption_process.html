@@ -1,8 +1,6 @@
 {% extends "global/base.html" %}
 {% load static %}
-
 {% block title %}Adoption Process Page{% endblock title %}
-
 {% block styles %}
 <style>
         body {
@@ -101,22 +99,19 @@
             white-space: nowrap;
         }
 
-        
-
-            /* Media Queries for Responsive Design */
             @media (max-width: 768px) {
                 .header h1 {
-                    font-size: 4rem; /* Smaller font size for smaller screens */
+                    font-size: 4rem;
                 }
 
                 .header p {
                     font-size: 1.5rem;
-                    margin-left: 20px; /* Adjust left margin */
+                    margin-left: 20px; 
                 }
 
                 .header button {
-                    padding: 10px 20px; /* Smaller button */
-                    font-size: 1em; /* Smaller font size */
+                    padding: 10px 20px; 
+                    font-size: 1em; 
                 }
 
                 .content h2 {
@@ -136,28 +131,27 @@
                 }
 
                 .donation-card, .partner-card {
-                    margin-bottom: 20px; /* Add margin for spacing */
+                    margin-bottom: 20px; 
                 }
 
                 .donation-card img, .partner-card img {
-                    max-width: 80px; /* Smaller images for smaller screens */
+                    max-width: 80px; 
                 }
             }
                 .card p, .partner-card p, .donation-card p {
-                    white-space: normal;   /* Allow text to wrap */
-                    overflow: hidden;      /* Hide any text that overflows */
-                    text-overflow: ellipsis; /* Optionally, use ellipsis if the text overflows */
+                    white-space: normal;   
+                    overflow: hidden;      
+                    text-overflow: ellipsis; 
                 }
-
 
             @media (max-width: 576px) {
                 .header h1 {
-                    font-size: 3rem; /* Even smaller for extra small screens */
+                    font-size: 3rem; 
                 }
 
                 .header p {
                     font-size: 1.2rem;
-                    margin-left: 10px; /* Adjust left margin further */
+                    margin-left: 10px; 
                 }
 
                 .content h2 {
@@ -173,7 +167,7 @@
                 }
 
                 .donation-card img, .partner-card img {
-                    max-width: 60px; /* Even smaller images for extra small screens */
+                    max-width: 60px; 
                 }
             }
         </style>
@@ -195,13 +189,9 @@
             </a>
         </div>
     </div>
-
-
-        <!-- Donation Channels -->
         <div class="container my-5">
             <h2 class="text-center mb-4" style="font-weight: bold; font-size: 3rem;">ADOPTION PROCESS</h2>
 
-        <!-- First Row with 3 Cards -->
         <div class="row g-4 justify-content-center">
         <div class="col-md-4">
             <div class="card text-center p-4">
@@ -225,9 +215,6 @@
             </div> 
         </div>
     </div>
-
-        
-        <!-- Second Row with 2 Cards -->
         <div class="row g-4 justify-content-center mt-4">
             <div class="col-md-4">
                 <div class="card text-center p-4">

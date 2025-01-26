@@ -1,8 +1,6 @@
 {% extends "global/base.html" %}
 {% load static %}
-
 {% block title %}Donate Page{% endblock title %}
-
 {% block styles %}
 <style>
         body {
@@ -105,22 +103,19 @@
             white-space: nowrap;
         }
 
-        
-
-            /* Media Queries for Responsive Design */
             @media (max-width: 768px) {
                 .header h1 {
-                    font-size: 4rem; /* Smaller font size for smaller screens */
+                    font-size: 4rem; 
                 }
 
                 .header p {
                     font-size: 1.5rem;
-                    margin-left: 20px; /* Adjust left margin */
+                    margin-left: 20px; 
                 }
 
                 .header button {
-                    padding: 10px 20px; /* Smaller button */
-                    font-size: 1em; /* Smaller font size */
+                    padding: 10px 20px; 
+                    font-size: 1em; 
                 }
 
                 .content h2 {
@@ -140,28 +135,27 @@
                 }
 
                 .donation-card, .partner-card {
-                    margin-bottom: 20px; /* Add margin for spacing */
+                    margin-bottom: 20px; 
                 }
 
                 .donation-card img, .partner-card img {
-                    max-width: 80px; /* Smaller images for smaller screens */
+                    max-width: 80px; 
                 }
             }
                 .card p, .partner-card p, .donation-card p {
-                    white-space: normal;   /* Allow text to wrap */
-                    overflow: hidden;      /* Hide any text that overflows */
-                    text-overflow: ellipsis; /* Optionally, use ellipsis if the text overflows */
+                    white-space: normal;  
+                    overflow: hidden;      
+                    text-overflow: ellipsis; 
                 }
-
 
             @media (max-width: 576px) {
                 .header h1 {
-                    font-size: 3rem; /* Even smaller for extra small screens */
+                    font-size: 3rem; 
                 }
 
                 .header p {
                     font-size: 1.2rem;
-                    margin-left: 10px; /* Adjust left margin further */
+                    margin-left: 10px; 
                 }
 
                 .content h2 {
@@ -177,7 +171,7 @@
                 }
 
                 .donation-card img, .partner-card img {
-                    max-width: 60px; /* Even smaller images for extra small screens */
+                    max-width: 60px; 
                 }
             }
         </style>
@@ -198,15 +192,12 @@
         </div>
     </div>
 
-
-<!-- Donation Channels -->
 <div class="container my-5">
     <h2 class="text-center mb-4" style="font-weight: bold; font-size: 3rem;">Official Donation Channels</h2>
     <p class="text-left" style="font-weight: bold; font-size: 1.3rem;">As a non-government organization, <span style="color: #F95B00;">Island Rescue Organization</span> operates and relies heavily on donations from people like you.</p>
     <p class="text-left" style="font-size: 1.3rem;">Please donate when you can. Every little thing helps for our rescues. Seeing them smile and then sleep so well after a good meal makes all the effort and struggles worth it.</p>
     <p class="text-left" style="font-size: 1.3rem;"><strong>For tracking purposes, kindly send your proof of donation to: helpiro@gmail.com</strong></p>
     <br><br><br>
-    <!-- Cards Row -->
     <div class="row g-4 justify-content-center">
         <div class="col-md-6">
             <div class="card text-center p-4">
@@ -243,7 +234,6 @@
 </div>
 
 <br> <br>   
-<!-- In-kind Section -->
     <div class="section">
     <h2 class="text-center mb-4" style="font-weight: bold; font-size: 3rem;">In-Kind Donations</h2>
     <p style="font-size: 1.5rem; text-align: center;">For in-kind donations, please drop them off at these locations:</p>
@@ -274,63 +264,52 @@
         <div class="container my-5">
     <h2 class="text-center mb-4" style="font-weight: bold; font-size: 2.5rem;">Partners</h2>
     <div class="position-relative">
-        <!-- Left Arrow -->
         <button id="scroll-left-donate" class="btn btn-dark position-absolute" style="top: 50%; transform: translateY(-50%); left: -40px; z-index: 10;">
             &#8249;
         </button>
-
-        <!-- Cards Container -->
         <div id="cards-container-donate" class="d-flex overflow-hidden gap-3" style="scroll-behavior: smooth; white-space: nowrap;">
-            <!-- Partner Card 1 -->
             <div class="partner-card text-center p-4" style="min-width: 300px; display: inline-block;">
                 <img src="https://scontent.fmnl13-2.fna.fbcdn.net/v/t39.30808-6/244751999_2921970741401661_4190217931880783503_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=3a1ebe&_nc_eui2=AeGzNj8QAt0huta7SU57mWCyGcYqDPk3jbgZxioM-TeNuPXujjvcn-GbELwo7sN_2W8ICdghx88s_2t2XIg_2d9W&_nc_ohc=CmmLPNM-cUEQ7kNvgGWi2E5&_nc_zt=23&_nc_ht=scontent.fmnl13-2.fna&_nc_gid=Ae8v_GzxsS3NJsZ8jFdlcsa&oh=00_AYBLF0-5p63RspPlJ5Uhk1GIFFbzGNKXpRD89IPBfzBtBw&oe=6790EE08" 
                     alt="Anonymous Donor" class="img-fluid mb-3">
                 <p style="font-size: 1.4rem;" ><strong>Anonymous Donor</strong></p>
                 <p style="font-size: 1.2rem;" >For all the animals who deserve a second chance."</p>
             </div>
-
             <div class="partner-card text-center p-4" style="min-width: 300px; display: inline-block;">
                 <img src="https://scontent.fmnl13-2.fna.fbcdn.net/v/t39.30808-6/244751999_2921970741401661_4190217931880783503_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=3a1ebe&_nc_eui2=AeGzNj8QAt0huta7SU57mWCyGcYqDPk3jbgZxioM-TeNuPXujjvcn-GbELwo7sN_2W8ICdghx88s_2t2XIg_2d9W&_nc_ohc=CmmLPNM-cUEQ7kNvgGWi2E5&_nc_zt=23&_nc_ht=scontent.fmnl13-2.fna&_nc_gid=Ae8v_GzxsS3NJsZ8jFdlcsa&oh=00_AYBLF0-5p63RspPlJ5Uhk1GIFFbzGNKXpRD89IPBfzBtBw&oe=6790EE08" 
                     alt="Anonymous Donor" class="img-fluid mb-3">
                 <p style="font-size: 1.4rem;" ><strong>Anonymous Donor</strong></p>
                 <p style="font-size: 1.2rem;">For all the animals who deserve a second chance."</p>
             </div>
-
             <div class="partner-card text-center p-4" style="min-width: 300px; display: inline-block;">
                 <img src="https://scontent.fmnl13-2.fna.fbcdn.net/v/t39.30808-6/244751999_2921970741401661_4190217931880783503_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=3a1ebe&_nc_eui2=AeGzNj8QAt0huta7SU57mWCyGcYqDPk3jbgZxioM-TeNuPXujjvcn-GbELwo7sN_2W8ICdghx88s_2t2XIg_2d9W&_nc_ohc=CmmLPNM-cUEQ7kNvgGWi2E5&_nc_zt=23&_nc_ht=scontent.fmnl13-2.fna&_nc_gid=Ae8v_GzxsS3NJsZ8jFdlcsa&oh=00_AYBLF0-5p63RspPlJ5Uhk1GIFFbzGNKXpRD89IPBfzBtBw&oe=6790EE08" 
                     alt="Anonymous Donor" class="img-fluid mb-3">
                 <p style="font-size: 1.4rem;" ><strong>Anonymous Donor</strong></p>
                 <p style="font-size: 1.2rem;" >For all the animals who deserve a second chance."</p>
             </div>
-
             <div class="partner-card text-center p-4" style="min-width: 300px; display: inline-block;">
                 <img src="https://scontent.fmnl13-2.fna.fbcdn.net/v/t39.30808-6/244751999_2921970741401661_4190217931880783503_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=3a1ebe&_nc_eui2=AeGzNj8QAt0huta7SU57mWCyGcYqDPk3jbgZxioM-TeNuPXujjvcn-GbELwo7sN_2W8ICdghx88s_2t2XIg_2d9W&_nc_ohc=CmmLPNM-cUEQ7kNvgGWi2E5&_nc_zt=23&_nc_ht=scontent.fmnl13-2.fna&_nc_gid=Ae8v_GzxsS3NJsZ8jFdlcsa&oh=00_AYBLF0-5p63RspPlJ5Uhk1GIFFbzGNKXpRD89IPBfzBtBw&oe=6790EE08" 
                     alt="Anonymous Donor" class="img-fluid mb-3">
                 <p style="font-size: 1.4rem;" ><strong>Anonymous Donor</strong></p>
                 <p style="font-size: 1.2rem;">For all the animals who deserve a second chance."</p>
             </div>
-
             <div class="partner-card text-center p-4" style="min-width: 300px; display: inline-block;">
                 <img src="https://scontent.fmnl13-2.fna.fbcdn.net/v/t39.30808-6/244751999_2921970741401661_4190217931880783503_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=3a1ebe&_nc_eui2=AeGzNj8QAt0huta7SU57mWCyGcYqDPk3jbgZxioM-TeNuPXujjvcn-GbELwo7sN_2W8ICdghx88s_2t2XIg_2d9W&_nc_ohc=CmmLPNM-cUEQ7kNvgGWi2E5&_nc_zt=23&_nc_ht=scontent.fmnl13-2.fna&_nc_gid=Ae8v_GzxsS3NJsZ8jFdlcsa&oh=00_AYBLF0-5p63RspPlJ5Uhk1GIFFbzGNKXpRD89IPBfzBtBw&oe=6790EE08" 
                     alt="Anonymous Donor" class="img-fluid mb-3">
                 <p style="font-size: 1.4rem;" ><strong>Anonymous Donor</strong></p>
                 <p style="font-size: 1.2rem;" >For all the animals who deserve a second chance."</p>
             </div>
-
             <div class="partner-card text-center p-4" style="min-width: 300px; display: inline-block;">
                 <img src="https://scontent.fmnl13-2.fna.fbcdn.net/v/t39.30808-6/244751999_2921970741401661_4190217931880783503_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=3a1ebe&_nc_eui2=AeGzNj8QAt0huta7SU57mWCyGcYqDPk3jbgZxioM-TeNuPXujjvcn-GbELwo7sN_2W8ICdghx88s_2t2XIg_2d9W&_nc_ohc=CmmLPNM-cUEQ7kNvgGWi2E5&_nc_zt=23&_nc_ht=scontent.fmnl13-2.fna&_nc_gid=Ae8v_GzxsS3NJsZ8jFdlcsa&oh=00_AYBLF0-5p63RspPlJ5Uhk1GIFFbzGNKXpRD89IPBfzBtBw&oe=6790EE08" 
                     alt="Anonymous Donor" class="img-fluid mb-3">
                 <p style="font-size: 1.4rem;" ><strong>Anonymous Donor</strong></p>
                 <p style="font-size: 1.2rem;">For all the animals who deserve a second chance."</p>
             </div>
-
             <div class="partner-card text-center p-4" style="min-width: 300px; display: inline-block;">
                 <img src="https://scontent.fmnl13-2.fna.fbcdn.net/v/t39.30808-6/244751999_2921970741401661_4190217931880783503_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=3a1ebe&_nc_eui2=AeGzNj8QAt0huta7SU57mWCyGcYqDPk3jbgZxioM-TeNuPXujjvcn-GbELwo7sN_2W8ICdghx88s_2t2XIg_2d9W&_nc_ohc=CmmLPNM-cUEQ7kNvgGWi2E5&_nc_zt=23&_nc_ht=scontent.fmnl13-2.fna&_nc_gid=Ae8v_GzxsS3NJsZ8jFdlcsa&oh=00_AYBLF0-5p63RspPlJ5Uhk1GIFFbzGNKXpRD89IPBfzBtBw&oe=6790EE08" 
                     alt="Anonymous Donor" class="img-fluid mb-3">
                 <p style="font-size: 1.4rem;" ><strong>Anonymous Donor</strong></p>
                 <p style="font-size: 1.2rem;" >For all the animals who deserve a second chance."</p>
             </div>
-
             <div class="partner-card text-center p-4" style="min-width: 300px; display: inline-block;">
                 <img src="https://scontent.fmnl13-2.fna.fbcdn.net/v/t39.30808-6/244751999_2921970741401661_4190217931880783503_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=3a1ebe&_nc_eui2=AeGzNj8QAt0huta7SU57mWCyGcYqDPk3jbgZxioM-TeNuPXujjvcn-GbELwo7sN_2W8ICdghx88s_2t2XIg_2d9W&_nc_ohc=CmmLPNM-cUEQ7kNvgGWi2E5&_nc_zt=23&_nc_ht=scontent.fmnl13-2.fna&_nc_gid=Ae8v_GzxsS3NJsZ8jFdlcsa&oh=00_AYBLF0-5p63RspPlJ5Uhk1GIFFbzGNKXpRD89IPBfzBtBw&oe=6790EE08" 
                     alt="Anonymous Donor" class="img-fluid mb-3">
@@ -339,18 +318,13 @@
             </div>
             <!-- Add more cards as needed -->
         </div>
-
-        <!-- Right Arrow -->
         <button id="scroll-right-donate" class="btn btn-dark position-absolute" style="top: 50%; transform: translateY(-50%); right: -40px; z-index: 10;">
             &#8250;
         </button>
     </div>
 </div>
-
 {% endblock content %}
-
 {% block scripts %}
-
 <script>
 document.getElementById('scroll-left-donate').addEventListener('click', function() {
     document.getElementById('cards-container-donate').scrollBy({
@@ -358,7 +332,6 @@ document.getElementById('scroll-left-donate').addEventListener('click', function
         behavior: 'smooth'
     });
 });
-
 document.getElementById('scroll-right-donate').addEventListener('click', function() {
     document.getElementById('cards-container-donate').scrollBy({
         left: 300,
