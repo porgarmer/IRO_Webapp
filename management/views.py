@@ -8,6 +8,8 @@ from .forms import (
     NewsArticle)
 from .models import HomePage
 from django.contrib import messages
+from django.http import JsonResponse
+from django.conf import settings
 
 
 # Create your views here.
@@ -51,22 +53,29 @@ def homepage_hero_section(request):
 
 @login_required()
 def news_and_articles(request):
-    
-    #Add news or article
-    if request.method == 'POST':
-        form = NewsArticleForm(request.POST, request.FILES)  # Include request.FILES for file uploads
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Post added successfully.')
-        
+            
     newsarticles = NewsArticle.objects.all().order_by('-created_at')
     form = NewsArticleForm()  # Include request.FILES for file uploads
     return render(request, 'news&articles/news&articles.html', {
         'form': form,
-        'newsarticles': newsarticles
+        'newsarticles': newsarticles,
     })
 
-    
+@login_required()
+def add_news_and_articles(request):
+    if request.method == 'POST':
+        form = NewsArticleForm(request.POST, request.FILES)  # Include request.FILES for file uploads
+        if form.is_valid():
+            news_article = form.save()
+            messages.success(request, 'Post added successfully!')
+            return redirect(reverse('management:news_articles'))
+
+    form = NewsArticleForm()
+
+    return render(request, 'news&articles/add_news&articles.html', {
+        'form': form,
+    })    
+
 @login_required()
 def edit_news_and_articles(request, id):
     if request.method == 'POST':
@@ -75,4 +84,26 @@ def edit_news_and_articles(request, id):
         if form.is_valid():
             form.save()
             messages.success(request, 'Post edited successfully.')
-    return redirect(reverse('management:news&articles'))
+            return redirect(reverse('management:news_articles'))
+
+    news_article = NewsArticle.objects.get(id=id)
+    form = NewsArticleForm(instance=news_article)
+
+    return render(request, 'news&articles/edit_news&articles.html', {
+        'form': form,
+    })
+
+@login_required()
+def delete_news_and_articles(request):
+    if request.method == "POST":
+        selected_ids = request.POST.getlist('selected_ids')
+        for i in selected_ids:
+            selected_ids= i.split(',')
+            
+        NewsArticle.objects.filter(id__in=selected_ids).delete()
+        
+        if  len(selected_ids) > 1:
+            messages.success(request, 'Posts deleted successfully')
+        else:
+            messages.success(request, 'Post deleted successfully')
+        return redirect(reverse('management:news_articles'))

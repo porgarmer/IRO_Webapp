@@ -3,7 +3,8 @@ from management.models import (
     NewsArticleCategory,
     NewsArticle)
 from django import forms
-from ckeditor.widgets import CKEditorWidget
+from django_ckeditor_5.widgets import CKEditor5Widget
+from django_ckeditor_5.fields import CKEditor5Field
 
 class HomePageForm(forms.ModelForm):
     class Meta:
@@ -15,10 +16,15 @@ class HomePageForm(forms.ModelForm):
 
 class NewsArticleForm(forms.ModelForm):
     
-    # content = forms.CharField(widget=CKEditorWidget(config_name='default'))  # Use full toolbar
-    # title = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
-    # category = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
-    # photo = forms.CharField(widget=forms.FileInput(attrs={'class': 'form-control'}))
     class Meta:
         model = NewsArticle
         fields = ['title', 'content', 'category', 'photo']
+        widgets = {
+                    'title': forms.TextInput(attrs={'class': 'form-control shadow-sm', 'placeholder': 'Enter title'}),
+                    "content": CKEditor5Widget(
+                        attrs={"class": "django_ckeditor_5"}, config_name="extends"
+                    ),
+                    'category': forms.Select(attrs={'class': 'form-control shadow-sm'}),
+                    'photo': forms.ClearableFileInput(attrs={'class': 'form-control shadow-sm'}),
+                }
+        

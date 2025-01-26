@@ -18,7 +18,7 @@ hiddenMessages.forEach(message => {
 
         setTimeout(() => {
             popup.classList.remove('show');
-        }, 3000); // Hide popup after 3 seconds
+        }, 4000); // Hide popup after 3 seconds
     }
 });
 
