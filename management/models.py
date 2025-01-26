@@ -59,6 +59,7 @@ class NewsArticle(models.Model):
 @receiver(post_delete, sender=NewsArticle)
 def delete_cover_photo(sender, instance, **kwargs):
     if instance.photo and os.path.isfile(instance.photo.path):
+        os.remove(instance.photo.path)
 
 class RescueCategory(models.Model):
     # Define choices for the categories
