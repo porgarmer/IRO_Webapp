@@ -17,4 +17,9 @@ urlpatterns = [
     path('adoptable-rescue/<int:rescue_id>/edit/', views.edit_rescue, name='edit_rescue'),
     path('adoptable-rescue/<int:pk>/delete/', views.delete_rescue, name='delete_rescue'),
     path('adoptable-rescue/<int:pk>/', views.view_rescue, name='view_rescue'),
+    path('google-forms/', views.google_form_list, name='google_form_list'),
+    path('google-forms/new/', views.google_form_create, name='google_form_create'),
+    path('google-forms/<int:pk>/edit/', views.google_form_update, name='google_form_update'),
+    path('google-forms/<int:pk>/delete/', views.google_form_delete, name='google_form_delete'),
+
 ] 

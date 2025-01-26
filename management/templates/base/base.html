@@ -155,11 +155,26 @@
                 </li>
 
                 <li class="sidebar-item">
-                    <a href="#" class="sidebar-link">
+                    <a href="#" class="sidebar-link has-dropdown collapsed" data-bs-toggle="collapse" data-bs-target="#adoption-form">
                         <i class="fi fi-rr-paw-heart"></i>
                         <span>Adoption Process</span>
                     </a>
+                    <ul id="adoption-form" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <!-- Adoption Form Link -->
+                        <li class="sidebar-item">
+                            <a href="{% url 'management:google_form_list' %}" target="_blank" class="sidebar-link">
+                                Adoption Form
+                            </a>
+                        </li>
+                        <!-- Three Ts of Volunteering Link -->
+                        <li class="sidebar-item">
+                            <a href="#" class="sidebar-link">
+                                sample
+                            </a>
+                        </li>
+                    </ul>
                 </li>
+                
 
                 <li class="sidebar-item">
                     <a href="#" class="sidebar-link has-dropdown collapsed" data-bs-toggle="collapse" data-bs-target="#volunteers-page"

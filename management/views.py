@@ -33,22 +33,30 @@ def dashboard(request):
 
 
 """home page functions"""
-@login_required()
+@login_required
 def homepage_hero_section(request):
-    homepage = HomePage.objects.all().first()
+    homepage = HomePage.objects.first()
     if request.method == 'POST':
         form = HomePageForm(request.POST, request.FILES, instance=homepage)
         if form.is_valid():
             form.save()
-            return render(request, 'homepage/hero_section.html', {'form': form})    
+            return redirect('management:homepage_hero_section')  # Redirect to avoid resubmission
     else:
         form = HomePageForm(instance=homepage)
     return render(request, 'homepage/hero_section.html', {'form': form})
 
+@login_required
+def news_articles(request):
+    # Filter and search functionality
+    search_query = request.GET.get('search', '')
+    category_filter = request.GET.get('category', '')
+    
+    # Filtering the articles
+
   
 @login_required()
 def news_and_articles(request):
-            
+
     newsarticles = NewsArticle.objects.all().order_by('-created_at')
     form = NewsArticleForm()  # Include request.FILES for file uploads
     return render(request, 'news&articles/news&articles.html', {
@@ -87,7 +95,24 @@ def edit_news_and_articles(request, id):
     return render(request, 'news&articles/edit_news&articles.html', {
         'form': form,
     })
-  
+
+@login_required
+def delete_news_article(request, slug):
+    # Delete the article
+    newsarticle = get_object_or_404(NewsArticle, slug=slug)
+    newsarticle.delete()
+    messages.success(request, 'Post deleted successfully.')
+    return redirect('management:news_articles')
+
+@login_required
+def view_news_article(request, slug):
+    # Get the specific news article to view based on the slug
+    newsarticle = get_object_or_404(NewsArticle, slug=slug)
+    
+    return render(request, 'news&articles/view_news_article.html', {
+        'newsarticle': newsarticle
+    })
+
 @login_required()
 def delete_news_and_articles(request):
     if request.method == "POST":
@@ -172,3 +197,36 @@ def delete_rescue(request, pk):
 def view_rescue(request, pk):
     rescue = get_object_or_404(AdoptableRescue, pk=pk)
     return render(request, 'adoptable_rescues/view_rescue.html', {'rescue': rescue})
+
+
+def google_form_list(request):
+    forms = GoogleForm.objects.all()
+    return render(request, 'adoption_form/list.html', {'forms': forms})
+
+def google_form_create(request):
+    if request.method == 'POST':
+        form = GoogleFormForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('management:google_form_list')
+    else:
+        form = GoogleFormForm()
+    return render(request, 'adoption_form/view.html', {'form': form})
+
+def google_form_update(request, pk):
+    gform = get_object_or_404(GoogleForm, pk=pk)
+    if request.method == 'POST':
+        form = GoogleFormForm(request.POST, instance=gform)
+        if form.is_valid():
+            form.save()
+            return redirect('management:google_form_list')
+    else:
+        form = GoogleFormForm(instance=gform)
+    return render(request, 'adoption_form/view.html', {'form': form})
+
+def google_form_delete(request, pk):
+    gform = get_object_or_404(GoogleForm, pk=pk)
+    if request.method == 'POST':
+        gform.delete()
+        return redirect('management:google_form_list')
+    return render(request, 'adoption_form/delete.html', {'gform': gform})
