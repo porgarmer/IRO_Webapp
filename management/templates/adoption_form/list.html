@@ -1,0 +1,96 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="{% static 'management/css/rescue.css' %}">
+<style>
+    .google-forms-container {
+        margin: 5rem auto;
+        padding: 2rem;
+        background-color: #fff;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        max-width: 800px;
+    }
+
+    .google-forms-container h1 {
+        font-size: 2rem;
+        font-weight: bold;
+        text-align: center;
+        color: #343a40;
+    }
+
+    .table {
+        width: 100%;
+        margin-top: 2rem;
+        border-collapse: collapse;
+    }
+
+    .table th, .table td {
+        padding: 12px 15px;
+        text-align: left;
+    }
+
+    .table th {
+        background-color: #343a40;
+        color: #fff;
+        font-size: 1rem;
+    }
+
+    .table td {
+        background-color: #f9f9f9;
+    }
+
+    .btn {
+        border-radius: 12px;
+        font-size: 1rem;
+    }
+
+    .btn-primary:hover {
+        background-color: #007bff;
+        color: #fff;
+    }
+
+    .btn-warning:hover {
+        background-color: #ffc107;
+        color: #fff;
+    }
+
+    .btn-danger:hover {
+        background-color: #dc3545;
+        color: #fff;
+    }
+
+    .action-buttons a {
+        margin-right: 1rem;
+    }
+</style>
+{% endblock stylesheet %}
+
+{% block content %}
+<div class="google-forms-container">
+    <h1>Google Forms</h1>
+    <a href="{% url 'management:google_form_create' %}" class="btn btn-primary">Add New Form</a>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Link</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for form in forms %}
+            <tr>
+                <td>{{ form.title }}</td>
+                <td><a href="{{ form.link }}" target="_blank">{{ form.link }}</a></td>
+                <td class="action-buttons">
+                    <a href="{% url 'management:google_form_update' form.id %}" class="btn btn-warning">Edit</a>
+                    <a href="{% url 'management:google_form_delete' form.id %}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock content %}

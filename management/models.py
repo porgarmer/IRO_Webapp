@@ -17,7 +17,6 @@ class HomePage(models.Model):
     about_us_section_header = RichTextField(blank=True, null=True)
     about_us_section_content = RichTextField(blank=True, null=True)
 
-    
 class NewsArticleCategory(models.Model):
     name = models.CharField(max_length=50)
     slug = models.SlugField(unique=True, blank=True)
@@ -76,3 +75,12 @@ class AdoptableRescue(models.Model):
 
     def __str__(self):
         return self.name 
+    
+class GoogleForm(models.Model):
+    title = models.CharField(max_length=100, default="Adoption Form")
+    link = models.URLField(max_length=500, help_text="Enter the Google Forms URL")
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.title

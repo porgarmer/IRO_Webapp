@@ -32,18 +32,18 @@ def dashboard(request):
 
 
 """home page functions"""
-@login_required()
+@login_required
 def homepage_hero_section(request):
-    homepage = HomePage.objects.all().first()
+    homepage = HomePage.objects.first()
     if request.method == 'POST':
         form = HomePageForm(request.POST, request.FILES, instance=homepage)
         if form.is_valid():
             form.save()
-            return render(request, 'homepage/hero_section.html', {'form': form})    
+            return redirect('management:homepage_hero_section')  # Redirect to avoid resubmission
     else:
         form = HomePageForm(instance=homepage)
     return render(request, 'homepage/hero_section.html', {'form': form})
-
+ 
 @login_required
 def news_articles(request):
     # Filter and search functionality
@@ -112,9 +112,6 @@ def view_news_article(request, slug):
     return render(request, 'news&articles/view_news_article.html', {
         'newsarticle': newsarticle
     })
-
-def table(request):
-    return render(request, 'table/table.html')
 
 @login_required
 def add_rescue(request):
@@ -185,3 +182,36 @@ def delete_rescue(request, pk):
 def view_rescue(request, pk):
     rescue = get_object_or_404(AdoptableRescue, pk=pk)
     return render(request, 'adoptable_rescues/view_rescue.html', {'rescue': rescue})
+
+
+def google_form_list(request):
+    forms = GoogleForm.objects.all()
+    return render(request, 'adoption_form/list.html', {'forms': forms})
+
+def google_form_create(request):
+    if request.method == 'POST':
+        form = GoogleFormForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('management:google_form_list')
+    else:
+        form = GoogleFormForm()
+    return render(request, 'adoption_form/view.html', {'form': form})
+
+def google_form_update(request, pk):
+    gform = get_object_or_404(GoogleForm, pk=pk)
+    if request.method == 'POST':
+        form = GoogleFormForm(request.POST, instance=gform)
+        if form.is_valid():
+            form.save()
+            return redirect('management:google_form_list')
+    else:
+        form = GoogleFormForm(instance=gform)
+    return render(request, 'adoption_form/view.html', {'form': form})
+
+def google_form_delete(request, pk):
+    gform = get_object_or_404(GoogleForm, pk=pk)
+    if request.method == 'POST':
+        gform.delete()
+        return redirect('management:google_form_list')
+    return render(request, 'adoption_form/delete.html', {'gform': gform})

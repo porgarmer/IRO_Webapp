@@ -36,4 +36,8 @@ class AdoptableRescueForm(forms.ModelForm):
 
     
 AdoptableRescueFormSet = modelformset_factory(AdoptableRescue, form=AdoptableRescueForm, extra=1)
- 
+
+class GoogleFormForm(forms.ModelForm):
+    class Meta:
+        model = GoogleForm
+        fields = ['title', 'link']

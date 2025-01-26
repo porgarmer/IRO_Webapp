@@ -1,0 +1,60 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+<h1>Are you sure you want to delete "{{ gform.title }}"?</h1>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Yes, Delete</button>
+    <a href="{% url 'google_form_list' %}" class="btn btn-secondary">Cancel</a>
+</form>
+
+
+{% block stylesheet %}
+<link rel="stylesheet" href="{% static 'management/css/rescue.css' %}">
+<style>
+    .confirmation-box {
+        max-width: 600px;
+        margin: 5rem auto;
+        padding: 2rem;
+        background-color: #fff;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .confirmation-box h1 {
+        font-size: 1.8rem;
+        font-weight: bold;
+        text-align: center;
+        color: #343a40;
+    }
+
+    .btn-outline-danger:hover {
+        background-color: #dc3545;
+        color: #fff;
+    }
+
+    .btn-outline-secondary:hover {
+        background-color: #6c757d;
+        color: #fff;
+    }
+
+    .action-buttons {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+    }
+</style>
+{% endblock stylesheet %}
+
+{% block content %}
+<div class="confirmation-box">
+    <h1>Are you sure you want to delete "{{ gform.title }}"?</h1>
+    <form method="post">
+        {% csrf_token %}
+        <div class="action-buttons mt-4">
+            <button type="submit" class="btn btn-outline-danger btn-lg w-100">Yes, Delete</button>
+            <a href="{% url 'management:google_form_list' %}" class="btn btn-outline-secondary btn-lg w-100">Cancel</a>
+        </div>
+    </form>
+</div>
+{% endblock content %}
