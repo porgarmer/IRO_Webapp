@@ -2,6 +2,7 @@
     background-color: #F95B00;
     border: none;
     font-weight: 600;
+    border-radius: 12px;
 }
 
 .btn-primary:hover{
@@ -12,3 +13,20 @@
 .btn-primary:active{
     background-color: #df5709 !important;
 }
+
+.btn-secondary{
+    background-color: #231F20;
+    border: none;
+    font-weight: 600;
+    border-radius: 12px;
+}
+
+.btn-secondary:hover{
+    background-color: #302b2c;
+    border: none;
+}
+
+.btn-secondary:active{
+    background-color: #141313 !important;
+}
+
