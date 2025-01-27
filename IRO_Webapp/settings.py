@@ -49,6 +49,8 @@ INSTALLED_APPS = [
     'news_artic',
     'volunteer',
     'content_page',
+    'about_us',
+    
 ]
 
 MIDDLEWARE = [
