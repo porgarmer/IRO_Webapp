@@ -1,9 +1,11 @@
 from django.shortcuts import render
-from management.models import HomePage
+from management.models import HomePage, HomePageStats
 # Create your views here.
 def home(request):
     homepage = HomePage.objects.all().first()
-    print(homepage)
+    
+    stats = HomePageStats.objects.all()
     return render(request, "home.html", {
-        "homepage": homepage
+        "homepage": homepage,
+        "stats": stats,
     })

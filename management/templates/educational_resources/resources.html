@@ -1,0 +1,226 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block stylesheet %}
+<link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
+<style>
+    .table {
+        border-collapse: separate;
+        border-spacing: 0;
+        border-radius: 12px;
+        overflow: hidden;
+    }
+
+    .thead-dark th {
+        background-color: #231F20;
+        color: #fff;
+        border: none;
+        text-align: center;
+    }
+
+    .table-bordered th, .table-bordered td {
+        border: 1px solid #dee2e6;
+    }
+
+    .table-hover tbody tr:hover {
+        background-color: rgba(0, 0, 0, 0.05);
+    }
+
+    .btn-lg {
+        padding: 0.6rem 1.5rem;
+    }
+
+    .btn-outline-danger:hover {
+        background-color: #dc3545;
+        color: #fff;
+    }
+
+    .btn-outline-warning:hover {
+        background-color: #ffc107;
+        color: #fff;
+    }
+
+    .btn-outline-success:hover {
+        background-color: #28a745;
+        color: #fff;
+    }
+</style>
+{% endblock stylesheet %}
+
+{% block content %}
+
+<div class="container text-start mt-5">
+    <h1 class="mb-5 text-center display-4" style="font-weight: bold; color: #343a40;">Educational Resources</h1>
+     
+        <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
+
+            <div class="d-flex">
+                {% comment %} <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addBlogModal">Add Post</button> {% endcomment %}
+                <a class="btn btn-primary me-2" href="{% url 'management:add_resource' %}">Add Post</a>
+                <button class="btn btn-danger rounded-3" id="bulkDeleteButton" disabled>Delete Selected</button>
+            </div>
+            
+            <!-- Search and Filter -->
+            <div class="d-flex ms-auto gap-2">  
+                <div>
+                     <label for="date-sort">Order by date: </label>
+                    <select 
+                            name="date-sort" 
+                            id="date-sort"
+                            class="form-select shadow-sm w-auto"  
+                            style="border-radius: 12px;">
+                            <option value="" disabled selected>-----</option>
+                            <option value="ascending" {% if datesorted == "ascending" %}selected{% endif %}>
+                                Ascending   
+                            </option>
+                            <option value="descending" {% if datesorted  == "descending" %}selected{% endif %}>
+                                Descending
+                            </option>
+                    </select>
+                </div>
+               
+                <div>
+                    <label for="date-sort">Category: </label>
+                    <select 
+                            name="category" 
+                            id="category" 
+                            class="form-select shadow-sm w-auto"  
+                            style="border-radius: 12px;">
+                            <option value="">All Categories</option>
+                            {% for category in categories %}
+                                <option value="{{ category.name }}" {% if category.name == category_filter %}selected{% endif %}>
+                                    {{ category.name }}
+                                </option>
+                            {% endfor %}
+                    </select>
+                </div>
+               
+                <div>
+                    <label for="animal-type"></label>
+                    <form method="GET" action="" class="d-flex align-items-center gap-2">              
+                        <input 
+                            type="text" 
+                            name="search" 
+                            class="form-control shadow-sm w-auto" 
+                            placeholder="Search..." 
+                            value="{{ search_query }}" 
+                            style="border-radius: 12px;">
+
+                        <button 
+                            type="submit" 
+                            class="btn btn-secondary shadow-sm" 
+                            >
+                            <i class="fi fi-rr-search"></i>
+                        </button>   
+                    </form>
+                </div>
+            </div>
+        </div>
+ 
+
+    
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover" id="news_article_table">
+            <thead class="thead-dark">
+                <tr>
+                    <th><input type="checkbox" id="selectAll"></th>
+                    <th>#</th>
+                    <th>Title</th>
+                    <th>Category</th>
+                    <th>Cover Photo</th>
+                    <th>Created At</th>
+                    <th>Featured</th>
+                    <th>Actions</th>    
+                </tr>
+            </thead>
+            {% if resources %}
+            <tbody>
+                {% for resource in resources %}
+                    <tr>
+                        <td class="text-center"><input type="checkbox" class="blogCheckbox" value="{{ resource.id }}"></td>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ resource.title }}</td>
+                        <td>
+                            {% if resource.category %}
+                            {{ resource.category.name }}
+                            {% else %}
+                            Uncategorized
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if resource.photo %}
+                                <img src="{{ resource.photo.url }}" 
+                                    alt="{{ resource.title }}" 
+                                    style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.2);">
+                            {% else %}
+                                No Cover
+                            {% endif %}
+                        </td>
+                        <td>{{ resource.created_at }}</td>
+                        {% if resource.featured %}
+                        <td>Yes</td>
+                        {% else %}
+                        <td>No</td>
+                        {% endif %}
+                       
+                        <td class="text-center">
+                            <!-- Action Buttons -->
+                            <a href="{% url 'resources:resource_detail' slug=resource.slug %}" 
+                                class="btn btn-outline-success btn-sm"
+                                target="_blank">View</a>
+
+                            <a 
+                                class="btn btn-outline-warning btn-sm"
+                                href= " {% url 'management:edit_resource' id=resource.id %}">
+                                Edit
+                            </a>
+
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+    </table>
+    <div class="alert alert-warning text-center">
+        No results.
+    </div>
+    {% endif %}
+    </div>
+</div>
+
+    <!-- Delete Modal -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form id="delete-form" method="POST" action="{% url 'management:delete_resource' %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="selected_ids" id="ids"  value="">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="deleteModalLabel">Delete Post</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Are sure you want to remove: <span id="delete-count"></span> posts?</p>
+                    </div>
+                    <div class="modal-footer">
+                        
+                        <button type="button" class="btn btn-" data-bs-dismiss="modal">No</button>
+                        <button type="submit" class="btn btn-danger" id="confirm-delete">Yes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div> 
+
+{% endblock content %}
+
+{% block scripts %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/full/ckeditor.js"></script>
+
+{% comment %} ckeditor5 {% endcomment %}
+
+<script src="{% static 'management/js/resources.js' %}"></script>
+
+{% endblock scripts %}

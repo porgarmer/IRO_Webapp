@@ -48,7 +48,7 @@
 
 
 {% block content %}
-<div class="container">
+<div class="container mt-5">
     <h1 class="mb-5 text-center display-4" style="font-weight: bold; color: #343a40;">News&Articles Category</h1>
      
         <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
@@ -60,37 +60,43 @@
             
             <!-- Search and Filter -->
             <div class="d-flex ms-auto gap-2">  
-                <label for="name-sort">Order by name: </label>
-                <select 
-                        name="name-sort" 
-                        id="name-sort"
-                        class="form-select shadow-sm w-auto"  
-                        style="border-radius: 12px;">
-                        <option value="" disabled selected>------</option>
-                        <option value="ascending" {% if namesorted == "ascending" %}selected{% endif %}>
-                            Ascending   
-                        </option>
-                        <option value="descending" {% if namesorted  == "descending" %}selected{% endif %}>
-                            Descending
-                        </option>
-                </select>
+                <div>
+                    <label for="name-sort">Order by name: </label>
+                    <select 
+                            name="name-sort" 
+                            id="name-sort"
+                            class="form-select shadow-sm w-auto"  
+                            style="border-radius: 12px;">
+                            <option value="" disabled selected>------</option>
+                            <option value="ascending" {% if namesorted == "ascending" %}selected{% endif %}>
+                                Ascending   
+                            </option>
+                            <option value="descending" {% if namesorted  == "descending" %}selected{% endif %}>
+                                Descending
+                            </option>
+                    </select>
+                </div>
 
-                <form method="GET" action="" class="d-flex align-items-center gap-2">              
-                    <input 
-                        type="text" 
-                        name="search" 
-                        class="form-control shadow-sm w-auto" 
-                        placeholder="Search..." 
-                        value="{{ search_query }}" 
-                        style="border-radius: 12px;">
+               <div>
+                    <label for="name-sort"></label>
+                    <form method="GET" action="" class="d-flex align-items-center gap-2">              
+                        <input 
+                            type="text" 
+                            name="search" 
+                            class="form-control shadow-sm w-auto" 
+                            placeholder="Search..." 
+                            value="{{ search_query }}" 
+                            style="border-radius: 12px;">
 
-                    <button 
-                        type="submit" 
-                        class="btn btn-secondary about-usshadow-sm" 
-                        >
-                        <i class="fi fi-rr-search"></i>
-                    </button>   
-                </form>
+                        <button 
+                            type="submit" 
+                            class="btn btn-secondary about-usshadow-sm" 
+                            >
+                            <i class="fi fi-rr-search"></i>
+                        </button>   
+                    </form>
+               </div>
+               
             </div>
         </div>
  

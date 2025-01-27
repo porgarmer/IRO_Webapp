@@ -5,8 +5,8 @@
         <!-- Card Layout for Rescue Details -->
         <div class="card p-4" style="max-width: 400px; margin: auto; border-radius: 15px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);">
             <!-- Picture -->
-            {% if rescue.picture %}
-                <img src="{{ rescue.picture.url }}" alt="{{ rescue.name }}" class="img-fluid" style="object-fit: cover; height: 300px; border-radius: 15px;">
+            {% if rescue.profile %}
+                <img src="{{ rescue.profile.url }}" alt="{{ rescue.name }}" class="img-fluid" style="object-fit: cover; height: 300px; border-radius: 15px;">
             {% else %}
                 <img src="https://via.placeholder.com/400x300" alt="No Image Available" class="img-fluid" style="object-fit: cover; height: 300px; border-radius: 15px;">
             {% endif %}
@@ -23,13 +23,13 @@
                     {% endif %}
                 </p>
                 <p class="card-text" style="font-size: 1rem; line-height: 1.6; color: #343a40;"> 
-                    <strong>Description:</strong> {{ rescue.description|truncatewords:20 }}
+                    <strong>Description:</strong> {{ rescue.description|safe }}
                 </p>
             </div>
 
             <!-- Footer and Action Buttons -->
-            <div class="card-footer text-center bg-light" style="border-top: 1px solid #e9ecef; padding-top: 1rem;">
-                <button class="btn btn-primary btn-lg" style="border-radius: 25px; padding: 0.5rem 2rem;" data-bs-toggle="modal" data-bs-target="#viewRescueModal{{ rescue.id }}">About Me</button>
+            <div class="card-footer text-center" >
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#viewRescueModal{{ rescue.id }}">Gallery</button>
             </div>
         </div>
 
@@ -79,7 +79,7 @@
                             </div>
                         </div>
                         <p class="text-center" style="font-size: 1rem; color: #495057; line-height: 1.6;">
-                            {{ rescue.description }}
+                            {{ rescue.description|safe }}
                         </p>
                     </div>
                     <div class="modal-footer">

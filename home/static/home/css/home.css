@@ -126,7 +126,7 @@
 /* VMGO seciton styes */
 
 .vision-mission-goal {
-    background:  linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(https://scontent.fceb1-1.fna.fbcdn.net/v/t39.30808-6/240532814_2898307227101346_8954988252562091862_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeHfISWyD7V2rJ4KvXv-7KzhLkHqcy1wRBYuQepzLXBEFpBDIVAITtUXex7bmXz_9fxlKmBGTHyZvevxhh5AOJP_&_nc_ohc=OqJcZWXtnmgQ7kNvgGOlTny&_nc_zt=23&_nc_ht=scontent.fceb1-1.fna&_nc_gid=A6kVotPRsQ2VTImdYWc8DdC&oh=00_AYBNuSc_-wdhyUgTpN7SG3dHK96TlPK5cylGRCx2q8YOMw&oe=6791314F);
+    background:  linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../images/vmgo-bg.jpg);
     background-size: cover;
     background-position: center;
     color: white;
@@ -225,7 +225,7 @@
 }
 
 .volunteer-card-bg{
-    background:  linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(https://scontent.fceb1-5.fna.fbcdn.net/v/t39.30808-6/457660859_514814701096657_820739798703459297_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeHr4QlsP91rD9OCAE6q1El-mRbtir0PaJiZFu2KvQ9omESCP4BqsktKA21fVzI5Uz6ghcReYY-fnVhe0p5gJcw1&_nc_ohc=9XDZTkPWPc0Q7kNvgHU7zCd&_nc_zt=23&_nc_ht=scontent.fceb1-5.fna&_nc_gid=Aav17vfgZcmLOr9hdWJrxPT&oh=00_AYBeFEtFq05pHhEl3tAs0dmS17_Wp0zYzol-r6AOk8nx0A&oe=67918581);
+    background:  linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../images/hero-section-bg.jpg);
     height: 15em;
     background-size: cover;
     background-position: center;
@@ -233,7 +233,7 @@
 }
 
 .donate-card-bg{
-    background:  linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(https://scontent.fceb1-3.fna.fbcdn.net/v/t39.30808-6/244751999_2921970741401661_4190217931880783503_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=3a1ebe&_nc_eui2=AeG0Fmu054tJNV5WwOGTQ9RoGcYqDPk3jbgZxioM-TeNuHtibkfPqFn39eqKDKfZxzh7a5db14XwnVDAMJ4FHHDu&_nc_ohc=M3sewvzgEeIQ7kNvgGrtwNr&_nc_zt=23&_nc_ht=scontent.fceb1-3.fna&_nc_gid=AkG7mvv92005cSM1o7dkn9W&oh=00_AYBcmY7qEFV-jEUeGYzXjFRi13eWb86o8CZ6kP4N4WULrA&oe=679196C8);
+    background:  linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../images/donate-bg.jpg);
     height: 15em;
     background-size: cover;
     background-position: center;
@@ -242,7 +242,7 @@
 
 
 .sponsor-card-bg{
-    background:  linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(https://scontent.fceb1-3.fna.fbcdn.net/v/t39.30808-6/255014849_2947812708817464_4584846727321627360_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=3a1ebe&_nc_eui2=AeHW39t2NOTR-FGJxfJyItbYjpqZgnSkeSSOmpmCdKR5JCkJauWklVVVtU0h4A0Ohsva5t4RRFU6JvVjXsCGPVVW&_nc_ohc=uKeJGc7abIkQ7kNvgH1nN0Q&_nc_zt=23&_nc_ht=scontent.fceb1-3.fna&_nc_gid=AK_hRpWFBG9TAsaNUOxBTb-&oh=00_AYAuReXWgHryCN4aK55O9IXFkKnTbRzjv9CWX4RcU_8Uqg&oe=67919493);
+    background:  linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../images/sponsor-bg.jpg);
     height: 15em;
     background-size: cover;
     background-position: center;

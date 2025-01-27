@@ -21,40 +21,74 @@ padding: 80px 20px;">
 </div>
 
 
-<div class="container custom-container my-5">
+<div class="container my-5 custom-container">
+  {% if featured_post %}
+
     <section class="featured-post">
         <br>
         <h1>Featured Post</h1>
         <br>
         <div class="featured-card">
-            <img src="{% static 'pics/iro_supp.jpg' %}" alt="Featured">
+            {% if featured_post.photo %}
+            <img src="{{ featured_post.photo.url }}" alt="{{ latest_post.title }}">
+            {% else %}
+            {% endif %}
+
+
             <div class="content">
-                <span class="category">Featured</span>
-                <h2>The Importance of Spaying and Neutering: Why It Matters</h2>
-                <p>Learn why spaying and neutering has the potential to reduce overpopulation and ensure healthier animal lives.</p>
-                <button class="read-more">Read More</button>
+                {% if featured_post.category %}
+                <span class="category">{{featured_post.category}}</span>
+                {% else %}
+                <span class="category">Uncategorized</span>
+                {% endif %}
+
+                <h2>{{featured_post.title}}</h2>
+
+                <p>{{featured_post.created_at}}</p>
+
+
+                {% if featured_post.summary %}
+                <p>{{featured_post.summary|safe}}</p>
+                {% else %}
+                <p></p>
+                {% endif %}
+             
+                <a class="btn btn-primary" href="{% url 'news&articles:news_artic_detail' featured_post.slug %}">Read More</a>
             </div>
         </div>
     </section>
+  {% endif %}
 
     <aside class="sidebar">
         <div class="input-wrapper">
-            <i class="icon-search"></i>
-            <input type="text" placeholder="Search" class="search-bar">
+          <form action="" method="GET" class="d-flex align-items-center gap-2">          
+            <i class="fi fi-rr-search"></i>
+            <input 
+                type="text" 
+                placeholder="Search"
+                name="search"
+                class="search-bar" 
+                value="{{ search_query }}" 
+            >
+          </form>
         </div>
-        <div class="input-wrapper">
-            <i class="icon-filter"></i>
-            <select class="filter">
+        {% comment %} <div class="input-wrapper mt-5">
+            <span class="category-label">Sor</span>
+            <select class="category-filter">
                 <option value="">All</option>
                 <option value="date">Date</option>
             </select>
-        </div>
+        </div> {% endcomment %}
         <br>
         <div class="input-wrapper">
             <span class="category-label">Browse by category</span>
-            <select class="category-filter">
-                <option value="category1">Category 1</option>
-                <option value="category2">Category 2</option>
+            <select class="category-filter" id="category">
+              <option value="">All Categories</option>
+              {% for category in categories %}
+              <option value="{{ category.name }}" {% if category.name == selected_category %}selected{% endif %}>
+                  {{ category.name }}
+              </option>
+          {% endfor %}
             </select>
         </div>
     </aside>
@@ -117,84 +151,55 @@ padding: 80px 20px;">
     </div>
 </section>
 </div> {% endcomment %}
+{% if latest_posts %}
 <div class="container">
     <div class="row">
+      {% for latest_post in latest_posts %}
         <div class="col-md-4 mb-4">
           <div class="card blog-card">
-            <img src="{% static 'pics/educ_reso1.jpg' %}" alt="Post">
+            {% if latest_post.photo %}
+            <img src="{{ latest_post.photo.url }}" alt="{{ latest_post.title }}">
+            {% else %}
+            {% endif %}
+
             <div class="card-body">
-              <span class="category">Category</span>
-              <h5 class="card-title">Lorem ipsum dolor sit</h5>
-              <p class="card-text">A short summary of the blog post goes here to entice readers.</p>
-              <button class="btn btn-primary">Read More</button>
+
+              {% if latest_post.category %}
+              <span class="category">{{latest_post.category}}</span>
+              {% else %}
+              <span class="category">Uncategorized</span>
+              {% endif %}
+
+              <h5 class="card-title">{{latest_post.title}}</h5>
+
+              <p>{{featured_post.created_at}}</p>
+
+              {% if latest_post.summary %}
+              <p>{{latest_post.summary|safe}}</p>
+              {% else %}
+              <p></p>
+              {% endif %}
+              <a class="btn btn-primary" href="{% url 'resources:resource_detail' latest_post.slug %}">Read More</a>
             </div>
           </div>
-        </div>
-        <div class="col-md-4 mb-4">
-          <div class="card blog-card">
-            <img src="{% static 'pics/educ_reso2.jpg' %}" alt="Post">
-            <div class="card-body">
-                <span class="category">Category</span>
-              <h5 class="card-title">Lorem ipsum dolor sit</h5>
-              <p class="card-text">A short summary of the blog post goes here to entice readers.</p>
-              <button class="btn btn-primary">Read More</button>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 mb-4">
-          <div class="card blog-card">
-            <img src="{% static 'pics/educ_reso3.jpg' %}" alt="Post">
-            <div class="card-body">
-                <span class="category">Category</span>
-              <h5 class="card-title">Lorem ipsum dolor sit</h5>
-              <p class="card-text">A short summary of the blog post goes here to entice readers.</p>
-              <button class="btn btn-primary">Read More</button>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 mb-4">
-            <div class="card blog-card">
-              <img src="{% static 'pics/educ_reso3.jpg' %}" alt="Post">
-              <div class="card-body">
-                  <span class="category">Category</span>
-                <h5 class="card-title">Lorem ipsum dolor sit</h5>
-                <p class="card-text">A short summary of the blog post goes here to entice readers.</p>
-                <button class="btn btn-primary">Read More</button>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 mb-4">
-            <div class="card blog-card">
-              <img src="{% static 'pics/educ_reso3.jpg' %}" alt="Post">
-              <div class="card-body">
-                  <span class="category">Category</span>
-                <h5 class="card-title">Lorem ipsum dolor sit</h5>
-                <p class="card-text">A short summary of the blog post goes here to entice readers.</p>
-                <button class="btn btn-primary">Read More</button>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 mb-4">
-            <div class="card blog-card">
-              <img src="{% static 'pics/educ_reso3.jpg' %}" alt="Post">
-              <div class="card-body">
-                  <span class="category">Category</span>
-                <h5 class="card-title">Lorem ipsum dolor sit</h5>
-                <p class="card-text">A short summary of the blog post goes here to entice readers.</p>
-                <button class="btn btn-primary">Read More</button>
-              </div>
-            </div>
-          </div>
+        </div>    
+      {% endfor %}
         <!-- Repeat for more blog cards -->
       </div>
     </div>
-  
 </div>
+{% else %}
+<div class="alert alert-secondary text-center container bg-black text-white fs-6 fw-bolder fs-2" role="alert">
+    No posts.
+</div>
+{% endif %}
+
 
   {% endblock content %}
 
 
   {% block scripts %}
-  
+  <script src="{% static 'js/educ_reso.js' %}"></script>
+
   
   {% endblock scripts %}

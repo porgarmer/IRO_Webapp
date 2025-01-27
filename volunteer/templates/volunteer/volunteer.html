@@ -219,7 +219,7 @@
 
 {% block content %}
 <div class="header d-flex justify-content-center" 
-        style="background-color: #231F20; 
+        style="background: linear-gradient(rgba(43, 37, 37, 0.6), rgba(18, 15, 15, 0.6)), url('https://scontent.fceb1-3.fna.fbcdn.net/v/t1.6435-9/89534778_2480146195584120_8813535039015878656_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=3a1ebe&_nc_eui2=AeEcPlmRJgZEniZA-YrfqtP6mi39yh5H352aLf3KHkffnSUpJ8vwvfctXoLj2olmhJ8hT_Xt8A5b1lPl72N5qlQ6&_nc_ohc=To90K8tya8IQ7kNvgH3Z9xq&_nc_zt=23&_nc_ht=scontent.fceb1-3.fna&_nc_gid=A-ezgFscRr-sDmRDpyZLUFb&oh=00_AYAim-NU1oBbKBm3_j93A72z7u65CeN_cQtP5c8BH3PkLw&oe=67BEC725'); 
         background-size: cover; 
         background-position: center; 
         background-repeat: no-repeat; 
@@ -228,7 +228,7 @@
         <div class="container">
             <h1>BE A HERO FOR ANIMALS – <span style="color: #F95B00;">VOLUNTEER</span> TODAY!</h1>
             <p>Our time and compassion can save lives. Join our team of dedicated animal lovers.</p>
-            <a href="{% url 'in_kind_donations'%}" class="btn btn-primary p-3">
+            <a href="https://forms.gle/RSZGXakdaT3uFUK18" class="btn btn-primary p-3">
                 Sign Up to Volunteer
             </a>
     </div>
@@ -238,7 +238,7 @@
     <div class="row align-items-center">
         <!-- Image Section -->
         <div class="col-md-6">
-            <img src="https://scontent.fmnl17-3.fna.fbcdn.net/v/t39.30808-6/347558094_652756916882835_3205653412299594373_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=f727a1&_nc_eui2=AeE-AjBXzrWK8JkoqR-so9eNEAYo6ktYxF4QBijqS1jEXoHTQiEDq7xpqrwgYvOuy8caBYnCAYh6LkF66UdYAaS8&_nc_ohc=F4IGI75GQp4Q7kNvgFJrHvZ&_nc_zt=23&_nc_ht=scontent.fmnl17-3.fna&_nc_gid=ANLfT4O9YYuyhtTA6SD843R&oh=00_AYBgUO3HmLf6kUX4NhDPeRfR6-kReRP-kkr06oxX5WKUcg&oe=679506A7" 
+            <img src="https://scontent.fceb1-2.fna.fbcdn.net/v/t1.6435-9/58419238_2235298983402177_6181793858456649728_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=3a1ebe&_nc_eui2=AeGZTKPkYq2GlOKpWXlVxbFVy5y6wXGJUSbLnLrBcYlRJjRa1g4xK0n3WCBmqesr9QrIK57Q4D_m47GSqBfBxhvX&_nc_ohc=DCfgX5ZOO14Q7kNvgGekpxd&_nc_zt=23&_nc_ht=scontent.fceb1-2.fna&_nc_gid=AEL_Y_E4j4nDvz_EpmVlvC6&oh=00_AYADvB19wx7j5MyWsr3SwF_b_1q54wfqFc9vtqN_vOv9_w&oe=67BEC998" 
                 alt="Why Volunteer" 
                 class="img-fluid rounded">
         </div>
@@ -264,76 +264,100 @@
     <div class="row g-3 justify-content-center mt-4">
         <div class="col-md-3">
             <div class="donation-card text-center p-4">
-                <img src="https://www.robinsonsretailholdings.com.ph/wp-content/uploads/2023/06/1-2023-May-Turnover-Feed-A-FURend-1.jpg" alt="IRO Cattery" class="img-fluid mb-3">
+                <img src="{% static 'volunteer/images/chronometer.png' %}" alt="IRO Cattery" class="img-fluid mb-3 mx-auto d-block" width=200px>
                 <p style="font-size: 1.4rem;"><strong>Time</strong></p>
                 <p style="font-size: 1.2rem;">Body text for whatever you’d like to say. Add main takeaway points, quotes, anecdotes, or even a very very short story. </p>
                 <div class="d-flex justify-content-center mt-4">
-                    <a href="{% url 'volunteer'%}" class="btn btn-primary p-3">
+                    <b type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#timeModal">
                         Learn More
-                    </a>
+                    </b>
                 </div>
             </div>
         </div>
         <div class="col-md-3">
             <div class="donation-card text-center p-4">
-                <img src="https://www.robinsonsretailholdings.com.ph/wp-content/uploads/2023/06/1-2023-May-Turnover-Feed-A-FURend-1.jpg" alt="IRO Cattery" class="img-fluid mb-3">
+                <img src="{% static 'volunteer/images/treasure-chest.png' %}" alt="IRO Cattery" class="img-fluid mb-3 mx-auto d-block" width=200px>
                 <p style="font-size: 1.4rem;"><strong>Treasure</strong></p>
                 <p style="font-size: 1.2rem;">Body text for whatever you’d like to say. Add main takeaway points, quotes, anecdotes, or even a very very short story. </p>
                 <div class="d-flex justify-content-center mt-4">
-                    <a href="{% url 'volunteer'%}" class="btn btn-primary p-3">
+                    <b type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#treasureModal">
                         Learn More
-                    </a>
+                    </b>
                 </div>
             </div>
         </div>
         <div class="col-md-3">
             <div class="donation-card text-center p-4">
-                <img src="https://www.robinsonsretailholdings.com.ph/wp-content/uploads/2023/06/1-2023-May-Turnover-Feed-A-FURend-1.jpg" alt="IRO Cattery" class="img-fluid mb-3">
+                <img src="{% static 'volunteer/images/talent-search.png' %}" alt="IRO Cattery" class="img-fluid mb-3 mx-auto d-block" width=200px>
                 <p style="font-size: 1.4rem;"><strong>Talent</strong></p>
                 <p style="font-size: 1.2rem;">Body text for whatever you’d like to say. Add main takeaway points, quotes, anecdotes, or even a very very short story. </p>
                 <div class="d-flex justify-content-center mt-4">
-                    <a href="{% url 'volunteer'%}" class="btn btn-primary p-3">
+                    <b type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#talentModal">
                         Learn More
-                    </a>
+                    </b>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<div class="container text-center my-5">
-    <h1 class="mb-4">VOLUNTEER ACTIVITIES</h1>
-    <p>Your time is valuable, and we've created a flexible schedule to make the most impact while volunteering.</p>
-
-    <div class="calendar">
-        <div class="day">29</div>
-        <div class="day">30</div>
-        <div class="day">31</div>
-        <div class="day">1</div>
-        <div class="day">2</div>
-        <div class="day">3</div>
-        <div class="day">4</div>
-        <div class="day">5</div>
-        <div class="day activity-1">6</div>
-        <div class="day activity-2">7</div>
-        <div class="day">8</div>
-        <div class="day">9</div>
-        <div class="day">10</div>
-        <div class="day">11</div>
-        <div class="day">12</div>
-        <div class="day activity-3">13</div>
-        <div class="day">14</div>
-        <div class="day">15</div>
-        <div class="day">16</div>
-        <div class="day">17</div>
-        <div class="day">18</div>
-        <div class="day">19</div>
-        <div class="day activity-1">20</div>
+<div class="modal fade" id="timeModal" tabindex="-1" aria-labelledby="timeModal" aria-hidden="true">
+    <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h1 class="modal-title fs-5" id="timeModalLabel">Time</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, et! Tenetur, maiores. Assumenda deserunt doloremque repellendus error esse sunt ratione, blanditiis alias reiciendis eos temporibus? Explicabo perferendis quibusdam aliquam ipsam.
+        </div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
     </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="treasureModal" tabindex="-1" aria-labelledby="treasureModal" aria-hidden="true">
+    <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h1 class="modal-title fs-5" id="treasureModalLabel">Treasure</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, et! Tenetur, maiores. Assumenda deserunt doloremque repellendus error esse sunt ratione, blanditiis alias reiciendis eos temporibus? Explicabo perferendis quibusdam aliquam ipsam.
+        </div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+    </div>
+    </div>
+</div>
+
+<div class="modal fade" id="talentModal" tabindex="-1" aria-labelledby="talentModal" aria-hidden="true">
+    <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h1 class="modal-title fs-5" id="talentModalLabel">Talent</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, et! Tenetur, maiores. Assumenda deserunt doloremque repellendus error esse sunt ratione, blanditiis alias reiciendis eos temporibus? Explicabo perferendis quibusdam aliquam ipsam.
+        </div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+    </div>
+    </div>
+</div>
+  
+<div class="container text-center my-5">
 
     <div id="activity-details" class="activity-list"></div>
 
-    <button class="btn btn-primary">Sign Up to Volunteer</button>
+    <a href="https://forms.gle/RSZGXakdaT3uFUK18" class="btn btn-primary">Sign Up to Volunteer</a>
 </div>
 {% endblock content %}
 {% block script %}

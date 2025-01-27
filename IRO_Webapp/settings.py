@@ -198,12 +198,15 @@ customColorPalette = [
         },
     ]
 
-CKEDITOR_5_CUSTOM_CSS = 'path_to.css' # optional
+# CKEDITOR_5_CUSTOM_CSS = 'path_to.css' # optional
 # CKEDITOR_5_FILE_STORAGE = "path_to_storage.CustomStorage" # optional
 CKEDITOR_5_CONFIGS = {
     'default': {
         'toolbar': ['heading', '|', 'bold', 'italic', 'link',
                     'bulletedList', 'numberedList', 'blockQuote', 'imageUpload', ],
+          'alignment': {
+            'options': ['left', 'center', 'right', 'justify']
+        },
 
     },
     'extends': {
@@ -214,6 +217,9 @@ CKEDITOR_5_CONFIGS = {
             '|',
             'blockQuote',
         ],
+         'alignment': {
+            'options': ['left', 'center', 'right', 'justify']
+        },
         'toolbar': ['heading', '|', 'outdent', 'indent', '|', 'bold', 'italic', 'link', 'underline', 'strikethrough',
         'code','subscript', 'superscript', 'highlight', '|', 'codeBlock', 'sourceEditing', 'insertImage',
                     'bulletedList', 'numberedList', 'todoList', '|',  'blockQuote', 'imageUpload', '|',
