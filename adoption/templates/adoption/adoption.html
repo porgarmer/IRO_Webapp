@@ -436,7 +436,10 @@
                         </div>
                         <div class="modal-body">
                             <div class="d-flex mb-4 bg-light p-3" style="border-radius: 10px">
+                                {% if adoptable_rescue.profile  %}
                                 <img src="{{ adoptable_rescue.profile.url }}" alt="{{ adoptable_rescue.name }}" class="rounded" style="width: 200px; height: 200px; object-fit: cover; margin-right: 20px;">
+                                {% else %}
+                                {% endif %}
                                 <div class="text-black">
                                     <p>{{ adoptable_rescue.description|safe }}</p>
                                     <div>
@@ -445,18 +448,33 @@
                                 </div>
                             </div>
                             <div class="row g-2 mb-4">
+                                {% if adoptable_rescue.profile  %}
                                 <div class="col-3">
                                     <img src="{{ adoptable_rescue.additional_picture_1.url }}" alt="Gallery Image" class=" rounded" style="object-fit: cover;">
                                 </div>
+                                {% else %}
+                                {% endif %}
+
+                                {% if adoptable_rescue.profile  %}
                                 <div class="col-3">
                                     <img src="{{ adoptable_rescue.additional_picture_2.url }}" alt="Gallery Image" class=" rounded" style="object-fit: cover;">
                                 </div>
+                                {% else %}
+                                {% endif %}
+
+                                {% if adoptable_rescue.profile  %}
                                 <div class="col-3">
                                     <img src="{{ adoptable_rescue.additional_picture_3.url }}" alt="Gallery Image" class=" rounded" style="object-fit: cover;">
                                 </div>
+                                {% else %}
+                                {% endif %}
+
+                                {% if adoptable_rescue.profile  %}
                                 <div class="col-3">
                                     <img src="{{ adoptable_rescue.additional_picture_4.url }}" alt="Gallery Image" class=" rounded" style="object-fit: cover;">
                                 </div>
+                                {% else %}
+                                {% endif %}
                             </div>
 
                             <div class="text-center mt-3">
