@@ -1,6 +1,6 @@
 {% extends "global/base.html" %}
 {% load static %}
-{% block title %}Adoption Process Page{% endblock title %}
+{% block title %}Contact Us Page{% endblock title %}
 {% block styles %}
 <style>
         body {
@@ -15,7 +15,7 @@
                 color: white;
                 text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
                 padding: 100px 20px;
-                text-align: left;
+                text-align: center;
                 background: linear-gradient(rgba(43, 37, 37, 0.6), rgba(18, 15, 15, 0.6)),
             }
     
@@ -69,17 +69,78 @@
                 margin: 10px 0;
             }
 
-            .section {
-                padding: 50px 20px;
-                background-color: #F2F2F2;
+            .form-section {
+                max-width: 800px;
+                margin: 50px auto;
+                padding: 40px;
+                background-color: #f7f9fc;
+                border-radius: 12px;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            }
+        
+            .form-section h2 {
+                font-size: 2rem;
+                margin-bottom: 20px;
+                text-align: center;
+                color: #333;
+            }
+        
+            .form-section form {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+            }
+        
+            .form-group {
+                display: flex;
+                flex-direction: column;
+            }
+        
+            .form-group label {
+                font-size: 1rem;
+                margin-bottom: 5px;
+                color: #555;
+            }
+        
+            .form-group input,
+            .form-group textarea {
+                padding: 12px;
+                font-size: 1rem;
+                border: 1px solid #ccc;
+                border-radius: 8px;
+                outline: none;
+                transition: border-color 0.3s ease;
+            }
+        
+            .form-group input:focus,
+            .form-group textarea:focus {
+                border-color:rgb(79, 172, 22);
+            }
+        
+            .form-group textarea {
+                height: 120px;
+                resize: none;
+            }
+        
+            .form-action {
                 text-align: center;
             }
-
-            .section h2 {
-                font-size: 2.2em;
-                color: black; 
-                margin-bottom: 20px;
+        
+            .form-action button {
+                padding: 12px 25px;
+                background-color: #F95B00;
+                color: white;
+                border: none;
+                border-radius: 8px;
+                font-size: 1rem;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
             }
+        
+            .form-action button:hover {
+                background-color:rgb(176, 109, 70);
+            }
+        
 
             .donation-card, .partner-card {
                 background-color: white;
@@ -182,74 +243,78 @@
         padding: 80px 20px;">
 
         <div class="container">
-            <h1><span style="color: #F95B00;">ADOPTION</span> PROCESS</h1>
-            <p>Give a Forever Home to a Rescue in Need</p>
-            <a href="https://forms.gle/RSZGXakdaT3uFUK18" target="_blank" class="btn btn-primary p-3">
-                Adoption Form
-            </a>
-            
-            <a href="{% url 'adoption' %}" target="_blank" class="btn btn-secondary p-3 text-light">
-                Adoptable Rescues
-            </a>
-            
+            <h1> CONTACT US </h1>
         </div>
+
+        
+    </div>
+    <div class="form-section">
+        <h2>We’d Love to Hear from You 👋</h2>
+        <form>
+            <div class="form-group">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" placeholder="Enter your full name">
+            </div>
+            <div class="form-group">
+                <label for="email">Your Email</label>
+                <input type="email" id="email" placeholder="example@domain.com">
+            </div>
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" placeholder="Let us know how we can help you"></textarea>
+            </div>
+            <div class="form-action">
+                <button type="submit">Send Message</button>
+            </div>
+        </form>
     </div>
         <div class="container my-5">
-            <h2 class="text-center mb-4" style="font-weight: bold; font-size: 3rem;">ADOPTION PROCESS</h2>
-
         <div class="row g-4 justify-content-center">
         <div class="col-md-4">
             <div class="card text-center p-4">
-                <img src="https://icons.veryicon.com/png/o/miscellaneous/designer-icon-1/form-18.png" alt="BPI" class="mb-3" style="max-height: 100px;">
-                <p><strong>ADOPTION FORM</strong></p>
-                <p style="color:rgb(68, 66, 65);">FILL OUT ADOPTION FORM</p>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0XvFduY7sDBknSh_lJd80OzsdZ_LaHL2w-g&s" alt="GMAIL" class="mb-3" style="max-height: 100px;">
+                <p><strong>GMAIL</strong></p>
+                <p style="color:rgb(68, 66, 65);">
+                    <a href="mailto:helpiro@gmail.com">helpiro@gmail.com</a>
+                </p>
+            </div>
+            
+        </div>
+        <div class="col-md-4">
+            <div class="card text-center p-4">
+                <img src="https://yt3.googleusercontent.com/LZeUOuOM8lzINkYAKi1X3pCQz1xsSD_EndPUR1vOGesaGavUtyM_-bCUq7Gld-LPX_R7uieWsA=s900-c-k-c0x00ffffff-no-rj" alt="WEBSITE" class="mb-3" style="max-height: 100px;">
+                <p><strong>YOUTUBE </strong></p>
+                <p style="color:rgb(68, 66, 65);" >
+                    <a href="https://www.youtube.com/@IROPhilippines">IROPhilippines</a>
             </div>
         </div>
         <div class="col-md-4">
             <div class="card text-center p-4">
-                <img src="https://cdn-icons-png.flaticon.com/512/10822/10822409.png" alt="BDO" class="mb-3" style="max-height: 100px;">
-                <p><strong>INITIAL INTERVIEW</strong></p>
-                <p style="color:rgb(68, 66, 65);" >AFTER ASSESSING THE ADOPTION FORM, YOU WILL HAVE AN INITIAL INTERVIEW.</p>
+                <img src="https://1000logos.net/wp-content/uploads/2017/02/Facebook-Logosu.png" alt="FB" class="mb-3" style="max-height: 100px;">
+                <p><strong>FACEBOOK</strong></p>
+                <p style="color:rgb(68, 66, 65);" >
+                    <a href="https://www.fb.com/IslandRescueOrganization" target="_blank">IslandRescueOrganization</a>
             </div> 
-        </div>
-        <div class="col-md-4">
-            <div class="card text-center p-4">
-                <img src="https://cdn-icons-png.flaticon.com/512/3882/3882295.png" alt="China Bank" class="mb-3">
-                <p><strong>FINAL INTERVIEW</strong></p>
-                <p style="color:rgb(68, 66, 65);">AFTER A CAREFUL ASSESSMENT OF THE INITIAL INTERVIEW, YOU WILL MOVE TO THE FINAL INTERVIEW.</p>
-            </div>
         </div>
     </div>
         <div class="row g-4 justify-content-center mt-4">
             <div class="col-md-4">
                 <div class="card text-center p-4">
-                    <img src="https://cdn-icons-png.flaticon.com/512/6476/6476339.png" alt="China Bank" class="mb-3">
-                    <p><strong>CONTRACT SIGNING</strong></p>
-                    <ul class="list-unstyled mt-3">
-                        <li>SIGN CONTRACT</li>
-                        <li>PRESENT A VALID ID</li>
-                        <li>JOIN THE IRO FURPARENTS FB GOUP</li>
-                        <li>PAY THE ADOPTION FEE: PHP 500</li>
-                    </ul>
+                    <img src="https://icon-library.com/images/facebook-icon-transparent-background/facebook-icon-transparent-background-2.jpg" alt="IG" class="mb-3">
+                    <p><strong>INSTAGRAM</strong></p>
+                    <p style="color:rgb(68, 66, 65);" >
+                        <a href="https://www.instagram.com/islandrescueorg" target="_blank">@islandrescueorg</a>
+                        <a href="https://www.instagram.com/camp.iro" target="_blank">@camp.iro</a>
                 </div>
             </div>
+
             <div class="col-md-4">
                 <div class="card text-center p-4">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnp4U6biOGkJ5yCiCyLQKFswHLXi3IAaQh_k_MY5-UktSKNQR3X2mc0AwPU_NWSwwTkIA&usqp=CAU" alt="China Bank" class="mb-3">
-                    <p><strong>TURN OVER</strong></p>
-                    <p style="color:rgb(68, 66, 65);">FINALLY, THE TURNOVER OF THE PET. CONGRATULATIONS! YOU ARE NOW AN IRO FURPARENT!</p>
+                    <img src="https://logos-world.net/wp-content/uploads/2020/04/Twitter-Emblem.png" alt="China Bank" class="mb-3">
+                    <p><strong>TWITTER </strong></p>
+                    <p style="color:rgb(68, 66, 65);" >
+                        <a href="https://www.twitter.com/iroislandrescue">@iroislandrescue</a>
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="container d-flex justify-content-center align-items-center">
-
-        <a href="https://forms.gle/RSZGXakdaT3uFUK18" class="btn btn-primary p-3">
-
-            Adoption Form
-        </a>
-    </div>
-    
-
 {% endblock content %}  
 

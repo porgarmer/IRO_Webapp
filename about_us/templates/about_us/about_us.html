@@ -1,0 +1,148 @@
+{% extends "global/base.html" %}
+{% load static %}
+{% block title %}About Us Page{% endblock title %}
+{% block styles %}
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        color: #333;
+    }
+
+    .header {
+        color: white;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        padding: 100px 20px;
+        text-align: center;
+        background: #231F20;
+    }
+
+    .header h1 {
+        font-size: 5rem;
+        font-weight: bold;
+        margin-bottom: 15px;
+        color: white;
+    }
+
+    .header p {
+        font-size: 2rem;
+        margin-bottom: 30px;
+        line-height: 1.6em;
+        color: white;
+        text-align: center;
+    }
+
+    .content h2 {
+        font-size: 2.5rem;
+        color: black;
+        margin-bottom: 20px;
+    }
+
+    .content p {
+        font-size: 1.5rem;
+        color: black;
+        margin-bottom: 40px;
+        line-height: 2em;
+        text-align: justify;
+    }
+
+    .img-fluid {
+        max-width: 100%;
+        height: auto;
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    @media (max-width: 768px) {
+        .header h1 {
+            font-size: 4rem;
+        }
+
+        .header p {
+            font-size: 1.5rem;
+        }
+
+        .content h2 {
+            font-size: 2rem;
+        }
+
+        .content p {
+            font-size: 1.2rem;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .header h1 {
+            font-size: 3rem;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+        }
+
+        .content h2 {
+            font-size: 1.8rem;
+        }
+
+        .content p {
+            font-size: 1rem;
+        }
+    }
+</style>
+{% endblock styles %}
+{% block content %}
+<div class="header d-flex justify-content-center">
+    <div class="container text-center">
+        <h1>ABOUT US</h1>
+        <h1><span style="color: #F95B00;">Island Rescue Organization</span></h1>
+        <p>Compassion in Action for Animals in Need</p>
+    </div>
+</div>
+
+<div class="container my-5">
+    <div class="row">
+        <div class="col-md-5 text-center">
+            <img src="https://scontent.fceb2-2.fna.fbcdn.net/v/t39.30808-6/457660859_514814701096657_820739798703459297_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeEyn5LqH_MAvqdmK35gVOERmRbtir0PaJiZFu2KvQ9omMyL3CckRyPOhsC54QRLW4vLrZNsuzUxRbqD6-dWziY-&_nc_ohc=HtonaH0U0dUQ7kNvgEIFwfP&_nc_zt=23&_nc_ht=scontent.fceb2-2.fna&_nc_gid=AuNMXkGvlCH64bDdZKN3RAk&oh=00_AYDX_p-TaJz-gzNMtUHCMeiV7DZxKrWyJ6zXcDqNmBt74w&oe=679D6301" alt="Island Rescue Organization" class="img-fluid">
+        </div>
+        <div class="col-md-7">
+            <div class="content">
+                <h2>Our Story</h2>
+                <p>
+                    Island Rescue Organization, or more commonly known as IRO, is a non-profit, non-government organization dedicated to helping the plight of animals in the region through Rescue, Education, and Advocacy. Through these 3 pillars, the organization has established partnerships among communities, the private sector, and LGUs through volunteerism in the last decade.
+                </p>
+                <p>
+                    Founded in 2010 by a group of animal advocates and pet lovers in the island, IRO has evolved from fostering rescued animals to re-homing them into loving families. Over the years, the team has been innovating ways to promote long-term solutions to lessen the population of stray dogs and cats, and even elevate the quality of life of those who remain on the streets.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-md-12">
+            <div class="content">
+                <p>
+                    Run solely by volunteers, IRO has built three shelters in the region—one in the town of Barili for senior and special-needs dogs, another in Mandaue for cats (including the special-needs patients), and the third in Cebu City Brgy. Guba where the bulk and general populace of the rescued animals are being housed.
+                </p>
+                <p>
+                    With over 100 animals at its rescue centers and reliant on sponsorships and donations, the organization mounts several projects annually to raise funds that cover food costs, veterinary care, and overall operations. The team utilizes its education campaigns to continue to engage the general public in the mission, all while working with several different sectors of society.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-md-6 text-center">
+            <img src="https://scontent.fceb6-1.fna.fbcdn.net/v/t1.6435-9/83835719_2452393821692691_63506241137147904_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeF2i2I_pfU0M48N_v9EOt8rjIQMtTipN8iMhAy1OKk3yOouGdVvn361GXbnvJnNq3XtXib27lNHf72hoXkq7kRV&_nc_ohc=5Yf9CUsv5YsQ7kNvgEyShYx&_nc_zt=23&_nc_ht=scontent.fceb6-1.fna&_nc_gid=A1-9IouBmHfz-8X9PTblkpC&oh=00_AYA1b8NyCDHJ0iW7cbKh_iod072vOwqK7fOEOe_bZ4d3RQ&oe=67BEEB4D" alt="IRO Vision" class="img-fluid">
+        </div>
+        <div class="col-md-6">
+            <div class="content">
+                <p>
+                    IRO aims to have a society where animal rescue organizations are no longer needed, and where all living beings are treated humanely, recognizing that humans and animals are interconnected and important for the survival of our environment and planet.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
