@@ -3,7 +3,7 @@
 {% block content %}
     <div class="container mt-5 text-start ">
         <div class="card shadow-lg p-4" style="border-radius: 15px; max-width: 1000px; margin: auto;">
-            <h2 class="text-center mb-4" style="font-weight: bold; color: #343a40;">Edit Post</h2>
+            <h2 class="text-center mb-4" style="font-weight: bold; color: #343a40;">Edit News&Articles Post</h2>
 
             <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
@@ -42,6 +42,15 @@
 
                 <!-- Picture Upload -->
                 <div class="mb-4">
+                    {% if news_article.photo %}
+                    <div class="mt-2 text-center">
+                        <img src="{{ news_article.photo.url }}" alt="Additional Picture 4"
+                             class="img-fluid rounded shadow-sm"
+                            >
+                        <p class="text-muted mt-2">Current Picture</p>
+                    </div>
+                    {% else %}
+                    {% endif %}
                     {{form.photo.label}}
                     {{form.photo}}
                 </div>

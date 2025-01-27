@@ -49,7 +49,7 @@
 
 {% block content %}
 
-<div class="container">
+<div class="container text-start mt-5">
     <h1 class="mb-5 text-center display-4" style="font-weight: bold; color: #343a40;">News&Articles</h1>
      
         <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
@@ -62,50 +62,58 @@
             
             <!-- Search and Filter -->
             <div class="d-flex ms-auto gap-2">  
-                <label for="date-sort">Order by date: </label>
-                <select 
-                        name="date-sort" 
-                        id="date-sort"
-                        class="form-select shadow-sm w-auto"  
-                        style="border-radius: 12px;">
-                        <option value="" disabled selected>-----</option>
-                        <option value="ascending" {% if datesorted == "ascending" %}selected{% endif %}>
-                            Ascending   
-                        </option>
-                        <option value="descending" {% if datesorted  == "descending" %}selected{% endif %}>
-                            Descending
-                        </option>
-                </select>
-                <label for="date-sort">Category: </label>
-
-                 <select 
-                        name="category-news_article" 
-                        id="category-news_article" 
-                        class="form-select shadow-sm w-auto"  
-                        style="border-radius: 12px;">
-                        <option value="">All Categories</option>
-                        {% for category in categories %}
-                            <option value="{{ category.name }}" {% if category.name == category_filter %}selected{% endif %}>
-                                {{ category.name }}
+                <div>
+                    <label for="date-sort">Order by date: </label>
+                    <select 
+                            name="date-sort" 
+                            id="date-sort"
+                            class="form-select shadow-sm w-auto"  
+                            style="border-radius: 12px;">
+                            <option value="" disabled selected>-----</option>
+                            <option value="ascending" {% if datesorted == "ascending" %}selected{% endif %}>
+                                Ascending   
                             </option>
-                        {% endfor %}
-                </select>
-                <form method="GET" action="" class="d-flex align-items-center gap-2">              
-                    <input 
-                        type="text" 
-                        name="search" 
-                        class="form-control shadow-sm w-auto" 
-                        placeholder="Search..." 
-                        value="{{ search_query }}" 
-                        style="border-radius: 12px;">
+                            <option value="descending" {% if datesorted  == "descending" %}selected{% endif %}>
+                                Descending
+                            </option>
+                    </select>
+                </div>
+               
+                <div>
+                    <label for="date-sort">Category: </label>
+                    <select 
+                            name="category-news_article" 
+                            id="category-news_article" 
+                            class="form-select shadow-sm w-auto"  
+                            style="border-radius: 12px;">
+                            <option value="">All Categories</option>
+                            {% for category in categories %}
+                                <option value="{{ category.name }}" {% if category.name == category_filter %}selected{% endif %}>
+                                    {{ category.name }}
+                                </option>
+                            {% endfor %}
+                    </select>
+                </div>
+               
+                <div>
+                    <label for="animal-type"></label>
+                    <form method="GET" action="" class="d-flex align-items-center gap-2">              
+                        <input 
+                            type="text" 
+                            name="search" 
+                            class="form-control shadow-sm w-auto" 
+                            placeholder="Search..." 
+                            value="{{ search_query }}" 
+                            style="border-radius: 12px;">
 
-                    <button 
-                        type="submit" 
-                        class="btn btn-secondary about-usshadow-sm" 
-                        >
-                        <i class="fi fi-rr-search"></i>
-                    </button>   
-                </form>
+                        <button 
+                            type="submit" 
+                            class="btn btn-secondary shadow-sm" 
+                            >
+                            <i class="fi fi-rr-search"></i>
+                        </button>   
+                    </form>
+                </div>
             </div>
         </div>
  
@@ -155,9 +163,9 @@
                         <td>No</td>
                         {% endif %}
                        
-                        <td>
+                        <td class="text-center">
                             <!-- Action Buttons -->
-                            <a href="{% url 'news&articles:news_artic_detail' newsarticle.slug %}" 
+                            <a href="{% url 'news&articles:news_artic_detail' slug=newsarticle.slug %}" 
                                 class="btn btn-outline-success btn-sm"
                                 target="_blank">View</a>
 
@@ -180,7 +188,8 @@
     {% endif %}
     </div>
 </div>
-    <!-- Add Blog Modal -->
+
+    <!-- Delete Modal -->
     <div class="modal fade" id="deleteNewsArticleModal" tabindex="-1" aria-labelledby="deleteNewsArticleLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -207,7 +216,6 @@
 {% endblock content %}
 
 {% block scripts %}
-<script src="{% static 'global/js/jquery-3.7.1.min.js' %}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/full/ckeditor.js"></script>
 

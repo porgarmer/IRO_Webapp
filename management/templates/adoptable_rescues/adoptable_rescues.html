@@ -48,81 +48,133 @@
 {% endblock stylesheet %}
 
 {% block content %}
-<div class="container mt-5">
+<div class="container text-start mt-5">
     <!-- Page Title -->
     <h1 class="mb-5 text-center display-4" style="font-weight: bold; color: #343a40;">Adoptable Rescues</h1>
 
-    <!-- Search and Filter Form -->
-    <form method="GET" action="{% url 'management:adoptable_rescues' %}">
-        <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
-            <!-- Search and Filter -->
-            <div class="d-flex flex-grow-1 gap-3">
-                <input 
-                    type="text" 
-                    name="search" 
-                    class="form-control shadow-sm" 
-                    placeholder="Search by name" 
-                    value="{{ search_query }}" 
-                    style="border-radius: 12px;">
-                <select 
-                    name="category" 
-                    class="form-select shadow-sm" 
-                    style="border-radius: 12px;">
-                    <option value="">All Categories</option>
-                    {% for category in categories %}
-                        <option value="{{ category.id }}" {% if category.id == category_filter %}selected{% endif %}>
-                            {{ category.name }}
-                        </option>
-                    {% endfor %}
-                </select>
-                <button 
-                    type="submit" 
-                    class="btn btn-primary btn-lg shadow-sm" 
-                    style="border-radius: 12px;">
-                    Search
-                </button>
-            </div>
-            <!-- Add New Button -->
-            <a 
-                href="{% url 'management:add_rescue' %}" 
-                class="btn btn-success btn-lg shadow-sm" 
-                style="border-radius: 12px;">
-                Add New Rescue
-            </a>
+    <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
+
+        <div class="d-flex">
+            {% comment %} <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addBlogModal">Add Post</button> {% endcomment %}
+            <a class="btn btn-primary me-2"   href="{% url 'management:add_rescue' %}" >Add Rescue</a>
+            <button class="btn btn-danger rounded-3" id="bulkDeleteButton" disabled>Delete Selected</button>
         </div>
-    </form>
+        
+        <!-- Search and Filter -->
+        <div class="d-flex ms-auto gap-2">  
+            {% comment %} <div>
+                 <label for="name-sort">Order by name: </label>
+                <select 
+                        name="name-sort" 
+                        id="name-sort"
+                        class="form-select shadow-sm w-auto"  
+                        style="border-radius: 12px;">
+                        <option value="" disabled selected>-----</option>
+                        <option value="ascending" {% if namesorted == "ascending" %}selected{% endif %}>
+                            Ascending   
+                        </option>
+                        <option value="descending" {% if namesorted  == "descending" %}selected{% endif %}>
+                            Descending
+                        </option>
+                </select>
+            </div>
+            {% endcomment %}
+            <div>
+                <label for="category">Category: </label>
+                <select 
+                        name="category" 
+                        id="category" 
+                        class="form-select shadow-sm w-auto"  
+                        style="border-radius: 12px;">
+                        <option value="">All Categories</option>
+                        {% for category in categories %}
+                            <option value="{{ category.name }}" {% if category.name == category_filter %}selected{% endif %}>
+                                {{ category.name }}
+                            </option>
+                        {% endfor %}
+                </select>
+            </div>
+            <div>
+                 <label for="date-sort">Order by date added: </label>
+                <select 
+                        name="date-sort" 
+                        id="date-sort"
+                        class="form-select shadow-sm w-auto"  
+                        style="border-radius: 12px;">
+                        <option value="" disabled selected>-----</option>
+                        <option value="ascending" {% if datesorted == "ascending" %}selected{% endif %}>
+                            Ascending   
+                        </option>
+                        <option value="descending" {% if datesorted  == "descending" %}selected{% endif %}>
+                            Descending
+                        </option>
+                </select>
+            </div>
+           
+            <div>
+                <label for=""></label>
+                <form method="GET" action="{% url 'management:adoptable_rescues' %}" class="d-flex align-items-center gap-2">              
+                    <input 
+                        type="text" 
+                        name="search" 
+                        class="form-control shadow-sm w-auto" 
+                        placeholder="Search..." 
+                        value="{{ search_query }}" 
+                        style="border-radius: 12px;">
+
+                    <button 
+                        type="submit" 
+                        class="btn btn-secondary about-usshadow-sm" 
+                        >
+                        <i class="fi fi-rr-search"></i>
+                    </button>   
+                </form>
+            </div>
+        </div>
+    </div>
 
     <!-- Rescue Table -->
     <div class="table-responsive">
         <table class="table table-bordered table-hover shadow-sm">
             <thead class="thead-dark">
                 <tr>
+                    <th><input type="checkbox" id="selectAll"></th>
                     <th>#</th>
                     <th>Name</th>
                     <th>Category</th>
                     <th>Description</th>
+                    <th>Date added</th>
                     <th>Picture</th>
-                    <th>Additional Pics</th>
+                    <th>Gallery</th>
                     <th>Actions</th>
                 </tr>
             </thead>
+            {% if rescues %}
             <tbody>
                 {% for rescue in rescues %}
                 <tr>
-                    <td class="align-middle text-center">{{ forloop.counter }}</td>
-                    <td class="align-middle">{{ rescue.name }}</td>
-                    <td class="align-middle text-center">
+                    <td class="text-center"><input type="checkbox" class="blogCheckbox" value="{{ rescue.id }}"></td>
+                    <td class="text-center">{{ forloop.counter }}</td>
+                    <td class="">{{ rescue.name }}</td>
+                    <td class="">
                         {% if rescue.category %}
                             {{ rescue.category }}
                         {% else %}
                             <em>Uncategorized</em>
                         {% endif %}
                     </td>
-                    <td class="align-middle">{{ rescue.description|truncatewords:10 }}</td>
+                    {% if rescue.description and rescue.description != "<p>&nbsp;</p>"%}
+                    <td class="" style="max-width: 15em">{{ rescue.description|safe }}</td>
+                    {% elif rescue.description == "<p>&nbsp;</p>"%}
+                    <td class="">No description</td>
+                    {% endif %}
+                    
+                    <td>{{rescue.date_added}}</td>
+
                     <td class="align-middle text-center">
-                        {% if rescue.picture %}
+                        {% if rescue.profile %}
                             <img 
-                                src="{{ rescue.picture.url }}" 
+                                src="{{ rescue.profile.url }}" 
                                 alt="{{ rescue.name }}" 
                                 style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.2);">
                         {% else %}
@@ -136,7 +188,7 @@
                             class="btn btn-info btn-sm" 
                             data-bs-toggle="modal" 
                             data-bs-target="#additionalPicsModal{{ forloop.counter }}">
-                            View Pics
+                            View Gallery
                         </button>
                     </td>
                     <!-- Action Buttons -->
@@ -151,12 +203,6 @@
                                 href="{% url 'management:edit_rescue' rescue.id %}" 
                                 class="btn btn-outline-warning btn-sm">
                                 Edit
-                            </a>
-                            <a 
-                                href="{% url 'management:delete_rescue' rescue.id %}" 
-                                class="btn btn-outline-danger btn-sm" 
-                                onclick="return confirm('Are you sure you want to delete this rescue?')">
-                                Delete
                             </a>
                         </div>
                     </td>
@@ -231,6 +277,40 @@
                 {% endfor %}
             </tbody>
         </table>
+        {% else %}
+    </table>
+    <div class="alert alert-warning text-center">
+        No results.
+    </div>
+    {% endif %}
     </div>
 </div>
+
+    <!-- Delete Modal -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form id="delete-form" method="POST" action="{% url 'management:delete_rescue' %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="selected_ids" id="ids"  value="">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="deleteModalLabel">Remove Rescue</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Are sure you want to remove: <span id="delete-count"></span> recues?</p>
+                    </div>
+                    <div class="modal-footer">
+                        
+                        <button type="button" class="btn btn-" data-bs-dismiss="modal">No</button>
+                        <button type="submit" class="btn btn-danger" id="confirm-delete">Yes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div> 
 {% endblock content %}
+{% block scripts %}
+<script src="{% static 'management/js/adoptable-rescues.js' %}"></script>
+
+{% endblock scripts %}

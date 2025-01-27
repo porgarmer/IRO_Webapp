@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="{% static 'global/css/custom-btn.css' %}">
     <link href="https://cdn.lineicons.com/5.0/lineicons.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
     {% block styles %}
     
     {% endblock styles %}
@@ -55,22 +56,24 @@
                 <ul class="dropdown-menu">
                   <li><a class="dropdown-item" href="{% url 'adoption' %}">Adoptable Animals</a></li>
                   <li><a class="dropdown-item" href="{% url 'adoption_process' %}">Adoption Process</a></li>
-                  <li><a class="dropdown-item" href="#">Adoption Form</a></li>
+                  <li><a class="dropdown-item" href="https://forms.gle/RSZGXakdaT3uFUK18">Adoption Form</a></li>
                 </ul>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'shelters_page' %}">Shelters</a>
               </li>
-              <li class="nav-item dropdown">
+
+              {% comment %} <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Events
                 </a>
                 <ul class="dropdown-menu">
                   <li><a class="dropdown-item" href="#">Spay/Neuter Events</a></li>
                 </ul>
-              </li>
+              </li> {% endcomment %}
+
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'education_resources' %}">Resources</a>
+                <a class="nav-link" href="{% url 'resources:education_resources' %}">Resources</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'news&articles:news_articles' %}">News&Articles</a>
@@ -227,6 +230,7 @@
           });
       });
       </script>
+    <script src="{% static 'global/js/jquery-3.7.1.min.js' %}"></script>
     <script src="{% static 'global/js/bootstrap.bundle.min.js' %}"></script>
     <script src="{% static 'global/js/dropdown.js' %}"></script>
     {% block scripts %}

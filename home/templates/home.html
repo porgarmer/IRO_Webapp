@@ -14,13 +14,25 @@ Home
 {% block content %}
 
 {% comment %} hero section {% endcomment %}
-<div class="px-4 py-5 text-center d-grid hero-section" 
+{% comment %} <div class="px-4 py-5 text-center d-grid hero-section" 
      style="background: linear-gradient(rgba(43, 37, 37, 0.6), rgba(18, 15, 15, 0.6)), url({{ homepage.hero_section_bg_photo.url }});
      background-size: cover; background-repeat: no-repeat;">
     <div class="hero-content">
         <h1 class="display-5">{{ homepage.hero_section_title|safe }}</h1>
         <div class="col-lg-6 mx-auto">
             <p class="lead mb-4">{{ homepage.hero_section_subtitle|safe }}</p>
+            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                <a href="#help-iro" type="button" class="btn btn-primary btn-lg px-4 gap-3">Help IRO</a>
+            </div>
+        </div>
+    </div>
+</div> {% endcomment %}
+
+<div class="px-4 py-5 text-center d-grid hero-section">
+    <div class="hero-content">
+      <h1 class="display-5 fw-bold">RESCUE <span style="color: #F95B00;">•</span> EDUCATE <span style="color: #F95B00;">•</span> ADVOCATE</h1>
+        <div class="col-lg-6 mx-auto">
+          <p class="lead mb-4">Creating a Better Future for Animals</p>
             <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
                 <a href="#help-iro" type="button" class="btn btn-primary btn-lg px-4 gap-3">Help IRO</a>
             </div>
@@ -57,11 +69,11 @@ Home
 
 {% comment %} vision, mission, goal seciton {% endcomment %}
 <div class="vision-mission-goal">
-  <div class="container">
+  <div class="container ">
       <div class="text-center mb-4">
           <h1 class="fw-bold">OUR VISION, MISSION, AND GOAL</h1>
       </div>
-      <div class="row text-center">
+      <div class="row justify-content-center text-center ">
           <div class="col-md-4 mb-3">
               <div class="content-box">
                   <h2>VISION</h2>
@@ -86,34 +98,27 @@ Home
   </div>
 </div>
 
+
 {% comment %} stats section {% endcomment %}
+{% if stats %}
 <div class="stats-section">
-  <div class="container">
-      <div class="row">
-          <div class="col-md-3 stat-box">
-              <i class="fas fa-briefcase-medical"></i>
-              <h3>300</h3>
-              <p>Rescues</p>
-          </div>
+  <div class="container">    
+      <div class="row justify-content-center text-center">
+        {% for stat in stats  %}
           <div class="col-md-3 col-sm-6 stat-box">
-              <i class="fas fa-paw"></i>
-              <h3>250</h3>
-              <p>Sheltered</p>
-          </div>
-          <div class="col-md-3 col-sm-6 stat-box">
-              <i class="fas fa-home"></i>
-              <h3>4</h3>
-              <p>Rescue Centers</p>
-          </div>
-          <div class="col-md-3 col-sm-6 stat-box">
-              <i class="fas fa-hand-holding-heart"></i>
-              <h3>100</h3>
-              <p>Volunteers</p>
-          </div>
+              <img src="{{stat.logo.url}}" class="rounded mx-auto d-block" alt="{{stat.name}}" width=64px>
+              <h3>{{stat.number}}</h3>
+              <p>{{stat.name}}</p>
+          </div>    
+          {% endfor %}
       </div>
   </div>
 </div>
-  
+{% else %}
+{% endif %}
+
+
+
 {% comment %} shelters section {% endcomment %}
 <div class="shelters-section">
   <div class="container">
@@ -122,7 +127,7 @@ Home
           Our shelters provide a safe and loving environment for rescued animals, offering them a second chance at life. 
           Here, they receive the care, compassion, and support they need while they wait for their forever homes.
       </p>
-      <div class="row">
+      <div class="row justify-content-center text-center"">
           <div class="col-md-3 col-sm-6 mb-4">
               <div class="shelter-card">
                   <img src="{% static 'home/images/camp-iro-logo.jpg' %}" alt="Camp IRO Logo" class="shelter-logo">
@@ -156,7 +161,7 @@ Home
               </div>
           </div>
       </div>
-      <a href="#shelters" class="btn btn-primary mt-4">Explore Our Shelters</a>
+      <a href="{% url 'shelters_page' %}" class="btn btn-primary mt-4">Explore Our Shelters</a>
   </div>
 </div>
 
@@ -168,7 +173,7 @@ Home
       Join us in making a difference! Whether through volunteering, donating, fostering, or adopting,
       your involvement helps save lives and create brighter futures for animals in need.
     </p>
-    <div class="row g-4">
+    <div class="row g-4 justify-content-center text-center">
       <div class="col-md-3">
         <div class="card ways-you-can-help p-3">
           <div class="card-body volunteer-card-bg mb-3">
@@ -176,7 +181,7 @@ Home
             <p class="card-text">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam orci eros, auctor sed erat in, consequat sollicitudin tellus.           </p>
           </div> 
-          <button class="btn btn-primary">Volunteer</button>
+          <a class="btn btn-primary" href="{% url 'volunteer' %}">Volunteer</a>
         </div>
       </div>
       <div class="col-md-3">
@@ -187,7 +192,7 @@ Home
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam orci eros, auctor sed erat in, consequat sollicitudin tellus.           </p>
             </p>
           </div>
-          <button class="btn btn-primary">Donate</button>
+          <a class="btn btn-primary" href="{% url 'donate' %}">Donate</a>
         </div>
       </div>
       <div class="col-md-3">
@@ -198,7 +203,7 @@ Home
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam orci eros, auctor sed erat in, consequat sollicitudin tellus.           </p>
             </p>
           </div>
-          <button class="btn btn-primary">Sponsor</button>
+          <a class="btn btn-primary"  href="#">Sponsor</a>
         </div>
       </div>
       <div class="col-md-3">
@@ -209,7 +214,7 @@ Home
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam orci eros, auctor sed erat in, consequat sollicitudin tellus.           </p>
             </p>
           </div>
-          <button class="btn btn-primary">Adopt</button>
+          <a class="btn btn-primary" href="{% url 'adoption' %}">Adopt</a>
         </div>
       </div>
     </div>

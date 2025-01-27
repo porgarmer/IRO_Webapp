@@ -1,0 +1,263 @@
+{% extends "global/base.html" %}
+{% load static %}
+
+{% block title %}Content Page{% endblock title %}
+
+{% block styles %}
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            margin-top: auto;
+        }
+        .content-wrapper {
+            display: flex;
+            max-width: 1200px;
+            margin: 20px auto;
+            gap: 20px;
+            padding: 0 10px;
+        }
+        .main-content {
+            flex: 3;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 55em;
+        }
+        .main-content h1 {
+            font-size: 2.6rem;
+            margin-bottom: 10px;
+        }
+        .main-content img {
+            width: 80%;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        .main-content p {
+            line-height: 1.6;
+            color: #555;
+            margin-bottom: 20px;
+        }
+        .main-content h2 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        .sidebar {
+            flex: 1;
+        }
+        .sidebar .card {
+            display: flex;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            margin-bottom: 20px;
+            align-items: center;
+        }
+        .sidebar .card img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+        .sidebar .card .card-content {
+            flex: 1;
+        }
+        .sidebar .card .card-content h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #333;
+            font-weight: bold;
+        }
+        .sidebar .card .card-content p {
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 12px;
+        }
+        .sidebar .card .card-content .author-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .sidebar .card .card-content .author-info img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        .sidebar .card .card-content button {
+            background: #f57c00;
+            color: white;
+            border: none;
+            padding: 8px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .sidebar .card .card-content button:hover {
+            background: #e56700;
+        }
+
+        .sidebar .category {
+            font-size: 0.7rem;
+            font-weight: bold;
+            color: #fff; /* Text color */
+            margin-bottom: 10px;
+            background-color: #7c7978; /* Background color */
+            padding: 5px 10px; /* Add padding for better appearance */
+            border-radius:  20px; /* Rounded corners */
+            display: inline-block; /* Ensure the background wraps tightly around the text */
+        }
+
+        /* Media Queries */
+        @media (max-width: 1200px) {
+            .content-wrapper {
+                flex-direction: column;
+                padding: 0 20px;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .main-content img {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .sidebar .card {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .sidebar .card img {
+                width: 100%;
+                margin: 0 0 10px 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                padding: 15px;
+            }
+            .main-content h1 {
+                font-size: 24px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .content-wrapper {
+                gap: 10px;
+            }
+            .main-content h1 {
+                font-size: 22px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .sidebar .card {
+                padding: 10px;
+            }
+            .sidebar .card .card-content h3 {
+                font-size: 16px;
+            }
+            .main-content h1 {
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width: 320px) {
+            .main-content {
+                padding: 10px;
+            }
+            .main-content h1 {
+                font-size: 18px;
+            }
+            .sidebar .card .card-content p {
+                font-size: 10px;
+            }
+            .sidebar .card .card-content button {
+                padding: 6px 8px;
+                font-size: 10px;
+            }
+        }
+    </style>
+{% endblock styles %}
+
+{% block content %}
+
+<div class="content-wrapper">
+    <div class="main-content p-5" >
+        <h1><strong>{{resource.title}}</strong></h1>
+        {% if resource.photo %}
+        <img src="{{resource.photo.url}}" alt="resource.title">
+        {% else %}
+
+        {% endif %}
+        <p>Published on: {{resource.created_at|date:"M d, Y"}}</p>
+        <p>{{resource.content|safe}}</p>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        {% if latest_posts %}
+            {% for latest_post in latest_posts %}
+                <div class="card">
+                    {% if latest_post.photo %}
+                    <img src="{{latest_post.photo.url}}" alt="Article">
+                    {% else %}
+                    <img src="https://placehold.co/600x400?text=image" alt="Article">
+                    {% endif %}
+                    
+                    
+                    <div class="card-content">
+                        
+                        {% if latest_post.category %}
+                        <span class="category">{{latest_post.category}}</span>
+                        {% else %}
+                        <span class="category">Uncategorized</span>
+                        {% endif %}
+
+                        <h3> {{latest_post.title}} </h3>
+
+
+                        {% if latest_post.summary %}
+                        <p>{{latest_post.summary|safe}}</p>
+                        {% else %}
+                        <p></p>
+                        {% endif %}
+                        
+                        <div class="author-info">
+                            <span>{{latest_post.created_at}}</span>
+                        </div>
+
+                        <a class="btn btn-primary"  href="{% url 'resources:resource_detail' slug=latest_post.slug %}">Read More</a>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+        {% endif %}
+       
+        
+        <!-- Duplicate cards as needed -->
+    </div>
+
+{% endblock content %}

@@ -107,7 +107,7 @@
 {% block content %}
     <!-- Header Section -->
     <div class="header d-flex justify-content-center" 
-        style="background: linear-gradient(rgba(43, 37, 37, 0.6), rgba(18, 15, 15, 0.6)), url('https://media.4-paws.org/6/8/9/3/689354d6694789b45569cd647a6009e240b4afe7/VIER%20PFOTEN_2016-09-18_081-1927x1333-1920x1328.jpg'); 
+        style="background: linear-gradient(rgba(43, 37, 37, 0.6), rgba(18, 15, 15, 0.6)), url('https://scontent.fceb1-2.fna.fbcdn.net/v/t39.30808-6/471045019_1117158786687604_6450671949266988185_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=f727a1&_nc_eui2=AeHAXDNAEzjc98jQr_uGXbwQYf3S6hMkdzZh_dLqEyR3NusnNGZJo96kW3PZZCbGC30pMGfJ_RyfE2i_xNy7X7VR&_nc_ohc=2VX8IYiFEdQQ7kNvgEjxxoL&_nc_zt=23&_nc_ht=scontent.fceb1-2.fna&_nc_gid=AjRkzxwc6KUBb0OgUFlY_y_&oh=00_AYCr6L-K00eNT7ov9GxuGhVCOrJOz1JMcGQ4KZIK1IbnKg&oe=679D22AF'); 
         background-size: cover; background-position: center; background-repeat: no-repeat; 
         padding: 80px 20px;">
         <div class="container">
@@ -155,76 +155,38 @@
         </p>
     </div>
 </div>
+{% if wishlists %}
     <div class="wishlist-section">
         <h2 class="text-center mb-5 p-5" style="font-weight: bold; font-size: 2.5rem;">IRO WISHLIST</h2>
         <div class="container">
-            <div class="row g-4">
+            <div class="row g-4 justify-content-center text-center">
+                {% for wishlist in wishlists %}
                 <div class="col-md-4">
                     <div class="card p-4 text-center shadow-sm">
-                        <img src="https://w7.pngwing.com/pngs/488/475/png-transparent-the-adventures-of-taxi-dog-cat-food-dog-food-dog-food-food-animals-pet.png" alt="Food and Treats" class="mb-3">
-                        <h5 class="card-title"><strong>Food and Treats</strong></h5>
-                        <ul class="list-unstyled mt-3">
-                            <li>Dry Dog and Cat Food (high-quality brands preferred)</li>
-                            <li>Wet Dog and Cat Food</li>
-                            <li>Healthy Treats (no rawhide, please)</li>
-                        </ul>
+                        {% if wishlist.photo %}
+                            <img src="{{wishlist.photo.url}}" alt="Food and Treats" class="mb-3">
+                        {% else %}
+                        {% endif %}
+                        <h5 class="card-title"><strong>{{wishlist.name}}</strong></h5>
+                        {{wishlist.description|safe}}
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="card p-4 text-center shadow-sm">
-                        <img src="https://png.pngtree.com/element_our/20190602/ourmid/pngtree-creative-dog-toy-illustration-image_1401546.jpg" alt="Toys and Enrichment" class="mb-3">
-                        <h5 class="card-title"><strong>Toys and Enrichment</strong></h5>
-                        <ul class="list-unstyled mt-3">
-                            <li>Chew Toys for dogs</li>
-                            <li>Interactive Toys for cats</li>
-                            <li>Kongs and Puzzle Feeders</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card p-4 text-center shadow-sm">
-                        <img src="https://us.123rf.com/450wm/stockgiu/stockgiu1904/stockgiu190404315/120235090-pet-bed-with-paws-print.jpg?ver=6" alt="Bedding and Comfort" class="mb-3">
-                        <h5 class="card-title"><strong>Bedding and Comfort</strong></h5>
-                        <ul class="list-unstyled mt-3">
-                            <li>Body text for whatever you'd like to say</li>
-                            <li>Add main takeaway points, quotes, or anecdotes</li>
-                            <li>Or even a very short story</li>
-                        </ul>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
-            <div class="row g-4 mt-4">
-                <div class="col-md-6">
-                    <div class="card p-4 text-center shadow-sm">
-                        <img src="https://static.vecteezy.com/system/resources/previews/001/268/021/non_2x/house-cleaning-supplies-vector.jpg" alt="Cleaning Supplies" class="mb-3">
-                        <h5 class="card-title"><strong>Cleaning Supplies</strong></h5>
-                        <ul class="list-unstyled mt-3">
-                            <li>Paper Towels and Trash Bags</li>
-                            <li>Disinfectant Wipes and Sprays</li>
-                            <li>Laundry Detergent (pet-safe)</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="card p-4 text-center shadow-sm">
-                        <img src="https://img.freepik.com/premium-vector/set-spray-dogs-concept-beauty-equipment-pets-cleaning-soap-domestic-animals-template-layout-mock-up-cartoon-flat-vector-collection-isolated-white-background_1002658-926.jpg" alt="Medical Supplies" class="mb-3">
-                        <h5 class="card-title"><strong>Medical and Grooming Supplies</strong></h5>
-                        <ul class="list-unstyled mt-3">
-                            <li>Flea and Tick Preventatives</li>
-                            <li>Shampoos and Brushes</li>
-                            <li>Puppy Pads</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+        </div>
+{% else %}
+<div class="alert alert-secondary text-center container bg-black text-white fs-6 fw-bolder fs-2" role="alert">
+    No wishlist.
+</div>
+{% endif %}
 <div class="py-5 mt-5" style="background-color: #ffffff; width: 100vw; margin-left: calc(-50vw + 50%);">
     <h2 class="text-center mb-5" style="font-weight: bold; font-size: 2.5rem;">DROP OFF LOCATIONS</h2>
     <div class="container">
         <div class="row g-4 justify-content-center">
             <div class="col-lg-4 col-md-6">
                 <div class="donation-card text-center p-4 shadow-sm">
-                    <img src="https://www.robinsonsretailholdings.com.ph/wp-content/uploads/2023/06/1-2023-May-Turnover-Feed-A-FURend-1.jpg" 
-                        alt="Adoption Booth" class="img-fluid mb-3">
+                    <img src="{% static 'global/images/parkmall.png' %}" alt="Adoption Booth" class="img-fluid mb-3">
+
                     <p style="font-size: 1.4rem; font-weight: bold;">IRO Adoption Booth at Parkmall, Mandaue</p>
                     <p style="font-size: 1.2rem;">Every 2nd and 4th Saturday, 10 a.m. - 5 p.m.</p>
                 </div>
@@ -239,7 +201,7 @@
             </div>
         </div>
         <div class="text-center mt-4">
-            <a href="{% url 'in_kind_donations' %}" class="btn btn-primary p-3">
+            <a href="https://forms.gle/RSZGXakdaT3uFUK18" class="btn btn-primary p-3">
                 Set an Appointment
             </a>
         </div>

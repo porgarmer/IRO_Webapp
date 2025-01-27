@@ -5,34 +5,57 @@
 <link rel="stylesheet" href="{% static 'css/faqs.css' %}">
 {% endblock styles %}
 {% block content %}
-<div class="header d-flex justify-content-center" 
-style="background-size: cover; background-position: center; background-repeat: no-repeat; 
+<div class="header d-flex justify-content-center" style="background-size: cover; background-position: center; background-repeat: no-repeat; 
 padding: 80px 20px;">
-<div class="container">
-    <h1>ISLAND RESCUE ORGANIZATION’S Frequently asked Questions</h1>
+  <div class="container">
+    <h1>Frequently Asked Questions</h1>
     <a href="#" class="btn btn-primary p-3">
-        Contact Us
+      Contact Us
     </a>
-</div>
+  </div>
 </div>
 <br>
 <br>
+
 <div class="accordion" id="accordionExample">
-    {% for item in items %}
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="heading{{ item.id }}">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ item.id }}" aria-expanded="false" aria-controls="collapse{{ item.id }}">
-          {{ item.title }}
-        </button>
-      </h2>
-      <div id="collapse{{ item.id }}" class="accordion-collapse collapse" aria-labelledby="heading{{ item.id }}" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          {{ item.description }}
-        </div>
+
+  <div class="mb-3">
+    <label for="animal-type"></label>
+    <form action="" method="GET" class="d-flex align-items-center gap-2">
+        <input 
+            type="text" 
+            placeholder="Search"
+            name="search"
+            class="form-control shadow-sm w-auto" 
+            value="{{ search_query }}" 
+            style="border-radius: 12px;"   
+        >
+        <button 
+            type="submit" 
+            class="btn btn-secondary shadow-sm" 
+        >
+            <i class="fi fi-rr-search"></i>
+        </button>   
+    </form>
+</div>
+
+  {% for faq in faqs %}
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="heading{{ faq.id }}">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+        data-bs-target="#collapse{{ faq.id }}" aria-expanded="false" aria-controls="collapse{{ faq.id }}">
+        {{ faq.title }}
+      </button>
+    </h2>
+    <div id="collapse{{ faq.id }}" class="accordion-collapse collapse" aria-labelledby="heading{{ faq.id }}"
+      data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        {{ faq.description|safe }}
       </div>
     </div>
-    {% endfor %}
   </div>
+  {% endfor %}
+</div>
 {% endblock content %}
 {% block scripts %}
 {% endblock scripts %}

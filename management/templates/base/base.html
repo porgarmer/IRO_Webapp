@@ -58,13 +58,13 @@
                     </ul>
                 </li>
                 <li class="sidebar-item">
-                    <a href="" class="sidebar-link">
+                    <a href="{% url 'management:dashboard' %}" class="sidebar-link">
                         <i class="fi fi-rr-dashboard-monitor"></i>
                         <span>Dashboard</span>
                     </a>
                 </li>
                 <li class="sidebar-header">
-                    Pages
+                    Content
                 </li>
                 <li class="sidebar-item">
                     <a href="#" class="sidebar-link has-dropdown collapsed" data-bs-toggle="collapse" data-bs-target="#homepage"
@@ -73,7 +73,7 @@
                         <span>Home Page</span>
                     </a>
                     <ul id="homepage" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                        <li class="sidebar-item">
+                        {% comment %} <li class="sidebar-item">
                             <a href="{% url 'management:homepage_hero_section' %}" class="sidebar-link">Hero Section</a>
                         </li>
                         <li class="sidebar-item">
@@ -81,19 +81,20 @@
                         </li>
                         <li class="sidebar-item">
                             <a href="" class="sidebar-link">VMGO Section</a>
-                        </li>
+                        </li> {% endcomment %}
                         <li class="sidebar-item">
-                            <a href="" class="sidebar-link">Statistics Section</a>
+                            <a href="{% url 'management:homepage_stats' %}" class="sidebar-link">Statistics Section</a>
                         </li>
-                        <li class="sidebar-item">
+                        {% comment %} <li class="sidebar-item">
                             <a href="" class="sidebar-link">Our Shelters Section</a>
                         </li>
                         <li class="sidebar-item">
                             <a href="" class="sidebar-link">Ways You Can Help Section</a>
-                        </li>
+                        </li> {% endcomment %}
                     </ul>
                 </li>
-                <li class="sidebar-item">
+
+                {% comment %} <li class="sidebar-item">
                     <a href="#" class="sidebar-link has-dropdown collapsed" data-bs-toggle="collapse" data-bs-target="#donation-page"
                         aria-expanded="false" aria-controls="donation-page">
                         <i class="fi fi-rr-hands-heart"></i>
@@ -115,69 +116,9 @@
                             <a href="" class="sidebar-link">Partners</a>
                         </li>
                     </ul>
-                </li>
+                </li> {% endcomment %}
 
-                <li class="sidebar-item">
-                    <a href="#" class="sidebar-link has-dropdown collapsed" data-bs-toggle="collapse" data-bs-target="#in-kind-donation-page"
-                        aria-expanded="false" aria-controls="in-kind-donation-page">
-                        <i class="fi fi-rr-box-heart"></i>
-                        <span>In-Kind Donation Page</span>
-                    </a>
-                    <ul id="in-kind-donation-page" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                        <li class="sidebar-item">
-                              <a href="" class="sidebar-link">Hero Section</a>
-                        </li>
-
-                        <li class="sidebar-item">
-                            <a href="" class="sidebar-link">How Donations Help</a>
-                        </li>
-
-                        <li class="sidebar-item">
-                            <a href="" class="sidebar-link">Wishlist</a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a href="" class="sidebar-link">Drop Off Locations</a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li class="sidebar-item">
-                    <a href="#" class="sidebar-link">
-                        <i class="fi fi-rr-house-chimney-heart"></i>
-                        <span>Shelters</span>
-                    </a>
-                </li>
-
-                <li class="sidebar-item">
-                    <a href="{% url 'management:adoptable_rescues' %}" class="sidebar-link">
-                        <i class="fi fi-rr-paw"></i>                        
-                        <span>Adoptable Rescues</span>
-                    </a>
-                </li>
-
-                <li class="sidebar-item">
-                    <a href="#" class="sidebar-link has-dropdown collapsed" data-bs-toggle="collapse" data-bs-target="#adoption-form">
-                        <i class="fi fi-rr-paw-heart"></i>
-                        <span>Adoption Process</span>
-                    </a>
-                    <ul id="adoption-form" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                        <!-- Adoption Form Link -->
-                        <li class="sidebar-item">
-                            <a href="{% url 'management:google_form_list' %}" target="_blank" class="sidebar-link">
-                                Adoption Form
-                            </a>
-                        </li>
-                        <!-- Three Ts of Volunteering Link -->
-                        <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">
-                                sample
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                
-
-                <li class="sidebar-item">
+                {% comment %} <li class="sidebar-item">
                     <a href="#" class="sidebar-link has-dropdown collapsed" data-bs-toggle="collapse" data-bs-target="#volunteers-page"
                         aria-expanded="false" aria-controls="volunteers-page">
                         <i class="fi fi-rr-user-volunteer"></i>
@@ -196,20 +137,84 @@
                             <a href="" class="sidebar-link">Volunteer Activities</a>
                         </li>
                     </ul>
+                </li> {% endcomment %}
+
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link has-dropdown collapsed" data-bs-toggle="collapse" data-bs-target="#in-kind-donation-page"
+                        aria-expanded="false" aria-controls="in-kind-donation-page">
+                        <i class="fi fi-rr-box-heart"></i>
+                        <span>In-Kind Donation Page</span>
+                    </a>
+                    <ul id="in-kind-donation-page" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        {% comment %} <li class="sidebar-item">
+                              <a href="" class="sidebar-link">Hero Section</a>
+                        </li>
+
+                        <li class="sidebar-item">
+                            <a href="" class="sidebar-link">How Donations Help</a>
+                        </li> {% endcomment %}
+
+                        <li class="sidebar-item">
+                            <a href="{% url 'management:wishlists' %}" class="sidebar-link">Wishlist</a>
+                        </li>
+                        {% comment %} <li class="sidebar-item">
+                            <a href="" class="sidebar-link">Drop Off Locations</a>
+                        </li> {% endcomment %}
+                    </ul>
                 </li>
+
+                <li class="sidebar-item">
+                    <a href="{% url 'management:adoptable_rescues' %}" class="sidebar-link">
+                        <i class="fi fi-rr-paw"></i>                        
+                        <span>Adoptable Rescues</span>
+                    </a>
+                </li>
+{% comment %} 
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link has-dropdown collapsed" data-bs-toggle="collapse" data-bs-target="#adoption-form">
+                        <i class="fi fi-rr-paw-heart"></i>
+                        <span>Adoption Process</span>
+                    </a>
+                    <ul id="adoption-form" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <!-- Adoption Form Link -->
+                        <li class="sidebar-item">
+                            <a href="{% url 'management:google_form_list' %}" class="sidebar-link">
+                                Adoption Form
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link">
+                        <i class="fi fi-rr-house-chimney-heart"></i>
+                        <span>Shelters</span>
+                    </a>
+                </li>
+
 
                 <li class="sidebar-item">
                     <a href="#" class="sidebar-link">
                         <i class="fi fi-rr-calendar-day"></i>
                         <span>Events</span>
                     </a>
-                </li>
+                </li> {% endcomment %}
 
                 <li class="sidebar-item">
-                    <a href="#" class="sidebar-link">
+                    <a href="#" class="sidebar-link has-dropdown collapsed" data-bs-toggle="collapse" data-bs-target="#resources"
+                        aria-expanded="false" aria-controls="resources">
                         <i class="fi fi-rr-books"></i>
-                        <span>Education Resources</span>
+                        <span>Educational Resources</span>
                     </a>
+                    <ul id="resources" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <li class="sidebar-item">
+                              <a href="{% url 'management:educational_resources' %}" class="sidebar-link">Educational Resources List</a>
+                        </li>
+
+                        <li class="sidebar-item">
+                            <a href="{% url 'management:category_resources' %}" class="sidebar-link">Categories</a>
+                        </li>
+                    </ul>
                 </li>
                 
                 <li class="sidebar-item">
@@ -229,9 +234,15 @@
                     </ul>
                 </li>
                 
+                <li class="sidebar-item">
+                    <a href="{% url 'management:faqs' %}" class="sidebar-link">
+                        <i class="fi fi-rr-interrogation"></i>
+                        <span>FAQs</span>
+                    </a>
+                </li>
             </ul>
         </aside>
-        <div class="container mt-5">
+        <div class="container">
             <div class="text-center">
                 {% block content %}
                 <!-- Page-specific content goes here -->
@@ -239,6 +250,7 @@
             </div>
         </div>
 
+    <script src="{% static 'global/js/jquery-3.7.1.min.js' %}"></script>
 
     <script src="{% static 'global/js/bootstrap.bundle.min.js' %}"></script>
     <script src="{% static 'management/js/base.js' %}"></script>

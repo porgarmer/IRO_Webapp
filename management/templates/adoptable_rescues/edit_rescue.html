@@ -1,184 +1,131 @@
 {% extends "base/base.html" %}
 
+
+{% block styles %}
+<style>
+    .file-upload-current {
+        display: none;
+    }
+</style>
+
+{% endblock styles %}
+
+
 {% block content %}
-    <div class="container mt-5">
-        <div class="card shadow-lg p-4" style="border-radius: 15px; max-width: 1000px; margin: auto;">
-            <h2 class="text-center mb-4" style="font-weight: bold; color: #343a40;">Edit Rescue</h2>
+<div class="container mt-5 text-start">
+    <div class="card shadow-lg p-4" style="border-radius: 15px; max-width: 1000px; margin: auto;">
+        <h2 class="text-center mb-4" style="font-weight: bold; color: #343a40;">Edit Rescue</h2>
 
-            <form method="POST" enctype="multipart/form-data">
-                {% csrf_token %}
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
 
-                <!-- Name Field -->
-                <div class="mb-4">
-                    <label for="name" class="form-label" style="font-weight: bold; color: #495057;">Name</label>
-                    <input 
-                        type="text" 
-                        class="form-control shadow-sm" 
-                        id="name" 
-                        name="name" 
-                        value="{{ rescue.name }}" 
-                        required 
-                        style="border-radius: 10px;">
+            <!-- Name Field -->
+            <div class="mb-4">
+                {{form.name.label}}
+                {{form.name}}
+            </div>
+
+
+            <!-- Category Field -->
+            <div class="mb-4">
+                {{form.category.label}}
+                {{form.category}}
+            </div>
+
+            <!-- Description Field -->
+            <div class="mb-4">
+                {{form.media}}
+                {{form.description.label}}
+                {{form.description}}
+            </div>
+
+            <!-- Picture Upload -->
+            <div class="mb-4 file-upload-current">
+                {{form.profile.label}}
+                {{form.profile}}
+                {% if rescue.profile %}
+                <div class="mt-3 text-center">
+                    <img src="{{ rescue.profile.url }}" alt="{{ rescue.name }}" class="img-thumbnail"
+                        style="width: 120px; height: 120px; object-fit: cover; border-radius: 10px;">
+                    <p class="text-muted mt-2">Current Profile</p>
                 </div>
+                {% endif %}
+            </div>
 
-                <!-- Category Field -->
-                <div class="mb-4">
-                    <label for="category" class="form-label" style="font-weight: bold; color: #495057;">Category</label>
-                    <select 
-                        class="form-control shadow-sm" 
-                        id="category" 
-                        name="category" 
-                        required 
-                        style="border-radius: 10px;">
-                        <option value="">Select Category</option>
-                        {% for category in categories %}
-                            <option value="{{ category.id }}" {% if rescue.category.id == category.id %}selected{% endif %}>
-                                {{ category.name }}
-                            </option>
-                        {% endfor %}
-                    </select>
-                </div>
+            <!-- Additional Pictures Section -->
+            <div class="mb-4">
+                <h5 class="mb-3" style="font-weight: bold; color: #495057;">Gallery</h5>
 
-                <!-- Description Field -->
-                <div class="mb-4">
-                    <label for="description" class="form-label" style="font-weight: bold; color: #495057;">Description</label>
-                    <textarea 
-                        class="form-control shadow-sm" 
-                        id="description" 
-                        name="description" 
-                        rows="5" 
-                        required 
-                        style="border-radius: 10px;">{{ rescue.description }}</textarea>
-                </div>
-
-                <!-- Picture Upload -->
-                <div class="mb-4">
-                    <label for="picture" class="form-label" style="font-weight: bold; color: #495057;">Main Picture</label>
-                    <input 
-                        type="file" 
-                        class="form-control shadow-sm" 
-                        id="picture" 
-                        name="picture" 
-                        style="border-radius: 10px;">
-                    
-                    {% if rescue.picture %}
-                        <div class="mt-3 text-center">
-                            <img 
-                                src="{{ rescue.picture.url }}" 
-                                alt="{{ rescue.name }}" 
-                                class="img-thumbnail" 
+                <div class="row">
+                    <!-- Additional Picture 1 -->
+                    <div class="col-md-6 mb-3">
+                        {{form.additional_picture_1.label}}
+                        {{form.additional_picture_1}}
+                        {% if rescue.additional_picture_1 %}
+                        <div class="mt-2 text-center">
+                            <img src="{{ rescue.additional_picture_1.url }}" alt="Additional Picture 1"
+                                class="img-thumbnail"
                                 style="width: 120px; height: 120px; object-fit: cover; border-radius: 10px;">
                             <p class="text-muted mt-2">Current Picture</p>
                         </div>
-                    {% endif %}
+                        {% endif %}
+                    </div>
+
+                    <!-- Additional Picture 2 -->
+                    <div class="col-md-6 mb-3">
+                        {{form.additional_picture_2.label}}
+                        {{form.additional_picture_2}}
+                        {% if rescue.additional_picture_2 %}
+                        <div class="mt-2 text-center">
+                            <img src="{{ rescue.additional_picture_2.url }}" alt="Additional Picture 2"
+                                class="img-thumbnail"
+                                style="width: 120px; height: 120px; object-fit: cover; border-radius: 10px;">
+                            <p class="text-muted mt-2">Current Picture</p>
+                        </div>
+                        {% endif %}
+                    </div>
                 </div>
 
-               <!-- Additional Pictures Section -->
-<div class="mb-4">
-    <h5 class="mb-3" style="font-weight: bold; color: #495057;">Additional Pictures</h5>
+                <div class="row">
+                    <!-- Additional Picture 3 -->
+                    <div class="col-md-6 mb-3">
+                        {{form.additional_picture_3.label}}
+                        {{form.additional_picture_3}}
+                        {% if rescue.additional_picture_3 %}
+                        <div class="mt-2 text-center">
+                            <img src="{{ rescue.additional_picture_3.url }}" alt="Additional Picture 3"
+                                class="img-thumbnail"
+                                style="width: 120px; height: 120px; object-fit: cover; border-radius: 10px;">
+                            <p class="text-muted mt-2">Current Picture</p>
+                        </div>
+                        {% endif %}
+                    </div>
 
-    <div class="row">
-        <!-- Additional Picture 1 -->
-        <div class="col-md-6 mb-3">
-            <label for="additional_picture_1" class="form-label">Additional Picture 1</label>
-            <input 
-                type="file" 
-                class="form-control shadow-sm" 
-                id="additional_picture_1" 
-                name="additional_picture_1" 
-                style="border-radius: 10px;">
-            {% if rescue.additional_picture_1 %}
-                <div class="mt-2 text-center">
-                    <img 
-                        src="{{ rescue.additional_picture_1.url }}" 
-                        alt="Additional Picture 1" 
-                        class="img-thumbnail" 
-                        style="width: 120px; height: 120px; object-fit: cover; border-radius: 10px;">
-                    <p class="text-muted mt-2">Current Picture</p>
+                    <!-- Additional Picture 4 -->
+                    <div class="col-md-6 mb-3">
+                        {{form.additional_picture_4.label}}
+                            {{form.additional_picture_4}}
+                        {% if rescue.additional_picture_4 %}
+                        <div class="mt-2 text-center">
+                            <img src="{{ rescue.additional_picture_4.url }}" alt="Additional Picture 4"
+                                class="img-thumbnail"
+                                style="width: 120px; height: 120px; object-fit: cover; border-radius: 10px;">
+                            <p class="text-muted mt-2">Current Picture</p>
+                        </div>
+                        {% endif %}
+                    </div>
                 </div>
-            {% endif %}
-        </div>
+            </div>
 
-        <!-- Additional Picture 2 -->
-        <div class="col-md-6 mb-3">
-            <label for="additional_picture_2" class="form-label">Additional Picture 2</label>
-            <input 
-                type="file" 
-                class="form-control shadow-sm" 
-                id="additional_picture_2" 
-                name="additional_picture_2" 
-                style="border-radius: 10px;">
-            {% if rescue.additional_picture_2 %}
-                <div class="mt-2 text-center">
-                    <img 
-                        src="{{ rescue.additional_picture_2.url }}" 
-                        alt="Additional Picture 2" 
-                        class="img-thumbnail" 
-                        style="width: 120px; height: 120px; object-fit: cover; border-radius: 10px;">
-                    <p class="text-muted mt-2">Current Picture</p>
-                </div>
-            {% endif %}
-        </div>
-    </div>
+            <!-- Action Buttons -->
+            <div class="d-flex justify-content-end gap-2">
+                <button type="submit" class="btn btn-primary px-4 py-2"
+                    style="border-radius: 25px; font-weight: bold;">Save Changes</button>
 
-    <div class="row">
-        <!-- Additional Picture 3 -->
-        <div class="col-md-6 mb-3">
-            <label for="additional_picture_3" class="form-label">Additional Picture 3</label>
-            <input 
-                type="file" 
-                class="form-control shadow-sm" 
-                id="additional_picture_3" 
-                name="additional_picture_3" 
-                style="border-radius: 10px;">
-            {% if rescue.additional_picture_3 %}
-                <div class="mt-2 text-center">
-                    <img 
-                        src="{{ rescue.additional_picture_3.url }}" 
-                        alt="Additional Picture 3" 
-                        class="img-thumbnail" 
-                        style="width: 120px; height: 120px; object-fit: cover; border-radius: 10px;">
-                    <p class="text-muted mt-2">Current Picture</p>
-                </div>
-            {% endif %}
-        </div>
-
-        <!-- Additional Picture 4 -->
-        <div class="col-md-6 mb-3">
-            <label for="additional_picture_4" class="form-label">Additional Picture 4</label>
-            <input 
-                type="file" 
-                class="form-control shadow-sm" 
-                id="additional_picture_4" 
-                name="additional_picture_4" 
-                style="border-radius: 10px;">
-            {% if rescue.additional_picture_4 %}
-                <div class="mt-2 text-center">
-                    <img 
-                        src="{{ rescue.additional_picture_4.url }}" 
-                        alt="Additional Picture 4" 
-                        class="img-thumbnail" 
-                        style="width: 120px; height: 120px; object-fit: cover; border-radius: 10px;">
-                    <p class="text-muted mt-2">Current Picture</p>
-                </div>
-            {% endif %}
-        </div>
+                <a href="{% url 'management:adoptable_rescues' %}" class="btn btn-secondary px-4 py-2"
+                    style="border-radius: 25px;">Cancel</a>
+            </div>
+        </form>
     </div>
 </div>
-
-                <!-- Action Buttons -->
-                <div class="d-flex justify-content-between">
-                    <button 
-                        type="submit" 
-                        class="btn btn-success px-4 py-2" 
-                        style="border-radius: 25px; font-weight: bold;">Save Changes</button>
-                    
-                    <a 
-                        href="{% url 'management:view_rescue' pk=rescue.id %}" 
-                        class="btn btn-secondary px-4 py-2" 
-                        style="border-radius: 25px;">Cancel</a>
-                </div>
-            </form>
-        </div>
-    </div>
 {% endblock %}

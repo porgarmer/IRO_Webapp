@@ -1,20 +1,89 @@
 {% extends "base/base.html" %}
-{% load static %}
-
-{% block stylesheet %}
-<link rel="stylesheet" href="{% static 'management/css/rescue.css' %}">
-{% endblock stylesheet %}
-
 {% block content %}
-<div class="container mt-5">
-    <h1 class="mb-5 text-center display-4">Add New Rescue</h1>
-    <form method="POST" enctype="multipart/form-data">
+<div class="container mt-5  text-start">
+    <div class="card shadow-lg p-4" style="border-radius: 15px; max-width: 1000px; margin: auto;">
+        <h2 class="text-center mb-4" style="font-weight: bold; color: #343a40;">Add Rescue</h2>
+
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <!-- Name Field -->
+            <div class="mb-4">
+                {{form.name.label}}
+                {{form.name}}
+            </div>
+
+            <!-- Category Field -->
+            <div class="mb-4">
+                {{form.category.label}}
+                {{form.category}}
+            </div>
+
+            <!-- Description Field -->
+            <div class="mb-4">
+                {{form.media}}
+                {{form.description.label}}
+                {{form.description}}
+            </div>
+
+            <!-- Picture Upload -->
+            <div class="mb-4">
+                {{form.profile.label}}
+                {{form.profile}}
+            </div>
+
+            <!-- Additional Pictures Section -->
+            <div class="mb-4">
+                <h5 class="mb-3" style="font-weight: bold; color: #495057;">Gallery</h5>
+
+                <div class="row">
+                    <!-- Additional Picture 1 -->
+                    <div class="col-md-6 mb-3">
+                        {{form.additional_picture_1.label}}
+                        {{form.additional_picture_1}}
+                    </div>
+
+                    <!-- Additional Picture 2 -->
+                    <div class="col-md-6 mb-3">
+                        {{form.additional_picture_2.label}}
+                        {{form.additional_picture_2}}
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- Additional Picture 3 -->
+                <div class="col-md-6 mb-3">
+                    {{form.additional_picture_3.label}}
+                    {{form.additional_picture_3}}
+                </div>
+
+                <!-- Additional Picture 4 -->
+                <div class="col-md-6 mb-3">
+                    {{form.additional_picture_4.label}}
+                    {{form.additional_picture_4}}
+                </div>
+            </div>
+            <!-- Action Buttons -->
+            <div class="d-flex justify-content-end gap-2">
+                <button type="submit" class="btn btn-primary px-4 py-2" style="border-radius: 25px; font-weight: bold;">Save
+                    Changes</button>
+
+                <a href="{% url 'management:adoptable_rescues' %}" class="btn btn-secondary px-4 py-2"
+                    style="border-radius: 25px;">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+
+{% comment %} 
+<form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
         <div class="d-flex justify-content-end mt-4">
             <a href="{% url 'management:adoptable_rescues' %}" class="btn btn-secondary me-2">Cancel</a>
             <button type="submit" class="btn btn-primary">Save Rescue</button>
         </div>
-    </form>
-</div>
-{% endblock content %} 
+    </form> {% endcomment %}
