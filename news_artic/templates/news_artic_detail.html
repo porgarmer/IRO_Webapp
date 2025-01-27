@@ -205,15 +205,15 @@
 {% block content %}
 
 <div class="content-wrapper">
-    <div class="main-content p-5" >
+    <div class=" p-5" >
         <h1><strong>{{news_artic.title}}</strong></h1>
         {% if news_artic.photo %}
         <img src="{{news_artic.photo.url}}" alt="news_artic.title">
         {% else %}
 
         {% endif %}
-        <p>Published on: {{news_artic.created_at|date:"M d, Y"}}</p>
-        <p>{{news_artic.content|safe}}</p>
+        <p>Published on: {{news_artic.created_at}}</p>
+        {{news_artic.content|safe}}
     </div>
 
     <!-- Sidebar -->

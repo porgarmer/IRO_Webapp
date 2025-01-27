@@ -13,7 +13,7 @@ class HomePageForm(forms.ModelForm):
                   'hero_section_cta_btn_text']
         
 class HomePageStatsForm(forms.ModelForm):
-    logo =  forms.ImageField(required=False, widget=forms.FileInput(attrs={'class': 'form-control shadow-sm', 'accept': 'image/*'}))
+    logo =  forms.ImageField(required=False, widget=forms.ClearableFileInput(attrs={'class': 'form-control shadow-sm', 'accept': 'image/*'}))
 
     class Meta:
         model = HomePageStats
@@ -50,11 +50,11 @@ class ResourceCategoryForm(forms.ModelForm):
         
         
 class EducationalResourceForm(forms.ModelForm):
-    photo =  forms.ImageField(required=False, widget=forms.FileInput(attrs={'class': 'form-control shadow-sm', 'accept': 'image/*'}))
-
+    photo =  forms.ImageField(required=False, widget=forms.ClearableFileInput(attrs={'class': 'form-control shadow-sm', 'accept': 'image/*'}))
+    category = forms.ModelChoiceField(queryset=ResourceCategory.objects.all().order_by('name'), widget=forms.Select( attrs={'class': 'form-control shadow-sm'}))
     class Meta:
         model = EducationalResource
-        fields = ['title', 'content', 'summary', 'featured', 'category', 'photo']
+        fields = ['title', 'content', 'featured', 'category', 'photo']
         widgets = {
                     'title': forms.TextInput(attrs={'class': 'form-control shadow-sm', 'placeholder': 'Enter title'}),
                     "content": CKEditor5Widget(
@@ -64,7 +64,6 @@ class EducationalResourceForm(forms.ModelForm):
                         attrs={"class": "django_ckeditor_5"}, config_name="extends"
                     ),
                     'featured': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
-                    'category': forms.Select(attrs={'class': 'form-control shadow-sm'}),
                 }
         
         
@@ -77,11 +76,12 @@ class NewsArticleCategoryForm(forms.ModelForm):
         }
         
 class NewsArticleForm(forms.ModelForm):
-    photo =  forms.ImageField(required=False, widget=forms.FileInput(attrs={'class': 'form-control shadow-sm', 'accept': 'image/*'}))
+    photo =  forms.ImageField(required=False, widget=forms.ClearableFileInput(attrs={'class': 'form-control shadow-sm', 'accept': 'image/*'}))
+    category = forms.ModelChoiceField(queryset=NewsArticleCategory.objects.all().order_by('name'), widget=forms.Select( attrs={'class': 'form-control shadow-sm'}))
 
     class Meta:
         model = NewsArticle
-        fields = ['title', 'content', 'summary', 'featured', 'category', 'photo']
+        fields = ['title', 'content', 'featured', 'category', 'photo']
         widgets = {
                     'title': forms.TextInput(attrs={'class': 'form-control shadow-sm', 'placeholder': 'Enter title'}),
                     "content": CKEditor5Widget(
@@ -91,17 +91,16 @@ class NewsArticleForm(forms.ModelForm):
                         attrs={"class": "django_ckeditor_5"}, config_name="extends"
                     ),
                     'featured': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
-                    'category': forms.Select(attrs={'class': 'form-control shadow-sm'}),
                 }
         
 
 
 class AdoptableRescueForm(forms.ModelForm):
-    profile =  forms.ImageField(required=False, widget=forms.FileInput(attrs={'class': 'form-control shadow-sm', 'accept': 'image/*'}))
-    additional_picture_1 =  forms.ImageField(label='Picture 1', required=False, widget=forms.FileInput(attrs={'class': 'form-control shadow-sm', 'accept': 'image/*'}))
-    additional_picture_2 =  forms.ImageField(label='Picture 2', required=False, widget=forms.FileInput(attrs={'class': 'form-control shadow-sm', 'accept': 'image/*'}))
-    additional_picture_3=  forms.ImageField(label='Picture 3', required=False, widget=forms.FileInput(attrs={'class': 'form-control shadow-sm', 'accept': 'image/*'}))
-    additional_picture_4  =  forms.ImageField(label='Picture 4', required=False, widget=forms.FileInput(attrs={'class': 'form-control shadow-sm', 'accept': 'image/*'}))
+    profile =  forms.ImageField(required=False, widget=forms.ClearableFileInput(attrs={'class': 'form-control shadow-sm', 'accept': 'image/*'}))
+    additional_picture_1 =  forms.ImageField(label='Picture 1', required=False, widget=forms.ClearableFileInput(attrs={'class': 'form-control shadow-sm', 'accept': 'image/*'}))
+    additional_picture_2 =  forms.ImageField(label='Picture 2', required=False, widget=forms.ClearableFileInput(attrs={'class': 'form-control shadow-sm', 'accept': 'image/*'}))
+    additional_picture_3=  forms.ImageField(label='Picture 3', required=False, widget=forms.ClearableFileInput(attrs={'class': 'form-control shadow-sm', 'accept': 'image/*'}))
+    additional_picture_4  =  forms.ImageField(label='Picture 4', required=False, widget=forms.ClearableFileInput(attrs={'class': 'form-control shadow-sm', 'accept': 'image/*'}))
 
     class Meta:
         model = AdoptableRescue

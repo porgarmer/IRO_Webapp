@@ -104,6 +104,7 @@
                     <th>#</th>
                     <th>Title</th>
                     <th>Added At</th>
+                    <th>Updated At</th>
                     <th>Actions</th>
 
                 </tr>
@@ -117,6 +118,8 @@
                         <td>{{ forloop.counter }}</td>
                         <td>{{faq_obj.title}}</td>
                         <td>{{faq_obj.created_at}}</td>
+                        <td>{{faq_obj.updated_at}}</td>
+
                         <td>
                             <!-- Action Buttons -->
                             <a 

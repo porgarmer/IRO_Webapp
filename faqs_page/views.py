@@ -16,4 +16,7 @@ def faqs_page(request):
             Q(description=search_query)
         )
     
-    return render(request, 'faqs_page/faqs_homepage.html', {'faqs': faqs})
+    return render(request, 'faqs_page/faqs_homepage.html', {
+            'faqs': faqs,
+            'search_query': search_query,
+        })

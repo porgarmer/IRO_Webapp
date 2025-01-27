@@ -45,13 +45,6 @@ padding: 80px 20px;">
                 <h2>{{featured_post.title}}</h2>
 
                 <p>{{featured_post.created_at}}</p>
-
-
-                {% if featured_post.summary %}
-                <p>{{featured_post.summary|safe}}</p>
-                {% else %}
-                <p></p>
-                {% endif %}
              
                 <a class="btn btn-primary" href="{% url 'news&articles:news_artic_detail' featured_post.slug %}">Read More</a>
             </div>
@@ -114,15 +107,10 @@ padding: 80px 20px;">
               <span class="category">Uncategorized</span>
               {% endif %}
 
-              <h5 class="card-title">{{latest_post.title}}</h5>
+              <h5 class="card-title fw-bold">{{latest_post.title}}</h5>
 
               <p>{{featured_post.created_at}}</p>
 
-              {% if latest_post.summary %}
-              <p>{{latest_post.summary|safe}}</p>
-              {% else %}
-              <p></p>
-              {% endif %}
               <a class="btn btn-primary" href="{% url 'news&articles:news_artic_detail' latest_post.slug %}">Read More</a>
             </div>
           </div>

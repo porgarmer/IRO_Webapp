@@ -129,6 +129,7 @@
                     <th>Category</th>
                     <th>Cover Photo</th>
                     <th>Created At</th>
+                    <th>Updated At</th>
                     <th>Featured</th>
                     <th>Actions</th>    
                 </tr>
@@ -157,6 +158,8 @@
                             {% endif %}
                         </td>
                         <td>{{ resource.created_at }}</td>
+                        <td>{{ resource.updated_at }}</td>
+
                         {% if resource.featured %}
                         <td>Yes</td>
                         {% else %}
