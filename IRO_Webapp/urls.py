@@ -34,6 +34,7 @@ urlpatterns = [
     path('content-page/', include('content_page.urls')),
     path("ckeditor5/", include('django_ckeditor_5.urls')),
     path("about_us/", include('about_us.urls')),
+    path("contact_us/", include('contact_us.urls')),
     
 
 ]

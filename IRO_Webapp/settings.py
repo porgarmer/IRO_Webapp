@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'volunteer',
     'content_page',
     'about_us',
+    'contact_us',
     
 ]
 
