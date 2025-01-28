@@ -3,6 +3,18 @@ from django import forms
 from django_ckeditor_5.widgets import CKEditor5Widget
 from django_ckeditor_5.fields import CKEditor5Field
 from django.forms import modelformset_factory
+from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth.models import User
+
+class EditUserForm(PasswordChangeForm):
+    old_password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control shadow-sm', 'type': 'password'}))
+    new_password1 = forms.CharField(label='New Password',max_length=100, widget=forms.PasswordInput(attrs={'class': 'form-control shadow-sm', 'type': 'password'}))
+    new_password2 = forms.CharField(label='Confirm New Password', max_length=100,widget=forms.PasswordInput(attrs={'class': 'form-control shadow-sm', 'type': 'password'}))
+    
+    class Meta:
+        model = User
+        fields = ['old_password', 'new_password1', 'new_password2']
+      
 
 class HomePageForm(forms.ModelForm):
     class Meta:
@@ -19,8 +31,8 @@ class HomePageStatsForm(forms.ModelForm):
         model = HomePageStats
         fields= ['name', 'logo', 'number']
         widgets = {
-            'name': forms.TextInput(attrs={'class': 'form-control shaow sm', 'placeholder': 'Enter category name'}),
-            'number': forms.NumberInput(attrs={'class': 'form-control shaow sm', 
+            'name': forms.TextInput(attrs={'class': 'form-control shadow-sm', 'placeholder': 'Enter category name'}),
+            'number': forms.NumberInput(attrs={'class': 'form-control shadow-sm', 
                                                'placeholder': 'Enter stat number', 
                                                })
         }
@@ -45,7 +57,7 @@ class ResourceCategoryForm(forms.ModelForm):
         model = ResourceCategory
         fields = ['name']
         widgets = {
-            'name': forms.TextInput(attrs={'class': 'form-control shaow sm', 'placeholder': 'Enter category name'})
+            'name': forms.TextInput(attrs={'class': 'form-control shadow-sm', 'placeholder': 'Enter category name'})
         }
         
         

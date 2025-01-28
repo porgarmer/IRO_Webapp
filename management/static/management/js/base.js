@@ -37,18 +37,24 @@ document.querySelectorAll('#sidebar:not(.expand) .sidebar-item').forEach(item =>
         const dropdown = this.querySelector('.sidebar-dropdown');
         if (dropdown) {
             const sidebar = document.querySelector('#sidebar');
-            const rect = this.getBoundingClientRect(); // Get the link's position relative to the viewport
-            const sidebarScrollTop = sidebar.scrollTop; // Get the scroll position of the sidebar
+            const itemRect = this.getBoundingClientRect(); // Get sidebar item's position
+            const sidebarRect = sidebar.getBoundingClientRect(); // Get sidebar's position
 
-            // Adjust the dropdown position
-            dropdown.style.top = `${rect.top + sidebarScrollTop - sidebar.getBoundingClientRect().top}px`;
+            // Calculate position
+            const topPosition = itemRect.top; // Align to the top of the hovered item
+            const leftPosition = sidebarRect.right; // Align to the right of the sidebar
+
+            // Apply the calculated positions
+            dropdown.style.top = `${topPosition}px`;
+            dropdown.style.left = `${leftPosition}px`;
         }
     });
 
     item.addEventListener('mouseleave', function () {
         const dropdown = this.querySelector('.sidebar-dropdown');
         if (dropdown) {
-            dropdown.style.top = '0'; // Reset position when not hovered
+            dropdown.style.top = ''; // Reset top position
+            dropdown.style.left = ''; // Reset left position
         }
     });
 });

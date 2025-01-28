@@ -1,0 +1,62 @@
+{% extends "base/base.html" %}
+
+{% block stylesheet %}
+<style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background-color: #f8f9fa;
+    }
+    .login-card {
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      background-color: white;  
+    }
+    .login-logo {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+    }
+  </style>
+{% endblock stylesheet %}
+
+{% block content %}
+<div class="container mt-5 text-start ">
+    <div class="card shadow-lg p-4" style="border-radius: 15px; max-width: 1000px; margin: auto;">
+        <h2 class="text-center mb-4" style="font-weight: bold; color: #343a40;">Edit Account</h2>
+
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <!-- Title Field -->
+            <div class="mb-4 form-group">
+                {{form.as_div}}
+                <br>
+                <ul>
+                    <li>Your password can’t be too similar to your other personal information.</li>
+                    <li>Your password must contain at least 8 characters.</li>
+                    <li>Your password can’t be a commonly used password.</li>
+                    <li>Your password can’t be entirely numeric.</li>
+                </ul>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="d-flex justify-content-end gap-2">
+                <button 
+                    type="submit" 
+                    class="btn btn-primary px-4 py-2" 
+                    style="border-radius: 25px; font-weight: bold;">Save Changes</button>
+                
+                <a 
+                    href="{% url 'management:dashboard' %}" 
+                    class="btn btn-secondary px-4 py-2" 
+                    style="border-radius: 25px;">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock content %}

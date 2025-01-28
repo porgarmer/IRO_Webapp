@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from .forms import *
@@ -9,6 +9,8 @@ from django.http import JsonResponse
 from django.conf import settings
 from django.db.utils import IntegrityError
 from django.db.models import Q
+from django.contrib.auth.views import PasswordChangeView
+from django.contrib.auth.forms import PasswordChangeForm
 
 
 # Create your views here.
@@ -32,6 +34,17 @@ def admin_login(request):
 def admin_logout(request):
     logout(request)
     return redirect(reverse('management:login'))
+
+
+class PasswordsChangeView(PasswordChangeView):
+    form_class = EditUserForm
+    template_name='accounts/edit.html'
+    # form_class = PasswordChangeForm
+    success_url = reverse_lazy('management:edit-account-success')
+
+def edit_account_success(request):
+    return render(request, 'accounts/edit_success.html')
+    
 
 @login_required()
 def dashboard(request):

@@ -1,11 +1,16 @@
 from django.urls import path
 from . import views
+from django.contrib.auth import views as auth_views
 
 app_name = 'management'
 urlpatterns = [
     path('', views.dashboard, name='dashboard'),
     path('login/', views.admin_login, name='login'),
     path('logout/', views.admin_logout, name='logout'),
+    # path('edit-account/', auth_views.PasswordChangeView.as_view(template_name='accounts/edit.html'), name='edit_account'),
+    path('edit-account/', views.PasswordsChangeView.as_view(), name='edit_account'),
+    path('edit-account-success/', views.edit_account_success, name='edit-account-success'),
+
     
     path('dashboard/', views.dashboard, name='dashboard'),
     

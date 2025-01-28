@@ -194,21 +194,22 @@ a.sidebar-link {
 }
 
 #sidebar:not(.expand) .sidebar-item .sidebar-dropdown {
-    position: fixed; /* Makes the dropdown pop up relative to the viewport */
-    top: aut; /* Position it dynamically based on the hovered link */
-    left: 80px;
+    position: fixed; /* Fixed positioning for flexibility */
     background-color: #231F20;
     padding: 0;
     min-width: 15rem;
     display: none;
-    z-index: 1000; /* Ensures the dropdown appears above other elements */
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    white-space: nowrap;
 
 }
 
-#sidebar:not(.expand) .sidebar-item:hover .has-dropdown+ .sidebar-dropdown {
+/* Show dropdown on hover */
+#sidebar:not(.expand) .sidebar-item:hover .has-dropdown + .sidebar-dropdown {
     display: block;
     opacity: 1;
-    transform: translateY(calc(100% + 5px)); /* Adjusts the dropdown position dynamically */
+    transition: opacity 0.2s ease-in-out;
 }
 
 /* Fix the dropdown position relative to the hovered link */
