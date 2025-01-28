@@ -3,302 +3,315 @@
 {% block title %}Contact Us Page{% endblock title %}
 {% block styles %}
 <style>
-        body {
-                font-family: 'Arial', sans-serif;
-                margin: 0;
-                padding: 0;
-                background-color: #fff;
-                color: #333;
-            }
+    body {
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        color: #333;
+    }
 
-            .header {
-                color: white;
-                text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
-                padding: 100px 20px;
-                text-align: center;
-                background: linear-gradient(rgba(43, 37, 37, 0.6), rgba(18, 15, 15, 0.6)),
-            }
-    
-            .header h1 {
-                font-size: 4rem;
-                font-weight: bold;
-                margin-bottom: 15px;
-                color: white;
-            }
-    
-            .header p {
-                font-size: 2.5rem;
-                margin-bottom: 30px;
-                line-height: 1.6em;
-                color: white;
-                text-align: left;
-            }
-            
+    .header {
+        color: white;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        padding: 100px 20px;
+        text-align: center;
+        background: linear-gradient(rgba(43, 37, 37, 0.6), rgba(18, 15, 15, 0.6)),
+    }
+
+    .header h1 {
+        font-size: 4rem;
+        font-weight: bold;
+        margin-bottom: 15px;
+        color: white;
+    }
+
+    .header p {
+        font-size: 2.5rem;
+        margin-bottom: 30px;
+        line-height: 1.6em;
+        color: white;
+        text-align: left;
+    }
+
+    .content h2 {
+        font-size: 2.2em;
+        color: black;
+        margin-bottom: 20px;
+    }
+
+    .content p {
+        font-size: 1.1em;
+        color: #555;
+        margin-bottom: 40px;
+        line-height: 1.8em;
+    }
+
+    .card {
+        border: 2px solid #ccc;
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .card img {
+        max-width: 100px;
+        margin: 0 auto;
+    }
+
+    .card p {
+        font-size: 1.3rem;
+        margin: 10px 0;
+    }
+
+    .form-section {
+        max-width: 800px;
+        margin: 50px auto;
+        padding: 40px;
+        background-color: #f7f9fc;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-section h2 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+        text-align: center;
+        color: #333;
+    }
+
+    .form-section form {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .form-group label {
+        font-size: 1rem;
+        margin-bottom: 5px;
+        color: #555;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        padding: 12px;
+        font-size: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        outline: none;
+        transition: border-color 0.3s ease;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+        border-color: rgb(79, 172, 22);
+    }
+
+    .form-group textarea {
+        height: 120px;
+        resize: none;
+    }
+
+    .form-action {
+        text-align: center;
+    }
+
+    .donation-card,
+    .partner-card {
+        background-color: white;
+        border: 1px solid #ccc;
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .donation-card:hover,
+    .partner-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    #cards-container-donate {
+        overflow-x: hidden;
+        white-space: nowrap;
+    }
+
+    @media (max-width: 768px) {
+        .header h1 {
+            font-size: 4rem;
+        }
+
+        .header p {
+            font-size: 1.5rem;
+            margin-left: 20px;
+        }
+
+        .header button {
+            padding: 10px 20px;
+            font-size: 1em;
+        }
+
         .content h2 {
-                font-size: 2.2em;
-                color: black; 
-                margin-bottom: 20px;
+            font-size: 1.8em;
         }
 
         .content p {
-                font-size: 1.1em;
-                color: #555;
-                margin-bottom: 40px;
-                line-height: 1.8em;
+            font-size: 1em;
         }
 
-            .card {
-                border: 2px solid #ccc; 
-                border-radius: 15px;
-                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-                transition: transform 0.3s ease, box-shadow 0.3s ease;
-            }
-
-            .card:hover {
-                transform: translateY(-10px);
-                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-            }
-
-            .card img {
-                max-width: 100px;
-                margin: 0 auto;
-            }
-
-            .card p {
-                font-size: 1.3rem;
-                margin: 10px 0;
-            }
-
-            .form-section {
-                max-width: 800px;
-                margin: 50px auto;
-                padding: 40px;
-                background-color: #f7f9fc;
-                border-radius: 12px;
-                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            }
-        
-            .form-section h2 {
-                font-size: 2rem;
-                margin-bottom: 20px;
-                text-align: center;
-                color: #333;
-            }
-        
-            .form-section form {
-                display: flex;
-                flex-direction: column;
-                gap: 20px;
-            }
-        
-            .form-group {
-                display: flex;
-                flex-direction: column;
-            }
-        
-            .form-group label {
-                font-size: 1rem;
-                margin-bottom: 5px;
-                color: #555;
-            }
-        
-            .form-group input,
-            .form-group textarea {
-                padding: 12px;
-                font-size: 1rem;
-                border: 1px solid #ccc;
-                border-radius: 8px;
-                outline: none;
-                transition: border-color 0.3s ease;
-            }
-        
-            .form-group input:focus,
-            .form-group textarea:focus {
-                border-color:rgb(79, 172, 22);
-            }
-        
-            .form-group textarea {
-                height: 120px;
-                resize: none;
-            }
-        
-            .form-action {
-                text-align: center;
-            }
-        
-            .donation-card, .partner-card {
-                background-color: white;
-                border: 1px solid #ccc; 
-                border-radius: 15px;
-                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-                transition: transform 0.3s ease, box-shadow 0.3s ease;
-            }
-
-            .donation-card:hover, .partner-card:hover {
-                transform: translateY(-10px);
-                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-            }
-
-                    #cards-container-donate {
-            overflow-x: hidden;
-            white-space: nowrap;
+        .card p {
+            font-size: 1.1rem;
         }
 
-            @media (max-width: 768px) {
-                .header h1 {
-                    font-size: 4rem;
-                }
+        .section h2 {
+            font-size: 1.8em;
+        }
 
-                .header p {
-                    font-size: 1.5rem;
-                    margin-left: 20px; 
-                }
+        .donation-card,
+        .partner-card {
+            margin-bottom: 20px;
+        }
 
-                .header button {
-                    padding: 10px 20px; 
-                    font-size: 1em; 
-                }
+        .donation-card img,
+        .partner-card img {
+            max-width: 80px;
+        }
+    }
 
-                .content h2 {
-                    font-size: 1.8em;
-                }
+    .card p,
+    .partner-card p,
+    .donation-card p {
+        white-space: normal;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
 
-                .content p {
-                    font-size: 1em;
-                }
+    @media (max-width: 576px) {
+        .header h1 {
+            font-size: 3rem;
+        }
 
-                .card p {
-                    font-size: 1.1rem;
-                }
+        .header p {
+            font-size: 1.2rem;
+            margin-left: 10px;
+        }
 
-                .section h2 {
-                    font-size: 1.8em;
-                }
+        .content h2 {
+            font-size: 1.5em;
+        }
 
-                .donation-card, .partner-card {
-                    margin-bottom: 20px; 
-                }
+        .card p {
+            font-size: 1rem;
+        }
 
-                .donation-card img, .partner-card img {
-                    max-width: 80px; 
-                }
-            }
-                .card p, .partner-card p, .donation-card p {
-                    white-space: normal;   
-                    overflow: hidden;      
-                    text-overflow: ellipsis; 
-                }
+        .section h2 {
+            font-size: 1.5em;
+        }
 
-            @media (max-width: 576px) {
-                .header h1 {
-                    font-size: 3rem; 
-                }
-
-                .header p {
-                    font-size: 1.2rem;
-                    margin-left: 10px; 
-                }
-
-                .content h2 {
-                    font-size: 1.5em;
-                }
-
-                .card p {
-                    font-size: 1rem;
-                }
-
-                .section h2 {
-                    font-size: 1.5em;
-                }
-
-                .donation-card img, .partner-card img {
-                    max-width: 60px; 
-                }
-            }
-        </style>
+        .donation-card img,
+        .partner-card img {
+            max-width: 60px;
+        }
+    }
+</style>
 {% endblock styles %}
 
 {% block content %}
-<div class="header d-flex justify-content-center" 
-        style="background-color: #231F20; 
+<div class="header d-flex justify-content-center" style="background-color: #231F20; 
         background-size: cover; 
         background-position: center; 
         background-repeat: no-repeat; 
         padding: 80px 20px;">
 
-        <div class="container">
-            <h1> CONTACT US </h1>
-        </div>
+    <div class="container">
+        <h1> CONTACT US </h1>
+    </div>
 
-        
-    </div>
-    <div class="form-section">
-        <h2>We’d Love to Hear from You 👋</h2>
-        <form>
-            <div class="form-group">
-                <label for="name">Your Name</label>
-                <input type="text" id="name" placeholder="Enter your full name">
-            </div>
-            <div class="form-group">
-                <label for="email">Your Email</label>
-                <input type="email" id="email" placeholder="example@domain.com">
-            </div>
-            <div class="form-group">
-                <label for="message">Message</label>
-                <textarea id="message" placeholder="Let us know how we can help you"></textarea>
-            </div>
-            <div class="form-action">
-                <button type="submit" class="btn btn-primary">Send Message</button>
-            </div>
-        </form>
-    </div>
-        <div class="container my-5">
-        <div class="row g-4 justify-content-center">
+
+</div>
+<div class="form-section">
+    <h2>We’d Love to Hear from You 👋</h2>
+    <form>
+        <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" placeholder="Enter your full name">
+        </div>
+        <div class="form-group">
+            <label for="email">Your Email</label>
+            <input type="email" id="email" placeholder="example@domain.com">
+        </div>
+        <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" placeholder="Let us know how we can help you"></textarea>
+        </div>
+        <div class="form-action">
+            <button type="submit" class="btn btn-primary">Send Message</button>
+        </div>
+    </form>
+</div>
+<div class="container my-5">
+    <div class="row g-4 justify-content-center">
         <div class="col-md-4">
             <div class="card text-center p-4">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0XvFduY7sDBknSh_lJd80OzsdZ_LaHL2w-g&s" alt="GMAIL" class="mb-3" style="max-height: 100px;">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0XvFduY7sDBknSh_lJd80OzsdZ_LaHL2w-g&s"
+                    alt="GMAIL" class="mb-3" style="max-height: 100px;">
                 <p><strong>GMAIL</strong></p>
                 <p style="color:rgb(68, 66, 65);">
                     <a href="mailto:helpiro@gmail.com">helpiro@gmail.com</a>
                 </p>
             </div>
-            
+
         </div>
         <div class="col-md-4">
             <div class="card text-center p-4">
-                <img src="https://yt3.googleusercontent.com/LZeUOuOM8lzINkYAKi1X3pCQz1xsSD_EndPUR1vOGesaGavUtyM_-bCUq7Gld-LPX_R7uieWsA=s900-c-k-c0x00ffffff-no-rj" alt="WEBSITE" class="mb-3" style="max-height: 100px;">
+                <img src="https://yt3.googleusercontent.com/LZeUOuOM8lzINkYAKi1X3pCQz1xsSD_EndPUR1vOGesaGavUtyM_-bCUq7Gld-LPX_R7uieWsA=s900-c-k-c0x00ffffff-no-rj"
+                    alt="WEBSITE" class="mb-3" style="max-height: 100px;">
                 <p><strong>YOUTUBE </strong></p>
-                <p style="color:rgb(68, 66, 65);" >
+                <p style="color:rgb(68, 66, 65);">
                     <a href="https://www.youtube.com/@IROPhilippines">IROPhilippines</a>
             </div>
         </div>
         <div class="col-md-4">
             <div class="card text-center p-4">
-                <img src="https://1000logos.net/wp-content/uploads/2017/02/Facebook-Logosu.png" alt="FB" class="mb-3" style="max-height: 100px;">
+                <img src="https://1000logos.net/wp-content/uploads/2017/02/Facebook-Logosu.png" alt="FB" class="mb-3"
+                    style="max-height: 100px;">
                 <p><strong>FACEBOOK</strong></p>
-                <p style="color:rgb(68, 66, 65);" >
+                <p style="color:rgb(68, 66, 65);">
                     <a href="https://www.fb.com/IslandRescueOrganization" target="_blank">IslandRescueOrganization</a>
-            </div> 
+            </div>
         </div>
     </div>
-        <div class="row g-4 justify-content-center mt-4">
-            <div class="col-md-4">
-                <div class="card text-center p-4">
-                    <img src="https://icon-library.com/images/facebook-icon-transparent-background/facebook-icon-transparent-background-2.jpg" alt="IG" class="mb-3">
-                    <p><strong>INSTAGRAM</strong></p>
-                    <p style="color:rgb(68, 66, 65);" >
-                        <a href="https://www.instagram.com/islandrescueorg" target="_blank">@islandrescueorg</a>
-                        <a href="https://www.instagram.com/camp.iro" target="_blank">@camp.iro</a>
-                </div>
+    <div class="row g-4 justify-content-center mt-4">
+        <div class="col-md-4">
+            <div class="card text-center p-4">
+                <img src="https://icon-library.com/images/facebook-icon-transparent-background/facebook-icon-transparent-background-2.jpg"
+                    alt="IG" class="mb-3">
+                <p><strong>INSTAGRAM</strong></p>
+                <p style="color:rgb(68, 66, 65);">
+                    <a href="https://www.instagram.com/islandrescueorg" target="_blank">@islandrescueorg</a>
+                    <a href="https://www.instagram.com/camp.iro" target="_blank">@camp.iro</a>
             </div>
+        </div>
 
-            <div class="col-md-4">
-                <div class="card text-center p-4">
-                    <img src="https://logos-world.net/wp-content/uploads/2020/04/Twitter-Emblem.png" alt="China Bank" class="mb-3">
-                    <p><strong>TWITTER </strong></p>
-                    <p style="color:rgb(68, 66, 65);" >
-                        <a href="https://www.twitter.com/iroislandrescue">@iroislandrescue</a>
-                </div>
+        <div class="col-md-4">
+            <div class="card text-center p-4">
+                <img src="https://logos-world.net/wp-content/uploads/2020/04/Twitter-Emblem.png" alt="China Bank"
+                    class="mb-3">
+                <p><strong>TWITTER </strong></p>
+                <p style="color:rgb(68, 66, 65);">
+                    <a href="https://www.twitter.com/iroislandrescue">@iroislandrescue</a>
             </div>
-{% endblock content %}  
-
+        </div>
+    </div>
+</div>
+{% endblock content %}
