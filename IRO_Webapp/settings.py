@@ -26,7 +26,12 @@ SECRET_KEY = 'django-insecure-cd)+*5hqlw0v&jrdttn40#8lxo7muqb($7)xyuafxwqs5#@^zj
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+if DEBUG:
+    ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+    
+else:
+    ALLOWED_HOSTS = ['islandrescue.vercel.app']
+
 
 # Application definition
 
