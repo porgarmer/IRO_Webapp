@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 /*style reset*/
 html {
   scroll-behavior: smooth;
@@ -14,7 +16,7 @@ html {
 /* 2. Remove default margin */
 * {
   margin: 0;
-  font-family: 'Arial', sans-serif;
+  font-family: "Poppins", serif;
 }
 body {
   /* 3. Add accessible line-height */
@@ -54,6 +56,7 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 500;
     background-color: white;
     z-index: 1000;
+    border-bottom: solid 1px #e3e3e3;
 }
 
 .nav-link:hover{
@@ -87,7 +90,7 @@ footer a{
     color: white;
 }
 
-h5{
+footer h5{
     color: white;
 }
 
@@ -107,25 +110,73 @@ h5{
 
 
 /* donations styles */
-.partner-card img{
-  max-width: 200px;
-  margin: auto;
+.swiper {
+  padding-bottom: 40px;
 }
 
-.donation-card, .partner-card {
-  background-color: white;
-  border: 1px solid #ccc; 
-  border-radius: 15px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+.swiper-slide {
+  display: flex;
+  justify-content: center;
 }
 
-.donation-card:hover, .partner-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+/* .donation-channels{
+  background: #ecb493;
+} */
+
+.donation-card {
+  width: 100%;
+  max-width: 300px; /* Optional: Prevents oversized cards */
+  padding: 20px;
 }
 
-#cards-container {
-overflow-x: hidden;
-white-space: nowrap;
+/* Change arrow colors */
+.swiper-button-next,
+.swiper-button-prev {
+  color: #231F20; /* Change to any color you want */
+}
+
+/* Change arrow color on hover */
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  color: #363233; /* Change to a different color on hover */
+}
+
+/* Change the color of the pagination dots */
+.swiper-pagination-bullet {
+  background-color: #231F20; /* Change to your preferred color */
+  opacity: 1; /* Adjust transparency */
+}
+
+/* Active dot (current slide) */
+.swiper-pagination-bullet-active {
+  background-color: #ff5733; /* Change active dot color */
+  opacity: 1;
+}
+
+.custom-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* Centers content horizontally */
+  justify-content: center;
+  /* Centers content vertically */
+  text-align: center;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+
+}
+
+.custom-card:hover {
+  transform: scale(1.05);
+}
+
+.custom-logo {
+  max-width: 100%;
+  /* Ensures the image scales with container size */
+  height: auto;
+  margin-bottom: 15px;
+  /* Adjust as necessary for spacing */
 }

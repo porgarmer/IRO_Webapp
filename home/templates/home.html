@@ -28,13 +28,13 @@ Home
     </div>
 </div> {% endcomment %}
 
-<div class="px-4 py-5 text-center d-grid hero-section">
+<div class="text-center d-grid hero-section p-5">
     <div class="hero-content">
       <h1 class="display-5 fw-bold">RESCUE <span style="color: #F95B00;">•</span> EDUCATE <span style="color: #F95B00;">•</span> ADVOCATE</h1>
         <div class="col-lg-6 mx-auto">
           <p class="lead mb-4">Creating a Better Future for Animals</p>
             <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                <a href="#help-iro" type="button" class="btn btn-primary btn-lg px-4 gap-3">Help IRO</a>
+                <a href="#help-iro" type="button" class="btn btn-primary btn-lg p-3 gap-3">Help IRO</a>
             </div>
         </div>
     </div>
@@ -42,7 +42,7 @@ Home
 
   
 {% comment %} about section {% endcomment %}
-<div class="container d-flex justify-content-center my-5">
+<div class="container d-flex justify-content-center p-5">
         <div class="card about-us">
             <div class="row g-0">
                 <div class="col-md-4">
@@ -60,7 +60,7 @@ Home
                               and
                               <span style="font-weight: bold;">ADVOCACY.</span>
                           </p>
-                          <a href="" class="btn btn-primary">Learn More</a>
+                          <a href="{% url 'about_us' %}" class="btn btn-primary btn-lg px-3">Learn More</a>
                     </div>
                 </div>
             </div>
@@ -68,9 +68,9 @@ Home
 </div>
 
 {% comment %} vision, mission, goal seciton {% endcomment %}
-<div class="vision-mission-goal">
+<div class="vision-mission-goal p-5">
   <div class="container ">
-      <div class="text-center mb-4">
+      <div class="text-center">
           <h1 class="fw-bold">OUR VISION, MISSION, AND GOAL</h1>
       </div>
       <div class="row justify-content-center text-center ">
@@ -101,7 +101,7 @@ Home
 
 {% comment %} stats section {% endcomment %}
 {% if stats %}
-<div class="stats-section">
+<div class="stats-section p-5">
   <div class="container">    
       <div class="row justify-content-center text-center">
         {% for stat in stats  %}
@@ -120,7 +120,7 @@ Home
 
 
 {% comment %} shelters section {% endcomment %}
-<div class="shelters-section">
+<div class="shelters-section p-5">
   <div class="container">
       <h1 class="fw-bold mb-4">OUR SHELTERS</h1>
       <p class="mb-5">
@@ -129,44 +129,52 @@ Home
       </p>
       <div class="row justify-content-center text-center"">
           <div class="col-md-3 col-sm-6 mb-4">
-              <div class="shelter-card">
-                  <img src="{% static 'home/images/camp-iro-logo.jpg' %}" alt="Camp IRO Logo" class="shelter-logo">
-                  <h5>Camp IRO</h5>
-                  <p>Cebu City</p>
-                  <small>Visitors allowed: Yes (per appointment basis; no walk-ins)</small>
+              <div class="card custom-card">
+                  <img src="{% static 'home/images/camp-iro-logo.jpg' %}" alt="Camp IRO Logo" class="custom-logo">
+                  <div class="card-body">
+                      <h4 class="card-title fw-bold" >Camp IRO</h4>
+                      <p class="card-text">Cebu City</p>
+                      <p class="card-text">Visitors allowed: Yes (per appointment basis; no walk-ins)</p>
+                  </div>
               </div>
           </div>
           <div class="col-md-3 col-sm-6 mb-4">
-              <div class="shelter-card">
-                  <img src="{% static 'home/images/iro-cattery-logo.jpg' %}" alt="IRO 'O' Cattery Logo" class="shelter-logo">
-                  <h5>IRO 'O' Cattery</h5>
-                  <p>Mandaue</p>
-                  <small>Visitors allowed: Yes (per appointment basis; no walk-ins)</small>
+              <div class="card custom-card">
+                  <img src="{% static 'home/images/iro-cattery-logo.jpg' %}" alt="IRO 'O' Cattery Logo" class="custom-logo">
+                  <div class="card-body">
+                    <h4 class="card-title fw-bold" >IRO 'O' Cattery</h4>
+                    <p class="card-text">Mandaue</p>
+                    <p class="card-text">Visitors allowed: Yes (per appointment basis; no walk-ins)</p>
+                  </div>
               </div>
           </div>
           <div class="col-md-3 col-sm-6 mb-4">
-              <div class="shelter-card">
-                  <img src="{% static 'home/images/iro-tuesday-logo.jpg' %} " alt="IRO Tuesday Foster Home Logo" class="shelter-logo">
-                  <h5>IRO Tuesday Foster Home</h5>
-                  <p>Consolacion</p>
-                  <small>Visitors allowed: No</small>
+              <div class="custom-card">
+                  <img src="{% static 'home/images/iro-tuesday-logo.jpg' %} " alt="IRO Tuesday Foster Home Logo" class="custom-logo">
+                  <div class="card-body">
+                    <h4 class="card-title fw-bold">IRO Tuesday Foster Home</h4>
+                    <p class="card-text">Consolacion</p>
+                    <p class="card-text">Visitors allowed: No</p>
+                  </div>
               </div>
           </div>
           <div class="col-md-3 col-sm-6 mb-4">
-              <div class="shelter-card">
-                  <img src="{% static 'home/images/iro-lolo-ali-logo.jpg' %} " alt="IRO Lolo Ali Center Logo" class="shelter-logo">
-                  <h5>IRO Lolo Ali Center</h5>
-                  <p>Barili</p>
-                  <small>Visitors allowed: Seasonal (still at an appointment basis)</small>
+              <div class="custom-card">
+                  <img src="{% static 'home/images/iro-lolo-ali-logo.jpg' %} " alt="IRO Lolo Ali Center Logo" class="custom-logo">
+                  <div class="card-body">
+                    <h4 class="card-title fw-bold">IRO Lolo Ali Center</h4>
+                    <p class="card-text">Barili</p>
+                    <p class="card-text">Visitors allowed: Seasonal (still at an appointment basis)</p>
+                  </div>
               </div>
           </div>
       </div>
-      <a href="{% url 'shelters_page' %}" class="btn btn-primary mt-4">Explore Our Shelters</a>
+      <a href="{% url 'shelters_page' %}" class="btn btn-primary btn-lg p-3 mt-4">Explore Our Shelters</a>
   </div>
 </div>
 
 {% comment %} ways you can help section {% endcomment %}
-<div class="section-gray scroll-offset" id="help-iro">
+<div class="section-gray scroll-offset p-5" id="help-iro">
   <div class="container text-center mb-5 ways-you-can-help-section">
     <h1 class="fw-bold mb-4">WAYS YOU CAN HELP</h1>
     <p class="mb-4">
@@ -181,7 +189,7 @@ Home
             <p class="card-text">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam orci eros, auctor sed erat in, consequat sollicitudin tellus.           </p>
           </div> 
-          <a class="btn btn-primary" href="{% url 'volunteer' %}">Volunteer</a>
+          <a class="btn btn-primary btn-lg" href="{% url 'volunteer' %}">Volunteer</a>
         </div>
       </div>
       <div class="col-md-3">
@@ -192,7 +200,7 @@ Home
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam orci eros, auctor sed erat in, consequat sollicitudin tellus.           </p>
             </p>
           </div>
-          <a class="btn btn-primary" href="{% url 'donate' %}">Donate</a>
+          <a class="btn btn-primary btn-lg" href="{% url 'donate' %}">Donate</a>
         </div>
       </div>
       <div class="col-md-3">
@@ -203,7 +211,7 @@ Home
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam orci eros, auctor sed erat in, consequat sollicitudin tellus.           </p>
             </p>
           </div>
-          <a class="btn btn-primary"  href="#">Sponsor</a>
+          <a class="btn btn-primary btn-lg"  href="#">Sponsor</a>
         </div>
       </div>
       <div class="col-md-3">
@@ -214,7 +222,7 @@ Home
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam orci eros, auctor sed erat in, consequat sollicitudin tellus.           </p>
             </p>
           </div>
-          <a class="btn btn-primary" href="{% url 'adoption' %}">Adopt</a>
+          <a class="btn btn-primary btn-lg" href="{% url 'adoption' %}">Adopt</a>
         </div>
       </div>
     </div>

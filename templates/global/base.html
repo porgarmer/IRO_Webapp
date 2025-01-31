@@ -11,9 +11,11 @@
 
     <link rel="shortcut icon" href="{% static 'global/images/iro-logo.png' %}" type="image/x-icon">
     <link rel="stylesheet" href="{% static 'global/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
     <link rel="stylesheet" href="{% static 'global/css/base.css' %}">
     <link rel="stylesheet" href="{% static 'global/css/custom-btn.css' %}">
     <link href="https://cdn.lineicons.com/5.0/lineicons.css" rel="stylesheet">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
     {% block styles %}
@@ -102,68 +104,78 @@
     </div>
 
 {% comment %} donations section {% endcomment %}
-    <div class="container my-5 text-center">
-      <h1 class="mb-3 fw-bold">DONATIONS</h1>
-      <p class="mb-4">
-        Join us in making a difference! Whether through volunteering, donating, fostering, or adopting,
-        your involvement helps save lives and create brighter futures for animals in need.
-      </p>
-      <div class="position-relative">
-          <!-- Left Arrow -->
-          <button id="scroll-left" class="btn btn-dark position-absolute" style="top: 50%; transform: translateY(-50%); left: -40px; z-index: 10;">
-              &#8249;
-          </button>
-  
-          <!-- Cards Container -->
-          <div id="cards-container" class="d-flex overflow-hidden gap-3" style="scroll-behavior: smooth; white-space: nowrap;">
-              <!-- Partner Card 1 -->
-              <div class="partner-card text-center p-4" style="min-width: 300px; display: inline-block;">
-                  <img src="https://images.seeklogo.com/logo-png/38/1/gcash-logo-png_seeklogo-383190.png?v=1957907106254922584" 
-                      alt="Anonymous Donor" class="img-fluid mb-3">
-                  <p style="font-size: 1.4rem;" ><strong>CHINA BANK</strong></p>
-                  <p style="font-size: 1.2rem;" >Island Rescue Organization-Subangdaku Branch Checking Account #: 2890396715</p>
+{% block donation_channels %}
+  <div class="donation-channels">
+    <div class="container p-5 text-center">
+      <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+          
+          <!-- Card 1 -->
+          <div class="swiper-slide">
+            <div class="card donation-card">
+              <img src="https://images.seeklogo.com/logo-png/38/1/gcash-logo-png_seeklogo-383190.png?v=1957907106254922584" class="card-img-top" alt="GCASH">
+              <div class="card-body">
+                <h5 class="card-title fw-bold">GCASH</h5>
+                <p class="card-text">Annalyn Aizpuru <br> 09053416042</p>
               </div>
-  
-              <div class="partner-card text-center p-4" style="min-width: 300px; display: inline-block;">
-                  <img src="https://play-lh.googleusercontent.com/rX0QH8-NjXsrOdQQM7qbXhFFkdhCyAAzMB-hitkGOaLTMiP6oCR2RGZ3MCE3biSMmtk=w240-h480-rw" 
-                      alt="Anonymous Donor" class="img-fluid mb-3" width=100%>
-                  <p style="font-size: 1.4rem;" ><strong>GCASH</strong></p>
-                  <p style="font-size: 1.2rem;">Annalyn Aizpuru 09053416042</p>
-              </div>
-  
-              <div class="partner-card text-center p-4" style="min-width: 300px; display: inline-block;">
-                  <img src="https://ceedphilippines.com/wp-content/uploads/2020/04/bpi-new-logo.jpg" 
-                      alt="Anonymous Donor" class="img-fluid mb-3">
-                  <p style="font-size: 1.4rem;" ><strong>BPI</strong></p>
-                  <p style="font-size: 1.2rem;" >Carla Joy Estrada-Salvacion Account Number <br> 1199 1624 93</p>
-              </div>
-  
-              <div class="partner-card text-center p-4" style="min-width: 300px; display: inline-block;">
-                  <img src="https://play-lh.googleusercontent.com/fdQjxsIO8BTLaw796rQPZtLEnGEV8OJZJBJvl8dFfZLZcGf613W93z7y9dFAdDhvfqw" 
-                      alt="Anonymous Donor" class="img-fluid mb-3">
-                  <p style="font-size: 1.4rem;" ><strong>PAYMAYA</strong></p>
-                  <p style="font-size: 1.2rem;">Annalyn Aizpuru 09053416042</p>
-              </div>
-  
-              <div class="partner-card text-center p-4" style="min-width: 300px; display: inline-block;">
-                  <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Paypal_2014_logo.png" 
-                      alt="Anonymous Donor" class="img-fluid mb-3">
-                  <p style="font-size: 1.4rem;" ><strong>PAYPAL</strong></p>
-                  <p style="font-size: 1.2rem;" >helpiro@gmail.com</p>
-              </div>
-  
-              <!-- Add more cards as needed -->
+            </div>
           </div>
-  
-          <!-- Right Arrow -->
-          <button id="scroll-right" class="btn btn-dark position-absolute" style="top: 50%; transform: translateY(-50%); right: -40px; z-index: 10;">
-              &#8250;
-          </button>
+    
+          <!-- Card 2 -->
+          <div class="swiper-slide">
+            <div class="card donation-card">
+              <img src="https://play-lh.googleusercontent.com/rX0QH8-NjXsrOdQQM7qbXhFFkdhCyAAzMB-hitkGOaLTMiP6oCR2RGZ3MCE3biSMmtk=w240-h480-rw" class="card-img-top" alt="CHINA BANK">
+              <div class="card-body">
+                <h5 class="card-title fw-bold">CHINA BANK</h5>
+                <p class="card-text">Island Rescue Organization-Subangdaku Branch Checking Account #: 2890396715</p>
+              </div>
+            </div>
+          </div>
+    
+          <!-- Card 3 -->
+          <div class="swiper-slide">
+            <div class="card donation-card">
+              <img src="https://ceedphilippines.com/wp-content/uploads/2020/04/bpi-new-logo.jpg" class="card-img-top" alt="BPI">
+              <div class="card-body">
+                <h5 class="card-title fw-bold">BPI</h5>
+                <p class="card-text">Carla Joy Estrada-Salvacion Account Number <br> 1199 1624 93</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="swiper-slide">
+            <div class="card donation-card">
+              <img src="https://play-lh.googleusercontent.com/fdQjxsIO8BTLaw796rQPZtLEnGEV8OJZJBJvl8dFfZLZcGf613W93z7y9dFAdDhvfqw" class="card-img-top" alt="PAYMAYA">
+              <div class="card-body">
+                <h5 class="card-title fw-bold">PAYMAYA</h5>
+                <p class="card-text">Annalyn Aizpuru <br> 09053416042</p>
+              </div>
+            </div>
+          </div>
+    
+          <div class="swiper-slide">
+            <div class="card donation-card">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Paypal_2014_logo.png" class="card-img-top" alt="PAYPAL">
+              <div class="card-body">
+                <h5 class="card-title fw-bold">PAYPAL</h5>
+                <p class="card-text">helpiro@gmail.com</p>
+              </div>
+            </div>
+          </div>
+    
+    
+          <!-- Add more cards as needed -->
+          
+        </div>
+    
+        <!-- Pagination & Navigation -->
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
       </div>
+    </div>
   </div>
-
-  
-
+  {% endblock donation_channels %}
   {% comment %} footer {% endcomment %}
     <footer class="bd-footer py-4 py-md-5 ">
         <div class="container py-4 py-md-5 px-4 px-md-3 ">
@@ -215,26 +227,32 @@
           </div>
         </div>
     </footer>
-    
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-    <script>
-      document.getElementById('scroll-left').addEventListener('click', function() {
-          document.getElementById('cards-container').scrollBy({
-              left: -300,
-              behavior: 'smooth'
-          });
-      });
-      
-      document.getElementById('scroll-right').addEventListener('click', function() {
-          document.getElementById('cards-container').scrollBy({
-              left: 300,
-              behavior: 'smooth'
-          });
-      });
-      </script>
+
     <script src="{% static 'global/js/jquery-3.7.1.min.js' %}"></script>
     <script src="{% static 'global/js/bootstrap.bundle.min.js' %}"></script>
-    <script src="{% static 'global/js/dropdown.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+
+    <script>
+      var swiper = new Swiper(".mySwiper", {
+        slidesPerView: 1, // Default: 1 card per view
+        spaceBetween: 20,
+        loop: true,
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        breakpoints: {
+          576: { slidesPerView: 1 }, // 1 card on small screens
+          768: { slidesPerView: 2 }, // 2 cards on tablets
+          992: { slidesPerView: 3 }, // 3 cards on desktops
+        }
+      });
+    </script>
     {% block scripts %}
     
     {% endblock scripts %}
