@@ -161,12 +161,14 @@ mimetypes.add_type("text/css", ".css", True)
 
 STATIC_URL = 'static/'
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 # Central static folder
 STATICFILES_DIRS = [
     BASE_DIR / "static",  
+    BASE_DIR / "static/django_ckeditor_5"
 ]
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
