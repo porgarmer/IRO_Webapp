@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -30,6 +31,7 @@ ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 # Application definition
 
 INSTALLED_APPS = [
+    'whitenose.runserver_nostatic',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -55,6 +57,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -148,18 +151,18 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-
 # Central static folder
 STATICFILES_DIRS = [
     BASE_DIR / "static",  
 ]
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-STATICFILES_DIRS = [BASE_DIR / 'static']
 
 from django.urls import reverse_lazy
 LOGIN_URL = reverse_lazy('management:login')
@@ -167,7 +170,6 @@ LOGIN_URL = reverse_lazy('management:login')
 # SESSION_COOKIE_AGE = 1209600  # Two weeks (in seconds)
 # SESSION_SAVE_EVERY_REQUEST = True 
 
-import os
 
 # Media settings
 MEDIA_URL = '/media/'
