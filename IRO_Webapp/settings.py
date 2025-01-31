@@ -30,7 +30,7 @@ if DEBUG:
     ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
     
 else:
-    ALLOWED_HOSTS = ['islandrescue.vercel.app']
+    ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'islandrescue.vercel.app']
 
 
 # Application definition

@@ -1,23 +1,13 @@
 {
-  "builds": [
-    {
+    "builds": [{
       "src": "IRO_Webapp/wsgi.py",
       "use": "@vercel/python",
       "config": { "maxLambdaSize": "15mb", "runtime": "python3.11.2" }
-    }
-  ],
-  "routes": [
-    {
-      "src": "/static/(.*)",
-      "dest": "/static/$1"
-    },
-    {
-      "src": "/media/(.*)",
-      "dest": "/media/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "IRO_Webapp/wsgi.py"
-    }
-  ]
+    }],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "IRO_Webapp/wsgi.py"
+      }
+    ]
 }
