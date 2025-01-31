@@ -2,133 +2,123 @@
 {% load static %}
 {% block title %}Donate Page{% endblock title %}
 {% block styles %}
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #fff;
-            color: #333;
-        }
+<style>
+    .header {
+        color: white;
+        padding: 100px 20px;
+        text-align: left;
+        background: linear-gradient(rgba(43, 37, 37, 0.6), rgba(18, 15, 15, 0.6)), url('https://scontent.fceb1-2.fna.fbcdn.net/v/t39.30808-6/471045019_1117158786687604_6450671949266988185_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=f727a1&_nc_eui2=AeHAXDNAEzjc98jQr_uGXbwQYf3S6hMkdzZh_dLqEyR3NusnNGZJo96kW3PZZCbGC30pMGfJ_RyfE2i_xNy7X7VR&_nc_ohc=2VX8IYiFEdQQ7kNvgEjxxoL&_nc_zt=23&_nc_ht=scontent.fceb1-2.fna&_nc_gid=AjRkzxwc6KUBb0OgUFlY_y_&oh=00_AYCr6L-K00eNT7ov9GxuGhVCOrJOz1JMcGQ4KZIK1IbnKg&oe=679D22AF');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
 
-        .header {
-            color: white;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
-            padding: 100px 20px;
-            text-align: left;
-            background: linear-gradient(rgba(43, 37, 37, 0.6), rgba(18, 15, 15, 0.6)),
-                url('https://media.4-paws.org/6/8/9/3/689354d6694789b45569cd647a6009e240b4afe7/VIER%20PFOTEN_2016-09-18_081-1927x1333-1920x1328.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-        }
+    .header h1 {
+        font-size: 4rem;
+        font-weight: bold;
+        margin-bottom: 15px;
+        color: white;
+    }
 
+    .header p {
+        font-size: 2.5rem;
+        margin-bottom: 30px;
+        line-height: 1.6em;
+        color: white;
+        text-align: left;
+    }
+
+    .wishlist-section {
+        background-color: #F2F2F2;
+        text-align: center;
+    }
+
+    .wishlist-section h2 {
+        font-size: 2.5rem;
+        font-weight: bold;
+        margin-bottom: 20px;
+        color: black;
+    }
+
+    .wishlist-section .card {
+        background-color: white;
+        border: 1px solid #ccc;
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .wishlist-section .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .wishlist-section .card img {
+        max-height: 100px;
+        margin: 0 auto;
+        display: block;
+    }
+
+    .wishlist-section .card p {
+        font-size: 1.2rem;
+        margin: 10px 0;
+        color: rgb(68, 66, 65);
+    }
+
+    @media (max-width: 768px) {
         .header h1 {
-            font-size: 4rem;
-            font-weight: bold;
-            margin-bottom: 15px;
-            color: white;
+            font-size: 3rem;
         }
 
         .header p {
-            font-size: 2.5rem;
-            margin-bottom: 30px;
-            line-height: 1.6em;
-            color: white;
-            text-align: left;
+            font-size: 1.2rem;
         }
 
-        .wishlist-section {
-            background-color: #F2F2F2;
-            text-align: center;
+        .header button {
+            padding: 10px 20px;
+            font-size: 1em;
         }
 
         .wishlist-section h2 {
-            font-size: 2.5rem;
-            font-weight: bold;
-            margin-bottom: 20px;
-            color: black;
-        }
-
-        .wishlist-section .card {
-            background-color: white;
-            border: 1px solid #ccc;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .wishlist-section .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            font-size: 2rem;
         }
 
         .wishlist-section .card img {
-            max-height: 100px;
-            margin: 0 auto;
-            display: block;
+            max-height: 80px;
         }
 
         .wishlist-section .card p {
-            font-size: 1.2rem;
-            margin: 10px 0;
-            color: rgb(68, 66, 65);
+            font-size: 1rem;
         }
-
-        @media (max-width: 768px) {
-            .header h1 {
-                font-size: 3rem;
-            }
-
-            .header p {
-                font-size: 1.2rem;
-            }
-
-            .header button {
-                padding: 10px 20px;
-                font-size: 1em;
-            }
-
-            .wishlist-section h2 {
-                font-size: 2rem;
-            }
-
-            .wishlist-section .card img {
-                max-height: 80px;
-            }
-
-            .wishlist-section .card p {
-                font-size: 1rem;
-            }
-        }
-    </style>
+    }
+</style>
 {% endblock styles %}
 
 {% block content %}
-    <!-- Header Section -->
-    <div class="header d-flex justify-content-center" 
-        style="background: linear-gradient(rgba(43, 37, 37, 0.6), rgba(18, 15, 15, 0.6)), url('https://scontent.fceb1-2.fna.fbcdn.net/v/t39.30808-6/471045019_1117158786687604_6450671949266988185_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=f727a1&_nc_eui2=AeHAXDNAEzjc98jQr_uGXbwQYf3S6hMkdzZh_dLqEyR3NusnNGZJo96kW3PZZCbGC30pMGfJ_RyfE2i_xNy7X7VR&_nc_ohc=2VX8IYiFEdQQ7kNvgEjxxoL&_nc_zt=23&_nc_ht=scontent.fceb1-2.fna&_nc_gid=AjRkzxwc6KUBb0OgUFlY_y_&oh=00_AYCr6L-K00eNT7ov9GxuGhVCOrJOz1JMcGQ4KZIK1IbnKg&oe=679D22AF'); 
-        background-size: cover; background-position: center; background-repeat: no-repeat; 
-        padding: 80px 20px;">
-        <div class="container">
-            <h1>SUPPORT YOUR SHELTERS WITH<span style="color: #F95B00;"> IN-KIND DONATIONS</span></h1>
-            <p>Your generosity helps us provide essential care for animals in need.</p>
-            <a href="{% url 'in_kind_donations'%}" class="btn btn-primary p-3">
-                View Wishlist
-            </a>
-        </div>
+<!-- Header Section -->
+<div class="header d-flex justify-content-center">
+    <div class="container">
+        <h1>SUPPORT OUR SHELTERS WITH<span style="color: #F95B00;"> IN-KIND DONATIONS</span></h1>
+        <p>Your generosity helps us provide essential care for animals in need.</p>
+        <a href="{% url 'in_kind_donations'%}" class="btn btn-primary p-3">
+            View Wishlist
+        </a>
     </div>
-    <div class="container my-5">
+</div>
+
+
+<div class="container p-5">
     <h2 class="text-center mb-4" style="font-weight: bold; font-size: 3rem;">HOW YOUR DONATIONS HELP</h2>
     <p class="text-justify" style="font-size: 1.3rem;">
-        Donated items play a critical role in reducing operational costs and directly supporting the well-being of animals in our care. Every item you give allows us to allocate resources where 
+        Donated items play a critical role in reducing operational costs and directly supporting the well-being of
+        animals in our care. Every item you give allows us to allocate resources where
         they are needed most—providing medical care, shelter, and love to animals waiting for their forever homes.
     </p>
     <p class="text-justify" style="font-size: 1.3rem;">For example:</p>
     <div class="row mt-4">
         <div class="col-md-6 mb-4">
             <div class="card shadow-sm">
-                <img src="https://www.bil-jac.com/media/ju4pznct/5i1a8987_pnm-bag-r3-1024-x-512.jpg?format=webp&quality=70" 
+                <img src="https://www.bil-jac.com/media/ju4pznct/5i1a8987_pnm-bag-r3-1024-x-512.jpg?format=webp&quality=70"
                     class="card-img-top" alt="Food and Treats">
                 <div class="card-body text-center">
                     <h5 class="card-title"><strong>Food and Treats</strong></h5>
@@ -140,7 +130,7 @@
         </div>
         <div class="col-md-6 mb-4">
             <div class="card shadow-sm">
-                <img src="https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2016/12/07131021/Golden-Retriever-puppy-chewing-on-a-ball-laying-in-a-dog-bed-indoors.jpg" 
+                <img src="https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2016/12/07131021/Golden-Retriever-puppy-chewing-on-a-ball-laying-in-a-dog-bed-indoors.jpg"
                     class="card-img-top" alt="Toys and Comfort Items">
                 <div class="card-body text-center">
                     <h5 class="card-title"><strong>Toys and Comfort Items</strong></h5>
@@ -151,61 +141,71 @@
             </div>
         </div>
         <p class="text-justify" style="font-size: 1.3rem;">
-            Your contributions make an immediate and meaningful impact, helping us care for animals and continue our life-saving mission.
+            Your contributions make an immediate and meaningful impact, helping us care for animals and continue our
+            life-saving mission.
         </p>
     </div>
 </div>
+
+
 {% if wishlists %}
-    <div class="wishlist-section">
-        <h2 class="text-center mb-5 p-5" style="font-weight: bold; font-size: 2.5rem;">IRO WISHLIST</h2>
-        <div class="container">
-            <div class="row g-4 justify-content-center text-center">
-                {% for wishlist in wishlists %}
-                <div class="col-md-4">
-                    <div class="card p-4 text-center shadow-sm">
-                        {% if wishlist.photo %}
-                            <img src="{{wishlist.photo.url}}" alt="Food and Treats" class="mb-3">
-                        {% else %}
-                        {% endif %}
-                        <h5 class="card-title"><strong>{{wishlist.name}}</strong></h5>
-                        {{wishlist.description|safe}}
-                    </div>
+<div class="wishlist-section p-5">
+    <h2 class="text-center" style="font-weight: bold; font-size: 2.5rem;">IRO WISHLIST</h2>
+    <div class="container">
+        <div class="row g-4 justify-content-center text-center">
+            {% for wishlist in wishlists %}
+            <div class="col-md-4">
+                <div class="card p-4 text-center shadow-sm">
+                    {% if wishlist.photo %}
+                    <img src="{{wishlist.photo.url}}" alt="Food and Treats" class="mb-3">
+                    {% else %}
+                    {% endif %}
+                    <h5 class="card-title"><strong>{{wishlist.name}}</strong></h5>
+                    {{wishlist.description|safe}}
                 </div>
-                {% endfor %}
             </div>
+            {% endfor %}
         </div>
+    </div>
+</div>
 {% else %}
 <div class="alert alert-secondary text-center container bg-black text-white fs-6 fw-bolder fs-2" role="alert">
     No wishlist.
 </div>
 {% endif %}
-<div class="py-5 mt-5" style="background-color: #ffffff; width: 100vw; margin-left: calc(-50vw + 50%);">
-    <h2 class="text-center mb-5" style="font-weight: bold; font-size: 2.5rem;">DROP OFF LOCATIONS</h2>
-    <div class="container">
-        <div class="row g-4 justify-content-center">
-            <div class="col-lg-4 col-md-6">
-                <div class="donation-card text-center p-4 shadow-sm">
-                    <img src="{% static 'global/images/parkmall.png' %}" alt="Adoption Booth" class="img-fluid mb-3">
 
-                    <p style="font-size: 1.4rem; font-weight: bold;">IRO Adoption Booth at Parkmall, Mandaue</p>
-                    <p style="font-size: 1.2rem;">Every 2nd and 4th Saturday, 10 a.m. - 5 p.m.</p>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="donation-card text-center p-4 shadow-sm">
-                    <img src="https://www.robinsonsretailholdings.com.ph/wp-content/uploads/2023/06/1-2023-May-Turnover-Feed-A-FURend-1.jpg" 
-                        alt="IRO Cattery" class="img-fluid mb-3">
-                    <p style="font-size: 1.4rem; font-weight: bold;">IRO Cattery</p>
-                    <p style="font-size: 1.2rem;">P. Basubas, Mandaue City</p>
+
+<div class="py-5 container">
+    <h2 class="text-center mb-5" style="font-weight: bold; font-size: 2.5rem;">DROP OFF LOCATIONS</h2>
+    <div class="row justify-content-center text-center"">
+        <div class=" col col-sm-6 mb-4">
+            <div class="card custom-card">
+                <img src="{% static 'global/images/parkmall.png' %}">
+                <div class="card-body">
+                    <h5 class="card-title fw-bold">IRO Adoption Booth at Parkmall, Mandaue</h5>
+                    <p class="card-text">Every 2nd and 4th Saturday, 10 a.m. - 5 p.m.</p>
                 </div>
             </div>
         </div>
-        <div class="text-center mt-4">
-            <a href="https://forms.gle/RSZGXakdaT3uFUK18" class="btn btn-primary p-3">
-                Set an Appointment
-            </a>
+        <div class=" col-sm-6 mb-4">
+            <div class="card custom-card">
+                <img
+                    src="https://www.robinsonsretailholdings.com.ph/wp-content/uploads/2023/06/1-2023-May-Turnover-Feed-A-FURend-1.jpg">
+                <div class="card-body">
+                    <h5 class="card-title fw-bold">IRO Cattery</h5>
+                    <p class="card-text">P. Basubas, Mandaue City</p>
+                </div>
+            </div>
         </div>
     </div>
+    <div class="text-center mt-4">
+        <a href="https://forms.gle/RSZGXakdaT3uFUK18" class="btn btn-primary p-3">
+            Set an Appointment
+        </a>
+    </div>
 </div>
-{% endblock content %}
 
+
+
+
+{% endblock content %}

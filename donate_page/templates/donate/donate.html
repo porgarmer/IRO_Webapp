@@ -1,342 +1,300 @@
 {% extends "global/base.html" %}
 {% load static %}
-{% block title %}Donate Page{% endblock title %}
+{% block title %}
+Donate Page
+{% endblock title %}
 {% block styles %}
 <style>
-        body {
-                font-family: 'Arial', sans-serif;
-                margin: 0;
-                padding: 0;
-                background-color: #fff;
-                color: #333;
-            }
+    .header {
+        color: white;
+        text-align: left;
+        background: linear-gradient(rgba(43, 37, 37, 0.6), rgba(18, 15, 15, 0.6)),
+            url('https://media.4-paws.org/6/8/9/3/689354d6694789b45569cd647a6009e240b4afe7/VIER%20PFOTEN_2016-09-18_081-1927x1333-1920x1328.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        padding: 80px 20px
+    }
 
-            .header {
-                color: white;
-                text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
-                padding: 100px 20px;
-                text-align: left;
-                background: linear-gradient(rgba(43, 37, 37, 0.6), rgba(18, 15, 15, 0.6)),
-                    url('https://media.4-paws.org/6/8/9/3/689354d6694789b45569cd647a6009e240b4afe7/VIER%20PFOTEN_2016-09-18_081-1927x1333-1920x1328.jpg');
-                background-size: cover;
-                background-position: center;
-                background-repeat: no-repeat;
-            }
-    
-            .header h1 {
-                font-size: 4rem;
-                font-weight: bold;
-                margin-bottom: 15px;
-                color: white;
-            }
-    
-            .header p {
-                font-size: 2.5rem;
-                margin-bottom: 30px;
-                line-height: 1.6em;
-                color: white;
-                text-align: left;
-            }
-            
+    .header h1 {
+        font-size: 4rem;
+        font-weight: bold;
+        margin-bottom: 15px;
+        color: white;
+    }
+
+    .header p {
+        font-size: 2.5rem;
+        margin-bottom: 30px;
+        line-height: 1.6em;
+        color: white;
+        text-align: left;
+    }
+
+    .section {
+        padding: 50px 20px;
+        background-color: #F2F2F2;
+        text-align: center;
+    }
+
+    .section h2 {
+        font-size: 2.2em;
+        color: black;
+        margin-bottom: 20px;
+    }
+
+    @media (max-width: 768px) {
+        .header h1 {
+            font-size: 4rem;
+        }
+
+        .header p {
+            font-size: 1.5rem;
+            margin-left: 20px;
+        }
+
+        .header button {
+            padding: 10px 20px;
+            font-size: 1em;
+        }
+
         .content h2 {
-                font-size: 2.2em;
-                color: black; 
-                margin-bottom: 20px;
+            font-size: 1.8em;
         }
 
         .content p {
-                font-size: 1.1em;
-                color: #555;
-                margin-bottom: 40px;
-                line-height: 1.8em;
+            font-size: 1em;
         }
 
-            .card {
-                border: 2px solid #ccc; 
-                border-radius: 15px;
-                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-                transition: transform 0.3s ease, box-shadow 0.3s ease;
-            }
-
-            .card:hover {
-                transform: translateY(-10px);
-                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-            }
-
-            .card img {
-                max-width: 100px;
-                margin: 0 auto;
-            }
-
-            .card p {
-                font-size: 1.3rem;
-                margin: 10px 0;
-            }
-
-            .section {
-                padding: 50px 20px;
-                background-color: #F2F2F2;
-                text-align: center;
-            }
-
-            .section h2 {
-                font-size: 2.2em;
-                color: black; 
-                margin-bottom: 20px;
-            }
-
-            .donation-card, .partner-card {
-                background-color: white;
-                border: 1px solid #ccc; 
-                border-radius: 15px;
-                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-                transition: transform 0.3s ease, box-shadow 0.3s ease;
-            }
-
-            .donation-card:hover, .partner-card:hover {
-                transform: translateY(-10px);
-                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-            }
-
-                    #cards-container-donate {
-            overflow-x: hidden;
-            white-space: nowrap;
+        .card p {
+            font-size: 1.1rem;
         }
 
-            @media (max-width: 768px) {
-                .header h1 {
-                    font-size: 4rem; 
-                }
+        .section h2 {
+            font-size: 1.8em;
+        }
+    }
 
-                .header p {
-                    font-size: 1.5rem;
-                    margin-left: 20px; 
-                }
+    @media (max-width: 576px) {
+        .header h1 {
+            font-size: 3rem;
+        }
 
-                .header button {
-                    padding: 10px 20px; 
-                    font-size: 1em; 
-                }
+        .header p {
+            font-size: 1.2rem;
+            margin-left: 10px;
+        }
 
-                .content h2 {
-                    font-size: 1.8em;
-                }
-
-                .content p {
-                    font-size: 1em;
-                }
-
-                .card p {
-                    font-size: 1.1rem;
-                }
-
-                .section h2 {
-                    font-size: 1.8em;
-                }
-
-                .donation-card, .partner-card {
-                    margin-bottom: 20px; 
-                }
-
-                .donation-card img, .partner-card img {
-                    max-width: 80px; 
-                }
-            }
-                .card p, .partner-card p, .donation-card p {
-                    white-space: normal;  
-                    overflow: hidden;      
-                    text-overflow: ellipsis; 
-                }
-
-            @media (max-width: 576px) {
-                .header h1 {
-                    font-size: 3rem; 
-                }
-
-                .header p {
-                    font-size: 1.2rem;
-                    margin-left: 10px; 
-                }
-
-                .content h2 {
-                    font-size: 1.5em;
-                }
-
-                .card p {
-                    font-size: 1rem;
-                }
-
-                .section h2 {
-                    font-size: 1.5em;
-                }
-
-                .donation-card img, .partner-card img {
-                    max-width: 60px; 
-                }
-            }
-        </style>
+        .content h2 {
+            font-size: 1.5em;
+        }
+    }
+</style>
 {% endblock styles %}
-
 {% block content %}
-<div class="header d-flex justify-content-center" 
-        style="background: linear-gradient(rgba(43, 37, 37, 0.6), rgba(18, 15, 15, 0.6)), url('https://media.4-paws.org/6/8/9/3/689354d6694789b45569cd647a6009e240b4afe7/VIER%20PFOTEN_2016-09-18_081-1927x1333-1920x1328.jpg'); 
-        background-size: cover; background-position: center; background-repeat: no-repeat; 
-        padding: 80px 20px;">
-
-        <div class="container">
-            <h1>SUPPORT YOUR SHELTERS WITH<span style="color: #F95B00;"> IN-KIND DONATIONS</span></h1>
-            <p>Your generosity helps us provide essential care for animals in need.</p>
-            <a href="{% url 'in_kind_donations'%}" class="btn btn-primary p-3">
-                Donate In-Kind
-            </a>
-        </div>
+<div class="header d-flex justify-content-center">
+    <div class="container">
+        <h1>
+            YOUR SUPPORT <span style="color: #F95B00;">CHANGES LIVES</span>
+        </h1>
+        <p>Your support provides shelter, food, and medical care for animals in crisis.</p>
+        <a href="{% url 'in_kind_donations' %}" class="btn btn-primary p-3">Donate In-Kind</a>
     </div>
+</div>
+<div class="container p-5 p-sm-5">
+    <h1 class="text-center mb-4 fw-bold">OFFICIAL DONATION CHANNELS</h1>
+    <p class="text-left" style="font-weight: bold; font-size: 1.3rem;">
+        As a non-government organization, <span style="color: #F95B00;">Island Rescue Organization</span> operates and
+        relies heavily on donations from people like you.
+    </p>
+    <p class="text-left" style="font-size: 1.3rem;">
+        Please donate when you can. Every little thing helps for our rescues. Seeing them smile and then sleep so well
+        after a good meal makes all the effort and struggles worth it.
+    </p>
+    <p class="text-left" style="font-size: 1.3rem;">
+        <strong>For tracking purposes, kindly send your proof of donation to: helpiro@gmail.com</strong>
+    </p>
 
-<div class="container my-5">
-    <h2 class="text-center mb-4" style="font-weight: bold; font-size: 3rem;">Official Donation Channels</h2>
-    <p class="text-left" style="font-weight: bold; font-size: 1.3rem;">As a non-government organization, <span style="color: #F95B00;">Island Rescue Organization</span> operates and relies heavily on donations from people like you.</p>
-    <p class="text-left" style="font-size: 1.3rem;">Please donate when you can. Every little thing helps for our rescues. Seeing them smile and then sleep so well after a good meal makes all the effort and struggles worth it.</p>
-    <p class="text-left" style="font-size: 1.3rem;"><strong>For tracking purposes, kindly send your proof of donation to: helpiro@gmail.com</strong></p>
-    <br><br><br>
-    <div class="row g-4 justify-content-center">
-        <div class="col-md-6">
-            <div class="card text-center p-4">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIZHAiKB9TC4vJREaPEGfE40rTKaWY_MaTNg&s" alt="BPI" class="mb-3" style="max-height: 100px;">
-                <p><strong>CHINA BANK</strong></p>
-                <p style="color:rgb(68, 66, 65);">Account Name: Island Rescue Organization-Subangdaku Branch</p>
-                <p style="color:rgb(68, 66, 65);">Account Number: 2890396715</p>
+    <div class="row g-4 justify-content-center text-center mt-5">
+        <div class="col-md-3 col-sm-6  mb-4">
+            <div class="card custom-card">
+                <img src="https://images.seeklogo.com/logo-png/38/1/gcash-logo-png_seeklogo-383190.png?v=1957907106254922584"
+                    class="card-img-top" alt="GCASH">
+                <div class="card-body">
+                    <h5 class="card-title fw-bold">GCASH</h5>
+                    <p class="card-text">Annalyn Aizpuru <br> 09053416042</p>
+                </div>
             </div>
         </div>
-        <div class="col-md-6">
-            <div class="card text-center p-4">
-                <img src="https://logos-download.com/wp-content/uploads/2020/06/GCash_Logo.png" alt="Metrobank" class="mb-3" style="max-height: 100px;">
-                <p><strong>GCASH</strong></p>
-                <p style="color:rgb(68, 66, 65);">Account Name: Annalyn Aizpuru</p>
-                <p style="color:rgb(68, 66, 65);">Account Number: 09053416042 / 09270621080</p>
+        <div class="col-md-3 col-sm-6 mb-4">
+            <div class="card custom-card">
+                <img src="https://play-lh.googleusercontent.com/rX0QH8-NjXsrOdQQM7qbXhFFkdhCyAAzMB-hitkGOaLTMiP6oCR2RGZ3MCE3biSMmtk=w240-h480-rw"
+                    class="card-img-top" alt="CHINA BANK">
+                <div class="card-body">
+                    <h5 class="card-title fw-bold">CHINA BANK</h5>
+                    <p class="card-text">Island Rescue Organization-Subangdaku Branch Checking Account #: 2890396715</p>
+                </div>
             </div>
         </div>
-        <div class="col-md-6">
-            <div class="card text-center p-4">
-                <img src="https://logodix.com/logo/2069477.jpg" alt="BPI" class="mb-3" style="max-height: 100px;">
-                <p><strong>BPI</strong></p>
-                <p style="color:rgb(68, 66, 65);">Account Name: Carla Joy Estrada</p>
-                <p style="color:rgb(68, 66, 65);">Account Number: 1199 1624 93</p>
+        <div class="col-md-3 col-sm-6 mb-4">
+            <div class="card custom-card">
+                <img src="https://ceedphilippines.com/wp-content/uploads/2020/04/bpi-new-logo.jpg" class="card-img-top"
+                    alt="BPI">
+                <div class="card-body">
+                    <h5 class="card-title fw-bold">BPI</h5>
+                    <p class="card-text">Carla Joy Estrada-Salvacion Account Number <br> 1199 1624 93</p>
+                </div>
             </div>
         </div>
-        <div class="col-md-6">
-            <div class="card text-center p-4">
-                <img src="https://logodix.com/logo/2069477.jpg" alt="PAYPAL" class="mb-3" style="max-height: 100px;">
-                <p><strong>PAYPAL</strong></p>
-                <p style="color:rgb(68, 66, 65);">Account Name: helpiro@gmail.com</p>
+        <div class="col-md-3 col-sm-6 mb-4">
+            <div class="card custom-card">
+                <img src="https://play-lh.googleusercontent.com/fdQjxsIO8BTLaw796rQPZtLEnGEV8OJZJBJvl8dFfZLZcGf613W93z7y9dFAdDhvfqw"
+                    class="card-img-top" alt="PAYMAYA">
+                <div class="card-body">
+                    <h5 class="card-title fw-bold">PAYMAYA</h5>
+                    <p class="card-text">Annalyn Aizpuru <br> 09053416042</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6  mb-4">
+            <div class="card custom-card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Paypal_2014_logo.png" class="card-img-top"
+                    alt="PAYPAL">
+                <div class="card-body">
+                    <h5 class="card-title fw-bold">PAYPAL</h5>
+                    <p class="card-text">helpiro@gmail.com</p>
+                </div>
             </div>
         </div>
     </div>
 </div>
+<br>
+<br>
+<div class="section">
+    <div class="container p-5">
+        <h1 class="text-center mb-4 fw-bold">IN-KIND DONATIONS</h1>
+        <p style="font-size: 1.5rem; text-align: center;">For in-kind donations, please drop them off at these
+            locations:</p>
+        <div class="row justify-content-center text-center"">
+            <div class="col col-sm-6 mb-4">
+                <div class="card custom-card">
+                    <img src="{% static 'global/images/parkmall.png' %}">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">IRO Adoption Booth at Parkmall, Mandaue</h5>
+                        <p class="card-text">Every 2nd and 4th Saturday, 10 a.m. - 5 p.m.</p>
+                    </div>
+                </div>
+            </div>
+            <div class=" col-sm-6 mb-4">
+                <div class="card custom-card">
+                    <img
+                        src="https://www.robinsonsretailholdings.com.ph/wp-content/uploads/2023/06/1-2023-May-Turnover-Feed-A-FURend-1.jpg">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">IRO Cattery</h5>
+                        <p class="card-text">P. Basubas, Mandaue City</p>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-<br> <br>   
-    <div class="section">
-    <h2 class="text-center mb-4" style="font-weight: bold; font-size: 3rem;">In-Kind Donations</h2>
-    <p style="font-size: 1.5rem; text-align: center;">For in-kind donations, please drop them off at these locations:</p>
-    <div class="row g-3 justify-content-center mt-4">
-        <div class="col-md-3">
-            <div class="donation-card text-center p-4">
-                <img src="{% static 'global/images/parkmall.png' %}" alt="Adoption Booth" class="img-fluid mb-3">
-                <p style="font-size: 1.4rem;"><strong>IRO Adoption Booth at Parkmall, Mandaue</strong></p>
-                <p style="font-size: 1.2rem;">Every 2nd and 4th Saturday, 10 a.m. - 5 p.m.</p>
-            </div>
+        <div class="d-flex justify-content-center mt-4">
+            <a href="{% url 'in_kind_donations' %}" class="btn btn-primary p-3">See IRO Wishlist</a>
         </div>
-        <div class="col-md-3">
-            <div class="donation-card text-center p-4">
-                <img src="https://www.robinsonsretailholdings.com.ph/wp-content/uploads/2023/06/1-2023-May-Turnover-Feed-A-FURend-1.jpg" alt="IRO Cattery" class="img-fluid mb-3">
-                <p style="font-size: 1.4rem;"><strong>IRO Cattery</strong></p>
-                <p style="font-size: 1.2rem;">P. Basubas, Mandaue City</p>
-            </div>
-        </div>
-    </div>
-    <div class="d-flex justify-content-center mt-4">
-        <a href="{% url 'in_kind_donations'%}" class="btn btn-primary p-3">
-            See IRO Wishlist
-        </a>
     </div>
 </div>
-{% comment %} 
-        <!-- Partners Section -->
-        <div class="container my-5">
-    <h2 class="text-center mb-4" style="font-weight: bold; font-size: 2.5rem;">Partners</h2>
-    <div class="position-relative">
-        <button id="scroll-left-donate" class="btn btn-dark position-absolute" style="top: 50%; transform: translateY(-50%); left: -40px; z-index: 10;">
-            &#8249;
-        </button>
-        <div id="cards-container-donate" class="d-flex overflow-hidden gap-3" style="scroll-behavior: smooth; white-space: nowrap;">
-            <div class="partner-card text-center p-4" style="min-width: 300px; display: inline-block;">
-                <img src="{% static 'global/images/parkmall-logo.jpg' %}" 
-                    alt="Anonymous Donor" class="img-fluid mb-3">
-                <p style="font-size: 1.4rem;" ><strong>Parkmall</strong></p>
-                <p style="font-size: 1.2rem;" >"For all the animals who deserve a second chance."</p>
+
+
+
+<!-- Partners Section -->
+<div class="container mt-5 mb-5 text-center">
+    <h1 class="text-center mb-4 fw-bold">Partners</h1>
+
+    <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+
+            <!-- Card 1 -->
+            <div class="swiper-slide">
+                <div class="card donation-card">
+                    <img src="{% static 'global/images/parkmall-logo.jpg' %}" class="card-img-top" alt="Parkmall">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">Parkmall</h5>
+                        <p class="card-text">For all the animals who deserve a second chance.</p>
+                    </div>
+                </div>
             </div>
-            <div class="partner-card text-center p-4" style="min-width: 300px; display: inline-block;">
-                <img src="{% static 'global/images/parkmall-logo.jpg' %}" 
-                    alt="Anonymous Donor" class="img-fluid mb-3">
-                <p style="font-size: 1.4rem;" ><strong>Parkmall</strong></p>
-                <p style="font-size: 1.2rem;" >"For all the animals who deserve a second chance."</p>
+
+            <!-- Card 2 -->
+            <div class="swiper-slide">
+                <div class="card donation-card">
+                    <img src="{% static 'global/images/parkmall-logo.jpg' %}" class="card-img-top" alt="Parkmall">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">Parkmall</h5>
+                        <p class="card-text">For all the animals who deserve a second chance.</p>
+                    </div>
+                </div>
             </div>
-            <div class="partner-card text-center p-4" style="min-width: 300px; display: inline-block;">
-                <img src="{% static 'global/images/parkmall-logo.jpg' %}" 
-                    alt="Anonymous Donor" class="img-fluid mb-3">
-                <p style="font-size: 1.4rem;" ><strong>Parkmall</strong></p>
-                <p style="font-size: 1.2rem;" >"For all the animals who deserve a second chance."</p>
+
+            <!-- Card 3 -->
+            <div class="swiper-slide">
+                <div class="card donation-card">
+                    <img src="{% static 'global/images/parkmall-logo.jpg' %}" class="card-img-top" alt="Parkmall">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">Parkmall</h5>
+                        <p class="card-text">For all the animals who deserve a second chance.</p>
+                    </div>
+                </div>
             </div>
-            <div class="partner-card text-center p-4" style="min-width: 300px; display: inline-block;">
-                <img src="{% static 'global/images/parkmall-logo.jpg' %}" 
-                    alt="Anonymous Donor" class="img-fluid mb-3">
-                <p style="font-size: 1.4rem;" ><strong>Parkmall</strong></p>
-                <p style="font-size: 1.2rem;" >"For all the animals who deserve a second chance."</p>
+
+            <div class="swiper-slide">
+                <div class="card donation-card">
+                    <img src="{% static 'global/images/parkmall-logo.jpg' %}" class="card-img-top" alt="Parkmall">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">Parkmall</h5>
+                        <p class="card-text">For all the animals who deserve a second chance.</p>
+                    </div>
+                </div>
             </div>
-            <div class="partner-card text-center p-4" style="min-width: 300px; display: inline-block;">
-                <img src="{% static 'global/images/parkmall-logo.jpg' %}" 
-                    alt="Anonymous Donor" class="img-fluid mb-3">
-                <p style="font-size: 1.4rem;" ><strong>Parkmall</strong></p>
-                <p style="font-size: 1.2rem;" >"For all the animals who deserve a second chance."</p>
+
+            <div class="swiper-slide">
+                <div class="card donation-card">
+                    <img src="{% static 'global/images/parkmall-logo.jpg' %}" class="card-img-top" alt="Parkmall">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">Parkmall</h5>
+                        <p class="card-text">For all the animals who deserve a second chance.</p>
+                    </div>
+                </div>
             </div>
-            <div class="partner-card text-center p-4" style="min-width: 300px; display: inline-block;">
-                <img src="{% static 'global/images/parkmall-logo.jpg' %}" 
-                    alt="Anonymous Donor" class="img-fluid mb-3">
-                <p style="font-size: 1.4rem;" ><strong>Parkmall</strong></p>
-                <p style="font-size: 1.2rem;" >"For all the animals who deserve a second chance."</p>
-            </div>
-            <div class="partner-card text-center p-4" style="min-width: 300px; display: inline-block;">
-                <img src="{% static 'global/images/parkmall-logo.jpg' %}" 
-                    alt="Anonymous Donor" class="img-fluid mb-3">
-                <p style="font-size: 1.4rem;" ><strong>Parkmall</strong></p>
-                <p style="font-size: 1.2rem;" >"For all the animals who deserve a second chance."</p>
-            </div>
-            <div class="partner-card text-center p-4" style="min-width: 300px; display: inline-block;">
-                <img src="{% static 'global/images/parkmall-logo.jpg' %}" 
-                    alt="Anonymous Donor" class="img-fluid mb-3">
-                <p style="font-size: 1.4rem;" ><strong>Parkmall</strong></p>
-                <p style="font-size: 1.2rem;" >"For all the animals who deserve a second chance."</p>
-            </div>
+
+
             <!-- Add more cards as needed -->
+
         </div>
-        <button id="scroll-right-donate" class="btn btn-dark position-absolute" style="top: 50%; transform: translateY(-50%); right: -40px; z-index: 10;">
-            &#8250;
-        </button>
+
+        <!-- Pagination & Navigation -->
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
     </div>
-</div> {% endcomment %}
+</div>
+
+
+{% comment %} This is to not show the donation channel slider {% endcomment %}
+{% block donation_channels %}{% endblock donation_channels %}
+
 {% endblock content %}
 {% block scripts %}
 <script>
-document.getElementById('scroll-left-donate').addEventListener('click', function() {
-    document.getElementById('cards-container-donate').scrollBy({
-        left: -300,
-        behavior: 'smooth'
+    document.getElementById('scroll-left-donate').addEventListener('click', function () {
+        document.getElementById('cards-container-donate').scrollBy({
+            left: -300,
+            behavior: 'smooth'
+        });
     });
-});
-document.getElementById('scroll-right-donate').addEventListener('click', function() {
-    document.getElementById('cards-container-donate').scrollBy({
-        left: 300,
-        behavior: 'smooth'
+    document.getElementById('scroll-right-donate').addEventListener('click', function () {
+        document.getElementById('cards-container-donate').scrollBy({
+            left: 300,
+            behavior: 'smooth'
+        });
     });
-});
 </script>
 {% endblock scripts %}
