@@ -4,7 +4,7 @@
 {% block title %}Shelters {% endblock title %}
 
 {% block styles %}
-<link rel="stylesheet" href="{% static 'css/shelters_page.css' %}">
+    <link rel="stylesheet" href="{% static 'css/shelters_page.css' %}?{% now "U" %}">
 {% endblock styles %}
 
 
@@ -44,9 +44,9 @@ padding: 80px 20px;">
         </div>
     </div>
     
-    <div class="mb-5 camp-iro">
+    <div class="mb-5">
         <div class="row">
-            <div class="col-md-4">
+            <div class="">
                 <img src="{% static 'css/pics/camp_iro.png' %}" class="float-end" alt="camp_iro">
                     <h3>Camp IRO</h3>
                     <p>Location: Cebu City</p>
@@ -61,26 +61,26 @@ padding: 80px 20px;">
             </div>
         </div>
     
-        <div class="row">
-            <div class="col-md-4">
+        <div class="row mt-4">
+            <div class="col-12 col-md-3 d-flex justify-content-center">
                 <img src="{% static 'css/pics/iro1.png' %}" class="img-thumbnail" alt="camp_iro">
             </div>
-            <div class="col-md-4">
+            <div class="col-12 col-md-3 d-flex justify-content-center">
                 <img src="{% static 'css/pics/iro2.png' %}" class="img-thumbnail" alt="camp_iro">
             </div>
-            <div class="col-md-4">
+            <div class="col-12 col-md-3 d-flex justify-content-center">
                 <img src="{% static 'css/pics/iro3.png' %}" class="img-thumbnail" alt="camp_iro">
             </div>
-            <div class="col-md-4">
+            <div class="col-12 col-md-3 d-flex justify-content-center">
                 <img src="{% static 'css/pics/iro4.png' %}" class="img-thumbnail" alt="camp_iro">
             </div>
         </div>
     </div>
 
 
-    <div class="mb-5 o-cattery">
-        <div class="row gap">
-            <div class="col-md-4">
+    <div class="mb-5">
+        <div class="row">
+            <div class="">
                 <img src="{% static 'css/pics/iro_o_cattery.png' %}" class="float-start me-5" alt="iro_cattery">
                 <h3>IRO 'O' Cattery</h3>
                 <p>Location: Mandaue</p>
@@ -92,17 +92,17 @@ padding: 80px 20px;">
                 <a href="https://forms.gle/RSZGXakdaT3uFUK18" class="btn btn-primary">Schedule An Appointment</a>
             </div>           
         </div>
-        <div class="row">
-            <div class="col-md-4">
+        <div class="row mt-4">
+            <div class="col-12 col-md-3 d-flex justify-content-center">
                 <img src="{% static 'css/pics/cat1.png' %}" class="img-thumbnail" alt="iro_cattery">
             </div>
-            <div class="col-md-4">
+            <div class="col-12 col-md-3 d-flex justify-content-center">
                 <img src="{% static 'css/pics/cat2.png' %}" class="img-thumbnail" alt="iro_cattery">
             </div>
-            <div class="col-md-4">
+            <div class="col-12 col-md-3 d-flex justify-content-center">
                 <img src="{% static 'css/pics/cat3.png' %}" class="img-thumbnail" alt="iro_cattery">
             </div>
-            <div class="col-md-4">
+            <div class="col-12 col-md-3 d-flex justify-content-center">
                 <img src="{% static 'css/pics/cat4.png' %}" class="img-thumbnail" alt="iro_cattery">
             </div>
         </div>
@@ -111,7 +111,9 @@ padding: 80px 20px;">
 
     <div class="mb-5">
         <div class="row">
-            <div class="col-sm-4">
+            <div class="">
+                <img src="{% static 'css/pics/iro_foster.png' %}" class="float-end" alt="iro_foster">
+
                 <h3>IRO Tuesday Foster Home</h3>
                 <p>Location: Consolacion</p>
                 <br>
@@ -120,22 +122,19 @@ padding: 80px 20px;">
                 <p><span style="color: #F95B00;">IRO Tuesday Foster Home</span></h1> provides a safe haven for animals awaiting adoption or the completion of travel documents.</p>
                 <p>It also serves as a rehabilitation space for dogs transitioning from the clinic to the main shelter or their adoptive homes.</p> 
                 <p> Additionally, it temporarily houses dogs undergoing treatment or those with regular veterinary appointments.</p>
-            </div>
-            <div class="col-sm-4">
-                <img src="{% static 'css/pics/iro_foster.png' %}" class="" alt="iro_foster">
-            </div>            
+            </div>     
         </div>
-        <div class="row">
-            <div class="col-sm-4">
+        <div class="row mt-4">
+            <div class="col-12 col-md-3 d-flex justify-content-center">
                 <img src="{% static 'css/pics/foster1.png' %}" class="img-thumbnail" alt="iro_foster">
             </div>
-            <div class="col-sm-4">
+            <div class="col-12 col-md-3 d-flex justify-content-center">
                 <img src="{% static 'css/pics/foster2.png' %}" class="img-thumbnail" alt="iro_foster">
             </div>
-            <div class="col-sm-4">
+            <div class="col-12 col-md-3 d-flex justify-content-center">
                 <img src="{% static 'css/pics/foster3.png' %}" class="img-thumbnail" alt="iro_foster">
             </div>
-            <div class="col-sm-4">
+            <div class="col-12 col-md-3 d-flex justify-content-center">
                 <img src="{% static 'css/pics/foster4.png' %}" class="img-thumbnail" alt="iro_foster">
             </div>
         </div>
@@ -144,10 +143,9 @@ padding: 80px 20px;">
 
     <div class="mb-5">
         <div class="row">
-            <div class="col-sm-4">
-                <img src="{% static 'css/pics/lolo_ali_center.png' %}" class="" alt="lac">
-            </div> 
-            <div class="col-sm-4">
+            <div class="">
+                <img src="{% static 'css/pics/lolo_ali_center.png' %}" class="float-start" alt="lac">
+
                 <h3>IRO Lolo Ali Center (LAC)</h3>
                 <p>Location: Barili</p>
                 <p>Visitors allowed: Seasonal (still at an appointment basis)</p>
@@ -158,17 +156,17 @@ padding: 80px 20px;">
                 <a href="https://forms.gle/RSZGXakdaT3uFUK18" class="btn btn-primary">Schedule An Appointment</a>
             </div>           
         </div>
-        <div class="row">
-            <div class="col-sm-4">
+        <div class="row mt-4">
+            <div class="col-12 col-md-3 d-flex justify-content-center">
                 <img src="{% static 'css/pics/lolo1.png' %}" class="img-thumbnail" alt="lac">
             </div>
-            <div class="col-sm-4">
+            <div class="col-12 col-md-3 d-flex justify-content-center">
                 <img src="{% static 'css/pics/lolo2.png' %}" class="img-thumbnail" alt="lac">
             </div>
-            <div class="col-sm-4">
+            <div class="col-12 col-md-3 d-flex justify-content-center">
                 <img src="{% static 'css/pics/lolo3.png' %}" class="img-thumbnail" alt="lac">
             </div>
-            <div class="col-sm-4">
+            <div class="col-12 col-md-3 d-flex justify-content-center">
                 <img src="{% static 'css/pics/lolo4.png' %}" class="img-thumbnail" alt="lac">
             </div>
         </div>

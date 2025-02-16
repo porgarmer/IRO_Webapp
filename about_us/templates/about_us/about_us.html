@@ -3,14 +3,6 @@
 {% block title %}About Us Page{% endblock title %}
 {% block styles %}
 <style>
-    body {
-        font-family: 'Arial', sans-serif;
-        margin: 0;
-        padding: 0;
-        background-color: #fff;
-        color: #333;
-    }
-
     .header {
         color: white;
         text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
@@ -96,15 +88,13 @@
 <div class="header d-flex justify-content-center">
     <div class="container text-center">
         <h1>ABOUT US</h1>
-        <h1><span style="color: #F95B00;">Island Rescue Organization</span></h1>
-        <p>Compassion in Action for Animals in Need</p>
     </div>
 </div>
 
 <div class="container my-5">
     <div class="row">
         <div class="col-md-5 text-center">
-            <img src="https://scontent.fceb2-2.fna.fbcdn.net/v/t39.30808-6/457660859_514814701096657_820739798703459297_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeEyn5LqH_MAvqdmK35gVOERmRbtir0PaJiZFu2KvQ9omMyL3CckRyPOhsC54QRLW4vLrZNsuzUxRbqD6-dWziY-&_nc_ohc=HtonaH0U0dUQ7kNvgEIFwfP&_nc_zt=23&_nc_ht=scontent.fceb2-2.fna&_nc_gid=AuNMXkGvlCH64bDdZKN3RAk&oh=00_AYDX_p-TaJz-gzNMtUHCMeiV7DZxKrWyJ6zXcDqNmBt74w&oe=679D6301" alt="Island Rescue Organization" class="img-fluid">
+            <img src="{% static 'home/images/hero-section-bg.jpg' %}" alt="Island Rescue Organization" class="img-fluid">
         </div>
         <div class="col-md-7">
             <div class="content">

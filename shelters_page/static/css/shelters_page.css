@@ -2,7 +2,7 @@
     color: white;
     padding: 80px 20px;
     text-align: left;
-    background: linear-gradient(rgba(43, 37, 37, 0.6), rgba(18, 15, 15, 0.6)), url(https://scontent.fceb1-3.fna.fbcdn.net/v/t39.30808-6/467711400_592378486479898_8508188296627548645_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeFYMWWw5-qnmVZ3etxUErw_E_OQeo15uqsT85B6jXm6q1ElLl6KN8D6NzTvwL8-Go_i2YzvKWL9pJoNoDvhrJ2B&_nc_ohc=BRyrONqDC-gQ7kNvgEdMbsi&_nc_zt=23&_nc_ht=scontent.fceb1-3.fna&_nc_gid=As07ubva5e8hDMXUFbFqmnM&oh=00_AYCeWCeLE9yuY4nu1hfJcGp-bGgjvB0qkkNY4YPTDdVX5A&oe=679D2A8A);
+    background: linear-gradient(rgba(43, 37, 37, 0.6), rgba(18, 15, 15, 0.6)), url();
 }
 
 .header h1 {
@@ -13,40 +13,12 @@
 }
 
 .header p {
-    font-size: 2.5rem;
+    font-size: 1.5rem;
     margin-bottom: 30px;
     line-height: 1.6em;
     color: white;
     text-align: left;
 }
-
-
-/* Column styles */
-.col-md-4 {
-    flex: 1;
-    /* Make columns take equal space */
-    padding: 10px;
-    text-align: left;
-}
-
-.col-md-4 .img-thumbnail {
-    width: 100%;
-    /* Ensure the image takes the full width of the column */
-    height: 200px;
-    /* Set a fixed height for all images */
-    object-fit: cover;
-    /* Ensures the image fills the container without stretching */
-    border-radius: 8px;
-    /* Optional: Add slight rounding for a polished look */
-}
-
-.col-md-4 .img_logo {
-    width: 85%;
-    object-fit: cover;
-    border-radius: 8px;
-    justify-content: center;
-}
-
 
 .o-cattery{
     text-align: left;
@@ -55,13 +27,12 @@
 /* Media Queries for Responsive Design */
 @media (max-width: 768px) {
     .header h1 {
-        font-size: 4rem;
+        font-size: 3rem;
         /* Smaller font size for smaller screens */
     }
 
     .header p {
-        font-size: 1.5rem;
-        margin-left: 20px;
+        font-size: 1rem;
         /* Adjust left margin */
     }
 

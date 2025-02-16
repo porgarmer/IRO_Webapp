@@ -26,7 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-cd)+*5hqlw0v&jrdttn40#8lxo7muqb($7)xyuafxwqs5#@^zj'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 if DEBUG:
     ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
@@ -152,6 +152,9 @@ USE_I18N = True
 
 USE_TZ = True
 
+
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
 # Fix MIME Type Issues
 mimetypes.add_type("application/javascript", ".js", True)
 mimetypes.add_type("text/css", ".css", True)
@@ -165,12 +168,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Central static folder
 STATICFILES_DIRS = [
-    BASE_DIR / "static",  
-    BASE_DIR / "static/django_ckeditor_5"
+    os.path.join(BASE_DIR, 'static')
 ]
-
-
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
