@@ -1,0 +1,61 @@
+{% extends "base/base.html" %}
+
+{% block content %}
+    <div class="container mt-5 text-start">
+        <div class="card shadow-lg p-4" style="border-radius: 15px; max-width: 1000px; margin: auto;">
+            <h2 class="text-center mb-4" style="font-weight: bold; color: #343a40;">Edit Homepage VMGO</h2>
+
+            <form method="POST"  enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <!-- Vision Field -->
+                <div class="mb-4">
+                    {{form.vision.label}}
+                    {{form.vision}}
+                </div>
+
+                <!-- Mission Field -->
+                <div class="mb-4">
+                    {{form.mission.label}}
+                    {{form.mission}}
+                </div>
+
+                <!-- Goal Field -->
+                <div class="mb-4">
+                    {{form.goal.label}}
+                    {{form.goal}}
+                </div>
+
+                 <!-- Background Photo Field -->
+                 <div class="mb-4">
+                    {{form.bg_photo.label}}
+                    {{form.bg_photo}}
+                    {% if vmgo.bg_photo %}
+                    <div class="mt-2 text-center">
+                        <img src="{{ vmgo.bg_photo.url }}" alt="Additional Picture 4"
+                             class="img-fluid rounded shadow-sm"
+                             style="object-fit: cover; border-radius: 10px;"
+                            >
+                        <p class="text-muted mt-2">Current background photo</p>
+                    </div>
+                    {% else %}
+                    {% endif %}
+                </div>
+
+                
+                <!-- Action Buttons -->
+                <div class="d-flex justify-content-end gap-2">
+                    <button 
+                        type="submit" 
+                        class="btn btn-primary px-4 py-2" 
+                        style="border-radius: 25px; font-weight: bold;">Save Changes</button>
+                    
+                    <a 
+                        href="{% url 'management:homepage_vmgo_section' %}" 
+                        class="btn btn-secondary px-4 py-2" 
+                        style="border-radius: 25px;">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

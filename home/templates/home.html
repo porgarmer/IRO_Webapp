@@ -14,52 +14,37 @@ Home
 {% block content %}
 
 {% comment %} hero section {% endcomment %}
-{% comment %} <div class="px-4 py-5 text-center d-grid hero-section" 
+<div class="px-4 py-5 text-center d-grid hero-section" 
      style="background: linear-gradient(rgba(43, 37, 37, 0.6), rgba(18, 15, 15, 0.6)), url({{ homepage.hero_section_bg_photo.url }});
      background-size: cover; background-repeat: no-repeat;">
     <div class="hero-content">
-        <h1 class="display-5">{{ homepage.hero_section_title|safe }}</h1>
+        <h1 class="display-5 fw-bold">{{ homepage.hero_section_heading|safe }}</h1>
         <div class="col-lg-6 mx-auto">
-            <p class="lead mb-4">{{ homepage.hero_section_subtitle|safe }}</p>
+            <p class="lead mb-4">{{ homepage.hero_section_subheading }}</p>
             <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
                 <a href="#help-iro" type="button" class="btn btn-primary btn-lg px-4 gap-3">Help IRO</a>
             </div>
         </div>
     </div>
-</div> {% endcomment %}
-
-<div class="text-center d-grid hero-section p-5">
-    <div class="hero-content">
-      <h1 class="display-5 fw-bold">RESCUE <span style="color: #F95B00;">•</span> EDUCATE <span style="color: #F95B00;">•</span> ADVOCATE</h1>
-        <div class="col-lg-6 mx-auto">
-          <p class="lead mb-4">Creating a Better Future for Animals</p>
-            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                <a href="#help-iro" type="button" class="btn btn-primary btn-lg p-3 gap-3">Help IRO</a>
-            </div>
-        </div>
-    </div>
 </div>
-
   
 {% comment %} about section {% endcomment %}
 <div class="container d-flex justify-content-center p-5">
         <div class="card about-us">
             <div class="row g-0">
                 <div class="col-md-4">
-                    <img src="https://scontent.fceb1-1.fna.fbcdn.net/v/t1.6435-9/89716226_2479965872268819_2828685862240256000_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=3a1ebe&_nc_eui2=AeHvFYPP1YjuI4IkUoc8K5CmjEM3qrfGHT6MQzeqt8YdPrsssch7PHfKuS4gsFyEi94G9HFA9ssWqE5tbAcvVg4_&_nc_ohc=05DEykVcdhUQ7kNvgHhiQNl&_nc_zt=23&_nc_ht=scontent.fceb1-1.fna&_nc_gid=A-h07Te-hsynSURDWlZmdDB&oh=00_AYAiWwP809ni90oXwII09HJbOA9lNzqSLZlRZd8Vqm9BEA&oe=67B23629" class="img-fluid rounded-start" alt="...">
+                  {% if about_us.about_us_section_photo %}
+                    <img src="{{about_us.about_us_section_photo.url}}" class="img-fluid rounded-start" alt="About us">
+                  {% else %}
+                    <img src="{% static 'global/images/default-image.jpg' %}" class="img-fluid rounded-start" alt="About us">
+                  {% endif %}
                 </div>
                     <div class="col-md-8">
                         <div class="card-body m-lg-5">
                           <div class="d-flex justify-content-center">
                             <h1 class="card-title">ABOUT US</h1>
                           </div>
-                          <p class="card-text"><span style="color: #F95B00; font-weight: bold;">Island Rescue Organization </span>is a non-profit organization that aims to
-                              relieve the plight of animals
-                              in the region through <span style="font-weight: bold;">RESCUE,</span>
-                              <span style="font-weight: bold;">EDUCATION,</span>
-                              and
-                              <span style="font-weight: bold;">ADVOCACY.</span>
-                          </p>
+                          <p class="card-text">{{about_us.about_us_section_content|safe}}</p>
                           <a href="{% url 'about_us' %}" class="btn btn-primary btn-lg px-3">Learn More</a>
                     </div>
                 </div>

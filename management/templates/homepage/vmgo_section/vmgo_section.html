@@ -49,107 +49,47 @@
 
 {% block content %}
 <div class="container mt-5">
-    <h1 class="mb-5 text-center display-4" style="font-weight: bold; color: #343a40;">Homepage - Statistics Section</h1>
-     
-        <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
+    <h1 class="mb-5 text-center display-4" style="font-weight: bold; color: #343a40;">Homepage - VMGO Section</h1>
 
-            <div class="d-flex">
-                <a class="btn btn-primary me-2" href="{% url 'management:add_homepage_stats' %}">Add Statistics</a>
-                <button class="btn btn-danger rounded-3" id="bulkDeleteButton" disabled>Delete Selected</button>
-            </div>
-                
-            <div class="d-flex ms-auto gap-2">  
-                <!-- Search and Filter -->
-                <div>
-                    <label for="date-sort">Order by date: </label>
-                    <select 
-                            name="date-sort" 
-                            id="date-sort"
-                            class="form-select shadow-sm w-auto"  
-                            style="border-radius: 12px;">
-                            <option value="" disabled selected>-----</option>
-                            <option value="ascending" {% if datesorted == "ascending" %}selected{% endif %}>
-                                Ascending   
-                            </option>
-                            <option value="descending" {% if datesorted  == "descending" %}selected{% endif %}>
-                                Descending
-                            </option>
-                    </select>
-                </div>
-            
-               
-                <div>
-                    <label for=""></label>
-                    <form method="GET" action="" class="d-flex align-items-center gap-2">              
-                        <input 
-                            type="text" 
-                            name="search" 
-                            class="form-control shadow-sm w-auto" 
-                            placeholder="Search..." 
-                            value="{{ search_query }}" 
-                            style="border-radius: 12px;">
-
-                        <button 
-                            type="submit" 
-                            class="btn btn-secondary about-usshadow-sm" 
-                            >
-                            <i class="fi fi-rr-search"></i>
-                        </button>   
-                    </form>
-                </div>
-               </div>
-            </div>
-        </div>
- 
-
-    
     <div class="table-responsive">
         <table class="table table-bordered table-hover" id="news_article_table">
             <thead class="thead-dark">
                 <tr>
-                    <th><input type="checkbox" id="selectAll"></th>
-                    <th>#</th>
-                    <th>Logo</th>
-                    <th>Name</th>
-                    <th>Number</th>
-                    <th>Added At</th>
-                    <th>Updated At</th>
+                    <th>Background Photo</th>
+                    <th>Vision</th>
+                    <th>Mission</th>
+                    <th>Goal</th>
                     <th>Actions</th>
                 </tr>
             </thead>
-            {% if stats %}
+            {% if vmgo %}
             <tbody>
-                {% for stat in stats %}
                 
                     <tr>
-                        <td><input type="checkbox" class="blogCheckbox" value="{{ stat.id }}"></td>
-                        <td>{{ forloop.counter }}</td>
                         <td>
-                            {% if stat.logo %}
-                                <img src="{{ stat.logo.url }}" 
-                                    alt="{{ stat.name }}" 
+                            {% if vmgo.bg_photo %}
+                                <img src="{{ vmgo.bg_photo.url }}" 
+                                    alt="{{ vmgo.bg_photo.name }}" 
                                     style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.2);">
                             {% else %}
-                                No Logo
+                                No background photo
                             {% endif %}
                         </td>
-                        <td>{{stat.name}}</td>
-                        <td>{{stat.number}}</td>
-                        <td>{{stat.created_at}}</td>
-                        <td>{{stat.updated_at}}</td>
+                        <td>{{vmgo.vision|truncatewords:10}}</td>
+                        <td>{{vmgo.mission|truncatewords:10}}</td>
+                        <td>{{vmgo.goal|truncatewords:10}}</td>
 
                         <td>
                             <!-- Action Buttons -->
 
                             <a 
                                 class="btn btn-outline-warning btn-sm"
-                                href="{% url 'management:edit_homepage_stats' id=stat.id %}"
+                                href="{% url 'management:edit_homepage_vmgo_section' %}"
                                 >
                                 Edit
                             </a>
                         </td>
                     </tr>
-                {% endfor %}
             </tbody>
         </table>
         {% else %}

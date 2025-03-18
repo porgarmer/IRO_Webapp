@@ -2,7 +2,7 @@
 {% block content %}
 <div class="container mt-5  text-start">
     <div class="card shadow-lg p-4" style="border-radius: 15px; max-width: 1000px; margin: auto;">
-        <h2 class="text-center mb-4" style="font-weight: bold; color: #343a40;">Add Rescue</h2>
+        <h2 class="text-center mb-4" style="font-weight: bold; color: #343a40;">Add Shelter</h2>
 
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
@@ -13,10 +13,16 @@
                 {{form.name}}
             </div>
 
-            <!-- Category Field -->
+            <!-- Location Field -->
             <div class="mb-4">
-                {{form.category.label}}
-                {{form.category}}
+                {{form.location.label}}
+                {{form.location}}
+            </div>
+
+            <!-- Visitation Field -->
+            <div class="mb-4">
+                {{form.visitation.label}}
+                {{form.visitation}}
             </div>
 
             <!-- Description Field -->
@@ -26,10 +32,10 @@
                 {{form.description}}
             </div>
 
-            <!-- Picture Upload -->
+            <!-- Photo Upload -->
             <div class="mb-4">
-                {{form.profile.label}}
-                {{form.profile}}
+                {{form.photo.label}}
+                {{form.photo}}
             </div>
 
             <!-- Additional Pictures Section -->
@@ -39,14 +45,14 @@
                 <div class="row">
                     <!-- Additional Picture 1 -->
                     <div class="col-md-6 mb-3">
-                        {{form.additional_picture_1.label}}
-                        {{form.additional_picture_1}}
+                        {{form.picture_1.label}}
+                        {{form.picture_1}}
                     </div>
 
                     <!-- Additional Picture 2 -->
                     <div class="col-md-6 mb-3">
-                        {{form.additional_picture_2.label}}
-                        {{form.additional_picture_2}}
+                        {{form.picture_2.label}}
+                        {{form.picture_2}}
                     </div>
                 </div>
             </div>
@@ -54,14 +60,14 @@
             <div class="row">
                 <!-- Additional Picture 3 -->
                 <div class="col-md-6 mb-3">
-                    {{form.additional_picture_3.label}}
-                    {{form.additional_picture_3}}
+                    {{form.picture_3.label}}
+                    {{form.picture_3}}
                 </div>
 
                 <!-- Additional Picture 4 -->
                 <div class="col-md-6 mb-3">
-                    {{form.additional_picture_4.label}}
-                    {{form.additional_picture_4}}
+                    {{form.picture_4.label}}
+                    {{form.picture_4}}
                 </div>
             </div>
             <!-- Action Buttons -->
@@ -69,10 +75,11 @@
                 <button type="submit" class="btn btn-primary px-4 py-2" style="border-radius: 25px; font-weight: bold;">Save
                     Changes</button>
 
-                <a href="{% url 'management:adoptable_rescues' %}" class="btn btn-secondary px-4 py-2"
+                <a href="{% url 'management:shelters' %}" class="btn btn-secondary px-4 py-2"
                     style="border-radius: 25px;">Cancel</a>
             </div>
         </form>
     </div>
 </div>
 {% endblock %}
+

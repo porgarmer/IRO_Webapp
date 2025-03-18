@@ -1,0 +1,131 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block stylesheet %}
+<style>
+    .table {
+        border-collapse: separate;
+        border-spacing: 0;
+        border-radius: 12px;
+        overflow: hidden;
+    }
+
+    .thead-dark th {
+        background-color: #231F20;
+        color: #fff;
+        border: none;
+        text-align: center;
+    }
+
+    .table-bordered th, .table-bordered td {
+        border: 1px solid #dee2e6;
+    }
+
+    .table-hover tbody tr:hover {
+        background-color: rgba(0, 0, 0, 0.05);
+    }
+
+    .btn-lg {
+        padding: 0.6rem 1.5rem;
+    }
+
+    .btn-outline-danger:hover {
+        background-color: #dc3545;
+        color: #fff;
+    }
+
+    .btn-outline-warning:hover {
+        background-color: #ffc107;
+        color: #fff;
+    }
+
+    .btn-outline-success:hover {
+        background-color: #28a745;
+        color: #fff;
+    }
+</style>
+{% endblock stylesheet %}
+
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="mb-5 text-center display-4" style="font-weight: bold; color: #343a40;">Homepage - Hero Section</h1>
+    
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover" id="news_article_table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Background Photo</th>
+                    <th>Heading</th>
+                    <th>Subheading</th>
+                    <th>Actions</th>
+
+                </tr>
+            </thead>
+            {% if homepage %}
+            <tbody>
+                <tr>
+                    <td>
+                        {% if homepage.hero_section_bg_photo %}
+                            <img src="{{ homepage.hero_section_bg_photo.url }}" 
+                                alt="Hero section background" 
+                                style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.2);">
+                        {% else %}
+                            No Photo
+                        {% endif %}
+                    </td>
+                    <td>{{homepage.hero_section_heading|safe}}</td>
+                    <td>{{homepage.hero_section_subheading}}</td>
+                    <td>
+                        <!-- Action Buttons -->
+                        <a 
+                            class="btn btn-outline-warning btn-sm"
+                            href= "{% url 'management:edit_homepage_hero_section' %}">
+                            Edit
+                        </a>
+                        
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        {% else %}
+    </table>
+    <div class="alert alert-warning text-center">
+        No results.
+    </div>
+    {% endif %}
+    </div>
+</div>
+    <!-- Delete Modal -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form id="delete-form" method="POST" action="{% url 'management:delete_wishlist' %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="selected_ids" id="ids"  value="">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="deleteModalLabel">Delete Post</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Are sure you want to remove: <span id="delete-count"></span> wishlists?</p>
+                    </div>
+                    <div class="modal-footer">
+                        
+                        <button type="button" class="btn btn-" data-bs-dismiss="modal">No</button>
+                        <button type="submit" class="btn btn-danger" id="confirm-delete">Yes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div> 
+{% endblock content %}
+
+{% block scripts %}
+<script src="{% static 'global/js/jquery-3.7.1.min.js' %}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+<script src="{% static 'management/js/faqs.js' %}"></script>
+
+
+{% endblock scripts %}
