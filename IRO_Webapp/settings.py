@@ -235,6 +235,9 @@ CKEDITOR_5_CONFIGS = {
         },
 
     },
+    'font_color':{
+        'toolbar': ['fontColor']
+    },
     'extends': {
         'blockToolbar': [
             'paragraph', 'heading1', 'heading2', 'heading3',

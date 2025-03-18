@@ -15,10 +15,20 @@ urlpatterns = [
     path('dashboard/', views.dashboard, name='dashboard'),
     
     path('homepage/hero-section', views.homepage_hero_section, name='homepage_hero_section'),
+    path('homepage/edit-hero-section', views.edit_homepage_hero_section, name='edit_homepage_hero_section'),
+
+    path('homepage/about-us', views.homepage_about_us_section, name="homepage_about_us_section"),
+    path('homepage/edit-about-us-section', views.edit_homepage_about_us_section, name='edit_homepage_about_us_section'),
+    
+    path('homepage/vmgo', views.homepage_vmgo_section, name="homepage_vmgo_section"),
+    path('homepage/edit-vmgo', views.edit_homepage_vmgo_section, name="edit_homepage_vmgo_section"),
+
+
     path('homepage/stats', views.homepage_stats, name='homepage_stats'),
     path('homepage/add-stats', views.add_homepage_stats, name='add_homepage_stats'),
     path('homepage/edit-stats/<int:id>', views.edit_homepage_stats, name='edit_homepage_stats'),
     path('homepage/delete-stat', views.delete_homepage_stats, name='delete_homepage_stats'),
+
 
     path('wishlists', views.wishlists, name='wishlists'),
     path('add-wishlist', views.add_wishlist, name='add_wishlist'),
@@ -52,6 +62,10 @@ urlpatterns = [
     path('adoptable-rescue/delete/', views.delete_rescue, name='delete_rescue'),
     path('adoptable-rescue/<int:pk>/', views.view_rescue, name='view_rescue'),
     
+    path('shelters', views.shelters, name="shelters"),
+    path('add-shelter', views.add_shelter, name="add_shelter"),
+    path('edit-shelter/<int:id>', views.edit_shelter, name="edit_shelter"),
+
     path('google-forms/', views.google_form_list, name='google_form_list'),
     path('google-forms/new/', views.google_form_create, name='google_form_create'),
     path('google-forms/<int:pk>/edit/', views.google_form_update, name='google_form_update'),

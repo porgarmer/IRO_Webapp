@@ -74,24 +74,24 @@
                         <span>Home Page</span>
                     </a>
                     <ul id="homepage" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                        {% comment %} <li class="sidebar-item">
+                        <li class="sidebar-item">
                             <a href="{% url 'management:homepage_hero_section' %}" class="sidebar-link">Hero Section</a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="" class="sidebar-link">About Us Section</a>
+                            <a href="{% url 'management:homepage_about_us_section' %}" class="sidebar-link">About Us Section</a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="" class="sidebar-link">VMGO Section</a>
-                        </li> {% endcomment %}
+                            <a href="{% url 'management:homepage_vmgo_section' %}" class="sidebar-link">VMGO Section</a>
+                        </li>
                         <li class="sidebar-item">
                             <a href="{% url 'management:homepage_stats' %}" class="sidebar-link">Statistics Section</a>
                         </li>
-                        {% comment %} <li class="sidebar-item">
-                            <a href="" class="sidebar-link">Our Shelters Section</a>
+                        <li class="sidebar-item">
+                            <a href="{% url 'management:shelters' %}" class="sidebar-link">Our Shelters Section</a>
                         </li>
                         <li class="sidebar-item">
                             <a href="" class="sidebar-link">Ways You Can Help Section</a>
-                        </li> {% endcomment %}
+                        </li>
                     </ul>
                 </li>
 
@@ -184,17 +184,17 @@
                             </a>
                         </li>
                     </ul>
-                </li>
+                </li> {% endcomment %}
 
                 <li class="sidebar-item">
-                    <a href="#" class="sidebar-link">
+                    <a href="{% url 'management:shelters' %}" class="sidebar-link">
                         <i class="fi fi-rr-house-chimney-heart"></i>
                         <span>Shelters</span>
                     </a>
                 </li>
 
 
-                <li class="sidebar-item">
+                {% comment %} <li class="sidebar-item">
                     <a href="#" class="sidebar-link">
                         <i class="fi fi-rr-calendar-day"></i>
                         <span>Events</span>

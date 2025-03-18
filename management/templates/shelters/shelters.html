@@ -2,7 +2,6 @@
 {% load static %}
 
 {% block stylesheet %}
-<link rel="stylesheet" href="{% static 'management/css/rescue.css' %}">
 <style>
     .table {
         border-collapse: separate;
@@ -50,52 +49,19 @@
 {% block content %}
 <div class="container text-start mt-5">
     <!-- Page Title -->
-    <h1 class="mb-5 text-center display-4" style="font-weight: bold; color: #343a40;">Adoptable Rescues</h1>
+    <h1 class="mb-5 text-center display-4" style="font-weight: bold; color: #343a40;">Shelters</h1>
 
     <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
 
         <div class="d-flex">
-            {% comment %} <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addBlogModal">Add Post</button> {% endcomment %}
-            <a class="btn btn-primary me-2"   href="{% url 'management:add_rescue' %}" >Add Rescue</a>
-            <button class="btn btn-danger rounded-3" id="bulkDeleteButton" disabled>Delete Selected</button>
+            <a class="btn btn-primary me-2"   href="{% url 'management:add_shelter' %}" >Add</a>
+            <button class="btn btn-danger rounded-3" id="bulkDeleteButton" disabled>Delete</button>
         </div>
         
         <!-- Search and Filter -->
         <div class="d-flex ms-auto gap-2">  
-            {% comment %} <div>
-                 <label for="name-sort">Order by name: </label>
-                <select 
-                        name="name-sort" 
-                        id="name-sort"
-                        class="form-select shadow-sm w-auto"  
-                        style="border-radius: 12px;">
-                        <option value="" disabled selected>-----</option>
-                        <option value="ascending" {% if namesorted == "ascending" %}selected{% endif %}>
-                            Ascending   
-                        </option>
-                        <option value="descending" {% if namesorted  == "descending" %}selected{% endif %}>
-                            Descending
-                        </option>
-                </select>
-            </div>
-            {% endcomment %}
             <div>
-                <label for="category">Category: </label>
-                <select 
-                        name="category" 
-                        id="category" 
-                        class="form-select shadow-sm w-auto"  
-                        style="border-radius: 12px;">
-                        <option value="">All Categories</option>
-                        {% for category in categories %}
-                            <option value="{{ category.name }}" {% if category.name == category_filter %}selected{% endif %}>
-                                {{ category.name }}
-                            </option>
-                        {% endfor %}
-                </select>
-            </div>
-            <div>
-                 <label for="date-sort">Order by date added: </label>
+                <label for="date-sort">Order by date added: </label>
                 <select 
                         name="date-sort" 
                         id="date-sort"
@@ -113,7 +79,7 @@
            
             <div>
                 <label for=""></label>
-                <form method="GET" action="{% url 'management:adoptable_rescues' %}" class="d-flex align-items-center gap-2">              
+                <form method="GET" action="{% url 'management:shelters' %}" class="d-flex align-items-center gap-2">              
                     <input 
                         type="text" 
                         name="search" 
@@ -141,45 +107,43 @@
                     <th><input type="checkbox" id="selectAll"></th>
                     <th>#</th>
                     <th>Name</th>
-                    <th>Category</th>
+                    <th>Location</th>
+                    <th>Visitors allowed</th>
                     <th>Description</th>
                     <th>Date added</th>
-                    <th>Picture</th>
+                    <th>Date edited</th>
+                    <th>Photo</th>
                     <th>Actions</th>
                 </tr>
             </thead>
-            {% if rescues %}
+            {% if shelters %}
             <tbody>
-                {% for rescue in rescues %}
+                {% for shelter in shelters %}
                 <tr>
                     <td class="text-center"><input type="checkbox" class="blogCheckbox" value="{{ rescue.id }}"></td>
                     <td class="text-center">{{ forloop.counter }}</td>
-                    <td class="">{{ rescue.name }}</td>
-                    <td class="">
-                        {% if rescue.category %}
-                            {{ rescue.category }}
-                        {% else %}
-                            <em>Uncategorized</em>
-                        {% endif %}
-                    </td>
-                    {% if rescue.description and rescue.description != "<p>&nbsp;</p>"%}
-                    <td class="" style="max-width: 15em">{{ rescue.description|safe|truncatewords:10 }}</td>
-                    {% elif rescue.description == "<p>&nbsp;</p>"%}
+                    <td class="">{{ shelter.name }}</td>
+                    <td class="">{{ shelter.location }}</td>
+                    <td class="">{{ shelter.visitation }}</td>
+                    {% if shelter.description and shelter.description != "<p>&nbsp;</p>"%}
+                    <td class="" style="max-width: 15em">{{ shelter.description|safe|truncatewords:10 }}</td>
+                    {% elif shelter.description == "<p>&nbsp;</p>"%}
                     <td class="">No description</td>
                     {% endif %}
                     
-                    <td>{{rescue.date_added}}</td>
-
+                    <td>{{shelter.created_at}}</td>
+                    <td>{{shelter.edited_at}}</td>
                     <td class="align-middle text-center">
-                        {% if rescue.profile %}
+                        {% if shelter.photo %}
                             <img 
-                                src="{{ rescue.profile.url }}" 
-                                alt="{{ rescue.name }}" 
+                                src="{{ shelter.photo.url }}" 
+                                alt="{{ shelter.name }}" 
                                 style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.2);">
                         {% else %}
-                            <em>No Image</em>
+                            <em>No Photo</em>
                         {% endif %}
                     </td>
+                   
                     <!-- Action Buttons -->
                     <td class="align-middle text-center">
                         <div class="d-flex gap-2 justify-content-center">
@@ -191,12 +155,7 @@
                                 View Gallery
                             </button>
                             <a 
-                                href="{% url 'management:view_rescue' rescue.id %}" 
-                                class="btn btn-outline-success btn-sm">
-                                View
-                            </a>
-                            <a 
-                                href="{% url 'management:edit_rescue' rescue.id %}" 
+                                href="{% url 'management:edit_shelter' id=shelter.id %}" 
                                 class="btn btn-outline-warning btn-sm">
                                 Edit
                             </a>
@@ -215,7 +174,7 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="additionalPicsModalLabel{{ forloop.counter }}">
-                                    Additional Pictures for {{ rescue.name }}
+                                    Additional Pictures for {{ shelter.name }}
                                 </h5>
                                 <button 
                                     type="button" 
@@ -225,35 +184,35 @@
                             </div>
                             <div class="modal-body">
                                 <div class="row g-3">
-                                    {% if rescue.additional_picture_1 %}
+                                    {% if shelter.picture_1 %}
                                     <div class="col-md-6">
                                         <img 
-                                            src="{{ rescue.additional_picture_1.url }}" 
-                                            alt="Additional Picture 1" 
+                                            src="{{ shelter.picture_1.url }}" 
+                                            alt="Picture 1" 
                                             class="img-fluid rounded shadow-sm">
                                     </div>
                                     {% endif %}
-                                    {% if rescue.additional_picture_2 %}
+                                    {% if shelter.picture_2 %}
                                     <div class="col-md-6">
                                         <img 
-                                            src="{{ rescue.additional_picture_2.url }}" 
-                                            alt="Additional Picture 2" 
+                                            src="{{ shelter.picture_2.url }}" 
+                                            alt="Picture 2" 
                                             class="img-fluid rounded shadow-sm">
                                     </div>
                                     {% endif %}
-                                    {% if rescue.additional_picture_3 %}
+                                    {% if shelter.picture_3 %}
                                     <div class="col-md-6">
                                         <img 
-                                            src="{{ rescue.additional_picture_3.url }}" 
-                                            alt="Additional Picture 3" 
+                                            src="{{ shelter.picture_3.url }}" 
+                                            alt="Picture 3" 
                                             class="img-fluid rounded shadow-sm">
                                     </div>
                                     {% endif %}
-                                    {% if rescue.additional_picture_4 %}
+                                    {% if shelter.picture_4 %}
                                     <div class="col-md-6">
                                         <img 
-                                            src="{{ rescue.additional_picture_4.url }}" 
-                                            alt="Additional Picture 4" 
+                                            src="{{ shelter.picture_4.url }}" 
+                                            alt="Picture 4" 
                                             class="img-fluid rounded shadow-sm">
                                     </div>
                                     {% endif %}

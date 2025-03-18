@@ -12,10 +12,12 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='HomePage',
+            name='HomePageHero',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('hero_section_bg_photo', models.ImageField(blank=True, null=True, upload_to='homepage/')),
+                ('id', models.BigAutoField(auto_created=True,
+                 primary_key=True, serialize=False, verbose_name='ID')),
+                ('hero_section_bg_photo', models.ImageField(
+                    blank=True, null=True, upload_to='homepage/')),
             ],
         ),
     ]
