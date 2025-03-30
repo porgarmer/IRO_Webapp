@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     'content_page',
     'about_us',
     'contact_us',
+    'events',
     
 ]
 
