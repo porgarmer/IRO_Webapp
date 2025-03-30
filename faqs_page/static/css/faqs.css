@@ -51,3 +51,61 @@ div.accordion-item .accordion-button {
     font-size: 1.50rem !important;
     padding: 15px !important;
 }
+
+.card {
+    width: 350px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    background: #fff;
+    left: 30rem;
+}
+
+.card-header {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 15px; /* Increased margin for better spacing */
+}
+
+.card-body {
+    position: relative;
+    padding-left: 110px; /* Space for image + some margin */
+    min-height: 100px; 
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px; /* Adds consistent spacing between items */
+    margin-left: -110px; /* Pulls content left to align with card edge */
+    padding-left: 110px; /* Counteracts the negative margin */
+}
+
+.separator {
+    border-top: 1px solid #ddd;
+    margin: 15px 0;
+    width: 100%; /* Ensures full width */
+}
+
+.profile-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    position: absolute;
+    left: 20px; /* Matches card padding */
+    top: 50%;
+    transform: translateY(-50%)
+}
+
+.edit-password {
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+    display: inline-block; /* Ensures proper spacing */
+    margin-top: 8px; /* Consistent with other items */
+}
+.separator {
+    border-top: 1px solid #ddd;
+    margin: 10px 0;
+}
